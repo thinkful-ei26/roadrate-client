@@ -1,6 +1,12 @@
 # RoadRate
 Choose Rate, not Rage
 
+Your driving is now public information. Leave reviews, ratings, comments, and tips for drivers. Learn how your driving effects others and make the roads safer
+
+## Quick Links
+- [Client Repo](https://github.com/thinkful-ei26/roadrate-client)
+- [Server Repo](https://github.com/thinkful-ei26/roadrate-server) 
+
 ## MVP
 Should be deployable by next Monday
 
@@ -17,15 +23,15 @@ A tab for “My Reviews”
 - Filter feature for reviews by license plate #
 
 ## Tech Stack
-**Front End:** React/Redux, CSS, HTML
-**Back End:** Node.js, Express, mLab
-**Testing:** Mocha/Chai
+- **Front End:** React/Redux, CSS, HTML
+- **Back End:** Node.js, Express, mLab
+- **Testing:** Mocha/Chai
 
 ## Roles
-**Design Lead:** Jordan
-**Project Manager:** Trisha
-**QA Lead:** RP
-**Product Manager:** Randy
+- **Design Lead:** Jordan
+- **Project Manager:** Trisha
+- **QA Lead:** RP
+- **Product Manager:** Randy
 
 ## User Stories/Hierarchy
 
