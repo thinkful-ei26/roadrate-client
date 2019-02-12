@@ -1,16 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/App.css';
+import RegistrationForm from './registration-form';
+// import AddUserForm from './AddUserForm';
+import LoginForm from './login-form';
+// import LandingPage from './landing-page';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <p>Test</p>
-        </header>
-      </div>
-    );
-  }
+export const App = () => {
+	return (
+		<div className="container">
+			<h1>RoadRate</h1>
+			<div className="registration-form">
+				<h2>Register</h2>
+				<RegistrationForm/>
+			</div>
+			<div className="login-form">
+				<h2>Login</h2>
+				<LoginForm />
+			</div>
+			
+			{/* < LandingPage /> */}
+			{/* <AddUserForm /> */}
+		</div>
+	)
 }
 
-export default App;
+export default App
