@@ -1,27 +1,19 @@
 import React from 'react';
+import { Route, withRouter } from 'react-router-dom';
+import RegistrationPage from './registration-page';
+import LandingPage from './landing-page';
 import '../styles/App.css';
-import RegistrationForm from './registration-form';
-// import AddUserForm from './AddUserForm';
-import LoginForm from './login-form';
-// import LandingPage from './landing-page';
 
 export const App = () => {
+
 	return (
-		<div className="container">
+		<div className="app">
 			<h1>RoadRate</h1>
-			<div className="registration-form">
-				<h2>Register</h2>
-				<RegistrationForm/>
-			</div>
-			<div className="login-form">
-				<h2>Login</h2>
-				<LoginForm />
-			</div>
-			
-			{/* < LandingPage /> */}
-			{/* <AddUserForm /> */}
+			<Route exact path="/" component={LandingPage} />
+			{/* <Route exact path="/dashboard" component={Dashboard} /> */}
+      <Route exact path="/register" component={RegistrationPage} />
 		</div>
 	)
 }
 
-export default App
+export default withRouter(App);
