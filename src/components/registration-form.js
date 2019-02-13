@@ -1,6 +1,7 @@
-import React, { useState } from 'react'; 
-//useState allows you to access and manipulate state components
+import React, { useState, useEffect } from 'react'; 
 import "../styles/App.css";
+import { API_BASE_URL } from '../config';
+console.log(API_BASE_URL);
 
 export const RegistrationForm = () => {
   // split state into different declarations
@@ -21,6 +22,33 @@ export const RegistrationForm = () => {
     setPassword(password)
     setConfirmPassword(confirmPassword)
   }
+
+  //create a custom hook for post API
+  useEffect(
+    async () => {
+      const settings = {
+          method: 'POST',
+          headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+          }
+      };
+  
+      const data = await fetch(`${API_BASE_URL}/users`, settings)
+          .then(response => {
+            console.log('response', response)
+            return response.json()
+          })
+          .then(json => {
+              return json;
+          })
+          .catch(e => {
+              return e
+          });
+  
+      return data;
+    }
+  )
 
   return (
     <form className="registration-form"

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'; 
 import { API_BASE_URL } from '../config';
 
-console.log(API_BASE_URL);
-
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
