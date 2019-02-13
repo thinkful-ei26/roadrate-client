@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState } from 'react'; 
 import { API_BASE_URL } from '../config';
 import { Redirect } from 'react-router-dom';
 
@@ -19,7 +19,6 @@ export const LoginForm = () => {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        // 'BEARER-TOKEN': setAuthToken
       },
       body: JSON.stringify({
         username,
