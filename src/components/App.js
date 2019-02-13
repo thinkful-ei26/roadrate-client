@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import RegistrationPage from './registration-page';
 import LandingPage from './landing-page';
 import '../styles/App.css';
 
 export const App = () => {
+    // const [ authToken, setAuthToken ] = useState("");
 
 	return (
 		<div className="app">
