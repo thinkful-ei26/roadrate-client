@@ -15,6 +15,11 @@ export function Plate(props) {
                 <p className="feedback">Feedback</p>
                 <p className="isClaimed">Does the plate have a registered owner? (Bool)</p>
               </li>
+              <li className="plate-review-item">
+                <p className="date">Date: 2/13/19</p>
+                <p className="feedback">He was a great driver!</p>
+                <p className="isClaimed">Yes)</p>
+              </li>
             </ul>
         </div>
     );
