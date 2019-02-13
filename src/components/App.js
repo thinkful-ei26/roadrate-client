@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import RegistrationPage from './registration-page';
 import LandingPage from './landing-page';
-import '../styles/app.css';
+import '../styles/App.css';
 
 export const App = () => {
 

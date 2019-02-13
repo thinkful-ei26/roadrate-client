@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; 
 //useState allows you to access and manipulate state components
-import "../styles/app.css";
+import "../styles/App.css";
 
 export const RegistrationForm = () => {
   // split state into different declarations
