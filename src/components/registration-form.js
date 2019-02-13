@@ -9,8 +9,23 @@ export const RegistrationForm = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const handleSubmit = e => {
+    e.preventDefault(); 
+    if (!username || !username) return;
+    if (!password || !password) return;
+    if (!confirmPassword || !confirmPassword) return;
+
+    console.log(`username: ${username}, password: ${password}, confirmPassword: ${confirmPassword}`)
+
+    setUsername(username)
+    setPassword(password)
+    setConfirmPassword(confirmPassword)
+  }
+
   return (
-    <form className="registration">
+    <form className="registration-form"
+      onSubmit={handleSubmit}
+    >
       <label htmlFor="name">Name: </label>
       <input
         value={name}
