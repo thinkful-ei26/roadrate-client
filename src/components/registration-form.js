@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, /* useEffect */ } from 'react'; 
+// import axios from "axios";
 import "../styles/App.css";
 import { API_BASE_URL } from '../config';
 console.log(API_BASE_URL);
@@ -15,40 +16,35 @@ export const RegistrationForm = () => {
     if (!username || !username) return;
     if (!password || !password) return;
     if (!confirmPassword || !confirmPassword) return;
-
+   
     console.log(`username: ${username}, password: ${password}, confirmPassword: ${confirmPassword}`)
 
     setUsername(username)
     setPassword(password)
     setConfirmPassword(confirmPassword)
-  }
-
-  //create a custom hook for post API
-  useEffect(
-    async () => {
-      const settings = {
-          method: 'POST',
-          headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-          }
+    return fetch(`${API_BASE_URL}/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        // 'BEARER-TOKEN': setAuthToken
+      },
+      body: JSON.stringify({
+        name,
+        username,
+        password,
+        confirmPassword
+      })
+    })
+    .then(res => {
+      console.log('res', res)
+      return res.json();
+      })
+      .then(data => {  
+      return data.name && data.username && data.password;
+      })
+      .catch(err => console.log(err))
       };
-  
-      const data = await fetch(`${API_BASE_URL}/users`, settings)
-          .then(response => {
-            console.log('response', response)
-            return response.json()
-          })
-          .then(json => {
-              return json;
-          })
-          .catch(e => {
-              return e
-          });
-  
-      return data;
-    }
-  )
 
   return (
     <form className="registration-form"
@@ -90,7 +86,10 @@ export const RegistrationForm = () => {
         name="passwordConfirm"
         required
       />
-      <button type="submit" className="register-submit">
+      <button 
+        type="submit" 
+        className="register-submit"
+      >
         Submit
       </button>
     </form>
