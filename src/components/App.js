@@ -1,15 +1,19 @@
 import React from 'react';
+import { Route, withRouter } from 'react-router-dom';
 import '../styles/app.css';
-import RegistrationForm from './registration-form';
-// import AddUserForm from './AddUserForm';
+import RegistrationPage from './registration-page';
 import LoginForm from './login-form';
-// import LandingPage from './landing-page';
+import LandingPage from './landing-page';
 
 export const App = () => {
 	return (
-		<div className="container">
+		<div className="app">
 			<h1>RoadRate</h1>
-			<div className="registration-form">
+			<Route exact path="/" component={LandingPage} />
+			{/* <Route exact path="/dashboard" component={Dashboard} /> */}
+      <Route exact path="/register" component={RegistrationPage} />
+
+			{/* <div className="registration-form">
 				<h2>Register</h2>
 				<RegistrationForm/>
 			</div>
@@ -18,10 +22,10 @@ export const App = () => {
 				<LoginForm />
 			</div>
 			
-			{/* < LandingPage /> */}
-			{/* <AddUserForm /> */}
+			< LandingPage /> 
+			<AddUserForm /> */}
 		</div>
 	)
 }
 
-export default App
+export default withRouter(App);
