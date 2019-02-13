@@ -39,3 +39,20 @@ button:hover {
   background-color: palevioletred;
   color: white;
 }
+
+.plate {
+  border: 1px solid #999;
+  text-align: center;
+}
+
+.plate-review-list {
+  margin: 0;
+  padding: 0;
+}
+
+.plate-review-item {
+  border: 1px solid #999;
+  list-style-type: none;
+  padding: 10px;
+  margin: 0 10px 0 10px;
+}

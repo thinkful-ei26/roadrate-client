@@ -6,12 +6,9 @@ export class TopNav extends Component {
   render() {
     return (
           <nav className="App-header">
-            <b
-            <Search />
-            <h1 className='page-title'><Link className='title-anchor' to='/'>Donna's Crafts 'N Creations</Link></h1>
-            <Link className='title-anchor' to='/'><img className='fancy-d' alt='black D with flowers' src={mobileLetter}></img></Link>
-            <Account />
-            <ShoppingCart />
+            <button className='feed-button'>Reviews Feed</button>
+              <h1 className='page-title'><Link className='title-anchor' to='/'>RoadRate</Link></h1>
+            <button className='account-info-button'>My Account</button>
           </nav>
     );
   }
