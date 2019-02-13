@@ -1,11 +1,23 @@
 import React, { useState } from 'react'; 
 
-export function LoginForm() {
+export const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleSubmit = e => {
+    console.log('e', e.target.value);
+    const { username, password } = e.target;
+    e.preventDefault(); 
+    if (!username || !username) return
+    console.log(`user info: ${username} and ${password}`)
+    //call a fn that posts the userinputs to the db
+    // call setUsername with that value
+  }
+
   return(
-    <form className="login">
+    <form className="login-form"
+      onSubmit={handleSubmit}
+    >
       <label htmlFor="username">Username: </label>
       <input
         value={username}
@@ -24,7 +36,7 @@ export function LoginForm() {
         name="password"
         required
       />
-      <button type="submit">
+      <button type="submit" className="login-submit">
         Submit
       </button>
     </form>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 //useState allows you to access and manipulate state components
 import "../styles/app.css";
 
-export function RegistrationForm() {
+export const RegistrationForm = () => {
   // split state into different declarations
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -47,7 +47,7 @@ export function RegistrationForm() {
         name="passwordConfirm"
         required
       />
-      <button type="submit">
+      <button type="submit" className="register-submit">
         Submit
       </button>
     </form>
