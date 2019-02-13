@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/App.css';
+import '../styles/app.css';
 import RegistrationForm from './registration-form';
 // import AddUserForm from './AddUserForm';
 import LoginForm from './login-form';
