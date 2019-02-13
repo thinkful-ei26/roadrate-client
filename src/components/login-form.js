@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'; 
 import { API_BASE_URL } from '../config';
+import { Redirect } from 'react-router-dom';
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -36,12 +37,17 @@ export const LoginForm = () => {
       })
       .catch(err => console.log(err))
       };
+
+      if(authToken.authToken) {
+        return <Redirect to="/dashboard" />;
+      }
+
   return(
     <div>
       <div>{authToken.authToken}</div>
       
       <form className="login-form"
-            onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <label htmlFor="username">Username: </label>
         <input
