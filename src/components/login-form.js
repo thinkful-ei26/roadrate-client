@@ -12,7 +12,7 @@ export const LoginForm = () => {
     console.log(`user info: ${username} and ${password}`)
     //call a fn that posts the userinputs to the db
     // call setUsername with that value
-  }
+  } 
 
   return(
     <form className="login-form"
