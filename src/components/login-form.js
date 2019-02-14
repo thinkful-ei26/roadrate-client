@@ -16,6 +16,7 @@ export const LoginForm = () => {
     localStorage.setItem("user", username);
     setUsername(username)
     localStorage.setItem("loggedIn", loggedIn);
+    localStorage.removeItem("logout")
     
     return fetch(`${API_BASE_URL}/login`, {
       method: 'POST',
