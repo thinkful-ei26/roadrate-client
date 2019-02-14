@@ -9,14 +9,6 @@ export const Dashboard = (props) => {
   const [name, setName ] = useState("");
   const [searchInput, setSearchInput] = useState("");
   
-  // useEffect( () => {
-  //   // ways to find the correct plate:
-  //   // 1. on login & dashboard load, make a fetch userObj to server => save user info to localStorage (id, username) => use localStorage id to get item from server
-  //   //  - OR -
-  //   // 2. to access reviews, send jwttoken to backend & server will decode the info to acces
-  //   setUsername(localStorage.user)
-  // })
-
     // Use an async function so that we can await the fetch
     useEffect(async () => {
       setUsername(localStorage.user)
@@ -35,6 +27,7 @@ export const Dashboard = (props) => {
       setUserId(user.id)
       localStorage.setItem("name", user.name)
       setName(user.name)
+      
       return user;
     
     }, []);
@@ -50,7 +43,8 @@ export const Dashboard = (props) => {
   return (
     <div className="dashboard">
     <div className="dashboard-greeting">
-      <h2>{localStorage.user}'s Dashboard</h2>
+      <h2>{localStorage.name}'s Dashboard</h2>
+      <p>@{localStorage.user}</p>
       <Link to="/">
         <button onClick={() => {
           props.logout()
