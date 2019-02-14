@@ -6,6 +6,7 @@ export const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [authToken, setAuthToken] = useState("")
+  const [loggedIn, SetLoggedIn] = useState(true)
 
   const handleSubmit = e => {
     e.preventDefault(); 
@@ -14,7 +15,8 @@ export const LoginForm = () => {
 
     localStorage.setItem("user", username);
     setUsername(username)
-   
+    localStorage.setItem("loggedIn", loggedIn);
+    
     return fetch(`${API_BASE_URL}/login`, {
       method: 'POST',
       headers: {
@@ -47,12 +49,15 @@ export const LoginForm = () => {
       })
   };
 
-  if (authToken.authToken) {
-    return <Redirect to="/dashboard" />;
-  }
-
   return(
     <div>
+      {
+        localStorage.loggedIn ? (
+          <Redirect to="/dashboard" />
+        ) : (
+          <Redirect to="/" />
+        )
+      }
       <form className="login-form"
         onSubmit={handleSubmit}
       >
