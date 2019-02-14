@@ -6,6 +6,7 @@ export const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [authToken, setAuthToken] = useState("")
+  const [loggedIn, SetLoggedIn] = useState(true)
 
   const handleSubmit = e => {
     e.preventDefault(); 
@@ -14,7 +15,10 @@ export const LoginForm = () => {
 
     localStorage.setItem("user", username);
     setUsername(username)
-   
+    localStorage.setItem("loggedIn", loggedIn);
+    SetLoggedIn(loggedIn)
+    localStorage.removeItem("logout")
+    
     return fetch(`${API_BASE_URL}/login`, {
       method: 'POST',
       headers: {
@@ -48,38 +52,39 @@ export const LoginForm = () => {
       })
   };
 
-
-  if (localStorage.authToken) {
-    return <Redirect to="/dashboard" />;
-  }
-
   return(
-    <div>
-      <form className="login-form"
-        onSubmit={handleSubmit}
-      >
-        <label htmlFor="username">Username: </label>
-        <input
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-          placeholder="Username"
-          type="text"
-          name="username"
-          required
-        />
-        <label htmlFor="password">Password: </label>
-        <input
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          placeholder="Password"
-          type="password"
-          name="password"
-          required
-        />
-        <button type="submit" className="login-submit">
-          Submit
-        </button>
-      </form>
+    <div className="login-container">
+      {
+        localStorage.loggedIn ? (
+          <Redirect to="/dashboard" />
+        ) : (
+          <form className="login-form"
+            onSubmit={handleSubmit}
+          >
+            <label htmlFor="username">Username: </label>
+            <input
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+              placeholder="Username"
+              type="text"
+              name="username"
+              required
+            />
+            <label htmlFor="password">Password: </label>
+            <input
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              placeholder="Password"
+              type="password"
+              name="password"
+              required
+            />
+            <button type="submit" className="login-submit">
+              Submit
+            </button>
+          </form>
+        )
+        }
     </div>
     
   );

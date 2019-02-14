@@ -3,11 +3,10 @@ import {Link, Redirect} from 'react-router-dom';
 import LoginForm from './login-form';
 
 export const LandingPage = (props) => {
-    // // If we are logged in redirect straight to the user's dashboard
-    // console.log('props: ', props)
+    // If we are logged in redirect straight to the user's dashboard
     if (localStorage.authToken) {
         return <Redirect to="/dashboard" />;
-    }
+    } 
 
     return (
         <div className="home">

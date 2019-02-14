@@ -25,8 +25,7 @@ export const RegistrationForm = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        // 'BEARER-TOKEN': setAuthToken
+        'Accept': 'application/json'
       },
       body: JSON.stringify({
         name,
