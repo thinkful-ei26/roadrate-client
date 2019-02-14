@@ -3,6 +3,8 @@ import { Route, withRouter } from 'react-router-dom';
 import RegistrationPage from './registration-page';
 import LandingPage from './landing-page';
 import Dashboard from './dashboard';
+import LoginForm from './login-form';
+import About from './about';
 import '../styles/App.css';
 
 export const App = () => {
@@ -20,7 +22,6 @@ export const App = () => {
   
 	return (
 		<div className="app">
-			<h1>RoadRate</h1>
         { localStorage.user ? (
           <Route 
           exact path="/dashboard" 
@@ -30,6 +31,8 @@ export const App = () => {
           <Route exact path="/register" component={RegistrationPage} />
         )}
 			<Route exact path="/" component={LandingPage} />
+			<Route exact path="/login" component={LoginForm} storeUser={storeUser} />
+			<Route exact path="/about" component={About} storeUser={storeUser} />
 		</div>
 	)
 }

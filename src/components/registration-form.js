@@ -1,7 +1,9 @@
 import React, { useState, /* useEffect */ } from 'react'; 
-import "../styles/App.css";
+import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
-console.log(API_BASE_URL);
+import { Button, Icon } from 'react-materialize';
+
+import "../styles/App.css";
 
 export const RegistrationForm = () => {
   // split state into different declarations
@@ -9,18 +11,25 @@ export const RegistrationForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState("")
+  const [confirmEmail, setConfirmEmail] = useState("")
 
   const handleSubmit = e => {
     e.preventDefault(); 
     if (!username || !username) return;
     if (!password || !password) return;
     if (!confirmPassword || !confirmPassword) return;
+    if (!email || !email) return;
+    if (!confirmEmail || !confirmEmail) return;
    
-    console.log(`username: ${username}, password: ${password}, confirmPassword: ${confirmPassword}`)
+    console.log(`username: ${username}, password: ${password}, confirmPassword: ${confirmPassword}, email: ${email}, confirmEmail: ${confirmEmail}`)
 
-    setUsername(username)
-    setPassword(password)
-    setConfirmPassword(confirmPassword)
+    setUsername(username);
+    setPassword(password);
+    setConfirmPassword(confirmPassword);
+    setEmail(email);
+    setConfirmEmail(confirmEmail);
+
     return fetch(`${API_BASE_URL}/users`, {
       method: 'POST',
       headers: {
@@ -31,7 +40,9 @@ export const RegistrationForm = () => {
         name,
         username,
         password,
-        confirmPassword
+        confirmPassword,
+        email,
+        confirmEmail
       })
     })
     .then(res => {
@@ -39,7 +50,7 @@ export const RegistrationForm = () => {
       return res.json();
       })
       .then(data => {  
-      return data.name && data.username && data.password;
+      return data.name && data.username && data.password && data.email;
       })
       .catch(err => console.log(err))
       };
@@ -84,12 +95,29 @@ export const RegistrationForm = () => {
         name="passwordConfirm"
         required
       />
-      <button 
-        type="submit" 
-        className="register-submit"
-      >
-        Submit
-      </button>
+      <label htmlFor="email">E-mail: </label>
+      <input
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+        placeholder="Email"
+        type="email"
+        name="email"
+        required
+      />
+       <label htmlFor="emailConfirm">Confirm Email: </label>
+      <input
+        value={confirmEmail}
+        onChange={e => setConfirmEmail(e.target.value)}
+        placeholder="Confirm Email"
+        type="email"
+        name="emailConfirm"
+        required
+      />
+      <Button waves="light "type="submit" className="login-submit">
+          <Icon>thumb_up</Icon>
+          Submit
+      </Button>
+      <Link to="/">Go Back</Link>
     </form>
   );
 }

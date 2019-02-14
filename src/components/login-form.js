@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState } from 'react'; 
 import { API_BASE_URL } from '../config';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { Button, Icon } from 'react-materialize';
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -79,14 +80,16 @@ export const LoginForm = () => {
               name="password"
               required
             />
-            <button type="submit" className="login-submit">
+    
+            <Button waves="teal" type="submit" className="login-submit">
+              <Icon>thumb_up</Icon>
               Submit
-            </button>
+            </Button>
+            <Link to="/">Back</Link>
           </form>
         )
         }
     </div>
-    
   );
 }
 
