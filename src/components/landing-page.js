@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import { Button, Icon } from 'react-materialize';
 import Modal from 'react-modal';
 
@@ -20,7 +20,7 @@ export const LandingPage = (props) => {
                 header='Modal Login'
                 trigger={<Button waves='light'>LOG IN!<Icon right><Login/></Icon></Button>}>
             </Modal>
-            <ul className="landing-links">
+            {/* <ul className="landing-links">
                 <li className="login-link">
                     <Link to="/login">Login</Link>
                 </li>
@@ -30,7 +30,7 @@ export const LandingPage = (props) => {
                 <li>
                     <Link to="/about">About RoadRate</Link>
                 </li>
-            </ul>
+            </ul> */}
         </div>
     );
 }

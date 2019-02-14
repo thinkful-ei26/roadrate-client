@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { API_BASE_URL } from '../config';
 import { Link, Redirect } from 'react-router-dom';
 import { Button, Icon } from 'react-materialize';
-import Header from './header';
+// import Header from './header';
 
 
 export const LoginForm = () => {
@@ -46,7 +46,7 @@ export const LoginForm = () => {
 
   return(
     <div>
-      <Header />
+      {/* <Header /> */}
       <div>{authToken.authToken}</div>
       
       <form className="login-form"
