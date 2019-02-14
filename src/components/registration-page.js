@@ -1,11 +1,12 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import RegistrationForm from './registration-form';
 // import Header from './header';
 
 
-export const RegistrationPage = (props) => {
+export function RegistrationPage(props) {
     // If we are logged in (which happens automatically when registration
     // is successful) redirect to the user's dashboard
     if (props.loggedIn) {
@@ -30,4 +31,8 @@ export const RegistrationPage = (props) => {
     );
 }
 
-export default RegistrationPage;
+const mapStateToProps = state => ({
+    loggedIn: state.auth.currentUser !== null
+});
+
+export default connect(mapStateToProps)(RegistrationPage);

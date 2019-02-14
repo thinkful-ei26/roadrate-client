@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Button, Icon } from 'react-materialize';
 import Modal from 'react-modal';
+import { connect } from 'react-redux';
 
 import Header from './header';
 import Login from './login-form';
@@ -29,4 +30,8 @@ export const LandingPage = (props) => {
     );
 }
 
-export default LandingPage;
+const mapStateToProps = state => ({
+    loggedIn: state.auth.currentUser !== null
+});
+
+export default connect(mapStateToProps)(LandingPage);
