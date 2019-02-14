@@ -1,18 +1,37 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import Plate from './plate';
+import { API_BASE_URL } from '../config';
 
 export const Dashboard = (props) => {
   const [username, setUsername] = useState("");
+  const [userId, setUserId ] = useState("");
+  const [name, setName ] = useState("");
   const [searchInput, setSearchInput] = useState("");
+  
+    const call = async () => {
+      const res = await fetch(
+        `${API_BASE_URL}/users/?search=${localStorage.user}`
+      );
 
-  useEffect(() => {
-    // ways to find the correct plate:
-    // 1. on login & dashboard load, make a fetch userObj to server => save user info to localStorage (id, username) => use localStorage id to get item from server
-    //  - OR -
-    // 2. to access reviews, send jwttoken to backend & server will decode the info to acces
-    setUsername(localStorage.user)
-  })
+      console.log(`${API_BASE_URL}/users/?search=${localStorage.user}`)
+      // Pull out the data as usual
+      const [ user ] = await res.json();
+
+      console.log('JSON: ', user)
+      
+      localStorage.setItem("userId", user.id)
+      setUserId(user.id)
+      localStorage.setItem("name", user.name)
+      setName(user.name)
+      
+      return user;
+    }
+
+    useEffect( () => {
+      setUsername(localStorage.user)
+      call()
+    }, [])
 
   const handleSubmit = e => {
     e.preventDefault(); 
@@ -24,7 +43,8 @@ export const Dashboard = (props) => {
   return (
     <div className="dashboard">
     <div className="dashboard-greeting">
-      <h2>{localStorage.user}'s Dashboard</h2>
+      <h2>{localStorage.name}'s Dashboard</h2>
+      <p>@{localStorage.user}</p>
       <Link to="/">
         <button onClick={() => {
           props.logout()

@@ -36,7 +36,7 @@ export const LoginForm = () => {
       return res.json();
       })
       .then( ( auth ) => {  
-        localStorage.setItem("authToken", auth);
+        localStorage.setItem("authToken", auth.authToken);
         setAuthToken(auth)
       return auth;
       })
