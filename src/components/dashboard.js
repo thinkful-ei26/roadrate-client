@@ -1,25 +1,18 @@
 import React, {useState, useEffect} from 'react';
-import { Redirect } from 'react-router-dom';
-import LandingPage from './landing-page';
+import { Link } from 'react-router-dom';
 import Plate from './plate';
 
 export const Dashboard = (props) => {
   const [username, setUsername] = useState("");
   const [search, setSearch] = useState("");
-  // const [logout, setLogout] = useState(false);
 
   useEffect(() => {
-    // if (!localStorage.authToken && !localStorage.loggedIn) {
-    //   localStorage.loggedIn = false;
-    //   setLogout(true)
-    //   return <LandingPage />
-    // }
+    // ways to find the correct plate:
+    // 1. on login & dashboard load, make a fetch userObj to server => save user info to localStorage (id, username) => use localStorage id to get item from server
+    //  - OR -
+    // 2. to access reviews, send jwttoken to backend & server will decode the info to acces
     setUsername(localStorage.user)
-  }/* , [logout] */)
-
-  // if(!localStorage.authToken && localStorage.logout) {
-  //   return <LandingPage />
-  // }
+  })
 
   const handleSubmit = e => {
     e.preventDefault(); 
@@ -32,16 +25,17 @@ export const Dashboard = (props) => {
     <div className="dashboard">
     <div className="dashboard-greeting">
       <h2>Hello @{username}!</h2>
-      <button onClick={() => {
-        props.logout()
-        // setLogout(false)
-        localStorage.setItem("logout", true)
-        }
-      }>
-        Logout
-      </button>
+      <Link to="/">
+        <button onClick={() => {
+          props.logout()
+          localStorage.setItem("logout", true)
+          }
+        }>
+          Logout
+        </button>
+      </Link>
       
-      {/* ========= SEARCH FORM ========== */}
+      {/* ========= SEARCH FORM - move to REVIEWS COMPONENT ========== */}
       <br/>
       <br />
       <div className="search-section">

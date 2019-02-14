@@ -1,5 +1,5 @@
-import React, {useState, useEffect } from 'react';
-import { Route, withRouter, Redirect } from 'react-router-dom';
+import React, {useState } from 'react';
+import { Route, withRouter } from 'react-router-dom';
 import RegistrationPage from './registration-page';
 import LandingPage from './landing-page';
 import Dashboard from './dashboard';
@@ -21,14 +21,14 @@ export const App = () => {
 	return (
 		<div className="app">
 			<h1>RoadRate</h1>
-            { localStorage.user ? (
-                 <Route 
-                 exact path="/dashboard" 
-                 render={(props) => <Dashboard {...props} storeUser={storeUser} user={user.username} logout={logout} isAuthed={true} />}
-             /> 
-            ) : (
-                <Route exact path="/register" component={RegistrationPage} />
-            )}
+        { localStorage.user ? (
+          <Route 
+          exact path="/dashboard" 
+          render={(props) => <Dashboard {...props} storeUser={storeUser} user={user.username} logout={logout} isAuthed={true} />}
+          /> 
+        ) : (
+          <Route exact path="/register" component={RegistrationPage} />
+        )}
 			<Route exact path="/" component={LandingPage} />
 		</div>
 	)
