@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; 
 import { API_BASE_URL } from '../config';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -69,6 +69,7 @@ export const LoginForm = () => {
         <button type="submit" className="login-submit">
           Submit
         </button>
+        <Link to="/">Back</Link>
       </form>
     </div>
     

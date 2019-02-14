@@ -1,7 +1,8 @@
 import React, { useState, /* useEffect */ } from 'react'; 
-import "../styles/App.css";
+import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
-console.log(API_BASE_URL);
+
+import "../styles/App.css";
 
 export const RegistrationForm = () => {
   // split state into different declarations
@@ -118,6 +119,7 @@ export const RegistrationForm = () => {
       >
         Submit
       </button>
+      <Link to="/">Back</Link>
     </form>
   );
 }
