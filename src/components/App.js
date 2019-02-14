@@ -6,13 +6,20 @@ import Dashboard from './dashboard';
 import '../styles/App.css';
 
 export const App = () => {
+
+	const [username, setUsername] = useState({ username: null });
+
+	const storeUser = user => {
+		localStorage.setItem("userId", username.username);
+		setUsername(user);
+	}
    
 	return (
 		<div className="app">
 			<h1>RoadRate</h1>
 			<Route exact path="/" component={LandingPage} />
-			<Route exact path="/dashboard" component={Dashboard} /> 
-            <Route exact path="/register" component={RegistrationPage} />
+			<Route exact path="/dashboard" component={Dashboard} user={username.username} /> 
+			<Route exact path="/register" component={RegistrationPage} storeUser={storeUser} />
 		</div>
 	)
 }

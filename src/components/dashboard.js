@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
-export const Dashboard = () => {
-   const [ authToken, setAuthToken ] = useState("");
+export const Dashboard = (props) => {
+   const [ authToken, setAuthToken ] = useState({ authToken: null });
 
   // onclick() {
   //   setAuthToken(null)
@@ -10,11 +10,11 @@ export const Dashboard = () => {
   return (
     <div className="dashboard">
         <div className="dashboard-greeting">
-            <h2>Hello You!</h2>
-            <p>@username</p>
+            <h2>{props.username}'s Dashboard</h2>
+            <p>{localStorage.getItem(props.user)}</p>
         </div>
 
-        <button onClick={() => setAuthToken('null')}>
+        <button onClick={() => setAuthToken(authToken)}>
           Click Me
         </button>
         {/* <div className="dashboard-protected-data">
@@ -23,5 +23,7 @@ export const Dashboard = () => {
     </div>
   )
 }
+
+console.log('local s:', localStorage)
 
 export default Dashboard;
