@@ -92,10 +92,7 @@ export const LoginForm = () => {
   );
 }
 
-export default reduxForm({
-    form: 'login',
-    onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
-})(LoginForm);
+export default LoginForm;
 
 
 

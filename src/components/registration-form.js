@@ -122,11 +122,7 @@ export const RegistrationForm = () => {
   );
 }
 
-export default reduxForm({
-    form: 'registration',
-    onSubmitFail: (errors, dispatch) =>
-        dispatch(focus('registration', Object.keys(errors)[0]))
-})(RegistrationForm);
+export default RegistrationForm;
 
 
 

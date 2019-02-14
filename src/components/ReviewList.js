@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Review from './Review';
 
-export function ReviewList(props) {
+export const ReviewList = () => {
 
     return (
         <div className="review-list-div">
@@ -15,8 +15,4 @@ export function ReviewList(props) {
     );
 }
 
-const mapStateToProps = state => ({
-    state
-});
-
-export default connect(mapStateToProps)(ReviewList);
+export default ReviewList;

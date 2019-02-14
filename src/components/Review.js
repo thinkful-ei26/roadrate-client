@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component, useState, useEffect} from 'react';
+import { API_BASE_URL } from '../config.js';
+import { Link } from 'react-router-dom';
+import Plate from './plate';
 // import './Review.css'
 
-export default class Review extends Component {
-  render() {
+export const Review = () => {
 
     const imgSrc = '/';
 
@@ -10,6 +12,24 @@ export default class Review extends Component {
     // if(review.img) {
     //   imgSrc = review.img;
     // }
+  
+    const handleSubmit = e => {
+      e.preventDefault(); 
+      console.log(API_BASE_URL);
+  
+      return fetch(`${API_BASE_URL}/reviews`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+      .then(res => {
+        console.log('res', res.body)
+        return res.json();
+        })
+        .catch(err => console.log(err))
+        };
 
     return(
       <li className='review'>
@@ -20,7 +40,9 @@ export default class Review extends Component {
         {/* Do we want to add information about how long ago this was posted, i.e. 2m or 2h */}
         <p className='date'>02/14/19</p>
         <p className='comments'>Review: Driver parked all the way on my side of the line and I couldn't load up my car with my groceries until I pulled into a new spot!</p>
+        <button onClick={e => handleSubmit(e)}>Press This to Show Reviews</button>
       </li>
     )
-  }
 }
+
+export default Review;
