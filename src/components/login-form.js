@@ -80,7 +80,7 @@ export const LoginForm = () => {
               required
             />
     
-            <Button waves="light "type="submit" className="login-submit">
+            <Button waves="teal" type="submit" className="login-submit">
               <Icon>thumb_up</Icon>
               Submit
             </Button>

@@ -12,11 +12,11 @@ export const RegistrationPage = (props) => {
         return <Redirect to="/dashboard" />;
     }
 
-    const signup = () => {
-        return (
-            <h4>Sign Up</h4>
-        )
-    }
+    // const signup = () => {
+    //     return (
+    //         <h4>Sign Up</h4>
+    //     )
+    // }
 
     return (
         <div className="home">

@@ -4,8 +4,7 @@ import Plate from './plate';
 
 export const Dashboard = (props) => {
   const [username, setUsername] = useState("");
-  const [search, setSearch] = useState("");
-  const [ authToken, setAuthToken ] = useState({ authToken: null });
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     // ways to find the correct plate:
@@ -17,8 +16,8 @@ export const Dashboard = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault(); 
-    if (!search ) return;
-    console.log('clicked search btn', search)
+    if (!searchInput ) return;
+    console.log('clicked search btn', searchInput)
 
   }
 
@@ -47,8 +46,8 @@ export const Dashboard = (props) => {
         >
           <div className="input-wrapper">
             <input
-              value={search}
-              onChange={e => setSearch(e.target.value)}
+              value={searchInput}
+              onChange={e => setSearchInput(e.target.value)}
               type="search"
               id="search"
               name="search"
@@ -72,11 +71,10 @@ export const Dashboard = (props) => {
       </div>
 
       <Plate/>
+
     </div>
     </div> 
   )
 }
-
-console.log('local s:', localStorage)
 
 export default Dashboard;
