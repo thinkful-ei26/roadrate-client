@@ -1,6 +1,7 @@
-import React, { useState } from 'react'; 
-//useState allows you to access and manipulate state components
+import React, { useState, /* useEffect */ } from 'react'; 
 import "../styles/App.css";
+import { API_BASE_URL } from '../config';
+console.log(API_BASE_URL);
 
 export const RegistrationForm = () => {
   // split state into different declarations
@@ -9,8 +10,44 @@ export const RegistrationForm = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const handleSubmit = e => {
+    e.preventDefault(); 
+    if (!username || !username) return;
+    if (!password || !password) return;
+    if (!confirmPassword || !confirmPassword) return;
+   
+    console.log(`username: ${username}, password: ${password}, confirmPassword: ${confirmPassword}`)
+
+    setUsername(username)
+    setPassword(password)
+    setConfirmPassword(confirmPassword)
+    return fetch(`${API_BASE_URL}/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name,
+        username,
+        password,
+        confirmPassword
+      })
+    })
+    .then(res => {
+      console.log('res', res)
+      return res.json();
+      })
+      .then(data => {  
+      return data.name && data.username && data.password;
+      })
+      .catch(err => console.log(err))
+      };
+
   return (
-    <form className="registration">
+    <form className="registration-form"
+      onSubmit={handleSubmit}
+    >
       <label htmlFor="name">Name: </label>
       <input
         value={name}
@@ -47,7 +84,10 @@ export const RegistrationForm = () => {
         name="passwordConfirm"
         required
       />
-      <button type="submit" className="register-submit">
+      <button 
+        type="submit" 
+        className="register-submit"
+      >
         Submit
       </button>
     </form>
