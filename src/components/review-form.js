@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {API_BASE_URL} from '../config'
 
 export const ReviewForm = () => {
-  const [ plateId, setPlateId ] = useState('');
+  const [ licensePlate, setLicensePlate ] = useState('');
   const [ rating, setRating ] = useState('');
   const [ message, setMessage ] = useState('');
 
@@ -10,16 +10,16 @@ export const ReviewForm = () => {
   
   const handleSubmit = e => {
     e.preventDefault(); 
-    if (!plateId) return;
+    if (!setLicensePlate) return;
     if (!rating) return;
     if (!message) return;
    
-    console.log(`plateId: ${plateId}, rating: ${rating}, message: ${message}`)
+    console.log(`plateId: ${licensePlate}, rating: ${rating}, message: ${message}`)
 
-    setPlateId(plateId)
+    setLicensePlate(licensePlate)
     setRating(rating)    
     setMessage(message)
-    const user = localStorage.user
+    const username = localStorage.user
 
     console.log('auth token', localStorage.authToken);
     return fetch(`${API_BASE_URL}/reviews`, {
@@ -30,16 +30,17 @@ export const ReviewForm = () => {
         'Authorization': `Bearer ${localStorage.authToken}`
       },
       body: JSON.stringify({
-        plateId,
+        licensePlate,
         rating,
         message,
-        user
+        username
       })
     })
     .then(res => {
-      console.log('res', res)
+
       return res.json();
       })
+      .then(data => console.log(data))
       // .then(data => {  
       // return data.name && data.username && data.password;
       // })
@@ -57,8 +58,8 @@ export const ReviewForm = () => {
           type='text' 
           name='plateId' 
           placeholder='X90PL'
-          value={plateId}
-          onChange={(e) => setPlateId(e.target.value)}
+          value={licensePlate}
+          onChange={(e) => setLicensePlate(e.target.value)}
         />
         <label htmlFor='rating'>Rating: </label> 
         <br></br>
