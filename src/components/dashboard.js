@@ -5,6 +5,7 @@ import Plate from './plate';
 export const Dashboard = (props) => {
   const [username, setUsername] = useState("");
   const [search, setSearch] = useState("");
+  const [ authToken, setAuthToken ] = useState({ authToken: null });
 
   useEffect(() => {
     // ways to find the correct plate:
@@ -24,7 +25,7 @@ export const Dashboard = (props) => {
   return (
     <div className="dashboard">
     <div className="dashboard-greeting">
-      <h2>Hello @{username}!</h2>
+      <h2>{localStorage.user}'s Dashboard</h2>
       <Link to="/">
         <button onClick={() => {
           props.logout()
@@ -75,5 +76,7 @@ export const Dashboard = (props) => {
     </div> 
   )
 }
+
+console.log('local s:', localStorage)
 
 export default Dashboard;

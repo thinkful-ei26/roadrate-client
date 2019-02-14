@@ -1,6 +1,9 @@
 import React from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+
 import RegistrationForm from './registration-form';
+// import Header from './header';
+
 
 export const RegistrationPage = (props) => {
     // If we are logged in (which happens automatically when registration
@@ -8,11 +11,21 @@ export const RegistrationPage = (props) => {
     if (props.loggedIn) {
         return <Redirect to="/dashboard" />;
     }
+
+    const signup = () => {
+        return (
+            <h4>Sign Up</h4>
+        )
+    }
+
     return (
         <div className="home">
-            <h2>Sign Up</h2>
+            {/* <Header 
+                subHeader={signup}
+            /> */}
+            <h5>Register to start rating</h5>
             <RegistrationForm />
-            <Link to="/">Login</Link>
+            {/* <Link to="/">Login</Link> */}
         </div>
     );
 }
