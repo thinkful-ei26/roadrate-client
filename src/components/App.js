@@ -24,6 +24,8 @@ export const App = () => {
             ) : (
                 <Route exact path="/register" component={RegistrationPage} />
             )}
+
+            
 			<Route exact path="/" component={LandingPage} />
 		</div>
 	)
