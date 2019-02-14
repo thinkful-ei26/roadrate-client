@@ -1,25 +1,27 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
-export const Dashboard = () => {
-   const [ authToken, setAuthToken ] = useState("");
+export const Dashboard = (props) => {
+  const [first, setFirst] = useState("");
 
-  // onclick() {
-  //   setAuthToken(null)
-  // }
+  useEffect(() => {
+    const stuff = localStorage.getItem("user");
+    setFirst(stuff) 
+  })
 
+  console.log('dashboard props: ', props)
   return (
     <div className="dashboard">
         <div className="dashboard-greeting">
-            <h2>Hello You!</h2>
+            <h2>Hello {first}!</h2>
             <p>@username</p>
         </div>
 
-        <button onClick={() => setAuthToken('null')}>
-          Click Me
+        <button onClick={() => {
+          localStorage.clear()
+          }
+        }>
+          Logout
         </button>
-        {/* <div className="dashboard-protected-data">
-            Protected data: {this.props.protectedData}
-        </div> */}
     </div>
   )
 }

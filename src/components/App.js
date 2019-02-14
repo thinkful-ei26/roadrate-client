@@ -6,13 +6,25 @@ import Dashboard from './dashboard';
 import '../styles/App.css';
 
 export const App = () => {
-   
+   const [user, setUser] = useState({username: null})
+
+   const storeUser = user => {
+    localStorage.getItem("user");
+    setUser(user);
+  };
+
 	return (
 		<div className="app">
 			<h1>RoadRate</h1>
+            { localStorage.getItem("user") ? (
+                 <Route 
+                 exact path="/dashboard" 
+                 render={(props) => <Dashboard {...props} storeUser={storeUser} user={user.username} isAuthed={true} />}
+             /> 
+            ) : (
+                <Route exact path="/register" component={RegistrationPage} />
+            )}
 			<Route exact path="/" component={LandingPage} />
-			<Route exact path="/dashboard" component={Dashboard} /> 
-            <Route exact path="/register" component={RegistrationPage} />
 		</div>
 	)
 }

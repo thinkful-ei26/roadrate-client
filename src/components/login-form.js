@@ -12,14 +12,14 @@ export const LoginForm = () => {
     if (!username || !username) return;
     if (!password || !password) return;
 
+    localStorage.setItem("user", username);
     setUsername(username)
    
     return fetch(`${API_BASE_URL}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        // 'BEARER-TOKEN': setAuthToken
+        'Accept': 'application/json'
       },
       body: JSON.stringify({
         username,
@@ -30,22 +30,29 @@ export const LoginForm = () => {
       console.log('res', res)
       return res.json();
       })
-      .then(auth => {  
-        console.log('authToken: ',auth)
+      .then( ( auth ) => {  
+        localStorage.setItem("authToken", auth);
         setAuthToken(auth)
       return auth;
       })
-      .catch(err => console.log(err))
-      };
+      .catch(err => {
+        const { code } = err;
+        const message = code === 401 ? 'Incorrect username or password' : 'Unable to login, please try again';
+        
+        return Promise.reject(
+          new Error({
+            _error: message
+          })
+        )
+      })
+  };
 
-      if(authToken.authToken) {
-        return <Redirect to="/dashboard" />;
-      }
+  if (authToken.authToken) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return(
     <div>
-      <div>{authToken.authToken}</div>
-      
       <form className="login-form"
         onSubmit={handleSubmit}
       >
