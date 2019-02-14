@@ -22,7 +22,6 @@ export const App = () => {
   
 	return (
 		<div className="app">
-			<h1>RoadRate</h1>
         { localStorage.user ? (
           <Route 
           exact path="/dashboard" 
@@ -32,14 +31,6 @@ export const App = () => {
           <Route exact path="/register" component={RegistrationPage} />
         )}
 			<Route exact path="/" component={LandingPage} />
-
-
-   
-	{/* return (
-		<div className="app">
-			<Route exact path="/" component={LandingPage} />
-			<Route exact path="/dashboard" component={Dashboard} user={username.username} /> 
-			<Route exact path="/register" component={RegistrationPage} storeUser={storeUser} /> */}
 			<Route exact path="/login" component={LoginForm} storeUser={storeUser} />
 			<Route exact path="/about" component={About} storeUser={storeUser} />
 		</div>

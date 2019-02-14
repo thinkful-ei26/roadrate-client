@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import { Button, Icon } from 'react-materialize';
 import Modal from 'react-modal';
 
@@ -19,17 +19,19 @@ export const LandingPage = (props) => {
                 header='Modal Login'
                 trigger={<Button waves='light'>LOG IN!<Icon right><Login/></Icon></Button>}>
             </Modal>
-            {/* <ul className="landing-links">
-                <li className="login-link">
-                    <Link to="/login">Login</Link>
-                </li>
-                <li>
-                    <Link to="/register">Register</Link>
-                </li>
-                <li>
-                    <Link to="/about">About RoadRate</Link>
-                </li>
-            </ul> */}
+            {/* //============== MOVED TO HEADER, but should be it's own NAV COMPONENT
+                <ul className="landing-links">
+                    <li className="login-link">
+                        <Link to="/login">Login</Link>
+                    </li>
+                    <li>
+                        <Link to="/register">Register</Link>
+                    </li>
+                    <li>
+                        <Link to="/about">About RoadRate</Link>
+                    </li>
+                </ul> 
+            */}
         </div>
     );
 }

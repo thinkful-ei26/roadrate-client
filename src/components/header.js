@@ -31,8 +31,11 @@ export const Header = () => {
                 <li className="register-link">
                     <Link to="/register">Register</Link>
                 </li>
-                <li className="ladning-link">
+                <li className="landing-link">
                     <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/about">About RoadRate</Link>
                 </li>
             </ul>
         </div>
