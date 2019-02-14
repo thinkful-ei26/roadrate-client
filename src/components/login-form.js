@@ -27,10 +27,11 @@ export const LoginForm = () => {
       })
     })
     .then(res => {
-      console.log('res', res)
+      console.log('res', res.body)
       return res.json();
       })
-      .then( ( auth ) => {  
+      .then( ( auth ) => { 
+        console.log(auth)
         localStorage.setItem("authToken", auth);
         setAuthToken(auth)
       return auth;
@@ -47,7 +48,8 @@ export const LoginForm = () => {
       })
   };
 
-  if (authToken.authToken) {
+
+  if (localStorage.authToken) {
     return <Redirect to="/dashboard" />;
   }
 
