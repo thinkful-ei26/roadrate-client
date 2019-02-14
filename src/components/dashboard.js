@@ -9,10 +9,7 @@ export const Dashboard = (props) => {
   const [name, setName ] = useState("");
   const [searchInput, setSearchInput] = useState("");
   
-    // Use an async function so that we can await the fetch
-    useEffect(async () => {
-      setUsername(localStorage.user)
-      // Call fetch as usual
+    const call = async () => {
       const res = await fetch(
         `${API_BASE_URL}/users/?search=${localStorage.user}`
       );
@@ -29,9 +26,12 @@ export const Dashboard = (props) => {
       setName(user.name)
       
       return user;
-    
-    }, []);
-  
+    }
+
+    useEffect( () => {
+      setUsername(localStorage.user)
+      call()
+    }, [])
 
   const handleSubmit = e => {
     e.preventDefault(); 
