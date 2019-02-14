@@ -20,6 +20,9 @@ export const LandingPage = (props) => {
                 <li>
                     <Link to="/register">Register</Link>
                 </li>
+                <li>
+                    <Link to="/about">About RoadRate</Link>
+                </li>
             </ul>
         </div>
     );

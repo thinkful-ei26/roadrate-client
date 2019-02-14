@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import RegistrationForm from './registration-form';
 
 export const RegistrationPage = (props) => {
@@ -12,7 +12,7 @@ export const RegistrationPage = (props) => {
         <div className="home">
             <h2>Sign Up</h2>
             <RegistrationForm />
-            <Link to="/">Login</Link>
+            {/* <Link to="/">Login</Link> */}
         </div>
     );
 }
