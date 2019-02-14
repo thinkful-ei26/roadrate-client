@@ -1,18 +1,44 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import Plate from './plate';
+import { API_BASE_URL } from '../config';
 
 export const Dashboard = (props) => {
   const [username, setUsername] = useState("");
+  const [userId, setUserId ] = useState("");
+  const [name, setName ] = useState("");
   const [searchInput, setSearchInput] = useState("");
+  
+  // useEffect( () => {
+  //   // ways to find the correct plate:
+  //   // 1. on login & dashboard load, make a fetch userObj to server => save user info to localStorage (id, username) => use localStorage id to get item from server
+  //   //  - OR -
+  //   // 2. to access reviews, send jwttoken to backend & server will decode the info to acces
+  //   setUsername(localStorage.user)
+  // })
 
-  useEffect(() => {
-    // ways to find the correct plate:
-    // 1. on login & dashboard load, make a fetch userObj to server => save user info to localStorage (id, username) => use localStorage id to get item from server
-    //  - OR -
-    // 2. to access reviews, send jwttoken to backend & server will decode the info to acces
-    setUsername(localStorage.user)
-  })
+    // Use an async function so that we can await the fetch
+    useEffect(async () => {
+      setUsername(localStorage.user)
+      // Call fetch as usual
+      const res = await fetch(
+        `${API_BASE_URL}/users/?search=${localStorage.user}`
+      );
+
+      console.log(`${API_BASE_URL}/users/?search=${localStorage.user}`)
+      // Pull out the data as usual
+      const [ user ] = await res.json();
+
+      console.log('JSON: ', user)
+      
+      localStorage.setItem("userId", user.id)
+      setUserId(user.id)
+      localStorage.setItem("name", user.name)
+      setName(user.name)
+      return user;
+    
+    }, []);
+  
 
   const handleSubmit = e => {
     e.preventDefault(); 
