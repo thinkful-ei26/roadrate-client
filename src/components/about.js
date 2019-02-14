@@ -16,8 +16,11 @@ export const About = () => {
                 <li className="login-link">
                     <Link to="/login">Login</Link>
                 </li>
-                <li>
+                <li className="register-link">
                     <Link to="/register">Register</Link>
+                </li>
+                <li className="ladning-link">
+                    <Link to="/">Home</Link>
                 </li>
             </ul>
        </div> 

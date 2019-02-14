@@ -1,6 +1,8 @@
 import React, { useState } from 'react'; 
 import { API_BASE_URL } from '../config';
 import { Link, Redirect } from 'react-router-dom';
+import Header from './header';
+
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -43,6 +45,7 @@ export const LoginForm = () => {
 
   return(
     <div>
+      <Header />
       <div>{authToken.authToken}</div>
       
       <form className="login-form"

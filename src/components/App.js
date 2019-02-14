@@ -18,7 +18,6 @@ export const App = () => {
    
 	return (
 		<div className="app">
-			<h1>RoadRate</h1>
 			<Route exact path="/" component={LandingPage} />
 			<Route exact path="/dashboard" component={Dashboard} user={username.username} /> 
 			<Route exact path="/register" component={RegistrationPage} storeUser={storeUser} />

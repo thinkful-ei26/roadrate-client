@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, Redirect} from 'react-router-dom';
-// import LoginForm from './login-form';
+import Header from './header';
 
 export const LandingPage = (props) => {
     // If we are logged in redirect straight to the user's dashboard
@@ -11,8 +11,7 @@ export const LandingPage = (props) => {
 
     return (
         <div className="home">
-            {/* <h2>Login</h2> */}
-            {/* <LoginForm /> */}
+            <Header />
             <ul className="landing-links">
                 <li className="login-link">
                     <Link to="/login">Login</Link>
