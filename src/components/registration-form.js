@@ -1,6 +1,7 @@
 import React, { useState, /* useEffect */ } from 'react'; 
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
+import { Button, Icon } from 'react-materialize';
 
 import "../styles/App.css";
 
@@ -113,13 +114,11 @@ export const RegistrationForm = () => {
         name="emailConfirm"
         required
       />
-      <button 
-        type="submit" 
-        className="register-submit"
-      >
-        Submit
-      </button>
-      <Link to="/">Back</Link>
+      <Button waves="light "type="submit" className="login-submit">
+          <Icon>thumb_up</Icon>
+          Submit
+      </Button>
+      <Link to="/">Go Back</Link>
     </form>
   );
 }

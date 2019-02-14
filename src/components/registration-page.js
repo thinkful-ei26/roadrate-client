@@ -1,7 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+
 import RegistrationForm from './registration-form';
-import Header from './header';
+// import Header from './header';
 
 
 export const RegistrationPage = (props) => {
@@ -10,10 +11,19 @@ export const RegistrationPage = (props) => {
     if (props.loggedIn) {
         return <Redirect to="/dashboard" />;
     }
+
+    const signup = () => {
+        return (
+            <h4>Sign Up</h4>
+        )
+    }
+
     return (
         <div className="home">
-            <Header />
-            <h2>Sign Up</h2>
+            {/* <Header 
+                subHeader={signup}
+            /> */}
+            <h5>Register to start rating</h5>
             <RegistrationForm />
             {/* <Link to="/">Login</Link> */}
         </div>

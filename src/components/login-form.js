@@ -1,6 +1,7 @@
 import React, { useState } from 'react'; 
 import { API_BASE_URL } from '../config';
 import { Link, Redirect } from 'react-router-dom';
+import { Button, Icon } from 'react-materialize';
 import Header from './header';
 
 
@@ -69,9 +70,10 @@ export const LoginForm = () => {
           name="password"
           required
         />
-        <button type="submit" className="login-submit">
+        <Button waves="light "type="submit" className="login-submit">
+          <Icon>thumb_up</Icon>
           Submit
-        </button>
+        </Button>
         <Link to="/">Back</Link>
       </form>
     </div>
