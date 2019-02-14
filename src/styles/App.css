@@ -56,3 +56,27 @@ button:hover {
   padding: 10px;
   margin: 0 10px 0 10px;
 }
+
+.isClaimed-icon {
+  display: inline-block;
+  width: 20px;
+}
+
+.review-list-div {
+  text-align: center;
+}
+
+.review {
+  list-style-type: none;
+  text-align: left;
+  width: 20%;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 0 10px 0 10px;
+  border-radius: 8px;
+}
+
+.review h1 {
+  display: inline-block;
+  font-size: 18px;
+}
