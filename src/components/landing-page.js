@@ -16,25 +16,6 @@ export const LandingPage = (props) => {
         return <Redirect to="/dashboard" />;
     } 
 
-    const fetchReviews = async () => {
-        let url = `${API_BASE_URL}/reviews`;
-        const response = await fetch(url);
-        console.log(response);
-  
-        const [ reviews ] = await response.json();
-  
-        console.log('JSON >>> ', reviews)
-  
-        // localStorage.setItem("reviews")
-  
-        return reviews
-  
-      }
-      
-    //   useEffect(() => {
-    //     fetchReviews();
-    //   }, []);
-
     return (
         <div className="home">
             <Header />
