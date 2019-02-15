@@ -19,7 +19,6 @@ export const RegistrationForm = () => {
     if (!username || username === '') return;
     if (!password || password === '') return;
 
-    // console.log('LOGIN', data)
     localStorage.setItem("user", username);
     localStorage.setItem("loggedIn", loggedIn);
     localStorage.removeItem("logout")
@@ -135,8 +134,7 @@ export const RegistrationForm = () => {
             type="password"
             name="password"
             required
-
-            // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
           />
           <label htmlFor="passwordConfirm">Confirm Password: </label>
           <input
@@ -146,7 +144,7 @@ export const RegistrationForm = () => {
             type="password"
             name="passwordConfirm"
             required
-            // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
           />
           <label htmlFor="email">E-mail: </label>
           <input
@@ -178,6 +176,7 @@ export const RegistrationForm = () => {
           <Link to="/">Go Back</Link>
         </form>
         )}
+        
     </div>
   );
 }
