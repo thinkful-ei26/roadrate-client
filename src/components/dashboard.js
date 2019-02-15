@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
 import ReviewForm from './review-form';
-
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Plate from './plate';
 import { API_BASE_URL } from '../config';
+
+import Plate from './plate';
+import ReviewList from './ReviewList';
 
 export const Dashboard = (props) => {
   const [username, setUsername] = useState("");
@@ -11,10 +12,7 @@ export const Dashboard = (props) => {
   const [name, setName ] = useState("");
   const [searchInput, setSearchInput] = useState("");
   
-    // Use an async function so that we can await the fetch
-    useEffect(async () => {
-      setUsername(localStorage.user)
-      // Call fetch as usual
+    const call = async () => {
       const res = await fetch(
         `${API_BASE_URL}/users/?search=${localStorage.user}`
       );
@@ -25,15 +23,18 @@ export const Dashboard = (props) => {
 
       console.log('JSON: ', user)
       
-      localStorage.setItem("userId", user.id)
+      localStorage.setItem("id", user.id)
       setUserId(user.id)
       localStorage.setItem("name", user.name)
       setName(user.name)
       
       return user;
-    
+    }
+
+    useEffect(() => {
+      setUsername(localStorage.user)
+      call();
     }, []);
-  
 
   console.log('dashboard props: ', props)
 
@@ -99,6 +100,7 @@ export const Dashboard = (props) => {
       </div>
 
       <Plate/>
+      <ReviewList /* message={message} *//>
 
     </div>
     </div> 
