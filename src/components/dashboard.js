@@ -42,24 +42,24 @@ export const Dashboard = (props) => {
       return user;
     }
 
-    useEffect( () => {
-      setUsername(localStorage.user)
-      call()
-    }, [])
+    // useEffect( () => {
+    //   setUsername(localStorage.user)
+    //   call()
+    // }, [])
 
     const fetchReviews = async () => {
       let url = `${API_BASE_URL}/reviews`;
       const response = await fetch(url);
       console.log(response);
 
-      const [ reviews ] = await response.json();
+      const reviews = await response.json();
 
       console.log('JSON >>> ', reviews)
 
-      localStorage.setItem("isPositive", reviews.isPositive)
-      setIsPositive(reviews.isPositive)
-      localStorage.setItem("message", reviews.message)
-      setMessage(reviews.message)
+      // localStorage.setItem("isPositive", reviews.isPositive)
+      // setIsPositive(reviews.isPositive)
+      // localStorage.setItem("message", reviews.message)
+      // setMessage(reviews.message)
       // localStorage.setItem("reviews")
 
       return reviews
