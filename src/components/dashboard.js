@@ -1,3 +1,4 @@
+import ReviewForm from './review-form';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
@@ -35,6 +36,9 @@ export const Dashboard = (props) => {
       call();
     }, []);
 
+  console.log('dashboard props: ', props)
+
+  console.log(localStorage.user);
   const handleSubmit = e => {
     e.preventDefault(); 
     if (!searchInput ) return;
@@ -45,6 +49,8 @@ export const Dashboard = (props) => {
   return (
     <div className="dashboard">
     <div className="dashboard-greeting">
+      <ReviewForm />
+      <h2>Hello @{username}!</h2>
       <h2>{localStorage.name}'s Dashboard</h2>
       <p>@{localStorage.user}</p>
       <Link to="/">
@@ -55,6 +61,7 @@ export const Dashboard = (props) => {
         }>
           Logout
         </button>
+
       </Link>
       
       {/* ========= SEARCH FORM - move to REVIEWS COMPONENT ========== */}
