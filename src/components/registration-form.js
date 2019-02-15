@@ -19,7 +19,6 @@ export const RegistrationForm = () => {
     if (!username || username === '') return;
     if (!password || password === '') return;
 
-    // console.log('LOGIN', data)
     localStorage.setItem("user", username);
     localStorage.setItem("loggedIn", loggedIn);
     localStorage.removeItem("logout")
