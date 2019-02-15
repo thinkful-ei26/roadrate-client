@@ -1,5 +1,5 @@
 import React, { useState, /* useEffect */ } from 'react'; 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
 import { Button, Icon } from 'react-materialize';
 
@@ -56,69 +56,76 @@ export const RegistrationForm = () => {
       };
 
   return (
-    <form className="registration-form"
-      onSubmit={handleSubmit}
-    >
-      <label htmlFor="name">Name: </label>
-      <input
-        value={name}
-        onChange={e => setName(e.target.value)}
-        placeholder="Name"
-        type="text"
-        name="name"
-        required
-      />
-      <label htmlFor="username">Username: </label>
-      <input
-        value={username}
-        onChange={e => setUsername(e.target.value)}
-        placeholder="Username"
-        type="text"
-        name="username"
-        required
-      />
-      <label htmlFor="password">Password: </label>
-      <input
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        placeholder="Password"
-        type="password"
-        name="password"
-        required
-      />
-       <label htmlFor="passwordConfirm">Confirm Password: </label>
-      <input
-        value={confirmPassword}
-        onChange={e => setConfirmPassword(e.target.value)}
-        placeholder="Confirm Password"
-        type="password"
-        name="passwordConfirm"
-        required
-      />
-      <label htmlFor="email">E-mail: </label>
-      <input
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-        placeholder="Email"
-        type="email"
-        name="email"
-        required
-      />
-       <label htmlFor="emailConfirm">Confirm Email: </label>
-      <input
-        value={confirmEmail}
-        onChange={e => setConfirmEmail(e.target.value)}
-        placeholder="Confirm Email"
-        type="email"
-        name="emailConfirm"
-        required
-      />
-      <Button waves="light "type="submit" className="login-submit">
-          <Icon>thumb_up</Icon>
-          Submit
-      </Button>
-      <Link to="/">Go Back</Link>
-    </form>
+    <div className="registration">
+    {
+        localStorage.loggedIn ? (
+          <Redirect to="/dashboard" />
+        ) : (
+        <form className="registration-form"
+          onSubmit={handleSubmit}
+        >
+          <label htmlFor="name">Name: </label>
+          <input
+            value={name}
+            onChange={e => setName(e.target.value)}
+            placeholder="Name"
+            type="text"
+            name="name"
+            required
+          />
+          <label htmlFor="username">Username: </label>
+          <input
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+            placeholder="Username"
+            type="text"
+            name="username"
+            required
+          />
+          <label htmlFor="password">Password: </label>
+          <input
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            placeholder="Password"
+            type="password"
+            name="password"
+            required
+          />
+          <label htmlFor="passwordConfirm">Confirm Password: </label>
+          <input
+            value={confirmPassword}
+            onChange={e => setConfirmPassword(e.target.value)}
+            placeholder="Confirm Password"
+            type="password"
+            name="passwordConfirm"
+            required
+          />
+          <label htmlFor="email">E-mail: </label>
+          <input
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="Email"
+            type="email"
+            name="email"
+            required
+          />
+          <label htmlFor="emailConfirm">Confirm Email: </label>
+          <input
+            value={confirmEmail}
+            onChange={e => setConfirmEmail(e.target.value)}
+            placeholder="Confirm Email"
+            type="email"
+            name="emailConfirm"
+            required
+          />
+          <Button waves="light "type="submit" className="login-submit">
+              <Icon>thumb_up</Icon>
+              Submit
+          </Button>
+          <Link to="/">Go Back</Link>
+        </form>
+        )}
+    </div>
   );
 }
 

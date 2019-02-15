@@ -9,13 +9,14 @@ export const LoginForm = () => {
   const [authToken, setAuthToken] = useState("")
   const [loggedIn, SetLoggedIn] = useState(true)
 
+
   const handleSubmit = e => {
     e.preventDefault(); 
-    if (!username || !username) return;
-    if (!password || !password) return;
 
     localStorage.setItem("user", username);
     setUsername(username)
+    localStorage.setItem("user", password);
+    setPassword(password)
     localStorage.setItem("loggedIn", loggedIn);
     SetLoggedIn(loggedIn)
     localStorage.removeItem("logout")
@@ -66,8 +67,8 @@ export const LoginForm = () => {
             <input
               value={username}
               onChange={e => setUsername(e.target.value)}
-              placeholder="Username"
-              type="text"
+              placeholder="username"
+              type="username"
               name="username"
               required
             />
@@ -80,7 +81,6 @@ export const LoginForm = () => {
               name="password"
               required
             />
-    
             <Button waves="teal" type="submit" className="login-submit">
               <Icon>thumb_up</Icon>
               Submit
