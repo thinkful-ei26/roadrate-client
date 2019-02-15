@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {API_BASE_URL} from '../config'
+import {API_BASE_URL} from '../config';
+import { Button, Icon } from 'react-materialize';
+
 
 export const ReviewForm = () => {
   const [ licensePlate, setLicensePlate ] = useState('');
@@ -10,18 +12,20 @@ export const ReviewForm = () => {
   
   const handleSubmit = e => {
     e.preventDefault(); 
-    if (!setLicensePlate) return;
-    if (!rating) return;
-    if (!message) return;
+    // if (!setLicensePlate) return;
+    // if (!rating) return;
+    // if (!message) return;
+
+    console.log('button-clicked')
    
-    console.log(`plateId: ${licensePlate}, rating: ${rating}, message: ${message}`)
+    console.log(`plateId: ${licensePlate}, rating: ${rating}, message: ${message}, userId: ${localStorage.userId}`)
 
     setLicensePlate(licensePlate)
     setRating(rating)    
     setMessage(message)
     const username = localStorage.user
+    const reviewerId = localStorage.userId
 
-    console.log('auth token', localStorage.authToken);
     return fetch(`${API_BASE_URL}/reviews`, {
       method: 'POST',
       headers: {
@@ -33,7 +37,8 @@ export const ReviewForm = () => {
         licensePlate,
         rating,
         message,
-        username
+        username,
+        reviewerId,
       })
     })
     .then(res => {
@@ -85,12 +90,12 @@ export const ReviewForm = () => {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <button 
+        <Button
         type="submit" 
         className="review-submit"
       >
         Submit Review
-      </button>
+      </Button>
       </form>
     </div>
   )
