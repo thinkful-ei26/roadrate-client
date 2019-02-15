@@ -1,9 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-
 import RegistrationForm from './registration-form';
-// import Header from './header';
 
 
 export function RegistrationPage(props) {
