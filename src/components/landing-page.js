@@ -31,9 +31,9 @@ export const LandingPage = (props) => {
   
       }
       
-      useEffect(() => {
-        fetchReviews();
-      }, []);
+    //   useEffect(() => {
+    //     fetchReviews();
+    //   }, []);
 
     return (
         <div className="home">
