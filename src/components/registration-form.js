@@ -181,4 +181,5 @@ export const RegistrationForm = () => {
   );
 }
 
+
 export default RegistrationForm;
