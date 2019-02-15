@@ -13,7 +13,7 @@ export const RegistrationForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("")
   const [confirmEmail, setConfirmEmail] = useState("")
-
+ 
   const handleSubmit = e => {
     e.preventDefault(); 
     if (!username || !username) return;
