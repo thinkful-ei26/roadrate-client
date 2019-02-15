@@ -9,18 +9,41 @@ export const LoginForm = () => {
   const [authToken, setAuthToken] = useState("")
   const [loggedIn, SetLoggedIn] = useState(true)
 
+  // const usernameValidate = () => {
+  //   let illegalChar = /\W/; //allows only letters, numbers & underscores
+
+  //   if (username < 5 || username > 15){
+  //     return alert('Username must contain a minimum of 3 characters & a maximum of 12 characters');
+  //   }
+
+  //   if (illegalChar.test(username)){
+  //     return alert('The username you entered contains illegal characters')
+  //   }
+  // }
+
+// const passwordValidate = () => {
+
+// }
 
   const handleSubmit = e => {
     e.preventDefault(); 
 
     localStorage.setItem("user", username);
     setUsername(username)
-    localStorage.setItem("user", password);
-    setPassword(password)
     localStorage.setItem("loggedIn", loggedIn);
     SetLoggedIn(loggedIn)
     localStorage.removeItem("logout")
     
+    // let illegalChar = /\W/; //allows only letters, numbers & underscores
+
+    // if (username < 5 || username > 15){
+    //   return alert('Username must contain a minimum of 3 characters & a maximum of 12 characters');
+    // }
+
+    // if (illegalChar.test(username)){
+    //   return alert('The username you entered contains illegal characters')
+    // }
+
     return fetch(`${API_BASE_URL}/login`, {
       method: 'POST',
       headers: {
@@ -70,6 +93,9 @@ export const LoginForm = () => {
               placeholder="username"
               type="username"
               name="username"
+              pattern="[A-Za-z0-9_]{1,15}"
+              title="Username should only contain letters, numbers and underscores; no more than 15 characters e.g. Jojo_123"
+              id="username"
               required
             />
             <label htmlFor="password">Password: </label>
@@ -79,6 +105,7 @@ export const LoginForm = () => {
               placeholder="Password"
               type="password"
               name="password"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
               required
             />
             <Button waves="teal" type="submit" className="login-submit">
