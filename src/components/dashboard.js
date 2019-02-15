@@ -1,13 +1,27 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Plate from './plate';
 import { API_BASE_URL } from '../config';
+
+import Plate from './plate';
+import ReviewList from './ReviewList';
 
 export const Dashboard = (props) => {
   const [username, setUsername] = useState("");
   const [userId, setUserId ] = useState("");
   const [name, setName ] = useState("");
   const [searchInput, setSearchInput] = useState("");
+  
+  //storing Review Data in State
+
+  //I need to be able to get an array of reviews and set it to the reviews variable below.  I then need to pass reviews as a prop from dashboard to ReviewList so I can map through the data and send those details as props to Review in order to render multiple Reviews at once on the dashboard.
+  const [reviews, setReviews] = useState("");
+  
+  const [plateNumber, setPlateNumber] = useState("");
+  const [reviewImg, setReviewImg] = useState("");
+  const [isPositive, setIsPositive] = useState("");
+  const [reviewDate, setReviewDate] = useState("");
+  const [currentDate, setCurrentDate] = useState("");
+  const [message, setMessage] = useState("");
   
     const call = async () => {
       const res = await fetch(
@@ -20,7 +34,7 @@ export const Dashboard = (props) => {
 
       console.log('JSON: ', user)
       
-      localStorage.setItem("userId", user.id)
+      localStorage.setItem("", user.id)
       setUserId(user.id)
       localStorage.setItem("name", user.name)
       setName(user.name)
@@ -32,6 +46,29 @@ export const Dashboard = (props) => {
       setUsername(localStorage.user)
       call()
     }, [])
+
+    const fetchReviews = async () => {
+      let url = `${API_BASE_URL}/reviews`;
+      const response = await fetch(url);
+      console.log(response);
+
+      const [ reviews ] = await response.json();
+
+      console.log('JSON >>> ', reviews)
+
+      localStorage.setItem("isPositive", reviews.isPositive)
+      setIsPositive(reviews.isPositive)
+      localStorage.setItem("message", reviews.message)
+      setMessage(reviews.message)
+      // localStorage.setItem("reviews")
+
+      return reviews
+
+    }
+    
+    useEffect(() => {
+      fetchReviews();
+    }, []);
 
   const handleSubmit = e => {
     e.preventDefault(); 
@@ -91,6 +128,7 @@ export const Dashboard = (props) => {
       </div>
 
       <Plate/>
+      <ReviewList message={message}/>
 
     </div>
     </div> 
