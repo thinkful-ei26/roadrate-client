@@ -6,9 +6,9 @@ import RegistrationForm from './registration-form';
 export function RegistrationPage(props) {
     // If we are logged in (which happens automatically when registration
     // is successful) redirect to the user's dashboard
-    if (props.loggedIn) {
-        return <Redirect to="/dashboard" />;
-    }
+    // if (props.loggedIn) {
+    //     return <Redirect to="/dashboard" />;
+    // }
 
     // const signup = () => {
     //     return (
@@ -17,13 +17,9 @@ export function RegistrationPage(props) {
     // }
 
     return (
-        <div className="home">
-            {/* <Header 
-                subHeader={signup}
-            /> */}
+        <div className="registration-page">
             <h5>Register to start rating</h5>
             <RegistrationForm />
-            {/* <Link to="/">Login</Link> */}
         </div>
     );
 }

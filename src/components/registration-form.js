@@ -56,7 +56,7 @@ export const RegistrationForm = () => {
         )
       })
   };
-
+  
   const handleSubmit = e => {
     e.preventDefault(); 
     if (!username || username === '') return;
@@ -135,6 +135,7 @@ export const RegistrationForm = () => {
             type="password"
             name="password"
             required
+
             // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
           />
           <label htmlFor="passwordConfirm">Confirm Password: </label>
