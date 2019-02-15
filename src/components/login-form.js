@@ -9,22 +9,6 @@ export const LoginForm = () => {
   const [authToken, setAuthToken] = useState("")
   const [loggedIn, SetLoggedIn] = useState(true)
 
-  // const usernameValidate = () => {
-  //   let illegalChar = /\W/; //allows only letters, numbers & underscores
-
-  //   if (username < 5 || username > 15){
-  //     return alert('Username must contain a minimum of 3 characters & a maximum of 12 characters');
-  //   }
-
-  //   if (illegalChar.test(username)){
-  //     return alert('The username you entered contains illegal characters')
-  //   }
-  // }
-
-// const passwordValidate = () => {
-
-// }
-
   const handleSubmit = e => {
     e.preventDefault(); 
 
@@ -33,16 +17,6 @@ export const LoginForm = () => {
     localStorage.setItem("loggedIn", loggedIn);
     SetLoggedIn(loggedIn)
     localStorage.removeItem("logout")
-    
-    // let illegalChar = /\W/; //allows only letters, numbers & underscores
-
-    // if (username < 5 || username > 15){
-    //   return alert('Username must contain a minimum of 3 characters & a maximum of 12 characters');
-    // }
-
-    // if (illegalChar.test(username)){
-    //   return alert('The username you entered contains illegal characters')
-    // }
 
     return fetch(`${API_BASE_URL}/login`, {
       method: 'POST',
