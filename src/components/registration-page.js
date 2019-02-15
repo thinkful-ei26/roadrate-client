@@ -1,9 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-
 import RegistrationForm from './registration-form';
-// import Header from './header';
 
 
 export function RegistrationPage(props) {
@@ -31,8 +28,8 @@ export function RegistrationPage(props) {
     );
 }
 
-const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
-});
+// const mapStateToProps = state => ({
+//     loggedIn: state.auth.currentUser !== null
+// });
 
-export default connect(mapStateToProps)(RegistrationPage);
+export default RegistrationPage;

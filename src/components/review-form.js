@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {API_BASE_URL} from '../config';
 import { Button, Icon } from 'react-materialize';
 
-
 export const ReviewForm = () => {
   const [ licensePlate, setLicensePlate ] = useState('');
   const [ rating, setRating ] = useState('');
@@ -51,9 +50,6 @@ export const ReviewForm = () => {
       // })
       .catch(err => console.log(err))
     };
-
-
-
 
   return (
     <div>
