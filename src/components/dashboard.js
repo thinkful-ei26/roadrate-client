@@ -2,6 +2,7 @@ import ReviewForm from './review-form';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
+import { Input } from 'react-materialize';
 
 import Plate from './plate';
 import ReviewList from './ReviewList';
@@ -45,6 +46,14 @@ export const Dashboard = (props) => {
     console.log('clicked search btn', searchInput)
 
   }
+
+  // let selectorOptions = props.options.map( (option, index) => {
+  //   return (
+  //      <option key={index} value={Object.keys(option)[0]}>
+  //         {Object.values(option)[0]}
+  //      </option>
+  //    )
+  //  })
 
   return (
     <div className="dashboard">
