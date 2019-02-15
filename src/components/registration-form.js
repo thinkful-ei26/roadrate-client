@@ -19,7 +19,7 @@ export const RegistrationForm = () => {
     if (!username || username === '') return;
     if (!password || password === '') return;
 
-    console.log('LOGIN', data)
+    // console.log('LOGIN', data)
     localStorage.setItem("user", username);
     localStorage.setItem("loggedIn", loggedIn);
     localStorage.removeItem("logout")
@@ -65,7 +65,7 @@ export const RegistrationForm = () => {
     if (!email || email === '') return;
     if (!confirmEmail || confirmEmail === '') return;
    
-    console.log(`username: ${username}, password: ${password}, confirmPassword: ${confirmPassword}, email: ${email}, confirmEmail: ${confirmEmail}`)
+    // console.log(`username: ${username}, password: ${password}, confirmPassword: ${confirmPassword}, email: ${email}, confirmEmail: ${confirmEmail}`)
 
     setUsername(username);
     setPassword(password);
@@ -89,13 +89,9 @@ export const RegistrationForm = () => {
       })
     })
     .then(res => {
-      console.log('res', res)
+      // console.log('res', res)
       localStorage.setItem("registered", true)
       return res.json();
-      })
-      .then(data => {  
-        console.log(data)
-      return data
       })
       .then(data => {
         console.log('line 104: ', data)
@@ -175,8 +171,8 @@ export const RegistrationForm = () => {
             className="login-submit"
             disabled={ !username || !password }
           >
-              <Icon>thumb_up</Icon>
-              Submit
+            <Icon>thumb_up</Icon>
+            Submit
           </Button>
           <Link to="/">Go Back</Link>
         </form>
