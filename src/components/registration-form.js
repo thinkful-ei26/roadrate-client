@@ -134,7 +134,8 @@ export const RegistrationForm = () => {
             type="password"
             name="password"
             required
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
           />
           <label htmlFor="passwordConfirm">Confirm Password: </label>
           <input
@@ -144,7 +145,8 @@ export const RegistrationForm = () => {
             type="password"
             name="passwordConfirm"
             required
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            pattern={password} 
+            title={`Must match password: ${password}`}
           />
           <label htmlFor="email">E-mail: </label>
           <input
@@ -153,6 +155,7 @@ export const RegistrationForm = () => {
             placeholder="Email"
             type="email"
             name="email"
+            pattern="^([\w\-\.]+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|(([\w\-]+\.)+)([a-zA-Z]{2,4}))$"
             required
           />
           <label htmlFor="emailConfirm">Confirm Email: </label>
@@ -162,6 +165,8 @@ export const RegistrationForm = () => {
             placeholder="Confirm Email"
             type="email"
             name="emailConfirm"
+            pattern={email}
+            title={`Must match email: ${email}`}
             required
           />
           <Button 
