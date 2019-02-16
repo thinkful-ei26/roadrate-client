@@ -35,25 +35,17 @@ export const RegistrationForm = () => {
       })
     })
     .then(res => {
-      console.log('res', res.body)
+      // console.log('res', res.body)
       return res.json();
-      })
-
-      .then( ( auth ) => {  
-        localStorage.setItem("authToken", auth.authToken);
-        setAuthToken(auth)
-      return auth;
-      })
-      .catch(err => {
-        const { code } = err;
-        const message = code === 401 ? 'Incorrect username or password' : 'Unable to login, please try again';
-        
-        return Promise.reject(
-          new Error({
-            _error: message
-          })
-        )
-      })
+    })
+    .then( ( auth ) => {  
+      localStorage.setItem("authToken", auth.authToken);
+      setAuthToken(auth)
+    return auth;
+    })
+    .catch(err => {
+      console.log('ERR',err)
+    })
   };
   
   const handleSubmit = e => {
@@ -93,10 +85,14 @@ export const RegistrationForm = () => {
       return res.json();
       })
       .then(data => {
-        console.log('line 104: ', data)
         logIn(data)
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+        if(err === 'TypeError: Failed to fetch'){
+          console.log('duplicate error')
+        }
+      })
       };
 
   return (
@@ -146,7 +142,7 @@ export const RegistrationForm = () => {
             name="passwordConfirm"
             required
             pattern={password} 
-            title={`Must match password: ${password}`}
+            title={`password: "${password}" & confirmPassword: "${confirmPassword}" must match`}
           />
           <label htmlFor="email">E-mail: </label>
           <input
@@ -166,7 +162,7 @@ export const RegistrationForm = () => {
             type="email"
             name="emailConfirm"
             pattern={email}
-            title={`Must match email: ${email}`}
+            title={`email: "${email}" & confirmEmail: "${confirmEmail}" must match`}
             required
           />
           <Button 
