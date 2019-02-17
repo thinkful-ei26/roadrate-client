@@ -91,7 +91,9 @@ export const RegistrationForm = () => {
         console.log(err)
         if(err === 'TypeError: Failed to fetch'){
           console.log('duplicate error')
+          return Promise.reject(err)
         }
+        return Promise.reject(err)
       })
       };
 
