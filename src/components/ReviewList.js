@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../config';
 import Review from './Review';
+import '../styles/review-list.css';
 
 export const ReviewList = (props) => {
 
@@ -15,6 +16,7 @@ export const ReviewList = (props) => {
       let url = `${API_BASE_URL}/reviews`;
       const response = await fetch(url);
       const reviews  = await response.json();
+      console.log(reviews)
       setReviews(reviews)
       return reviews
     }
