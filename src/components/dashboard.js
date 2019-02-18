@@ -73,6 +73,11 @@ export const Dashboard = (props) => {
           Add a review
         </button>
       </Link>
+      <Link to="/claim-plate">
+        <button>
+          Claim A Plate
+        </button>
+      </Link>
       
       {reviewForm}
 
