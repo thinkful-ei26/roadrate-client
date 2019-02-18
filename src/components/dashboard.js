@@ -36,14 +36,10 @@ export const Dashboard = (props) => {
       call();
     }, []);
 
-  console.log('dashboard props: ', props)
-
-  console.log(localStorage.user);
   const handleSubmit = e => {
     e.preventDefault(); 
     if (!searchInput ) return;
     console.log('clicked search btn', searchInput)
-
   }
 
   // let selectorOptions = props.options.map( (option, index) => {
