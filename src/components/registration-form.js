@@ -12,7 +12,7 @@ export const RegistrationForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("")
   const [confirmEmail, setConfirmEmail] = useState("")
-  const [authToken, setAuthToken] = useState("")
+  const [authToken, setAuthToken] = useState("") 
   const [loggedIn, SetLoggedIn] = useState(true)
 
   const logIn = (data) => {
@@ -35,25 +35,17 @@ export const RegistrationForm = () => {
       })
     })
     .then(res => {
-      console.log('res', res.body)
+      // console.log('res', res.body)
       return res.json();
-      })
-
-      .then( ( auth ) => {  
-        localStorage.setItem("authToken", auth.authToken);
-        setAuthToken(auth)
-      return auth;
-      })
-      .catch(err => {
-        const { code } = err;
-        const message = code === 401 ? 'Incorrect username or password' : 'Unable to login, please try again';
-        
-        return Promise.reject(
-          new Error({
-            _error: message
-          })
-        )
-      })
+    })
+    .then( ( auth ) => {  
+      localStorage.setItem("authToken", auth.authToken);
+      setAuthToken(auth)
+    return auth;
+    })
+    .catch(err => {
+      console.log('ERR',err)
+    })
   };
   
   const handleSubmit = e => {
@@ -93,10 +85,16 @@ export const RegistrationForm = () => {
       return res.json();
       })
       .then(data => {
-        console.log('line 104: ', data)
         logIn(data)
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+        if(err === 'TypeError: Failed to fetch'){
+          console.log('duplicate error')
+          return Promise.reject(err)
+        }
+        console.log(err)
+      })
       };
 
   return (
@@ -134,7 +132,8 @@ export const RegistrationForm = () => {
             type="password"
             name="password"
             required
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
           />
           <label htmlFor="passwordConfirm">Confirm Password: </label>
           <input
@@ -144,7 +143,8 @@ export const RegistrationForm = () => {
             type="password"
             name="passwordConfirm"
             required
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            pattern={password} 
+            title={`password: "${password}" & confirmPassword: "${confirmPassword}" must match`}
           />
           <label htmlFor="email">E-mail: </label>
           <input
@@ -153,6 +153,7 @@ export const RegistrationForm = () => {
             placeholder="Email"
             type="email"
             name="email"
+            pattern="^([\w\-\.]+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|(([\w\-]+\.)+)([a-zA-Z]{2,4}))$"
             required
           />
           <label htmlFor="emailConfirm">Confirm Email: </label>
@@ -162,6 +163,8 @@ export const RegistrationForm = () => {
             placeholder="Confirm Email"
             type="email"
             name="emailConfirm"
+            pattern={email}
+            title={`email: "${email}" & confirmEmail: "${confirmEmail}" must match`}
             required
           />
           <Button 
