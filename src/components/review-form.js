@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {API_BASE_URL} from '../config';
 import { Button, Icon } from 'react-materialize';
-
 import '../styles/review-form.css';
-
 
 export const ReviewForm = () => {
   const [ plateNumber, setPlateNumber ] = useState('');
@@ -43,7 +41,7 @@ export const ReviewForm = () => {
     .then(data => console.log((data)))
     .catch(err => console.log((err)))
     };
-    
+
   return (
     <div className='submit-review'>
       <form id='submit-review-form' onSubmit={handleSubmit}>

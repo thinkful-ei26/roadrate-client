@@ -23,7 +23,7 @@ export const Dashboard = (props) => {
 
       console.log('JSON: ', user)
       
-      localStorage.setItem("id", user.id)
+      localStorage.setItem("userId", user.id)
       setUserId(user.id)
       localStorage.setItem("name", user.name)
       setName(user.name)
@@ -45,6 +45,14 @@ export const Dashboard = (props) => {
     console.log('clicked search btn', searchInput)
 
   }
+
+  // let selectorOptions = props.options.map( (option, index) => {
+  //   return (
+  //      <option key={index} value={Object.keys(option)[0]}>
+  //         {Object.values(option)[0]}
+  //      </option>
+  //    )
+  //  })
 
   return (
     <div className="dashboard">
@@ -100,7 +108,7 @@ export const Dashboard = (props) => {
       </div>
 
       <Plate/>
-      <ReviewList /* message={message} *//>
+      <ReviewList />
 
     </div>
     </div> 

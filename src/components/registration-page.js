@@ -1,38 +1,14 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-
 import RegistrationForm from './registration-form';
-// import Header from './header';
-
 
 export function RegistrationPage(props) {
-    // If we are logged in (which happens automatically when registration
-    // is successful) redirect to the user's dashboard
-    if (props.loggedIn) {
-        return <Redirect to="/dashboard" />;
-    }
-
-    // const signup = () => {
-    //     return (
-    //         <h4>Sign Up</h4>
-    //     )
-    // }
-
     return (
-        <div className="home">
-            {/* <Header 
-                subHeader={signup}
-            /> */}
+        <div className="registration-page">
             <h5>Register to start rating</h5>
             <RegistrationForm />
-            {/* <Link to="/">Login</Link> */}
         </div>
     );
 }
 
-const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
-});
-
-export default connect(mapStateToProps)(RegistrationPage);
+export default RegistrationPage;
