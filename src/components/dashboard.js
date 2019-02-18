@@ -11,6 +11,7 @@ export const Dashboard = (props) => {
   const [userId, setUserId ] = useState("");
   const [name, setName ] = useState("");
   const [searchInput, setSearchInput] = useState("");
+  const [ submitReview, setSubmitReview ] = useState(false);
   
     const call = async () => {
       const res = await fetch(
@@ -50,10 +51,15 @@ export const Dashboard = (props) => {
   //    )
   //  })
 
+  console.log('////', submitReview);
+  let reviewForm;
+  if (submitReview === true) {
+    reviewForm = <ReviewForm />
+  }
+ 
   return (
     <div className="dashboard">
     <div className="dashboard-greeting">
-      <ReviewForm />
       <h2>Hello @{username}!</h2>
       <h2>{localStorage.name}'s Dashboard</h2>
       <p>@{localStorage.user}</p>
@@ -65,8 +71,17 @@ export const Dashboard = (props) => {
         }>
           Logout
         </button>
+        <button id='review-form-button' 
+        onClick={(e) => {
+          e.preventDefault(); 
+          setSubmitReview(!submitReview); 
+        }}>
+          Add a review
+        </button>
 
       </Link>
+
+      {reviewForm}
       
       {/* ========= SEARCH FORM - move to REVIEWS COMPONENT ========== */}
       <br/>

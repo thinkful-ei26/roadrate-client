@@ -7,3 +7,7 @@
 #submit-review-form {
   margin: auto;
 }
+
+#review-message-input {
+  min-height: 50px;
+}
