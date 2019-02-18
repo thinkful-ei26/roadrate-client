@@ -24,7 +24,7 @@ export const Dashboard = (props) => {
       console.log('JSON: ', user)
       
       localStorage.setItem("userId", user.id)
-      setUserId(user.id)
+      setUserId(user.id) 
       localStorage.setItem("name", user.name)
       setName(user.name)
       
