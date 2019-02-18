@@ -1,5 +1,4 @@
 
-import React from 'react';
 import Plate from './plate';
 import React, { useEffect } from 'react';
 import Spinner from 'react-spinkit';
