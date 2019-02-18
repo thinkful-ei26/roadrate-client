@@ -89,3 +89,7 @@ A tab for “My Reviews”
 ## Additional Features:
 - Anonymous tipping feature 
 - Karma Score feature
+
+## Wireframes
+
+<img src='./assets/wireframe.png' alt='RoadRate Wireframes' width='800px'/>
