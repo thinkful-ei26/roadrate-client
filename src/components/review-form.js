@@ -8,6 +8,7 @@ export const ReviewForm = () => {
   const [ rating, setRating ] = useState('');
   const [ message, setMessage ] = useState('');
   const [ plateState, setPlateState ] = useState('');
+  const [ submitted, setSubmitted ] = useState(false)
   
   const handleSubmit = e => {
     e.preventDefault(); 
@@ -39,9 +40,14 @@ export const ReviewForm = () => {
       })
     })
     .then(data => console.log((data)))
+    .then(() => setSubmitted(true))
     .catch(err => console.log((err)))
     };
 
+    let successMessage;
+    if (submitted) {
+      successMessage = <p>Thanks! Your review was submitted.</p>
+        }
   return (
     <div className='submit-review'>
       <form id='submit-review-form' onSubmit={handleSubmit}>
@@ -52,6 +58,8 @@ export const ReviewForm = () => {
           placeholder='X90PL'
           value={plateNumber}
           onChange={(e) => setPlateNumber(e.target.value)}
+          title="must contain a license plate number"
+          required
         />
         
         {/* <label htmlFor='rating'>Rating: </label> 
@@ -146,10 +154,13 @@ export const ReviewForm = () => {
         <Button
         type="submit" 
         className="review-submit"
+        disabled={plateNumber === '' || plateState === '' || !rating || message === '' }
         >
         Submit Review
       </Button>
       </form>
+
+      {submitted}
     
     </div>
   )

@@ -41,13 +41,18 @@ export const Review = (props) => {
 
     let review = "Loding Reviews";
     let rating;
+    let driverComment;
     if (reviews) {
-       review = reviews.map( (review, index) => { 
+       review = reviews.map((review, index) => { 
         if (review.isPositive === 'true') {
           rating = <Icon>thumb_up</Icon>
         } else {
           rating = <Icon>thumb_down</Icon>
         }
+
+        if (review.comment) {
+          driverComment = <p> Driver Response: {review.comment}</p>
+        } 
     
         return (
           <li className='review-item' key={review._id} tabIndex='0'>
@@ -58,6 +63,7 @@ export const Review = (props) => {
             {/* Do we want to add information about how long ago this was posted, i.e. 2m or 2h */}
             <p className='time'>{today}</p>
             <p className='message'>Review: {review.message}</p>
+            <p>{driverComment}</p>
           </li>
         )
 
