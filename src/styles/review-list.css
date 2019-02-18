@@ -1,0 +1,28 @@
+.isClaimed-icon {
+  display: inline-block;
+  width: 20px;
+}
+
+.review-list-div {
+  text-align: center;
+}
+
+.review-list {
+  max-width: 85%;
+  margin: 10px auto;
+}
+
+.review-item {
+  text-align: left;
+  border: 1px solid grey;
+  border-radius: 8px;
+  margin: 10px auto;
+  max-width: 350px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+.review-item h1 {
+  display: inline-block;
+  font-size: 18px;
+}
