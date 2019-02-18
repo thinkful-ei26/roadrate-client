@@ -17,7 +17,7 @@ export const ReviewForm = () => {
     console.log(`plateNumber: ${plateNumber}, rating: ${rating}, message: ${message}, reviewerId: ${localStorage.userId}`)
 
     const username = localStorage.user
-    const reviewerId = localStorage.id
+    const reviewerId = localStorage.userId
 
     console.log('REVIEWER ID:', reviewerId)
 
