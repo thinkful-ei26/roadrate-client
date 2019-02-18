@@ -14,6 +14,16 @@ import { useModal }  from 'react-modal-hook';
 // };
 
 export const Plate = () => {
+
+  // const reviews = props.reviews;
+  // let review = "Loading Reviews";  let plate;
+  //     if (reviews) {
+  //        review = reviews.map((review, index) => { 
+  //         if (review.plateNumber) {
+  //           plate = <p>{review.plateNumber}</p>
+  //         }})
+  //   };
+
   const [showModal, hideModal] = useModal(() => (
     <ReactModal isOpen>
       <div className="plate">
@@ -29,7 +39,7 @@ export const Plate = () => {
 
   return (
     // ==== When a User clicks on a plate link inside the review page, this will render
-    <button onClick={showModal}>Show Plate Reviews</button>
+    <button onClick={showModal}>Plate Number</button>
   );
 };
 
