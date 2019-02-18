@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {API_BASE_URL} from '../config';
 import { Button, Icon } from 'react-materialize';
-import '../styles/review-form.css';
 
 export const ReviewForm = () => {
   const [ plateNumber, setPlateNumber ] = useState('');
@@ -44,6 +43,7 @@ export const ReviewForm = () => {
 
   return (
     <div className='submit-review'>
+      <h4>Submit Review:</h4>
       <form id='submit-review-form' onSubmit={handleSubmit}>
         <label htmlFor='plateId'>License Plate: </label>
         <input
@@ -53,23 +53,6 @@ export const ReviewForm = () => {
           value={plateNumber}
           onChange={(e) => setPlateNumber(e.target.value)}
         />
-        
-        {/* <label htmlFor='rating'>Rating: </label> 
-        <br></br>
-          <label htmlFor='good'>Good</label>
-          <input 
-            type='checkbox' 
-            name='browser-default' 
-            value='true'
-            onChange={(e) => setRating(e.target.value)}
-          />
-          <label htmlFor='good'>Bad</label>
-          <input 
-            type='checkbox' 
-            name='browser-default' 
-            value='false'
-            onChange={(e) => setRating(e.target.value)}
-          /> */}
 
         <label htmlFor='rating'>Rating: </label>
         <select className='browser-default' value={rating} onChange={(e) => setRating(e.target.value)}>
@@ -77,7 +60,6 @@ export const ReviewForm = () => {
           <option value="true">Good</option>
           <option value="false">Bad</option>
         </select>
-
 
         <label htmlFor='plateState'>State: </label>
         <select className='browser-default' value={plateState} onChange={(e) => setPlateState(e.target.value)}>

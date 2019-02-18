@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
 
+import '../styles/dashboard.css';
+
+
 import Plate from './plate';
 import ReviewList from './ReviewList';
 
@@ -53,12 +56,12 @@ export const Dashboard = (props) => {
   return (
     <div className="dashboard">
     <div className="dashboard-greeting">
-      <ReviewForm />
       <h2>Hello @{username}!</h2>
       <h2>{localStorage.name}'s Dashboard</h2>
       <p>@{localStorage.user}</p>
+      <Plate/>
       <Link to="/">
-        <button onClick={() => {
+        <button className="logout" onClick={() => {
           props.logout()
           localStorage.setItem("logout", true)
           }
@@ -72,6 +75,7 @@ export const Dashboard = (props) => {
       <br/>
       <br />
       <div className="search-section">
+        <h4>Search Reviews:</h4>
         <form 
           id="search-form"
           className="search-form"
@@ -102,8 +106,7 @@ export const Dashboard = (props) => {
           </div>
         </form>
       </div>
-
-      <Plate/>
+      <ReviewForm />
       <ReviewList />
 
     </div>

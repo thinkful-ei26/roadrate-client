@@ -5,7 +5,7 @@ export const Plate = () => {
   return (
     // ==== When a User clicks on a plate link inside the review page, this will render
     <div className="plate">
-      <h2>PLATE NUMBER</h2>
+      <h4>MY PLATE NUMBER</h4>
       <div className="karma-wrapper">
         <p className="karma-score">Karma Score: #Number</p>
       </div>
