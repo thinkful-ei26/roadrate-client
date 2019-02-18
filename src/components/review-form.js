@@ -10,18 +10,10 @@ export const ReviewForm = () => {
   const [ submitted, setSubmitted ] = useState(false)
   
   const handleSubmit = e => {
-    e.preventDefault(); 
-    // if (!setLicensePlate) return;
-    // if (!rating) return;
-    // if (!message) return;
-    console.log(`plateNumber: ${plateNumber}, rating: ${rating}, message: ${message}, reviewerId: ${localStorage.userId}`)
-
+    // console.log(`plateNumber: ${plateNumber}, rating: ${rating}, message: ${message}, reviewerId: ${localStorage.userId}`)
     const username = localStorage.user
     const reviewerId = localStorage.userId
-
-    console.log('REVIEWER ID:', reviewerId)
-
-    // console.log(r)
+    
     return fetch(`${API_BASE_URL}/reviews`, {
       method: 'POST',
       headers: {
@@ -38,15 +30,21 @@ export const ReviewForm = () => {
         plateState,
       })
     })
-    .then(data => console.log((data)))
     .then(() => setSubmitted(true))
+    .then(() => {
+      setPlateNumber('');
+      setMessage('');
+      setPlateState('');
+      setRating('');
+    })
     .catch(err => console.log((err)))
-    };
+  };
 
-    let successMessage;
-    if (submitted) {
-      successMessage = <p>Thanks! Your review was submitted.</p>
-        }
+  let successMessage;
+  if (submitted) {
+    successMessage = <p>Thanks! Your review was submitted.</p>
+  }
+
   return (
     <div className='submit-review'>
       <h4>Submit Review:</h4>
@@ -125,8 +123,9 @@ export const ReviewForm = () => {
           <option value="WY">Wyoming</option>
         </select>
 
-        <label htmlFor='message'>Message: </label>
+        <label htmlFor='message' >Message: </label>
         <input 
+          id='review-message-input'
           type='text' 
           name='message' 
           placeholder='Type your message here...'
@@ -141,9 +140,7 @@ export const ReviewForm = () => {
         Submit Review
       </Button>
       </form>
-
-      {submitted}
-    
+      {successMessage}  
     </div>
   )
 }

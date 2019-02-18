@@ -61,3 +61,16 @@ img {
   padding: 10px;
   margin: 0 10px 0 10px;
 }
+
+table {
+  width: 100%;
+}
+
+td {
+  text-align: center;
+}
+
+th {
+  text-align: center;
+}
+

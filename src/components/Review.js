@@ -1,5 +1,10 @@
+
 import React from 'react';
 import Plate from './plate';
+import React, { useEffect } from 'react';
+import Spinner from 'react-spinkit';
+import '../styles/reviews.css'
+
 import { Icon } from 'react-materialize';
 
 export const Review = (props) => {
@@ -10,9 +15,10 @@ export const Review = (props) => {
     //   imgSrc = review.img;
     // }
 
+    const { searchReviews, searchInput }= props;
     const reviews = props.reviews;
-    console.log('props on Review component: ', reviews);
-    
+    console.log('props on Review component: ', props);
+
     //Setting the time up for todays date
     let today = new Date();
     let dd = today.getDate();
@@ -29,14 +35,12 @@ export const Review = (props) => {
 
     today = `${mm}/${dd}/${yyyy}`
 
-    // Rating is Positive: {review.isPositive.toString()
+    let review = (
+      <div className="spinner" style={{}}>
+        <Spinner name="line-spin-fade-loader" color="green"/>
+      </div>
+    )
 
-    //   <p className='owner-response'>Owner Resonse: {review.ownerResponse}</p>
-
-    /* ========= LIST ALL REVIEWS BY MAPPING ========== */
-
-
-    let review = "Loading Reviews";
     let rating;
     let driverComment;
     if (reviews) {
@@ -66,9 +70,7 @@ export const Review = (props) => {
             <p>{driverComment}</p>
           </li>
         )
-
-      
-        });
+      });
     };
 
     return(
