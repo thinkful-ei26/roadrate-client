@@ -27,8 +27,8 @@ export const LandingPage = (props) => {
                     </Button>
                 }
             />
-            <ReviewList />
             < Nav />
+            <ReviewList />
         </div>
     );
 }
