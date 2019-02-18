@@ -73,47 +73,9 @@ export const Dashboard = (props) => {
           Add a review
         </button>
       </Link>
-
-      <Plate/>
-            
+      
       {reviewForm}
 
-      
-      {/* ========= SEARCH FORM - move to REVIEWS COMPONENT ========== */}
-      <br/>
-      <br />
-      <div className="search-section">
-        <h4>Search Reviews:</h4>
-        <form 
-          id="search-form"
-          className="search-form"
-          onSubmit={handleSubmit}
-        >
-          <div className="input-wrapper">
-            <input
-              value={searchInput}
-              onChange={e => setSearchInput(e.target.value)}
-              type="search"
-              id="search"
-              name="search"
-              className="search-input"
-              placeholder="Search..."
-            />
-            <label 
-              htmlFor="search"
-              className="search-label"
-              aria-label="search-form"
-            >
-              <button
-                className="search-btn" 
-                aria-label="search-btn"
-              >
-                search
-              </button>
-            </label>
-          </div>
-        </form>
-      </div>
       <ReviewList />
 
     </div>
