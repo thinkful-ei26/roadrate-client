@@ -1,10 +1,5 @@
 import React from 'react';
-// import { API_BASE_URL } from '../config.js';
-// import { Link } from 'react-router-dom';
 import Plate from './plate';
-// import './Review.css'
-// import ReactModal from "react-modal";
-// import { useModal }  from 'react-modal-hook';
 import { Icon } from 'react-materialize';
 
 export const Review = (props) => {
