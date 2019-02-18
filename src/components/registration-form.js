@@ -50,11 +50,11 @@ export const RegistrationForm = () => {
   
   const handleSubmit = e => {
     e.preventDefault(); 
-    if (!username || username === '') return;
-    if (!password || password === '') return;
-    if (!confirmPassword || confirmPassword === '') return;
-    if (!email || email === '') return;
-    if (!confirmEmail || confirmEmail === '') return;
+    // if (!username || username === '') return;
+    // if (!password || password === '') return;
+    // if (!confirmPassword || confirmPassword === '') return;
+    // if (!email || email === '') return;
+    // if (!confirmEmail || confirmEmail === '') return;
    
     // console.log(`username: ${username}, password: ${password}, confirmPassword: ${confirmPassword}, email: ${email}, confirmEmail: ${confirmEmail}`)
 
