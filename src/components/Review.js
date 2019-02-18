@@ -43,6 +43,7 @@ export const Review = (props) => {
     let rating;
     let driverComment;
     if (reviews) {
+
        review = reviews.map((review, index) => { 
         if (review.isPositive === 'true') {
           rating = <Icon>thumb_up</Icon>
