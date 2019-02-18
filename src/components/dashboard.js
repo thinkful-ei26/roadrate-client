@@ -5,12 +5,13 @@ import { API_BASE_URL } from '../config';
 
 import Plate from './plate';
 import ReviewList from './ReviewList';
+import SearchReviews from './search-reviews';
 
 export const Dashboard = (props) => {
   const [username, setUsername] = useState("");
   const [userId, setUserId ] = useState("");
   const [name, setName ] = useState("");
-  const [searchInput, setSearchInput] = useState("");
+  // const [searchInput, setSearchInput] = useState("");
   
     const call = async () => {
       const res = await fetch(
@@ -35,12 +36,6 @@ export const Dashboard = (props) => {
       setUsername(localStorage.user)
       call();
     }, []);
-
-  const handleSubmit = e => {
-    e.preventDefault(); 
-    if (!searchInput ) return;
-    console.log('clicked search btn', searchInput)
-  }
 
   // let selectorOptions = props.options.map( (option, index) => {
   //   return (
@@ -67,42 +62,7 @@ export const Dashboard = (props) => {
         </button>
 
       </Link>
-      
-      {/* ========= SEARCH FORM - move to REVIEWS COMPONENT ========== */}
-      <br/>
-      <br />
-      <div className="search-section">
-        <form 
-          id="search-form"
-          className="search-form"
-          onSubmit={handleSubmit}
-        >
-          <div className="input-wrapper">
-            <input
-              value={searchInput}
-              onChange={e => setSearchInput(e.target.value)}
-              type="search"
-              id="search"
-              name="search"
-              className="search-input"
-              placeholder="Search..."
-            />
-            <label 
-              htmlFor="search"
-              className="search-label"
-              aria-label="search-form"
-            >
-              <button
-                className="search-btn" 
-                aria-label="search-btn"
-              >
-                search
-              </button>
-            </label>
-          </div>
-        </form>
-      </div>
-
+      <SearchReviews />
       <Plate/>
       <ReviewList />
 
