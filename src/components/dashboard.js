@@ -13,7 +13,7 @@ export const Dashboard = (props) => {
   const [name, setName ] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [ submitReview, setSubmitReview ] = useState(false);
-  
+
     const call = async () => {
       const res = await fetch(
         `${API_BASE_URL}/users/?search=${localStorage.user}`
@@ -72,10 +72,12 @@ export const Dashboard = (props) => {
         }}>
           Add a review
         </button>
-
       </Link>
 
+      <Plate/>
+            
       {reviewForm}
+
       
       {/* ========= SEARCH FORM - move to REVIEWS COMPONENT ========== */}
       <br/>
