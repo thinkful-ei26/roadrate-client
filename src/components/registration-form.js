@@ -12,7 +12,7 @@ export const RegistrationForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("")
   const [confirmEmail, setConfirmEmail] = useState("")
-  const [authToken, setAuthToken] = useState("")
+  const [authToken, setAuthToken] = useState("") 
   const [loggedIn, SetLoggedIn] = useState(true)
 
   const logIn = (data) => {
@@ -93,7 +93,7 @@ export const RegistrationForm = () => {
           console.log('duplicate error')
           return Promise.reject(err)
         }
-        return Promise.reject(err)
+        console.log(err)
       })
       };
 

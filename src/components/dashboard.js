@@ -2,7 +2,6 @@ import ReviewForm from './review-form';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
-import { Input } from 'react-materialize';
 
 import Plate from './plate';
 import ReviewList from './ReviewList';
@@ -109,7 +108,7 @@ export const Dashboard = (props) => {
       </div>
 
       <Plate/>
-      <ReviewList /* message={message} *//>
+      <ReviewList />
 
     </div>
     </div> 
