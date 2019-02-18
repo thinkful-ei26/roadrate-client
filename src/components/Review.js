@@ -107,9 +107,7 @@ export const Review = (props) => {
             <p>{driverComment}</p>
           </li>
         )
-
-      
-        });
+      });
     };
 
     return(
