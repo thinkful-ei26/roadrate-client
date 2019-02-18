@@ -4,34 +4,19 @@ import { API_BASE_URL } from '../config';
 export const SearchReviews = (props) => {
   const [searchInput, setSearchInput] = useState("");
 
-  // const search = async () => {
-  //   const res = await fetch(
-  //     `${API_BASE_URL}/users/?search=${localStorage.user}`
-  //   );
-
-  //   console.log(`${API_BASE_URL}/users/?search=${localStorage.user}`)
-  //   // Pull out the data as usual
-  //   const [ user ] = await res.json();
-
-  //   console.log('JSON: ', user)
-    
-  //   localStorage.setItem("userId", user.id)
-  //   setUserId(user.id)
-  //   localStorage.setItem("name", user.name)
-  //   setName(user.name)
-    
-  //   return user;
-  // }
-
-  // useEffect(() => {
-  //   setUsername(localStorage.user)
-  //   search();
-  // }, []);
-
   const handleSubmit = e => {
     e.preventDefault(); 
-    if (!searchInput ) return;
+    if (!searchInput || searchInput === '') return;
     console.log('clicked search btn', searchInput)
+
+    return fetch(`${API_BASE_URL}/reviews/?search=${searchInput}`)
+      .then(res => { if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+        return res.json();
+      })
+      .then(data => console.log(('DATA FROM SEARCH-REVIEWS: ',data)))
+      .catch(err => console.log((err)))
   }
 
   return (
