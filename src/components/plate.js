@@ -13,25 +13,26 @@ import { useModal }  from 'react-modal-hook';
 //   }
 // };
 
-export const Plate = () => {
+export const Plate = (props) => {
 
-  // const reviews = props.reviews;
-  // let review = "Loading Reviews";  let plate;
-  //     if (reviews) {
-  //        review = reviews.map((review, index) => { 
-  //         if (review.plateNumber) {
-  //           plate = <p>{review.plateNumber}</p>
-  //         }})
-  //   };
+  console.log('plate props: ', props)
+  const reviews = props.reviews;
+  let review = "Loading Reviews";  let plate;
+      if (reviews) {
+         review = reviews.map((review, index) => { 
+          if (review.plateNumber === props.plateName) {
+            plate = <p>{review.plateNumber}</p>
+          }})
+    };
 
   const [showModal, hideModal] = useModal(() => (
     <ReactModal isOpen>
       <div className="plate">
-        <h4>PLATE NUMBER</h4>
+        <h4>{props.plateName}</h4>
         <div className="karma-wrapper">
           <p className="karma-score">Karma Score: #Number</p>
         </div>
-        <p>INSERT PLATE REVIEWS COMPONENT</p>
+        <p>{review}</p>
         <button onClick={hideModal}>Close</button>
       </div>
     </ReactModal>
@@ -39,7 +40,7 @@ export const Plate = () => {
 
   return (
     // ==== When a User clicks on a plate link inside the review page, this will render
-    <button onClick={showModal}>Plate Number</button>
+    <button onClick={showModal}>{props.plateName}</button>
   );
 };
 

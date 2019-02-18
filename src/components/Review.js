@@ -1,7 +1,5 @@
-
 import React from 'react';
 import Plate from './plate';
-import React, { useEffect } from 'react';
 import Spinner from 'react-spinkit';
 import '../styles/reviews.css'
 
@@ -58,7 +56,11 @@ export const Review = (props) => {
         return (
           <li className='review-item' key={review._id} tabIndex='0'>
             <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
-            <Plate>
+            <Plate 
+              plateName={review.plateNumber} 
+              reviews={reviews}
+              // karma score
+            >
               {review.plateNumber}
             </Plate><br/>
             {/* <h1 className='plate-number'>{review.plateNumber}</h1><br/> */}
