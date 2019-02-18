@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
+import Spinner from 'react-spinkit';
+import '../styles/reviews.css'
 // import { API_BASE_URL } from '../config.js';
 // import { Link } from 'react-router-dom';
 // import Plate from './plate';
-// import './Review.css'
 
 export const Review = (props) => {
 
@@ -32,9 +33,16 @@ export const Review = (props) => {
 
     today = `${mm}/${dd}/${yyyy}`
 
-    /* ========= LIST ALL REVIEWS BY MAPPING ========== */
+    // let review = "Loading Reviews";
 
-    let review = "Loading Reviews";
+    let review = (
+      <div className="spinner" style={{}}>
+        <Spinner name="line-spin-fade-loader" color="green"/>
+      </div>
+    )
+
+    /* ========= LIST ALL REVIEWS VIA SEARCH ========== */
+    // server endpoint searching review message, plateNumber, isPositive, ( plateId NOT integrated yet)
 
     if (searchInput && searchInput !== ''){
       review = searchReviews.map( (review, index) => (
@@ -51,6 +59,7 @@ export const Review = (props) => {
       ));
     }
 
+    /* ========= FETCH REVIEWS ON INITIAL LOAD ========== */
     if (reviews && searchInput === '') {
        review = reviews.map( (review, index) => (
         // console.log(review)

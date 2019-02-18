@@ -45,49 +45,47 @@ export const ReviewList = (props) => {
     // console.log(searchReviews)
 
     return (
-        <div className="review-list-div">
+      <div className="review-list-div">
 
-          <div className="search-section">
-            <form 
-              id="search-form"
-              className="search-form"
-              // onSubmit={handleSubmit}
-              onKeyUp={handleSubmit}
-            >
-              <div className="input-wrapper">
-                <input
-                  value={searchInput}
-                  onChange={e => setSearchInput(e.target.value)}
-                  type="search"
-                  id="search"
-                  name="search"
-                  className="search-input"
-                  placeholder="Search..."
-                />
-                <label 
-                  htmlFor="search"
-                  className="search-label"
-                  aria-label="search-form"
-                >
-                  <button
-                    className="search-btn" 
-                    aria-label="search-btn"
-                  >
-                    search
-                  </button>
-                </label>
-              </div>
-            </form>
-          </div>
+      <div className="search-section">
+      <fieldset>
 
-          <ul className='review-list'>
-            <Review 
-              reviews={reviews} 
-              searchReviews={searchReviews}
-              searchInput={searchInput}
+      <legend>Search By License Plate: </legend>
+        <form 
+          id="search-form"
+          className="search-form"
+          // onSubmit={handleSubmit}
+          onKeyUp={handleSubmit}
+        >
+          <div className="input-wrapper">
+            <label 
+              htmlFor="search"
+              className="search-label"
+              aria-label="search-form"
             />
-          </ul>
-        </div>
+            <input
+              value={searchInput}
+              onChange={e => setSearchInput(e.target.value)}
+              type="search"
+              id="search"
+              name="search"
+              className="search-input"
+              placeholder="Search..."
+            />
+           
+          </div>
+        </form>
+        </fieldset>
+      </div>
+
+        <ul className='review-list'>
+          <Review 
+            reviews={reviews} 
+            searchReviews={searchReviews}
+            searchInput={searchInput}
+          />
+        </ul>
+      </div>
     );
 }
 
