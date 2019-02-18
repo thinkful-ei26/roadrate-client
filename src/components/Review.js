@@ -39,7 +39,7 @@ export const Review = (props) => {
         // console.log(review)
       <li className='review' key={review._id} tabIndex='0'>
         <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
-        <h1 className='plate-number'>ABC-1234</h1><br/>
+        <h1 className='plate-number'>{review.plateNumber}</h1><br/>
         <img className='review-img' src='https://i.pinimg.com/236x/29/55/38/295538a452d701c9189d0fa8f5b36938--white-truck-bad-parking.jpg' alt='review'></img>
         <p className='rating'>Rating Placeholder</p>
         {/* Do we want to add information about how long ago this was posted, i.e. 2m or 2h */}

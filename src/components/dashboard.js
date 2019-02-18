@@ -67,6 +67,11 @@ export const Dashboard = (props) => {
         </button>
 
       </Link>
+      <Link to="/claim-plate">
+        <button>
+          Claim A Plate
+        </button>
+      </Link>
       
       {/* ========= SEARCH FORM - move to REVIEWS COMPONENT ========== */}
       <br/>
