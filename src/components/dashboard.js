@@ -2,9 +2,7 @@ import ReviewForm from './review-form';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
-
 import '../styles/dashboard.css';
-
 
 import Plate from './plate';
 import ReviewList from './ReviewList';
@@ -45,14 +43,6 @@ export const Dashboard = (props) => {
     if (!searchInput ) return;
     console.log('clicked search btn', searchInput)
   }
-
-  // let selectorOptions = props.options.map( (option, index) => {
-  //   return (
-  //      <option key={index} value={Object.keys(option)[0]}>
-  //         {Object.values(option)[0]}
-  //      </option>
-  //    )
-  //  })
 
   console.log('////', submitReview);
   let reviewForm;
@@ -122,7 +112,6 @@ export const Dashboard = (props) => {
           </div>
         </form>
       </div>
-      <ReviewForm />
       <ReviewList />
 
     </div>
