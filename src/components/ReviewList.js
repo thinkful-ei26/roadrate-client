@@ -51,7 +51,8 @@ export const ReviewList = (props) => {
             <form 
               id="search-form"
               className="search-form"
-              onSubmit={handleSubmit}
+              // onSubmit={handleSubmit}
+              onKeyUp={handleSubmit}
             >
               <div className="input-wrapper">
                 <input
