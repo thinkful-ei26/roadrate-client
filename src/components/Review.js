@@ -1,12 +1,12 @@
-import React, {Component, useState, useEffect} from 'react';
-import { API_BASE_URL } from '../config.js';
-import { Link } from 'react-router-dom';
-import Plate from './plate';
+import React from 'react';
+// import { API_BASE_URL } from '../config.js';
+// import { Link } from 'react-router-dom';
+// import Plate from './plate';
 // import './Review.css'
 
 export const Review = (props) => {
 
-    const imgSrc = '/';
+    // const imgSrc = '/';
     //if an image is uploaded by a user then it will be included in the review, otherwise no image will be displayed
     // if(review.img) {
     //   imgSrc = review.img;

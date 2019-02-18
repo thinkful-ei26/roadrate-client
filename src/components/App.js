@@ -5,7 +5,6 @@ import LandingPage from './landing-page';
 import Dashboard from './dashboard';
 import LoginForm from './login-form';
 import About from './about';
-import { connect } from 'react-redux';
 import '../styles/App.css';
 
 export const App = () => {
@@ -38,5 +37,4 @@ export const App = () => {
 	)
 }
 
-// Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking
-export default App;
+export default withRouter(App);
