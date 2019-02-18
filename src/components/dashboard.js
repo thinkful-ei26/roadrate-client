@@ -5,13 +5,11 @@ import { API_BASE_URL } from '../config';
 
 import Plate from './plate';
 import ReviewList from './ReviewList';
-import SearchReviews from './search-reviews';
 
 export const Dashboard = (props) => {
   const [username, setUsername] = useState("");
   const [userId, setUserId ] = useState("");
   const [name, setName ] = useState("");
-  // const [searchInput, setSearchInput] = useState("");
   
     const call = async () => {
       const res = await fetch(
@@ -62,7 +60,6 @@ export const Dashboard = (props) => {
         </button>
 
       </Link>
-      <SearchReviews />
       <Plate/>
       <ReviewList />
 

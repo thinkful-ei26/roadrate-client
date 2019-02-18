@@ -3,10 +3,13 @@ import { API_BASE_URL } from '../config';
 import Review from './Review';
 
 export const ReviewList = (props) => {
+
    //storing Review Data in State
 
   //I need to be able to get an array of reviews and set it to the reviews variable below.  I then need to pass reviews as a prop from dashboard to ReviewList so I can map through the data and send those details as props to Review in order to render multiple Reviews at once on the dashboard.
   const [reviews, setReviews] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+  const [searchReviews, setSearchReviews] = useState([]);
 
     const fetchReviews = async () => {
       let url = `${API_BASE_URL}/reviews`;
@@ -20,10 +23,68 @@ export const ReviewList = (props) => {
       fetchReviews();
     }, []);
 
+    const handleSubmit = e => {
+      e.preventDefault(); 
+      if (!searchInput || searchInput === '') return;
+      // console.log('clicked search btn', searchInput)
+  
+      return fetch(`${API_BASE_URL}/reviews/?search=${searchInput}`)
+        .then(res => { if (!res.ok) {
+          return Promise.reject(res.statusText);
+        }
+        const searchReviews = res.json();
+          return searchReviews;
+        })
+        .then(data => {
+          // console.log('DATA FROM SEARCH-REVIEWS: ',data)
+          setSearchReviews(data)
+        })
+        .catch(err => console.log(err))
+    }
+
+    // console.log(searchReviews)
+
     return (
         <div className="review-list-div">
+
+          <div className="search-section">
+            <form 
+              id="search-form"
+              className="search-form"
+              onSubmit={handleSubmit}
+            >
+              <div className="input-wrapper">
+                <input
+                  value={searchInput}
+                  onChange={e => setSearchInput(e.target.value)}
+                  type="search"
+                  id="search"
+                  name="search"
+                  className="search-input"
+                  placeholder="Search..."
+                />
+                <label 
+                  htmlFor="search"
+                  className="search-label"
+                  aria-label="search-form"
+                >
+                  <button
+                    className="search-btn" 
+                    aria-label="search-btn"
+                  >
+                    search
+                  </button>
+                </label>
+              </div>
+            </form>
+          </div>
+
           <ul className='review-list'>
-            <Review reviews={reviews}/>
+            <Review 
+              reviews={reviews} 
+              searchReviews={searchReviews}
+              searchInput={searchInput}
+            />
           </ul>
         </div>
     );

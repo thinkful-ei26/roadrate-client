@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { API_BASE_URL } from '../config';
+import ReviewList from './ReviewList';
 
 export const SearchReviews = (props) => {
   const [searchInput, setSearchInput] = useState("");
+  const [searchReviews, setSearchReviews] = useState("");
 
   const handleSubmit = e => {
     e.preventDefault(); 
@@ -13,10 +15,12 @@ export const SearchReviews = (props) => {
       .then(res => { if (!res.ok) {
         return Promise.reject(res.statusText);
       }
-        return res.json();
+      const searchReviews = res.json();
+      setSearchReviews(searchReviews)
+        return searchReviews;
       })
-      .then(data => console.log(('DATA FROM SEARCH-REVIEWS: ',data)))
-      .catch(err => console.log((err)))
+      .then(data => console.log('DATA FROM SEARCH-REVIEWS: ',data))
+      .catch(err => console.log(err))
   }
 
   return (
@@ -50,6 +54,8 @@ export const SearchReviews = (props) => {
           </label>
         </div>
       </form>
+
+      <ReviewList searchReviews={searchReviews} />
     </div>
 
   )

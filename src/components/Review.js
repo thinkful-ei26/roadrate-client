@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import { API_BASE_URL } from '../config.js';
 // import { Link } from 'react-router-dom';
 // import Plate from './plate';
@@ -12,9 +12,10 @@ export const Review = (props) => {
     //   imgSrc = review.img;
     // }
 
+    const { searchReviews, searchInput }= props;
     const reviews = props.reviews;
-    console.log('props on Review component: ', reviews);
-    
+    console.log('props on Review component: ', props);
+
     //Setting the time up for todays date
     let today = new Date();
     let dd = today.getDate();
@@ -33,8 +34,24 @@ export const Review = (props) => {
 
     /* ========= LIST ALL REVIEWS BY MAPPING ========== */
 
-    let review = "Loding Reviews";
-    if (reviews) {
+    let review = "Loading Reviews";
+
+    if (searchInput && searchInput !== ''){
+      review = searchReviews.map( (review, index) => (
+        // console.log(review)
+      <li className='review' key={review._id} tabIndex='0'>
+        <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
+        <h1 className='plate-number'>ABC-1234</h1><br/>
+        <img className='review-img' src='https://i.pinimg.com/236x/29/55/38/295538a452d701c9189d0fa8f5b36938--white-truck-bad-parking.jpg' alt='review'></img>
+        <p className='rating'>Rating Placeholder</p>
+        {/* Do we want to add information about how long ago this was posted, i.e. 2m or 2h */}
+        <p className='time'>{today}</p>
+        <p className='message'>Review: {review.message}</p>
+      </li>
+      ));
+    }
+
+    if (reviews && searchInput === '') {
        review = reviews.map( (review, index) => (
         // console.log(review)
       <li className='review' key={review._id} tabIndex='0'>
