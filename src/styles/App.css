@@ -40,6 +40,11 @@ button:hover {
   color: white;
 }
 
+img {
+  border-style: none;
+  max-width: 100%;
+}
+
 .plate {
   border: 1px solid #999;
   text-align: center;
