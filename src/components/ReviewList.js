@@ -52,7 +52,7 @@ export const ReviewList = (props) => {
     return (
       <div className="review-list-div">
         <div className="search-section">
-        <fieldset>
+        <fieldset id="review-search">
           <legend>Search By License Plate: </legend>
           <form 
             id="search-form"
@@ -71,7 +71,7 @@ export const ReviewList = (props) => {
                 id="search"
                 name="search"
                 className="search-input"
-                placeholder="Search..."
+                placeholder="2073WE..."
               />
             </div>
           </form>

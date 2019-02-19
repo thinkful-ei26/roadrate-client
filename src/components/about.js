@@ -28,7 +28,7 @@ export const About = () => {
                             <Link to="/">Home</Link>
                         </li>
                     </ul> */}
-                <Button onClick={hideModal}>Close</Button>
+                <Button id='about-btn' onClick={hideModal}>Close</Button>
             </div>
         </ReactModal>
     ));

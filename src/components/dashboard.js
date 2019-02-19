@@ -52,38 +52,34 @@ export const Dashboard = (props) => {
  
   return (
     <div className="dashboard">
-    <div className="dashboard-greeting">
-      <h2>Hello @{username}!</h2>
-      <h2>{localStorage.name}'s Dashboard</h2>
-      <p>@{localStorage.user}</p>
-      <Plate/>
-      <Link to="/">
-        <button className="logout" onClick={() => {
-          props.logout()
-          localStorage.setItem("logout", true)
-          }
-        }>
-          Logout
-        </button>
-        <button id='review-form-button' 
-        onClick={(e) => {
-          e.preventDefault(); 
-          setSubmitReview(!submitReview); 
-        }}>
-          Add a review
-        </button>
-      </Link>
+      <div className="dashboard-greeting">
+        <p>Hi, {username}!</p>
+        <Link to="/">
+          <button className="logout" onClick={() => {
+            props.logout()
+            localStorage.setItem("logout", true)
+            }}>
+            Logout
+          </button>
+        </Link >
+      </div>
+
       <Link to="/claim-plate">
-        <button>
-          Claim A Plate
-        </button>
+        <button>Claim A Plate</button>
       </Link>
-      
+
+      <button id='review-form-button' 
+        onClick={(e) => {
+        e.preventDefault(); 
+        setSubmitReview(!submitReview); 
+        }}>
+        Add a review
+      </button>
+     
       {reviewForm}
-
+      <Plate/>
       <ReviewList />
-
-    </div>
+    
     </div> 
   )
 }
