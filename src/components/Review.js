@@ -1,7 +1,10 @@
-import React from 'react';
-import Plate from './plate';
+import React, { useState } from 'react';
+// import Plate from './plate';
 import Spinner from 'react-spinkit';
-import '../styles/reviews.css'
+import { Link, Redirect } from 'react-router-dom';
+// import isLoggedIn from '../../helpers/is_logged_in';
+
+import '../styles/reviews.css';
 
 import { Icon } from 'react-materialize';
 
@@ -12,6 +15,8 @@ export const Review = (props) => {
     // if(review.img) {
     //   imgSrc = review.img;
     // }
+
+    const [redirect, setRedirect] = useState(false);
 
     const { searchReviews, searchInput } = props;
     const reviews = props.reviews;
@@ -52,21 +57,31 @@ export const Review = (props) => {
         if (review.comment) {
           driverComment = <p> Driver Response: {review.comment}</p>
         } 
+
+        if (redirect === true) {
+          return (
+            <Redirect to={{
+              pathname: '/plate',
+              state: {plateNumber: props.plateNumber},
+            }}
+            push={true}
+            />
+          )}
+
+        const handleClick = (e) => {
+          e.preventDefault();
+          setRedirect(true);
+        }
     
         return (
           <li className='review-item' key={review._id} tabIndex='0'>
             <article className='review-header'>
               <article className='review-title'>
                 <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
-                <Plate 
-                  plateName={review.plateNumber} 
-                  reviews={reviews}
-                  // karma score
-                  >{review.plateNumber}
-                </Plate><br/>
+                
                 <p id='review-time'>{today}</p>
               </article>
-              
+              <a class="waves-effect waves-light btn-small" onClick={handleClick}> {review.plateNumber}</a>
               <article className='review-rating'>
                 <p className='rating'>{rating}</p>
               </article>
