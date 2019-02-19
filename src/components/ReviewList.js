@@ -57,13 +57,14 @@ export const ReviewList = (props) => {
           <form 
             id="search-form"
             className="search-form"
-            onKeyUp={handleSubmit}>
+            onKeyUp={handleSubmit}
+          >
             <div className="input-wrapper">
               <label 
                 htmlFor="search"
                 className="search-label"
                 aria-label="search-form"
-              />
+              >
               <input
                 value={searchInput}
                 onChange={e => setSearchInput(e.target.value)}
@@ -73,6 +74,7 @@ export const ReviewList = (props) => {
                 className="search-input"
                 placeholder="Search..."
               />
+              </label>
             </div>
           </form>
         </fieldset>
@@ -81,8 +83,7 @@ export const ReviewList = (props) => {
         <ul className='review-list'>
           <Review 
             reviews={reviews} 
-            // searchInput={searchInput} 
-            />
+          />
         </ul>
       </div>
     );

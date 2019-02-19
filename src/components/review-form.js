@@ -49,7 +49,7 @@ export const ReviewForm = () => {
     <div className='submit-review'>
       <h4>Submit Review:</h4>
       <form id='submit-review-form' onSubmit={handleSubmit}>
-        <label htmlFor='plateId'>License Plate: </label>
+        <label htmlFor='plateId'>License Plate:
         <input
           type='text' 
           name='plateId' 
@@ -59,15 +59,17 @@ export const ReviewForm = () => {
           title="must contain a license plate number"
           required
         />
+        </label>
 
-        <label htmlFor='rating'>Rating: </label>
+        <label htmlFor='rating'>Rating: 
         <select className='browser-default' value={rating} onChange={(e) => setRating(e.target.value)}>
           <option value=''>Select Rating</option>
           <option value="true">Good</option>
           <option value="false">Bad</option>
         </select>
+        </label>
 
-        <label htmlFor='plateState'>State: </label>
+        <label htmlFor='plateState'>State: 
         <select className='browser-default' value={plateState} onChange={(e) => setPlateState(e.target.value)}>
           <option value=''>Select State</option>
           <option value="AL">Alabama</option>
@@ -122,8 +124,9 @@ export const ReviewForm = () => {
           <option value="WI">Wisconsin</option>
           <option value="WY">Wyoming</option>
         </select>
+        </label>
 
-        <label htmlFor='message' >Message: </label>
+        <label htmlFor='message' >Message: 
         <input 
           id='review-message-input'
           type='text' 
@@ -132,6 +135,8 @@ export const ReviewForm = () => {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
+        </label>
+        
         <Button
         type="submit" 
         className="review-submit"
