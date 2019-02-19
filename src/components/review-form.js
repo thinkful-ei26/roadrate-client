@@ -22,7 +22,7 @@ export const ReviewForm = () => {
         'Authorization': `Bearer ${localStorage.authToken}`
       },
       body: JSON.stringify({
-        plateNumber,
+        plateNumber: plateNumber.toUpperCase(),
         rating,
         message,
         username,

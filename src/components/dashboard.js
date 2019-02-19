@@ -77,7 +77,7 @@ export const Dashboard = (props) => {
       </button>
      
       {reviewForm}
-      <Plate/>
+      {/* <Plate/> */}
       <ReviewList />
     
     </div> 

@@ -6,6 +6,7 @@ import Dashboard from './dashboard';
 import LoginForm from './login-form';
 import ClaimPlate from './claim-plate';
 import About from './about';
+import Plate from './plate';
 import '../styles/App.css';
 
 export const App = () => {
@@ -32,6 +33,7 @@ export const App = () => {
           <Route exact path="/register" component={RegistrationPage} />
         )}
 			<Route exact path="/" component={LandingPage} />
+      <Route exact path="/plate" component={Plate} />
 			<Route exact path="/login" component={LoginForm} storeUser={storeUser} />
 			<Route exact path="/about" component={About} storeUser={storeUser} />
       <Route exact path="/claim-plate" component={ClaimPlate} storeUser={storeUser} />
