@@ -64,7 +64,7 @@ export const LoginForm = () => {
           <form className="login-form"
             onSubmit={handleSubmit}
           >
-            <label htmlFor="username">Username: </label>
+            <label htmlFor="username">Username:
             <Input
               value={username}
               onChange={e => setUsername(e.target.value)}
@@ -76,7 +76,8 @@ export const LoginForm = () => {
               id="username"
               required
             />
-            <label htmlFor="password">Password: </label>
+            </label>
+            <label htmlFor="password">Password:
             <Input
               value={password}
               onChange={e => setPassword(e.target.value)}
@@ -86,6 +87,7 @@ export const LoginForm = () => {
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
               required
             />
+            </label>
             <Button waves="teal" type="submit" className="login-submit">
               <Icon>thumb_up</Icon>
               Submit
