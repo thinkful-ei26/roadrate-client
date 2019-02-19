@@ -10,12 +10,44 @@ export const claimPlate = (props) => {
   const [ plateState, setPlateState ] = useState('');
   const [ plates, setPlates ] = useState("");
 
+  // const handleLinkClick = e => {
+  //   e.preventDefault();
+  //   console.log('handleLinkClick fired');
+  //   return fetch(`${API_BASE_URL}/plates/${localStorage.userId}`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //       'Authorization': `Bearer ${localStorage.authToken}`
+  //     },
+  //     body: JSON.stringify({
+  //       userId: localStorage.userId,
+  //       plateNumber
+  //     })
+  //   })
+  //   .then(res => {
+  //     console.log('res inside handleLinkClick', res);
+  //     return res.json();
+  //   })
+  //   .then(data => console.log('DATA CLAIM PLATE:', data))
+  //   .catch(err => {
+  //     console.log(err)
+  //     if(err === 'TypeError: Failed to fetch'){
+  //       console.log('duplicate error')
+  //       return Promise.reject(err)
+  //     }
+  //     console.log(err)
+  //   })
+  // }
+
   const handleSubmit = e => {
     e.preventDefault(); 
-    if (!plateNumber || !plateState ) return;
+    if (!plateNumber ||  plateNumber === '') return;
+    if (!plateState ||  plateState === '') return;
     console.log('clicked search btn', plateNumber)
     console.log(plates);
 
+    console.log(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`)
     return fetch(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`, {
       method: 'GET',
       headers: {
@@ -73,7 +105,7 @@ export const claimPlate = (props) => {
           <td>{plates.karma}</td>
           {/* need to get reviews.length of all of the reviews that have ever mentioned this license plate */}
           <td>0</td>
-          <td><button className='link-to-user-button'>Link</button></td>
+          <td><button className='link-to-user-button' /* onClick={handleLinkClick()} */>Link</button></td>
         </tr>
       </table>
     )
@@ -181,6 +213,7 @@ export const claimPlate = (props) => {
         <button
           className="search-btn" 
           aria-label="search-btn"
+          disabled={!plateNumber || !plateState}
         >
           search
         </button>

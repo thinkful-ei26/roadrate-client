@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'; 
 import API_BASE_URL from '../config';
+// import { Link } from 'react-router-dom';
 
 export const MyPlate = (props) => {
     const [username, setUsername] = useState("");
@@ -49,6 +50,9 @@ return (
           <p className="karma-score">Karma Score: #Number</p>
         </div>
         <p>{review}</p>
+        {/* <Link to="/" className="plates-back-link">
+          <button>Go Back</button>
+        </Link> */}
     </div>
 )
 }
