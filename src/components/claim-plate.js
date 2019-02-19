@@ -12,7 +12,8 @@ export const claimPlate = (props) => {
 
   const handleLinkClick = e => {
     e.preventDefault();
-    console.log('handleLinkClick fired');
+    const userId = localStorage.userId;
+
     return fetch(`${API_BASE_URL}/plates/${localStorage.userId}`, {
       method: 'PUT',
       headers: {
@@ -21,7 +22,7 @@ export const claimPlate = (props) => {
         'Authorization': `Bearer ${localStorage.authToken}`
       },
       body: JSON.stringify({
-        userId: localStorage.userId,
+        userId,
         plateNumber
       })
     })
