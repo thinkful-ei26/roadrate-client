@@ -17,17 +17,6 @@ export const About = () => {
                     <p><b>What about that time you relied on the help of a stranger for a jump?</b><br/> Use RoadRate to publically acknowledge how impactful the kindness of strangers can be.</p>
                     <h5>Registered users of RoadRate can leave/recieve anonymous tips for enviable driving skills and random acts of kindness.</h5>
                     <h4>Login or register to begin RoadRating today!</h4>
-                    {/* <ul className="about-links">
-                        <li className="login-link">
-                            <Link to="/login">Login</Link>
-                        </li>
-                        <li className="register-link">
-                            <Link to="/register">Register</Link>
-                        </li>
-                        <li className="ladning-link">
-                            <Link to="/">Home</Link>
-                        </li>
-                    </ul> */}
                 <Button onClick={hideModal}>Close</Button>
             </div>
         </ReactModal>
