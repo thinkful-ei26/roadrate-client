@@ -77,3 +77,6 @@ th {
   text-align: center;
 }
 
+.about {
+  z-index: 1;
+}

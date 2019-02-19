@@ -6,10 +6,13 @@ import { useModal }  from 'react-modal-hook';
 
 ReactModal.setAppElement('#root')
 
+const customStyles = { content : { 
+    top : '50%', left : '50%', right : 'auto',bottom : 'auto',marginRight : '-50%',transform : 'translate(-50%, -50%)' } };
+
 export const About = () => {
 
     const [showModal, hideModal] = useModal(() => (
-    <ReactModal isOpen closeTimeoutMS={2000}>
+    <ReactModal isOpen closeTimeoutMS={2000} /* style={customStyles} */>
             <div className="about">
                     <h1>What is RoadRate?</h1>
                     <h5><i>RoadRate was founded to safely and anonymously encourage quality road etiquette for the over 220 million drivers currently licensed in America.</i></h5>
