@@ -1,0 +1,16 @@
+.dashboard {
+  background: #039be5;
+}
+
+.dashboard-greeting {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-greeting p {
+  margin: 4px;
+  color: whitesmoke;
+  font-size: 18px;
+}

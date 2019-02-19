@@ -53,6 +53,7 @@ export const Dashboard = (props) => {
   return (
     <div className="dashboard">
       <div className="dashboard-greeting">
+<<<<<<< HEAD
         <h2>Hello @{username}!</h2>
         <h3>{localStorage.name}'s Dashboard</h3>
       </div>
@@ -73,15 +74,38 @@ export const Dashboard = (props) => {
           Add a review
         </button>
       </Link>
-      <Link to="/claim-plate">
-        <button>
-          Claim A Plate
-        </button>
-      </Link>
-      
-      {reviewForm}
+=======
+        <p>Hi, {username}!</p>
+        <Link to="/">
+          <button className="logout" onClick={() => {
+            props.logout()
+            localStorage.setItem("logout", true)
+            }}>
+            Logout
+          </button>
+        </Link >
+      </div>
 
+>>>>>>> 6932108bba13859e570b3eaa962e8d54de669808
+      <Link to="/claim-plate">
+        <button>Claim A Plate</button>
+      </Link>
+
+      <button id='review-form-button' 
+        onClick={(e) => {
+        e.preventDefault(); 
+        setSubmitReview(!submitReview); 
+        }}>
+        Add a review
+      </button>
+     
+      {reviewForm}
+      <Plate/>
       <ReviewList />
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 6932108bba13859e570b3eaa962e8d54de669808
     </div> 
   )
 }

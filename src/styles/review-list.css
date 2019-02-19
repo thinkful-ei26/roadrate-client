@@ -5,6 +5,7 @@
 
 .review-list-div {
   text-align: center;
+  padding-bottom: 20px;
 }
 
 .review-list {
@@ -14,15 +15,48 @@
 
 .review-item {
   text-align: left;
-  border: 1px solid grey;
   border-radius: 8px;
   margin: 10px auto;
   max-width: 350px;
-  padding: 10px;
+  padding: 10px 18px;
+  background: whitesmoke;
   box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between
 }
 
 .review-item h1 {
   display: inline-block;
   font-size: 18px;
 }
+
+legend {
+  color: whitesmoke;
+  font-size: 18px;
+}
+
+#review-search {
+  margin: 10px;
+  color: black;
+  border: 1px solid whitesmoke;
+  border-radius: 4px;
+}
+
+#search {
+  background: white;
+  padding: 0px 8px;
+  max-width: 95%;
+}
+
+#search::placeholder {
+  color: grey;
+}
+
+#review-time {
+  margin: 0px;
+}
+
+

@@ -6,20 +6,22 @@ import '../styles/nav.css';
 
 export const Nav = () => {
   return(
-  <div className="nav-container">
-    <ul className="about-links">
-    <li className="nav-items">
-          <Link to="/login" className="login-link">Login</Link>
-      </li>
-      <li className="nav-items">
-          <Link to="/register" className="register-link">Register</Link>
-      </li>
-      <li className="nav-items"> 
-          <About />
-      </li>
-      <li className="nav-items">
-          <Link to="/" className="landing-link">Home</Link>
-      </li>
+  <div className="navbar">
+    <ul className="nav-list">
+        <div className='left-nav'>
+            <li className="nav-item"> 
+                <About />
+            </li>
+        </div>
+
+        <div className='right-nav'>
+            <li className="nav-item">
+                <Link to="/login" className="login-link">Login</Link>
+            </li>
+            <li className="nav-item">
+                <Link to="/register" className="register-link">Register</Link>
+            </li>
+        </div>
     </ul>
   </div>
   )
