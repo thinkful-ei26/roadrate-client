@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-// import Plate from './plate';
+import Plate from './plate';
 import Spinner from 'react-spinkit';
-import { Link, Redirect } from 'react-router-dom';
-// import isLoggedIn from '../../helpers/is_logged_in';
+import '../styles/reviews.css'
+import {Redirect, Link, Route} from 'react-router-dom';
 
-import '../styles/reviews.css';
 
 import { Icon } from 'react-materialize';
 
@@ -16,7 +15,7 @@ export const Review = (props) => {
     //   imgSrc = review.img;
     // }
 
-    const [redirect, setRedirect] = useState(false);
+    const [ redirect, setRedirect ] = useState(false)
 
     const { searchReviews, searchInput } = props;
     const reviews = props.reviews;
@@ -44,6 +43,15 @@ export const Review = (props) => {
       </div>
     )
 
+
+
+    // const handleClick = () => {
+    //   console.log(redirect)
+    //   console.log('clicked')
+      
+    //   console.log(redirect)
+    // }
+
     let rating;
     let driverComment;
     if (reviews) {
@@ -58,19 +66,15 @@ export const Review = (props) => {
           driverComment = <p> Driver Response: {review.comment}</p>
         } 
 
-        if (redirect === true) {
-          return (
-            <Redirect to={{
-              pathname: '/plate',
-              state: {plateNumber: props.plateNumber},
-            }}
-            push={true}
-            />
-          )}
+        if(redirect) {
 
-        const handleClick = (e) => {
-          e.preventDefault();
-          setRedirect(true);
+          return <Redirect to='/plate'/>
+        }
+
+        const handleClick = () => {
+          localStorage.setItem('currentPlateState', review.plateState)
+          localStorage.setItem('currentPlateNumber', review.plateNumber)
+          setRedirect(true)
         }
     
         return (
@@ -78,6 +82,10 @@ export const Review = (props) => {
             <article className='review-header'>
               <article className='review-title'>
                 <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
+                <button onClick={()=>handleClick()}> 
+                  {review.plateNumber} {review.plateState}
+                </button>
+               
                 
                 <p id='review-time'>{today}</p>
               </article>

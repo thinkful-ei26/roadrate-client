@@ -81,9 +81,6 @@ export const Dashboard = (props) => {
       </button>
      
       {reviewForm}
-      <Link to="/my-plate">
-        <button>My Plate</button>
-      </Link>
       {/* <Plate/> */}
       <ReviewList />
     
