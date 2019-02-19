@@ -52,10 +52,10 @@ export const Dashboard = (props) => {
  
   return (
     <div className="dashboard">
-    <div className="dashboard-greeting">
-      <h2>Hello @{username}!</h2>
-      <h2>{localStorage.name}'s Dashboard</h2>
-      <p>@{localStorage.user}</p>
+      <div className="dashboard-greeting">
+        <h2>Hello @{username}!</h2>
+        <h3>{localStorage.name}'s Dashboard</h3>
+      </div>
       <Plate/>
       <Link to="/">
         <button className="logout" onClick={() => {
@@ -82,8 +82,6 @@ export const Dashboard = (props) => {
       {reviewForm}
 
       <ReviewList />
-
-    </div>
     </div> 
   )
 }
