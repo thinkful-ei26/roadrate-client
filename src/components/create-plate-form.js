@@ -15,11 +15,11 @@ export const CreatePlateForm = () => {
     console.log('plate:', storePlate);
 
     const handleClick = () => {
-        if (localStorage.myPlate){
-            return (
-                new alert ('Congrats! Your plate has been registered.')
-            )
-        }   
+      if (localStorage.myPlate){
+        return (
+          new alert ('Congrats! Your plate has been registered.')
+        )
+      }   
     }
 
     //put request to regular plate endpoint

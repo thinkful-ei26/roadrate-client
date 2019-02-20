@@ -3,23 +3,18 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
 import '../styles/dashboard.css';
-
-// import Plate from './plate';
 import ReviewList from './ReviewList';
 
 export const Dashboard = (props) => {
   const [username, setUsername] = useState("");
   const [userId, setUserId ] = useState("");
   const [name, setName ] = useState("");
-  // const [searchInput, setSearchInput] = useState("");
   const [ submitReview, setSubmitReview ] = useState(false);
 
     const storeUser = async () => {
       const res = await fetch(
         `${API_BASE_URL}/users/?search=${localStorage.user}`
       );
- 
-      // console.log(`${API_BASE_URL}/users/?search=${localStorage.user}`)
       // Pull out the data as usual
       const [ user ] = await res.json();
 
@@ -74,6 +69,14 @@ export const Dashboard = (props) => {
         <button>Claim An Existing Plate</button>
       </Link>
 
+
+      {/* RENDER MY PLATES BTN if a user has a plate */}
+      { localStorage.myPlate && localStorage.myState ? (
+        <Link to="/my-plate">
+          <button>MyPlate</button>
+        </Link>
+      ) : ( <p>No plates associated</p> )}
+
       <Link to='/my-reviews'>
         <button>My Reviews</button>
       </Link>
@@ -85,9 +88,8 @@ export const Dashboard = (props) => {
         }}>
         Add a review
       </button>
-     
+    
       {reviewForm}
-      {/* <Plate/> */}
       <ReviewList />
     
     </div> 
