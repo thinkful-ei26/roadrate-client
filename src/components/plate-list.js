@@ -38,7 +38,6 @@ export const PlateList = (props) => {
   let plate;
   
    if (plates) {
-     console.log('PLATES!!')
     plate = plates.map((plate, index) => { 
       console.log('plates exists', plate)
       return (
@@ -59,7 +58,9 @@ export const PlateList = (props) => {
       </Link>
       <h2>My Plates</h2>
       <ul className='plates'>
-        {plate}
+        <Link to="/my-plate">
+          {plate}
+        </Link>
       </ul>
     </div>
 

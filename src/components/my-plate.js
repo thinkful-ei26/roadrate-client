@@ -65,7 +65,6 @@ export const MyPlate = (props) => {
  
   // console.log('karma', plate)
 
-
   if (reviews) {
     review = reviews.map((review, index) => { 
       console.log(review._id)
