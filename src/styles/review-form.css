@@ -5,7 +5,11 @@
 }
 
 #submit-review-form {
+  max-width: 350px;
   margin: auto;
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
 }
 
 #review-message-input {

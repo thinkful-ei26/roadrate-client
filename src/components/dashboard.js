@@ -74,6 +74,10 @@ export const Dashboard = (props) => {
         <button>Claim An Existing Plate</button>
       </Link>
 
+      <Link to='/my-reviews'>
+        <button>My Reviews</button>
+      </Link>
+
       <button id='review-form-button' 
         onClick={(e) => {
         e.preventDefault(); 
