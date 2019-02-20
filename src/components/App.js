@@ -9,7 +9,9 @@ import CreatePlatePage from './create-plate-page';
 import Plate from './plate';
 import MyPlate from './my-plate';
 import About from './about';
+import MyReviews from './my-reviews'
 import '../styles/App.css';
+import '../styles/index.css';
 
 export const App = () => {
    const [user, setUser] = useState({username: null})
@@ -41,6 +43,7 @@ export const App = () => {
 			<Route exact path="/about" component={About} storeUser={storeUser} />
       <Route exact path="/claim-plate" component={ClaimPlate} storeUser={storeUser} />
       <Route exact path="/my-plate" component={MyPlate} storeUser={storeUser} />
+      <Route exact path="/my-reviews" component={MyReviews} />
 		</div>
 	)
 }

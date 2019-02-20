@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {API_BASE_URL} from '../config';
-import { Button } from 'react-materialize';
+import { Button, Icon } from 'react-materialize';
+import '../styles/review-form.css';
 
 export const ReviewForm = () => {
   const [ plateNumber, setPlateNumber ] = useState('');
