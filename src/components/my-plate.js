@@ -35,7 +35,7 @@ export const MyPlate = (props) => {
     let url = `${API_BASE_URL}/plates/${localStorage.myState}/${localStorage.myPlate}`;
     const response = await fetch(url);
     const plate  = await response.json();
-    setPlate(plate[0])
+    setPlate(plate)
     return plate
   }
 
