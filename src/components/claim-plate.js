@@ -1,14 +1,15 @@
-import ReviewForm from './review-form';
-import React, { useState, useEffect } from 'react';
+// import ReviewForm from './review-form';
+import React, { useState/* , useEffect  */} from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
-import Plate from './plate';
-import ReviewList from './ReviewList';
+// import Plate from './plate';
+// import ReviewList from './ReviewList';
 
 export const claimPlate = (props) => {
   const [ plateNumber, setPlateNumber ] = useState('');
   const [ plateState, setPlateState ] = useState('');
-  const [ plates, setPlates ] = useState("");
+  const [ plates, setPlates ] = useState('');
+  const [ claimedPlate, setClaimedPlate ] = useState('');
 
   const handleLinkClick = e => {
     e.preventDefault();
@@ -31,7 +32,8 @@ export const claimPlate = (props) => {
       return res.json();
     })
     .then(data => {
-      console.log('DATA CLAIM PLATE:', data)
+      console.log('DATA CLAIM PLATE link:', data)
+      console.log('=== data claim plate ==', data[0])
       return data
     })
     .catch(err => console.log(err))
@@ -42,10 +44,10 @@ export const claimPlate = (props) => {
     e.preventDefault(); 
     // if (!plateNumber ||  plateNumber === '') return;
     // if (!plateState ||  plateState === '') return;
-    console.log('clicked search btn', plateNumber)
-    console.log(plates);
+    // console.log('clicked search btn', plateNumber)
+    // console.log(plates);
 
-    console.log(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`)
+    // console.log(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`)
     return fetch(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`, {
       method: 'GET',
       headers: {
@@ -59,8 +61,9 @@ export const claimPlate = (props) => {
       return res.json();
       })
     .then(data => {
-      console.log(data);
+      console.log('data on searchPlate',data);
       setPlates(data[0])
+
     })
     .catch(err => {
       console.log(err)
