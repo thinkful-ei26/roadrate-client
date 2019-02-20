@@ -72,8 +72,8 @@ export const Dashboard = (props) => {
 
       {/* RENDER MY PLATES BTN if a user has a plate */}
       { localStorage.myPlate && localStorage.myState ? (
-        <Link to="/my-plate">
-          <button>MyPlate</button>
+        <Link to="/my-plates">
+          <button>MyPlates</button>
         </Link>
       ) : ( <p>No plates associated</p> )}
 
