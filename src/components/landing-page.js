@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 // import { Button, Icon } from 'react-materialize';
-import Header from './header';
+// import Header from './header';
 import Nav from './nav';
 import ReviewList from './ReviewList';
 import '../styles/landing.css';

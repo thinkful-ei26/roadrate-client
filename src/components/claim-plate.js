@@ -1,9 +1,6 @@
-// import ReviewForm from './review-form';
-import React, { useState/* , useEffect  */} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
-// import Plate from './plate';
-// import ReviewList from './ReviewList';
 
 export const claimPlate = (props) => {
   const [ plateNumber, setPlateNumber ] = useState('');
@@ -28,7 +25,6 @@ export const claimPlate = (props) => {
       })
     })
     .then(res => {
-      console.log('res inside handleLinkClick', res);
       return res.json();
     })
     .then(data => {
@@ -36,7 +32,8 @@ export const claimPlate = (props) => {
       console.log('=== data claim plate ==', data[0])
       return data
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      return err})
   }
 
   /* ========= SEARCH LICENSE PLATE TO LINK ========== */
@@ -76,9 +73,9 @@ export const claimPlate = (props) => {
       })
       };
 
-  console.log('state of plates >>>', plates);
-  console.log('plateNumber >>>', plateNumber);
-  console.log('plateState >>>', plateState);
+  // console.log('state of plates >>>', plates);
+  // console.log('plateNumber >>>', plateNumber);
+  // console.log('plateState >>>', plateState);
 
   let plateTable = (
     <table>

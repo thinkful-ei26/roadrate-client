@@ -15,7 +15,6 @@ export const Dashboard = (props) => {
       const res = await fetch(
         `${API_BASE_URL}/users/?search=${localStorage.user}`
       );
-
       // Pull out the data as usual
       const [ user ] = await res.json();
 
@@ -63,9 +62,11 @@ export const Dashboard = (props) => {
             }}>Logout</a> */}
         </Link >
       </div>
-
+      <Link to="/create-plate">
+        <button>Register A New Plate</button>
+      </Link>
       <Link to="/claim-plate">
-        <button>Claim A Plate</button>
+        <button>Claim An Existing Plate</button>
       </Link>
 
       {/* IF THERE IS A CLAIMED PLATE THEN RENDER THIS BUTTON */}
