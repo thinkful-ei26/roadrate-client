@@ -51,7 +51,7 @@ export const MyPlate = (props) => {
 
   let rating;
   let review;
-  let ownerComment;
+ 
 
   // console.log('karma', plate)
 
@@ -59,6 +59,7 @@ export const MyPlate = (props) => {
   if (reviews) {
     review = reviews.map((review, index) => { 
       console.log(review._id)
+      let ownerComment;
       if (review.isPositive === 'true') {
         rating = <Icon>thumb_up</Icon>
       } else {
