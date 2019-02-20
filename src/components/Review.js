@@ -41,17 +41,19 @@ export const Review = (props) => {
     )
 
     let rating;
-    let driverComment;
+   
     if (reviews) {
+      console.log(reviews);
        review = reviews.map((review, index) => { 
+        let driverComment;
         if (review.isPositive === 'true') {
           rating = <Icon>thumb_up</Icon>
         } else {
           rating = <Icon>thumb_down</Icon>
         }
 
-        if (review.comment) {
-          driverComment = <p> Driver Response: {review.comment}</p>
+        if (review.ownerResponse) {
+          driverComment = <p> Driver Response: {review.ownerResponse}</p>
         } 
 
         if(redirect) {
@@ -87,7 +89,7 @@ export const Review = (props) => {
             {/* Do we want to add information about how long ago this was posted, i.e. 2m or 2h */}
             
             <p className='message'>Review: {review.message}</p>
-            <p>{driverComment}</p>
+            {driverComment}
           </li>
         )
       });
