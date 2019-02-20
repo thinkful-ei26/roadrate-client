@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import Spinner from 'react-spinkit';
 import '../styles/reviews.css'
 import { Redirect } from 'react-router-dom';
-
-
 import { Icon } from 'react-materialize';
 
 export const Review = (props) => {

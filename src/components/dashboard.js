@@ -95,7 +95,7 @@ export const Dashboard = (props) => {
       ) : ( <p>No plates associated</p> )} */}
 
       { storePlates.length >= 0 ? (
-        <Link to="/my-plates">
+        <Link to="/plate-list">
           <button>MyPlates</button>
         </Link>
       ) : ( <p>No plates associated</p> )}
