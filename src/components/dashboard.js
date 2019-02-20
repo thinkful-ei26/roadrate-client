@@ -67,9 +67,11 @@ export const Dashboard = (props) => {
             }}>Logout</a> */}
         </Link >
       </div>
-
+      <Link to="/create-plate">
+        <button>Register A New Plate</button>
+      </Link>
       <Link to="/claim-plate">
-        <button>Claim A Plate</button>
+        <button>Claim An Existing Plate</button>
       </Link>
 
       <button id='review-form-button' 

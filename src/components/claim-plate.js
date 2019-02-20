@@ -24,14 +24,13 @@ export const claimPlate = (props) => {
       })
     })
     .then(res => {
-      console.log('res inside handleLinkClick', res);
       return res.json();
     })
     .then(data => {
-      console.log('DATA CLAIM PLATE:', data)
       return data
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      return err})
   }
 
   /* ========= SEARCH LICENSE PLATE TO LINK ========== */
@@ -39,8 +38,8 @@ export const claimPlate = (props) => {
     e.preventDefault(); 
     // if (!plateNumber ||  plateNumber === '') return;
     // if (!plateState ||  plateState === '') return;
-    console.log('clicked search btn', plateNumber)
-    console.log(plates);
+    // console.log('clicked search btn', plateNumber)
+    // console.log(plates);
 
     console.log(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`)
     return fetch(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`, {
@@ -70,9 +69,9 @@ export const claimPlate = (props) => {
       })
       };
 
-  console.log('state of plates >>>', plates);
-  console.log('plateNumber >>>', plateNumber);
-  console.log('plateState >>>', plateState);
+  // console.log('state of plates >>>', plates);
+  // console.log('plateNumber >>>', plateNumber);
+  // console.log('plateState >>>', plateState);
 
   let plateTable = (
     <table>
