@@ -5,6 +5,7 @@ import LandingPage from './landing-page';
 import Dashboard from './dashboard';
 import LoginForm from './login-form';
 import ClaimPlate from './claim-plate';
+import CreatePlatePage from './create-plate-page';
 import Plate from './plate';
 import About from './about';
 import MyReviews from './my-reviews'
@@ -35,6 +36,7 @@ export const App = () => {
           <Route exact path="/register" component={RegistrationPage} />
         )}
 			<Route exact path="/" component={LandingPage} />
+      <Route exact path="/create-plate" component={CreatePlatePage} />
       <Route exact path="/plate" component={Plate} />
 			<Route exact path="/login" component={LoginForm} storeUser={storeUser} />
 			<Route exact path="/about" component={About} storeUser={storeUser} />

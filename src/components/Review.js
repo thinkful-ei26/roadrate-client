@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import Plate from './plate';
 import Spinner from 'react-spinkit';
 import '../styles/reviews.css'
-import {Redirect, Link, Route} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 import { Icon } from 'react-materialize';
@@ -19,7 +18,7 @@ export const Review = (props) => {
 
     const { searchReviews, searchInput } = props;
     const reviews = props.reviews;
-    console.log('props on Review component: ', props);
+    // console.log('props on Review component: ', props);
 
     //Setting the time up for todays date
     let today = new Date();
@@ -42,13 +41,6 @@ export const Review = (props) => {
         <Spinner name="line-spin-fade-loader" color="green"/>
       </div>
     )
-
-    // const handleClick = () => {
-    //   console.log(redirect)
-    //   console.log('clicked')
-      
-    //   console.log(redirect)
-    // }
 
     let rating;
     let driverComment;
@@ -87,7 +79,6 @@ export const Review = (props) => {
                 
                 <p id='review-time'>{today}</p>
               </article>
-              {/* <a class="waves-effect waves-light btn-small" onClick={handleClick}> {review.plateNumber}</a> */}
               <article className='review-rating'>
                 <p className='rating'>{rating}</p>
               </article>
