@@ -69,10 +69,15 @@ export const Dashboard = (props) => {
         <button>Claim An Existing Plate</button>
       </Link>
 
-      {/* IF THERE IS A CLAIMED PLATE THEN RENDER THIS BUTTON */}
-      <Link to="/my-plate">
-        <button>MyPlate</button>
-      </Link>
+      {/* RENDER MY PLATES BTN if a user has a plate */}
+      { localStorage.myPlate && localStorage.myState ? (
+        <Link to="/my-plate">
+          <button>MyPlate</button>
+        </Link>
+      ) : (
+       <p>No plates associated</p>
+      )
+      }
 
       <button id='review-form-button' 
         onClick={(e) => {
@@ -81,9 +86,8 @@ export const Dashboard = (props) => {
         }}>
         Add a review
       </button>
-     
+    
       {reviewForm}
-      {/* <Plate/> */}
       <ReviewList />
     
     </div> 

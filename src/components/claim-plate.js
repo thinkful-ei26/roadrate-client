@@ -6,7 +6,6 @@ export const claimPlate = (props) => {
   const [ plateNumber, setPlateNumber ] = useState('');
   const [ plateState, setPlateState ] = useState('');
   const [ plates, setPlates ] = useState('');
-  const [ claimedPlate, setClaimedPlate ] = useState('');
 
   const handleLinkClick = e => {
     e.preventDefault();
@@ -25,6 +24,8 @@ export const claimPlate = (props) => {
       })
     })
     .then(res => {
+      localStorage.setItem('myPlate', plateNumber.toUpperCase())
+      localStorage.setItem('myState', plateState.toUpperCase())
       return res.json();
     })
     .then(data => {
