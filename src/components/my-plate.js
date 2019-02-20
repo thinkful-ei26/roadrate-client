@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from 'react';
 import {API_BASE_URL} from '../config';
 import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
+import OwnerResponseForm from './owner-response-form';
 
 // fetch call, get all reviews about that plateid === _id from plate 
 // button "comment" on review => comment form
@@ -21,6 +22,7 @@ import { Link } from 'react-router-dom';
 export const MyPlate = (props) => {
   const [ reviews, setReviews] = useState("");
   const [ plate, setPlate ] = useState("");
+  const [ submitResponse, setSubmitResponse] = useState(false);
 
   const fetchReviews = async () => {
     let url = `${API_BASE_URL}/reviews/${localStorage.myState}/${localStorage.myPlate}`;
@@ -49,21 +51,33 @@ export const MyPlate = (props) => {
 
   let rating;
   let review;
-  let driverComment;
+ 
 
   // console.log('karma', plate)
 
+
   if (reviews) {
     review = reviews.map((review, index) => { 
+      console.log(review._id)
+      let ownerComment;
       if (review.isPositive === 'true') {
         rating = <Icon>thumb_up</Icon>
       } else {
         rating = <Icon>thumb_down</Icon>
       }
 
-      if (review.comment) {
-        driverComment = <p> Driver Response: {review.comment}</p>
-      } 
+      let responseButton;
+      if (review.ownerResponse) {
+        ownerComment = <p>Driver Response: {review.ownerResponse}</p>
+        responseButton = <p></p>;
+      } else {
+        responseButton = <button onClick={() => setSubmitResponse(true)}>Leave a response</button>
+      }
+
+      let responseForm;
+      if (submitResponse) {
+        responseForm = <OwnerResponseForm reviewId={review._id}/>
+      }
 
       return (
         <li className='review-item' key={review._id} tabIndex='0'>
@@ -84,7 +98,10 @@ export const MyPlate = (props) => {
           {/* Do we want to add information about how long ago this was posted, i.e. 2m or 2h */}
           
           <p className='message'>Review: {review.message}</p>
-          <p>{driverComment}</p>
+          {ownerComment}
+          {responseButton}
+          {submitResponse}
+          {responseForm}
         </li>
       )
     })
@@ -103,6 +120,7 @@ export const MyPlate = (props) => {
       </div>
       <ul className='reviews'>
         {review}
+        
       </ul>
     </div>
 
