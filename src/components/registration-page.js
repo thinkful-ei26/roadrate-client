@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import RegistrationForm from './registration-form';
 
 export function RegistrationPage(props) {

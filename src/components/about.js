@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ReactModal from "react-modal";
-import { Button, Icon } from 'react-materialize';
+import { Button } from 'react-materialize';
 import { useModal }  from 'react-modal-hook';
 
 ReactModal.setAppElement('#root')
 
-const customStyles = { content : { 
-    top : '50%', left : '50%', right : 'auto',bottom : 'auto',marginRight : '-50%',transform : 'translate(-50%, -50%)' } };
+// const customStyles = { content : { 
+//     top : '50%', left : '50%', right : 'auto',bottom : 'auto',marginRight : '-50%',transform : 'translate(-50%, -50%)' } };
 
 export const About = () => {
 
