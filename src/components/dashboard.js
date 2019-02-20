@@ -18,7 +18,7 @@ export const Dashboard = (props) => {
       const res = await fetch(
         `${API_BASE_URL}/users/?search=${localStorage.user}`
       );
-
+ 
       // console.log(`${API_BASE_URL}/users/?search=${localStorage.user}`)
       // Pull out the data as usual
       const [ user ] = await res.json();
