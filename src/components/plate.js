@@ -16,12 +16,10 @@ import { Link } from 'react-router-dom';
 
 export const Plate = (props) => {
   const [ reviews, setReviews] = useState("");
-
   const [ plate, setPlate ] = useState("");
-  // const [searchReviews, setSearchReviews] = useState([]);
 
-  console.log(localStorage.currentPlateState)
-  console.log(localStorage.currentPlateNumber)
+  // console.log(localStorage.currentPlateState)
+  // console.log(localStorage.currentPlateNumber)
 
     const fetchReviews = async () => {
       let url = `${API_BASE_URL}/reviews/${localStorage.currentPlateState}/${localStorage.currentPlateNumber}`;
@@ -53,7 +51,6 @@ export const Plate = (props) => {
     let driverComment;
 
     console.log('karma', plate)
-
 
     if (reviews) {
       review = reviews.map((review, index) => { 
@@ -96,14 +93,18 @@ export const Plate = (props) => {
   return (
     // ==== When a User clicks on a plate link inside the review page, this will render
     <div className="plate">
-        <h4>{localStorage.currentPlateNumber}</h4>
-        <div className="karma-wrapper">
-          <p className="karma-score">Karma Score: {plate.karma}</p>
-        </div>
-        <ul className='reviews'>
-          {review}
-        </ul>
+      <Link to="/" className="plates-back-link">
+          <button>Go Back</button>
+      </Link>
+      <h4>{localStorage.currentPlateNumber}</h4>
+      <p>{localStorage.currentPlateState}</p>
+      <div className="karma-wrapper">
+        <p className="karma-score">Karma Score: {plate.karma}</p>
       </div>
+      <ul className='reviews'>
+        {review}
+      </ul>
+    </div>
 
   );
 };

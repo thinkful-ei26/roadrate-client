@@ -43,8 +43,6 @@ export const Review = (props) => {
       </div>
     )
 
-
-
     // const handleClick = () => {
     //   console.log(redirect)
     //   console.log('clicked')
@@ -89,7 +87,7 @@ export const Review = (props) => {
                 
                 <p id='review-time'>{today}</p>
               </article>
-              <a class="waves-effect waves-light btn-small" onClick={handleClick}> {review.plateNumber}</a>
+              {/* <a class="waves-effect waves-light btn-small" onClick={handleClick}> {review.plateNumber}</a> */}
               <article className='review-rating'>
                 <p className='rating'>{rating}</p>
               </article>

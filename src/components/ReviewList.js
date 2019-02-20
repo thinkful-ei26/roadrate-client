@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../config';
 import Review from './Review';
-
 import '../styles/review-list.css';
 
 export const ReviewList = (props) => {
@@ -11,7 +10,6 @@ export const ReviewList = (props) => {
   //I need to be able to get an array of reviews and set it to the reviews variable below.  I then need to pass reviews as a prop from dashboard to ReviewList so I can map through the data and send those details as props to Review in order to render multiple Reviews at once on the dashboard.
   const [reviews, setReviews] = useState("");
   const [searchInput, setSearchInput] = useState("");
-  // const [searchReviews, setSearchReviews] = useState([]);
 
     const fetchReviews = async () => {
       let url = `${API_BASE_URL}/reviews`;
@@ -42,12 +40,9 @@ export const ReviewList = (props) => {
         .then(data => {
           console.log('DATA FROM SEARCH-REVIEWS:' ,data)
           setReviews(data)
-          // setSearchReviews(data)
         })
         .catch(err => console.log(err))
     }
-
-    // console.log(searchReviews)
 
     return (
       <div className="review-list-div">
