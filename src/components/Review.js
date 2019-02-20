@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import Plate from './plate';
 import Spinner from 'react-spinkit';
 import '../styles/reviews.css'
-import {Redirect, Link, Route} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 import { Icon } from 'react-materialize';

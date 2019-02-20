@@ -1,9 +1,6 @@
-import ReviewForm from './review-form';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
-import Plate from './plate';
-import ReviewList from './ReviewList';
 
 export const claimPlate = (props) => {
   const [ plateNumber, setPlateNumber ] = useState('');

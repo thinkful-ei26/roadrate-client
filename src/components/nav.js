@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LoginModal from './login-modal.js';
+// import LoginModal from './login-modal.js';
 import About from './about.js';
 import '../styles/nav.css';
 
