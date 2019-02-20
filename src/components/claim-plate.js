@@ -30,7 +30,10 @@ export const claimPlate = (props) => {
       console.log('res inside handleLinkClick', res);
       return res.json();
     })
-    .then(data => console.log('DATA CLAIM PLATE:', data))
+    .then(data => {
+      console.log('DATA CLAIM PLATE:', data)
+      return data
+    })
     .catch(err => console.log(err))
   }
 
