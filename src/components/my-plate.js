@@ -52,6 +52,7 @@ return (
      <Link to="/" className="plates-back-link">
         <button>Go Back</button>
       </Link>
+      <h2>My Plate</h2>
         {/* <h4>{props.plateName}</h4>
         <div className="karma-wrapper">
           <p className="karma-score">Karma Score: #Number</p>
