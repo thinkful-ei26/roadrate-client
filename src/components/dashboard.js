@@ -3,15 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
 import '../styles/dashboard.css';
-
-// import Plate from './plate';
 import ReviewList from './ReviewList';
 
 export const Dashboard = (props) => {
   const [username, setUsername] = useState("");
   const [userId, setUserId ] = useState("");
   const [name, setName ] = useState("");
-  // const [searchInput, setSearchInput] = useState("");
   const [ submitReview, setSubmitReview ] = useState(false);
 
     const storeUser = async () => {
@@ -19,7 +16,6 @@ export const Dashboard = (props) => {
         `${API_BASE_URL}/users/?search=${localStorage.user}`
       );
 
-      // console.log(`${API_BASE_URL}/users/?search=${localStorage.user}`)
       // Pull out the data as usual
       const [ user ] = await res.json();
 
@@ -70,6 +66,11 @@ export const Dashboard = (props) => {
 
       <Link to="/claim-plate">
         <button>Claim A Plate</button>
+      </Link>
+
+      {/* IF THERE IS A CLAIMED PLATE THEN RENDER THIS BUTTON */}
+      <Link to="/my-plate">
+        <button>MyPlate</button>
       </Link>
 
       <button id='review-form-button' 
