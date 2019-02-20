@@ -36,20 +36,30 @@ export const PlateList = (props) => {
 
   console.log('plates', plates);
   let plate;
+
+  const myPlateClick = (plate) => {
+    console.log('plate inside li',plate)
+    localStorage.setItem('myPlate', plate.plateNumber)
+    localStorage.setItem('myState', plate.plateState)
+    return plate
+  }
   
    if (plates) {
     plate = plates.map((plate, index) => { 
       console.log('plates exists', plate)
       return (
-        <li className='plate-item' key={plate._id} tabIndex='0'>
+        <li className='plate-item' key={index} tabIndex='0'>
           <div className='plate-wrapper'>
-            <button>{plate.plateNumber}</button>
+            <button 
+              onClick={ () => myPlateClick(plate) }
+            >
+              {plate.plateNumber}
+            </button>
           </div>
         </li>
       )
     })
   };
-
 
   return (
     <div className="my-plates">
