@@ -5,6 +5,7 @@ import { API_BASE_URL } from '../config';
 export const CreatePlateForm = () => {
     const [ plateNumber, setPlateNumber ] = useState('');
     const [ plateState, setPlateState ] = useState('');
+    const [ successMessage, setSuccessMessage ] = useState('');
     const [ plate, setPlate ] = useState("");
 
     const storePlate = plate => {
@@ -14,13 +15,12 @@ export const CreatePlateForm = () => {
 
     console.log('plate:', storePlate);
 
-    const handleClick = () => {
-      if (localStorage.myPlate){
-        return (
-          new alert ('Congrats! Your plate has been registered.')
-        )
-      }   
-    }
+    // const handleClick = () => {
+    //   if (localStorage.myPlate){
+    //     success = <p>'Congrats! Your plate has been registered.'</p>
+               
+    //   }   
+    // }
 
     //put request to regular plate endpoint
     //find on the query to match the 
@@ -29,6 +29,7 @@ export const CreatePlateForm = () => {
         const userId = localStorage.userId;
 
         localStorage.setItem('myPlate', plateNumber)
+        localStorage.setItem('myState', plateState)
 
         return fetch(`${API_BASE_URL}/plates`, {
             method: 'POST',
@@ -45,10 +46,13 @@ export const CreatePlateForm = () => {
           })
           .then(res => {
             console.log('res inside handleSubmit', res);
+
+           
             return res.json();
           })
           .then(data => {
             console.log('DATA REGISTER PLATE:', data)
+            setSuccessMessage('Congrats! Your plate was registered.')
             return data
           })
           .catch(err => console.log(err))
@@ -140,9 +144,10 @@ export const CreatePlateForm = () => {
                 <option value="WY">Wyoming</option>
               </select>
             </label>
-            <button className="new-plate-submit" onClick={handleClick}>
+            <button className="new-plate-submit">
                 Register
             </button>
+            <p>{successMessage}</p>
             <Link to="/" className="plates-back-link">
                 <button>Go Back</button>
             </Link>
