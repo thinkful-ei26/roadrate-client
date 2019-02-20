@@ -10,12 +10,42 @@ export const claimPlate = (props) => {
   const [ plateState, setPlateState ] = useState('');
   const [ plates, setPlates ] = useState("");
 
+  const handleLinkClick = e => {
+    e.preventDefault();
+    const userId = localStorage.userId;
+
+    return fetch(`${API_BASE_URL}/plates/${localStorage.userId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${localStorage.authToken}`
+      },
+      body: JSON.stringify({
+        userId,
+        plateNumber
+      })
+    })
+    .then(res => {
+      console.log('res inside handleLinkClick', res);
+      return res.json();
+    })
+    .then(data => {
+      console.log('DATA CLAIM PLATE:', data)
+      return data
+    })
+    .catch(err => console.log(err))
+  }
+
+  /* ========= SEARCH LICENSE PLATE TO LINK ========== */
   const handleSubmit = e => {
     e.preventDefault(); 
-    if (!plateNumber || !plateState ) return;
+    // if (!plateNumber ||  plateNumber === '') return;
+    // if (!plateState ||  plateState === '') return;
     console.log('clicked search btn', plateNumber)
     console.log(plates);
 
+    console.log(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`)
     return fetch(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`, {
       method: 'GET',
       headers: {
@@ -73,7 +103,14 @@ export const claimPlate = (props) => {
           <td>{plates.karma}</td>
           {/* need to get reviews.length of all of the reviews that have ever mentioned this license plate */}
           <td>0</td>
-          <td><button className='link-to-user-button'>Link</button></td>
+          <td>
+            <button 
+              className='link-to-user-button' 
+              onClick={(e) => handleLinkClick(e)}
+            >
+              Link
+            </button>
+          </td>
         </tr>
       </table>
     )
@@ -122,7 +159,11 @@ export const claimPlate = (props) => {
         </label>
 
         <label htmlFor='plateState'>State: 
-          <select className='browser-default' value={plateState} onChange={(e) => setPlateState(e.target.value)}>
+          <select 
+            className='browser-default' 
+            value={plateState} 
+            onChange={(e) => setPlateState(e.target.value)}
+          >
             <option value=''>Select State</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -181,6 +222,7 @@ export const claimPlate = (props) => {
         <button
           className="search-btn" 
           aria-label="search-btn"
+          disabled={!plateNumber || !plateState}
         >
           search
         </button>

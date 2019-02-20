@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Plate from './plate';
 import Spinner from 'react-spinkit';
 import '../styles/reviews.css'
+import {Redirect, Link, Route} from 'react-router-dom';
+
 
 import { Icon } from 'react-materialize';
 
@@ -13,7 +15,9 @@ export const Review = (props) => {
     //   imgSrc = review.img;
     // }
 
-    const { searchReviews, searchInput }= props;
+    const [ redirect, setRedirect ] = useState(false)
+
+    const { searchReviews, searchInput } = props;
     const reviews = props.reviews;
     console.log('props on Review component: ', props);
 
@@ -39,6 +43,13 @@ export const Review = (props) => {
       </div>
     )
 
+    // const handleClick = () => {
+    //   console.log(redirect)
+    //   console.log('clicked')
+      
+    //   console.log(redirect)
+    // }
+
     let rating;
     let driverComment;
     if (reviews) {
@@ -52,22 +63,40 @@ export const Review = (props) => {
         if (review.comment) {
           driverComment = <p> Driver Response: {review.comment}</p>
         } 
+
+        if(redirect) {
+
+          return <Redirect to='/plate'/>
+        }
+
+        const handleClick = () => {
+          localStorage.setItem('currentPlateState', review.plateState)
+          localStorage.setItem('currentPlateNumber', review.plateNumber)
+          setRedirect(true)
+        }
     
         return (
           <li className='review-item' key={review._id} tabIndex='0'>
-            <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
-            <Plate 
-              plateName={review.plateNumber} 
-              reviews={reviews}
-              // karma score
-            >
-              {review.plateNumber}
-            </Plate><br/>
+            <article className='review-header'>
+              <article className='review-title'>
+                <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
+                <button onClick={()=>handleClick()}> 
+                  {review.plateNumber} {review.plateState}
+                </button>
+               
+                
+                <p id='review-time'>{today}</p>
+              </article>
+              {/* <a class="waves-effect waves-light btn-small" onClick={handleClick}> {review.plateNumber}</a> */}
+              <article className='review-rating'>
+                <p className='rating'>{rating}</p>
+              </article>
+            </article>
             {/* <h1 className='plate-number'>{review.plateNumber}</h1><br/> */}
             {/* <img className='review-img' src='https://i.pinimg.com/236x/29/55/38/295538a452d701c9189d0fa8f5b36938--white-truck-bad-parking.jpg' alt='review'></img> */}
-            <p className='rating'>{rating}</p>
+            
             {/* Do we want to add information about how long ago this was posted, i.e. 2m or 2h */}
-            <p className='time'>{today}</p>
+            
             <p className='message'>Review: {review.message}</p>
             <p>{driverComment}</p>
           </li>

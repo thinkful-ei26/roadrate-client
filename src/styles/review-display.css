@@ -8,6 +8,10 @@
   margin: auto;
 }
 
+#review-search {
+  margin: 200px;
+}
+
 .box {
   display: flex;
   width: 220px;
