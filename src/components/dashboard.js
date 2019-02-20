@@ -10,6 +10,24 @@ export const Dashboard = (props) => {
   const [userId, setUserId ] = useState("");
   const [name, setName ] = useState("");
   const [ submitReview, setSubmitReview ] = useState(false);
+  const [ storePlates, setStorePlates ] = useState([]);
+
+  const fetchPlates = async (storePlates) => {
+    let url = `${API_BASE_URL}/plates/all/${localStorage.userId}`;
+    console.log(url)
+    const response = await fetch(url);
+    const plates = await response.json();
+    console.log('plateS on fetchPlates', plates)
+    setStorePlates(plates)
+    storePlates = setStorePlates(plates)
+    return plates
+  }
+
+  useEffect(() => {
+    fetchPlates(storePlates);
+  }, []);
+
+  console.log('store pLATES',storePlates)
 
     const storeUser = async () => {
       const res = await fetch(
@@ -69,9 +87,14 @@ export const Dashboard = (props) => {
         <button>Claim An Existing Plate</button>
       </Link>
 
-
-      {/* RENDER MY PLATES BTN if a user has a plate */}
+      {/* RENDER MY PLATES BTN if a user has a plate
       { localStorage.myPlate && localStorage.myState ? (
+        <Link to="/my-plates">
+          <button>MyPlates</button>
+        </Link>
+      ) : ( <p>No plates associated</p> )} */}
+
+      { storePlates.length >= 0 ? (
         <Link to="/my-plates">
           <button>MyPlates</button>
         </Link>
