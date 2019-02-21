@@ -12,8 +12,6 @@ export const Dashboard = (props) => {
   const [ submitReview, setSubmitReview ] = useState(false);
   const [ storePlates, setStorePlates ] = useState([]);
 
-  
-
   const storeUser = async (userId, name, storePlates) => {
     const res = await fetch(
       `${API_BASE_URL}/users/?search=${localStorage.user}`
@@ -71,12 +69,12 @@ export const Dashboard = (props) => {
       </div>
 
       <div className="dashboard-nav">
-        <Link to="/create-plate">
+        {/* <Link to="/create-plate">
           <button>Register A New Plate</button>
-        </Link>
+        </Link> */}
 
         <Link to="/claim-plate">
-          <button>Claim An Existing Plate</button>
+          <button>Claim A Plate</button>
         </Link>
 
         <Link to="/plate-list">
