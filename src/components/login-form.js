@@ -42,6 +42,14 @@ export const LoginForm = () => {
     return localStorage.getItem('authToken')
   }
 
+  const noEntry = () => {
+    return (
+      <div>
+        <p>Not a registered user</p>
+      </div>
+    )
+  }
+
   const handleSubmit = e => {
     e.preventDefault(); 
 
@@ -61,8 +69,9 @@ export const LoginForm = () => {
     }
 
     if (localStorage.authToken === undefined) {
-      return new alert ('Not a valid user')
+      return noEntry
     }
+
     else {
       return fetch(`${API_BASE_URL}/login`, {
         method: 'POST',
