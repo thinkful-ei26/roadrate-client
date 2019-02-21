@@ -1,8 +1,6 @@
 import React, { useState } from 'react'; 
 import { API_BASE_URL } from '../config';
 import { Link, Redirect } from 'react-router-dom';
-// import ReactModal from "react-modal";
-// import { useModal }  from 'react-modal-hook';
 import { Button, Icon } from 'react-materialize';
 import Input from 'react-materialize/lib/Input';
 
@@ -36,23 +34,22 @@ export const LoginForm = () => {
     .then(res => {
       console.log('res', res.body)
       return res.json();
-      })
-
-      .then( ( auth ) => {  
-        localStorage.setItem("authToken", auth.authToken);
-        setAuthToken(auth)
-      return auth;
-      })
-      .catch(err => {
-        const { code } = err;
-        const message = code === 401 ? 'Incorrect username or password' : 'Unable to login, please try again';
-        
-        return Promise.reject(
-          new Error({
-            _error: message
-          })
-        )
-      })
+    })
+    .then( ( auth ) => {  
+      localStorage.setItem("authToken", auth.authToken);
+      setAuthToken(auth)
+    return auth;
+    })
+    .catch(err => {
+      const { code } = err;
+      const message = code === 401 ? 'Incorrect username or password' : 'Unable to login, please try again';
+      
+      return Promise.reject(
+        new Error({
+          _error: message
+        })
+      )
+    })
   };
 
   return(

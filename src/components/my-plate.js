@@ -24,7 +24,7 @@ export const MyPlate = (props) => {
     let url = `${API_BASE_URL}/reviews/${localStorage.myState}/${localStorage.myPlate}`;
     const response = await fetch(url);
     const reviews  = await response.json();
-    console.log(reviews)
+    // console.log(reviews)
     setReviews(reviews)
     return reviews
   }
@@ -33,7 +33,7 @@ export const MyPlate = (props) => {
     let url = `${API_BASE_URL}/plates/${localStorage.myState}/${localStorage.myPlate}`;
     const response = await fetch(url);
     const [ plate ]  = await response.json();
-    console.log('plate on fetchKarma', plate)
+    // console.log('plate on fetchKarma', plate)
     setPlate(plate)
     return plate
   }
@@ -43,8 +43,8 @@ export const MyPlate = (props) => {
     fetchKarma();
   }, []);
 
-  console.log('reviews"', reviews);
-  console.log('plate karma', plate)
+  // console.log('reviews"', reviews);
+  // console.log('plate karma', plate)
 
   let rating;
   let review;
