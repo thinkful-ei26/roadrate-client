@@ -12,22 +12,22 @@ export const Dashboard = (props) => {
   const [ submitReview, setSubmitReview ] = useState(false);
   const [ storePlates, setStorePlates ] = useState([]);
 
+  let allPlates;
+  
   const fetchPlates = async (storePlates) => {
     let url = `${API_BASE_URL}/plates/all/${localStorage.userId}`;
     console.log(url)
     const response = await fetch(url);
     const plates = await response.json();
-    console.log('plateS on fetchPlates', plates)
+    console.log('plates on fetchPlates', plates)
     setStorePlates(plates)
     storePlates = setStorePlates(plates)
     return plates
   }
-
+  
   useEffect(() => {
     fetchPlates(storePlates);
   }, []);
-
-  console.log('store pLATES',storePlates)
 
     const storeUser = async () => {
       const res = await fetch(
@@ -94,11 +94,11 @@ export const Dashboard = (props) => {
         </Link>
       ) : ( <p>No plates associated</p> )} */}
 
-      { storePlates.length >= 0 ? (
+      {/* { storePlates.length >= 0 ? ( */}
         <Link to="/plate-list">
           <button>MyPlates</button>
         </Link>
-      ) : ( <p>No plates associated</p> )}
+      {/* ) : ( <p>No plates associated</p> )} */}
 
       <Link to='/my-reviews'>
         <button>My Reviews</button>

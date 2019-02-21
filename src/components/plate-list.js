@@ -1,6 +1,8 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
 import { Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import MyPlate from './my-plate';
 
 // fetch call, get all reviews about that plateid === _id from plate 
 // button "comment" on review => comment form
@@ -22,7 +24,7 @@ export const PlateList = (props) => {
 
   const fetchPlates = async () => {
     let url = `${API_BASE_URL}/plates/all/${localStorage.userId}`;
-    console.log(url)
+    console.log('fetching Plates on: ',url)
     const response = await fetch(url);
     const plates = await response.json();
     console.log('plateS on fetchPlates', plates)
@@ -34,7 +36,8 @@ export const PlateList = (props) => {
     fetchPlates();
   }, []);
 
-  console.log('plates', plates);
+  // console.log('plates', plates);
+  /* plate is still fetching/loading */
   let plate;
 
   const myPlateClick = (plate) => {
@@ -43,7 +46,7 @@ export const PlateList = (props) => {
     localStorage.setItem('myState', plate.plateState)
     return plate
   }
-  
+
    if (plates) {
     plate = plates.map((plate, index) => { 
       console.log('plates exists', plate)

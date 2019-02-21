@@ -4,10 +4,6 @@ import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import OwnerResponseForm from './owner-response-form';
 
-// fetch call, get all reviews about that plateid === _id from plate 
-// button "comment" on review => comment form
-// submit make PUT req to change the specific review
-
 // const customStyles = {
 //   content : {
 //     top                   : '50%',
@@ -36,35 +32,23 @@ export const MyPlate = (props) => {
   const fetchKarma = async () => {
     let url = `${API_BASE_URL}/plates/${localStorage.myState}/${localStorage.myPlate}`;
     const response = await fetch(url);
-    const plate  = await response.json();
+    const [ plate ]  = await response.json();
     console.log('plate on fetchKarma', plate)
     setPlate(plate)
     return plate
   }
 
-  // const fetchPlates = async () => {
-  //   let url = `${API_BASE_URL}/plates/all/${localStorage.userId}`;
-  //   const response = await fetch(url);
-  //   const plates = await response.json();
-  //   console.log('plateS on fetchPlates', plates)
-  //   setPlates(plates)
-  //   return plates
-  // }
-
   useEffect(() => {
     fetchReviews();
     fetchKarma();
-    // fetchPlates();
   }, []);
 
-  // console.log('plates', plates);
   console.log('reviews"', reviews);
+  console.log('plate karma', plate)
 
   let rating;
   let review;
  
-  // console.log('karma', plate)
-
   if (reviews) {
     review = reviews.map((review, index) => { 
       console.log(review._id)
@@ -116,21 +100,6 @@ export const MyPlate = (props) => {
     })
   };
 
-  //  if (plates) {
-  //    console.log('PLATES!!')
-  //   plate = plates.map((plate, index) => { 
-  //     console.log('plates exists', plate)
-  //     return (
-  //       <li className='plate-item' key={plate._id} tabIndex='0'>
-  //         <div className='plate-wrapper'>
-  //           <p>{plate.plateNumber}</p>
-  //         </div>
-  //       </li>
-  //     )
-  //   })
-  // };
-
-
   return (
     <div className="plate">
       <Link to="/" className="plates-back-link">
@@ -146,17 +115,6 @@ export const MyPlate = (props) => {
         
       </ul>
     </div>
-
-    // <div className="my-plates">
-    //   <Link to="/" className="plates-back-link">
-    //     <button>Go Back</button>
-    //   </Link>
-    //   <h2>My Plates</h2>
-    //   <ul className='plates'>
-    //     {plate}
-    //   </ul>
-    // </div>
-
   );
 };
 
