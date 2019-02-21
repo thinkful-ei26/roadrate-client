@@ -5,11 +5,49 @@ import { API_BASE_URL } from '../config';
 export const claimPlate = (props) => {
   const [ plateNumber, setPlateNumber ] = useState('');
   const [ plateState, setPlateState ] = useState('');
-  const [ plates, setPlates ] = useState('');
+  const [ successMessage, setSuccessMessage ] = useState('');
+  const [ plates, setPlates ] = useState('before search');
+
+
+  const handleRegisterPlate = (e) => {
+    e.preventDefault();
+    const userId = localStorage.userId;
+
+    localStorage.setItem('myPlate', plateNumber)
+    localStorage.setItem('myState', plateState)
+
+    return fetch(`${API_BASE_URL}/plates`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${localStorage.authToken}`
+      },
+      body: JSON.stringify({
+        plateNumber: plateNumber.toUpperCase(),
+        plateState,
+        userId,
+      })
+    })
+    .then(res => {
+      console.log('res inside handleSubmit', res);
+
+      return res.json();
+    })
+    .then(data => {
+      console.log('DATA REGISTER PLATE:', data)
+      setSuccessMessage('Congrats! Your plate was registered.')
+      return data
+    })
+    .catch(err => console.log(err))
+  }
 
   const handleLinkClick = e => {
     e.preventDefault();
     const userId = localStorage.userId;
+
+    localStorage.setItem('myPlate', plateNumber)
+    localStorage.setItem('myState', plateState)
 
     return fetch(`${API_BASE_URL}/plates/${localStorage.userId}`, {
       method: 'PUT',
@@ -20,21 +58,20 @@ export const claimPlate = (props) => {
       },
       body: JSON.stringify({
         userId,
-        plateNumber
+        plateNumber: plateNumber.toUpperCase(),
+        plateState
       })
     })
     .then(res => {
-      localStorage.setItem('myPlate', plateNumber.toUpperCase())
-      localStorage.setItem('myState', plateState.toUpperCase())
+      console.log('res inside handleLink >>>', res);
       return res.json();
     })
     .then(data => {
       console.log('DATA CLAIM PLATE link:', data)
-      console.log('=== data claim plate ==', data[0])
+      setSuccessMessage('Congrats! Your plate was registered.')
       return data
     })
-    .catch(err => {
-      return err})
+    .catch(err => console.log(err))
   }
 
   /* ========= SEARCH LICENSE PLATE TO LINK ========== */
@@ -70,30 +107,16 @@ export const claimPlate = (props) => {
     )
   };
 
-  // console.log('state of plates >>>', plates);
-  // console.log('plateNumber >>>', plateNumber);
-  // console.log('plateState >>>', plateState);
+  let plateTable;
 
-  let plateTable = (
-    <table>
-      <tr>
-        <th>License Plate</th>
-        <th>Karma Score</th> 
-        <th>Ratings</th>
-        <th>Link to Your Account</th>
-      </tr>
-      <p>Please Search for a Valid Plate</p>
-    </table>
-    )
-
-  if(plates) {
+  if (plates && plates !== 'before search') {
     plateTable = (
       <table>
         <tr>
           <th>License Plate</th>
           <th>Karma Score</th> 
           <th>Ratings</th>
-          <th>Link to Your Account</th>
+          <th>Register Your Plate</th>
         </tr>
         <tr>
           <td>{plates.plateNumber}</td>
@@ -111,6 +134,18 @@ export const claimPlate = (props) => {
         </tr>
       </table>
     )
+  } else if (plates) {
+    plateTable = (
+      <table>
+      <tr>
+        <th>License Plate</th>
+        <th>Karma Score</th> 
+        <th>Ratings</th>
+        <th>Register Your Plate</th>
+      </tr>
+      <p>Please Search for a Valid Plate</p>
+    </table>
+    )
   } else {
     plateTable = (
       <table>
@@ -118,10 +153,18 @@ export const claimPlate = (props) => {
           <th>License Plate</th>
           <th>Karma Score</th> 
           <th>Ratings</th>
-          <th>Link to Your Account</th>
+          <th>Register Your Plate</th>
         </tr>
-        <p>Sorry, but there was no match for that license plate number!</p>
-    </table>
+        <tr>
+          <td>{plateNumber}</td>
+          <td>No Karma Score Yet!</td>
+          {/* need to get reviews.length of all of the reviews that have ever mentioned this license plate */}
+          <td>No Reviews Yet!</td>
+          <td>
+          <button className='register-plate' onClick={(e) => handleRegisterPlate(e)}>Register Plate</button>
+          </td>
+        </tr>
+      </table>
     )
   }
 
@@ -230,7 +273,7 @@ export const claimPlate = (props) => {
     <div className="plate-table">
       {plateTable}
     </div>
-      
+    <p>{successMessage}</p>
     </div> 
   )
 }
