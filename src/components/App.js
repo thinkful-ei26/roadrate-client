@@ -15,9 +15,9 @@ import '../styles/App.css';
 import '../styles/index.css';
 
 export const App = () => {
-   const [user, setUser] = useState({username: null})
+  const [user, setUser] = useState({username: null})
  
-   const storeUser = user => {
+  const storeUser = user => {
     localStorage.getItem("user");
     setUser(user);
   };

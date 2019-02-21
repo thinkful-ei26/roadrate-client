@@ -2,8 +2,8 @@ import ReviewForm from './review-form';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
-import '../styles/dashboard.css';
 import ReviewList from './ReviewList';
+import '../styles/dashboard.css';
 
 export const Dashboard = (props) => {
   const [username, setUsername] = useState("");
@@ -12,50 +12,40 @@ export const Dashboard = (props) => {
   const [ submitReview, setSubmitReview ] = useState(false);
   const [ storePlates, setStorePlates ] = useState([]);
 
-  let allPlates;
-  
-  const fetchPlates = async (storePlates) => {
-    let url = `${API_BASE_URL}/plates/all/${localStorage.userId}`;
-    console.log(url)
-    const response = await fetch(url);
-    const plates = await response.json();
-    console.log('plates on fetchPlates', plates)
+  const storeUser = async (userId, name, storePlates) => {
+    const res = await fetch(
+      `${API_BASE_URL}/users/?search=${localStorage.user}`
+    );
+
+    // Pull out the data from response
+    const [ user ] = await res.json();
+    
+    // Store user info on localStorage
+    localStorage.setItem('userId', user.id)
+    setUserId(user.id) 
+    userId = user.id
+    
+    localStorage.setItem('name', user.name)
+    setName(user.name)
+    name = user.name
+    
+    // Fetch & store plates on local storage
+    const getplates = await fetch(`${API_BASE_URL}/plates/all/${user.id}`)
+    const plates = await getplates.json();
+   
     setStorePlates(plates)
-    storePlates = setStorePlates(plates)
-    return plates
+    localStorage.setItem('hasPlates', plates)
+    storePlates = plates
+   
+    return user;
   }
-  
+
   useEffect(() => {
-    fetchPlates(storePlates);
+    setUsername(localStorage.user)
+    storeUser(userId, name, storePlates);
   }, []);
 
-    const storeUser = async () => {
-      const res = await fetch(
-        `${API_BASE_URL}/users/?search=${localStorage.user}`
-      );
-      // Pull out the data as usual
-      const [ user ] = await res.json();
-
-      // console.log('JSON: ', user)
-      
-      localStorage.setItem("userId", user.id)
-      setUserId(user.id) 
-      localStorage.setItem("name", user.name)
-      setName(user.name)
-      
-      return user;
-    }
-
-    useEffect(() => {
-      setUsername(localStorage.user)
-      storeUser();
-    }, []);
-
-  // const handleSubmit = e => {
-  //   e.preventDefault(); 
-  //   if (!searchInput ) return;
-  //   console.log('clicked search btn', searchInput)
-  // }
+  console.log('storePlates on dashboard', storePlates)
 
   console.log('////', submitReview);
   let reviewForm;
@@ -67,6 +57,7 @@ export const Dashboard = (props) => {
     <div className="dashboard">
       <div className="dashboard-greeting">
         <p>Hi, {username}!</p>
+
         <Link to="/">
           <button className="logout" onClick={() => {
             props.logout()
@@ -74,44 +65,41 @@ export const Dashboard = (props) => {
             }}>
             Logout
           </button>
-          {/* <a class="waves-effect waves-teal btn-flat" onClick={() => {
-            props.logout()
-            localStorage.setItem("logout", true)
-            }}>Logout</a> */}
         </Link >
+
       </div>
-      <Link to="/create-plate">
-        <button>Register A New Plate</button>
-      </Link>
-      <Link to="/claim-plate">
-        <button>Claim An Existing Plate</button>
-      </Link>
 
-      {/* RENDER MY PLATES BTN if a user has a plate
-      { localStorage.myPlate && localStorage.myState ? (
-        <Link to="/my-plates">
-          <button>MyPlates</button>
+      <div className="dashboard-nav">
+        <Link to="/create-plate">
+          <button>Register A New Plate</button>
         </Link>
-      ) : ( <p>No plates associated</p> )} */}
 
-      {/* { storePlates.length >= 0 ? ( */}
+        <Link to="/claim-plate">
+          <button>Claim An Existing Plate</button>
+        </Link>
+
         <Link to="/plate-list">
           <button>MyPlates</button>
         </Link>
-      {/* ) : ( <p>No plates associated</p> )} */}
 
-      <Link to='/my-reviews'>
-        <button>My Reviews</button>
-      </Link>
+        <Link to='/my-reviews'>
+          <button>My Reviews</button>
+        </Link>
+        
+        <button 
+          id='review-form-button' 
+          onClick={ e => {
+              e.preventDefault(); 
+              setSubmitReview(!submitReview); 
+            }
+          }
+        >
+          Add a review
+        </button>
 
-      <button id='review-form-button' 
-        onClick={(e) => {
-        e.preventDefault(); 
-        setSubmitReview(!submitReview); 
-        }}>
-        Add a review
-      </button>
-    
+      </div>
+      
+
       {reviewForm}
       <ReviewList />
     

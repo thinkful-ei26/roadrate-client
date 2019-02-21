@@ -61,6 +61,7 @@ export const CreatePlateForm = () => {
 
     return (
         <div className="claimPlate">
+        <h2>Claim A Plate</h2>
          <fieldset>
           <legend>License Plate Number</legend>
           <form 

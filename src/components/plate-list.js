@@ -1,12 +1,6 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
 import { Link } from 'react-router-dom';
-import { Route } from 'react-router-dom';
-import MyPlate from './my-plate';
-
-// fetch call, get all reviews about that plateid === _id from plate 
-// button "comment" on review => comment form
-// submit make PUT req to change the specific review
 
 // const customStyles = {
 //   content : {
@@ -47,6 +41,14 @@ export const PlateList = (props) => {
     return plate
   }
 
+  const noPlatesMessage = () => {
+    if(localStorage.hasPlates === '') {
+      return (
+        <p>No plates associated</p>
+      )
+    }
+  }
+
    if (plates) {
     plate = plates.map((plate, index) => { 
       console.log('plates exists', plate)
@@ -66,15 +68,19 @@ export const PlateList = (props) => {
 
   return (
     <div className="my-plates">
+      <h2>My Plates</h2>
+      {noPlatesMessage()}
+      
       <Link to="/" className="plates-back-link">
         <button>Go Back</button>
       </Link>
-      <h2>My Plates</h2>
+
       <ul className='plates'>
         <Link to="/my-plate">
           {plate}
         </Link>
       </ul>
+
     </div>
 
   );
