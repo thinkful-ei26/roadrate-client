@@ -1,8 +1,11 @@
-import React, { useState, /* useEffect */ } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
 import { Link, Redirect } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
 import { Button, Icon } from 'react-materialize';
 import "../styles/App.css";
+
+// check if a username exists and throw an error if it does
+// the username should be sent to the server, server side should validate this for security reasons
 
 export const RegistrationForm = () => {
   // split state into different declarations
@@ -14,7 +17,8 @@ export const RegistrationForm = () => {
   const [confirmEmail, setConfirmEmail] = useState("")
   const [authToken, setAuthToken] = useState("") 
   const [loggedIn, SetLoggedIn] = useState(true)
-
+  const [validUsername, SetValidUsername] = useState('')
+  
   const logIn = (data) => {
     if (!username || username === '') return;
     if (!password || password === '') return;
@@ -47,14 +51,38 @@ export const RegistrationForm = () => {
       console.log('ERR',err)
     })
   };
+
+  const validateUsername = async (username) => {
+    // send username to server on Change of `username` state
+    // server should check if username exists 
+
+    const res = await fetch(
+      `${API_BASE_URL}/users/?search=${username}`
+    );
+
+    // Pull out the data from response
+    const _username = await res.json();
+   
+    // if the username matches something in the db
+    if(_username.length > 0 ) {
+      console.log('username exists', _username)
+      localStorage.setItem('validUsername', 'Username taken. Pick another.')
+      SetValidUsername(false)
+      return _username
+    } 
+    
+    console.log('new user', _username)
+    localStorage.setItem('validUsername', 'Valid Username')
+    SetValidUsername(true)
+    return _username;
+  }
+
+  useEffect(() => {
+    validateUsername(username);
+  }, [username])
   
   const handleSubmit = e => {
     e.preventDefault(); 
-    // if (!username || username === '') return;
-    // if (!password || password === '') return;
-    // if (!confirmPassword || confirmPassword === '') return;
-    // if (!email || email === '') return;
-    // if (!confirmEmail || confirmEmail === '') return;
    
     // console.log(`username: ${username}, password: ${password}, confirmPassword: ${confirmPassword}, email: ${email}, confirmEmail: ${confirmEmail}`)
 
@@ -97,6 +125,13 @@ export const RegistrationForm = () => {
       })
       };
 
+  let usernameValidation;
+  if(validUsername === ''){
+    usernameValidation = <p></p>
+  } else if (!validUsername) {
+    usernameValidation = <p>Username is taken. Choose another.</p>
+  }
+
   return (
     <div className="registration">
     {
@@ -116,6 +151,10 @@ export const RegistrationForm = () => {
           required
         />
         </label>
+
+       {/* {localStorage.validUsername === 'Username taken. Pick another.' ? (<p>{localStorage.validUsername}</p>): (<p>Username is valid</p>) } */}
+       {/* { validUsername ? (<p>Username is valid</p>): (<p>Username is taken</p>) } */}
+        {usernameValidation}
         <label htmlFor="username">Username:
         <input
           value={username}
