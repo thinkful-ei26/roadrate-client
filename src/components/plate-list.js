@@ -21,7 +21,7 @@ export const PlateList = (props) => {
     console.log('fetching Plates on: ',url)
     const response = await fetch(url);
     const plates = await response.json();
-    console.log('plateS on fetchPlates', plates)
+    // console.log('plateS on fetchPlates', plates)
     setPlates(plates)
     return plates
   }
@@ -42,16 +42,18 @@ export const PlateList = (props) => {
   }
 
   const noPlatesMessage = () => {
-    if(localStorage.hasPlates === '') {
+    if(localStorage.hasPlates === '' || !plates) {
       return (
         <p>No plates associated</p>
       )
     }
+    return (
+      <p>Total Plates Owned: {plates.length}</p>
+    )
   }
 
    if (plates) {
     plate = plates.map((plate, index) => { 
-      console.log('plates exists', plate)
       return (
         <li className='plate-item' key={index} tabIndex='0'>
           <div className='plate-wrapper'>
