@@ -13,7 +13,6 @@ export const MyPlate = (props) => {
     let url = `${API_BASE_URL}/reviews/${localStorage.myState}/${localStorage.myPlate}`;
     const response = await fetch(url);
     const reviews  = await response.json();
-    console.log(reviews)
     setReviews(reviews)
     return reviews
   }
@@ -36,7 +35,6 @@ export const MyPlate = (props) => {
  
   if (reviews) {
     review = reviews.map((review, index) => { 
-      console.log(review._id)
       let ownerComment;
       if (review.isPositive === 'true') {
         rating = <Icon>thumb_up</Icon>
@@ -55,6 +53,10 @@ export const MyPlate = (props) => {
       if (submitResponse === review._id) {
         responseForm = <OwnerResponseForm reviewId={review._id}/>
         responseButton = <button onClick={() => setSubmitResponse('')}>Cancel</button>
+      }
+
+      if (review.ownerResponse) {
+        responseButton = '';
       }
 
       return (
