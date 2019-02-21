@@ -15,7 +15,7 @@ export const ReviewList = (props) => {
       let url = `${API_BASE_URL}/reviews`;
       const response = await fetch(url);
       const reviews  = await response.json();
-      console.log(reviews)
+      // console.log(reviews)
       setReviews(reviews)
       return reviews
     }
@@ -27,18 +27,18 @@ export const ReviewList = (props) => {
     const handleSubmit = e => {
       e.preventDefault(); 
   
-      console.log('search', searchInput)
+      // console.log('search', searchInput)
       return fetch(`${API_BASE_URL}/reviews/?search=${searchInput}`)
         .then(res => { 
           if (!res.ok) {
             return Promise.reject(res.statusText);
           }
           const searchReviews = res.json();
-          console.log('search-reviews', searchReviews)
+          // console.log('search-reviews', searchReviews)
           return searchReviews;
         })
         .then(data => {
-          console.log('DATA FROM SEARCH-REVIEWS:' ,data)
+          // console.log('DATA FROM SEARCH-REVIEWS:' ,data)
           setReviews(data)
         })
         .catch(err => console.log(err))

@@ -68,7 +68,7 @@ export const MyReviews = (props) => {
           <button>Go Back</button>
       </Link>
       <section className='my-reviews-content'>
-        <p>My Reviews</p>
+        <h2>My Reviews</h2>
         <div className="search-section">
           <fieldset id="review-search">
             <legend>Search By License Plate: </legend>

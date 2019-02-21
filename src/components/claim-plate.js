@@ -7,7 +7,7 @@ export const claimPlate = (props) => {
   const [ plateState, setPlateState ] = useState('');
   const [ plates, setPlates ] = useState('');
 
-  const handleLinkClick = e => {
+  const handleClaimClick = e => {
     e.preventDefault();
     const userId = localStorage.userId;
 
@@ -29,7 +29,7 @@ export const claimPlate = (props) => {
       return res.json();
     })
     .then(data => {
-      console.log('DATA CLAIM PLATE link:', data)
+      console.log('DATA CLAIM PLATE claim:', data)
       console.log('=== data claim plate ==', data[0])
       return data
     })
@@ -37,13 +37,9 @@ export const claimPlate = (props) => {
       return err})
   }
 
-  /* ========= SEARCH LICENSE PLATE TO LINK ========== */
+  /* ========= SEARCH LICENSE PLATE TO CLAIM ========== */
   const handleSubmit = e => {
     e.preventDefault(); 
-    // if (!plateNumber ||  plateNumber === '') return;
-    // if (!plateState ||  plateState === '') return;
-    // console.log('clicked search btn', plateNumber)
-    // console.log(plates);
 
     // console.log(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`)
     return fetch(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`, {
@@ -61,7 +57,6 @@ export const claimPlate = (props) => {
     .then(data => {
       console.log('data on searchPlate',data);
       setPlates(data[0])
-
     })
     .catch(err => {
       console.log(err)
@@ -71,8 +66,9 @@ export const claimPlate = (props) => {
         return Promise.reject(err)
       }
       console.log(err)
-      })
-      };
+      }
+    )
+  };
 
   // console.log('state of plates >>>', plates);
   // console.log('plateNumber >>>', plateNumber);
@@ -84,7 +80,7 @@ export const claimPlate = (props) => {
         <th>License Plate</th>
         <th>Karma Score</th> 
         <th>Ratings</th>
-        <th>Link to Your Account</th>
+        <th>Add to Your Account</th>
       </tr>
       <p>Please Search for a Valid Plate</p>
     </table>
@@ -97,7 +93,7 @@ export const claimPlate = (props) => {
           <th>License Plate</th>
           <th>Karma Score</th> 
           <th>Ratings</th>
-          <th>Link to Your Account</th>
+          <th>Add to Your Account</th>
         </tr>
         <tr>
           <td>{plates.plateNumber}</td>
@@ -106,10 +102,10 @@ export const claimPlate = (props) => {
           <td>0</td>
           <td>
             <button 
-              className='link-to-user-button' 
-              onClick={(e) => handleLinkClick(e)}
+              className='add-to-user-button' 
+              onClick={(e) => handleClaimClick(e)}
             >
-              Link
+              Claim
             </button>
           </td>
         </tr>
@@ -122,7 +118,7 @@ export const claimPlate = (props) => {
           <th>License Plate</th>
           <th>Karma Score</th> 
           <th>Ratings</th>
-          <th>Link to Your Account</th>
+          <th>Add to Your Account</th>
         </tr>
         <p>Sorry, but there was no match for that license plate number!</p>
     </table>
@@ -131,8 +127,9 @@ export const claimPlate = (props) => {
 
   return (
     <div className="claimPlate">
+    <h2>Claim A Plate</h2>
 
-    <Link to="/" className="plates-back-link">
+    <Link to="/" className="plates-back-claim">
       <button>Go Back</button>
     </Link>
 
