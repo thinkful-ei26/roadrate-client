@@ -64,7 +64,7 @@ export const RegistrationForm = () => {
     const _username = await res.json();
    
     // if the username matches something in the db
-    if(_username.length > 0 ) {
+    if(_username.length > 0 && validUsername !== '') {
       console.log('username exists', _username)
       localStorage.setItem('validUsername', 'Username taken. Pick another.')
       SetValidUsername(false)
@@ -126,6 +126,7 @@ export const RegistrationForm = () => {
       };
 
   let usernameValidation;
+  console.log('validUsername: ',validUsername)
   if(validUsername === ''){
     usernameValidation = <p></p>
   } else if (!validUsername) {
