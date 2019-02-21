@@ -4,6 +4,7 @@ import { API_BASE_URL } from '../config';
 
 export const CreatePlateForm = (props) => {
   const [ ownerResponse, setOwnerResponse ] = useState('');
+  const [ hideForm, setHideForm ] = useState(false);
   // const [ plateState, setPlateState ] = useState('');
 
   const { reviewId } = props;
@@ -28,6 +29,7 @@ export const CreatePlateForm = (props) => {
         })
         .then(data => {
           console.log('DATA REGISTER PLATE:', data)
+
           return data
         })
         .catch(err => console.log(err))
@@ -60,9 +62,6 @@ export const CreatePlateForm = (props) => {
           <button id="submit-owner-response">
               Submit
           </button>
-          <Link to="/" className="plates-back-link">
-              <button>Go Back</button>
-          </Link>
         </form>
       </fieldset>
         

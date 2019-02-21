@@ -4,25 +4,10 @@ import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import OwnerResponseForm from './owner-response-form';
 
-// fetch call, get all reviews about that plateid === _id from plate 
-// button "comment" on review => comment form
-// submit make PUT req to change the specific review
-
-// const customStyles = {
-//   content : {
-//     top                   : '50%',
-//     left                  : '50%',
-//     right                 : 'auto',
-//     bottom                : 'auto',
-//     marginRight           : '-50%',
-//     transform             : 'translate(-50%, -50%)'
-//   }
-// };
-
 export const MyPlate = (props) => {
   const [ reviews, setReviews] = useState("");
   const [ plate, setPlate ] = useState("");
-  const [ submitResponse, setSubmitResponse] = useState(false);
+  const [ submitResponse, setSubmitResponse] = useState('');
 
   const fetchReviews = async () => {
     let url = `${API_BASE_URL}/reviews/${localStorage.myState}/${localStorage.myPlate}`;
@@ -46,16 +31,9 @@ export const MyPlate = (props) => {
     fetchKarma();
   }, []);
 
-
-  console.log('reviews"', reviews);
-
   let rating;
   let review;
  
-
-  // console.log('karma', plate)
-
-
   if (reviews) {
     review = reviews.map((review, index) => { 
       console.log(review._id)
@@ -69,14 +47,14 @@ export const MyPlate = (props) => {
       let responseButton;
       if (review.ownerResponse) {
         ownerComment = <p>Driver Response: {review.ownerResponse}</p>
-        responseButton = <p></p>;
       } else {
-        responseButton = <button onClick={() => setSubmitResponse(true)}>Leave a response</button>
+        responseButton = <button onClick={() => setSubmitResponse(review._id)}>Leave a response</button>
       }
 
       let responseForm;
-      if (submitResponse) {
+      if (submitResponse === review._id) {
         responseForm = <OwnerResponseForm reviewId={review._id}/>
+        responseButton = <button onClick={() => setSubmitResponse('')}>Cancel</button>
       }
 
       return (
@@ -100,7 +78,7 @@ export const MyPlate = (props) => {
           <p className='message'>Review: {review.message}</p>
           {ownerComment}
           {responseButton}
-          {submitResponse}
+          {/* {submitResponse} */}
           {responseForm}
         </li>
       )
