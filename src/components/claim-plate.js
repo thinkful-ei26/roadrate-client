@@ -13,7 +13,7 @@ export const claimPlate = (props) => {
     e.preventDefault();
     const userId = localStorage.userId;
 
-    localStorage.setItem('myPlate', plateNumber)
+    localStorage.setItem('myPlate', plateNumber.toUpperCase())
     localStorage.setItem('myState', plateState)
 
     return fetch(`${API_BASE_URL}/plates`, {
@@ -192,7 +192,7 @@ export const claimPlate = (props) => {
         >
           <input
             value={plateNumber}
-            onChange={e => setPlateNumber(e.target.value)}
+            onChange={e => setPlateNumber(e.target.value.toUpperCase())}
             type="search"
             id="search"
             name="search"
