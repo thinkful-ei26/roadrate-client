@@ -42,7 +42,7 @@ export const claimPlate = (props) => {
     .catch(err => console.log(err))
   }
 
-  const handleLinkClick = e => {
+  const handleClaimClick = e => {
     e.preventDefault();
     const userId = localStorage.userId;
 
@@ -74,7 +74,7 @@ export const claimPlate = (props) => {
     .catch(err => console.log(err))
   }
 
-  /* ========= SEARCH LICENSE PLATE TO LINK ========== */
+  /* ========= SEARCH LICENSE PLATE TO CLAIM ========== */
   const handleSubmit = e => {
     e.preventDefault(); 
 
@@ -110,13 +110,15 @@ export const claimPlate = (props) => {
   let plateTable;
 
   if (plates && plates !== 'before search') {
-    plateTable = (
-      <table>
-        <tr>
-          <th>License Plate</th>
-          <th>Karma Score</th> 
-          <th>Ratings</th>
-          <th>Register Your Plate</th>
+  let plateTable = (
+    <table>
+      <tr>
+        <th>License Plate</th>
+        <th>Karma Score</th> 
+        <th>Ratings</th>
+        <th>Add to Your Account</th>
+        <th>Register Your Plate</th>
+        <th>Add to Your Account</th>
         </tr>
         <tr>
           <td>{plates.plateNumber}</td>
@@ -125,10 +127,10 @@ export const claimPlate = (props) => {
           <td>0</td>
           <td>
             <button 
-              className='link-to-user-button' 
-              onClick={(e) => handleLinkClick(e)}
+              className='add-to-user-button' 
+              onClick={(e) => handleClaimClick(e)}
             >
-              Link
+              Claim
             </button>
           </td>
         </tr>
@@ -172,7 +174,7 @@ export const claimPlate = (props) => {
     <div className="claimPlate">
     <h2>Claim A Plate</h2>
 
-    <Link to="/" className="plates-back-link">
+    <Link to="/" className="plates-back-claim">
       <button>Go Back</button>
     </Link>
 
