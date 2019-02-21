@@ -12,6 +12,8 @@ export const Dashboard = (props) => {
   const [ submitReview, setSubmitReview ] = useState(false);
   const [ storePlates, setStorePlates ] = useState([]);
 
+  
+
   const storeUser = async (userId, name, storePlates) => {
     const res = await fetch(
       `${API_BASE_URL}/users/?search=${localStorage.user}`
@@ -47,10 +49,9 @@ export const Dashboard = (props) => {
 
   console.log('storePlates on dashboard', storePlates)
 
-  console.log('////', submitReview);
   let reviewForm;
   if (submitReview === true) {
-    reviewForm = <ReviewForm />
+    reviewForm = <ReviewForm plates={storePlates}/>
   }
  
   return (

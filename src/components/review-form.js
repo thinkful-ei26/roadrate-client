@@ -3,15 +3,29 @@ import {API_BASE_URL} from '../config';
 import { Button, Icon } from 'react-materialize';
 import '../styles/review-form.css';
 
-export const ReviewForm = () => {
+export const ReviewForm = (props) => {
   const [ plateNumber, setPlateNumber ] = useState('');
   const [ rating, setRating ] = useState('');
   const [ message, setMessage ] = useState('');
   const [ plateState, setPlateState ] = useState('');
   const [ submitted, setSubmitted ] = useState(false)
+  const [ invalidMessage, setInvalidMessage ] = useState('')
+
+  const userPlates = props.plates.map(plate => {
+    return {userPlateNumber: plate.plateNumber, 
+            userPlateState: plate.plateState}
+    });
+  
+  if (plateState && plateNumber) {
+    userPlates.forEach(plate => {
+      if (plate.userPlateNumber === plateNumber && plate.userPlateState === plateState) {
+        setInvalidMessage('You cannot review your own plate');
+        setPlateState('');
+      }
+    })
+  };
   
   const handleSubmit = e => {
-    // console.log(`plateNumber: ${plateNumber}, rating: ${rating}, message: ${message}, reviewerId: ${localStorage.userId}`)
     const username = localStorage.user
     const reviewerId = localStorage.userId
     
@@ -50,14 +64,14 @@ export const ReviewForm = () => {
     <div className='submit-review'>
       <h4>Submit Review:</h4>
       <form id='submit-review-form' onSubmit={handleSubmit}>
+        <p>{invalidMessage}</p>
         <label htmlFor='plateId'>License Plate:
         <input
           type='text' 
           name='plateId' 
           placeholder='X90PL'
           value={plateNumber}
-          onChange={(e) => setPlateNumber(e.target.value)}
-          title="must contain a license plate number"
+          onChange={(e) => {setPlateNumber(e.target.value); setInvalidMessage('')}}
           required
         />
         </label>
