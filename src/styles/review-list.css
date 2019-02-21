@@ -3,7 +3,7 @@
   width: 20px;
 }
 
-.review-list-div {
+.review-list {
   text-align: center;
   padding-bottom: 20px;
 }
@@ -38,17 +38,31 @@ legend {
   font-size: 18px;
 }
 
+.search-section {
+  display: flex;
+}
+
 #review-search {
   margin: 10px;
   color: black;
   border: 1px solid whitesmoke;
   border-radius: 4px;
+  width: 100%;
+}
+
+#search-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-label {
+  flex: 1;
 }
 
 #search {
   background: white;
   padding: 0px 8px;
-  max-width: 95%;
+  box-sizing: border-box
 }
 
 #search::placeholder {
@@ -59,4 +73,11 @@ legend {
   margin: 0px;
 }
 
+.search-review-wrapper {
+  display: flex;
+}
+
+#search-state {
+  width: 68px;
+}
 
