@@ -40,10 +40,6 @@ export const claimPlate = (props) => {
   /* ========= SEARCH LICENSE PLATE TO LINK ========== */
   const handleSubmit = e => {
     e.preventDefault(); 
-    // if (!plateNumber ||  plateNumber === '') return;
-    // if (!plateState ||  plateState === '') return;
-    // console.log('clicked search btn', plateNumber)
-    // console.log(plates);
 
     // console.log(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`)
     return fetch(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`, {
@@ -61,7 +57,6 @@ export const claimPlate = (props) => {
     .then(data => {
       console.log('data on searchPlate',data);
       setPlates(data[0])
-
     })
     .catch(err => {
       console.log(err)
@@ -71,8 +66,9 @@ export const claimPlate = (props) => {
         return Promise.reject(err)
       }
       console.log(err)
-      })
-      };
+      }
+    )
+  };
 
   // console.log('state of plates >>>', plates);
   // console.log('plateNumber >>>', plateNumber);
@@ -131,6 +127,7 @@ export const claimPlate = (props) => {
 
   return (
     <div className="claimPlate">
+    <h2>Claim A Plate</h2>
 
     <Link to="/" className="plates-back-link">
       <button>Go Back</button>

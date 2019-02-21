@@ -4,6 +4,17 @@ import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import OwnerResponseForm from './owner-response-form';
 
+// const customStyles = {
+//   content : {
+//     top                   : '50%',
+//     left                  : '50%',
+//     right                 : 'auto',
+//     bottom                : 'auto',
+//     marginRight           : '-50%',
+//     transform             : 'translate(-50%, -50%)'
+//   }
+// };
+
 export const MyPlate = (props) => {
   const [ reviews, setReviews] = useState("");
   const [ plate, setPlate ] = useState("");
@@ -13,7 +24,7 @@ export const MyPlate = (props) => {
     let url = `${API_BASE_URL}/reviews/${localStorage.myState}/${localStorage.myPlate}`;
     const response = await fetch(url);
     const reviews  = await response.json();
-    console.log(reviews)
+    // console.log(reviews)
     setReviews(reviews)
     return reviews
   }
@@ -21,7 +32,8 @@ export const MyPlate = (props) => {
   const fetchKarma = async () => {
     let url = `${API_BASE_URL}/plates/${localStorage.myState}/${localStorage.myPlate}`;
     const response = await fetch(url);
-    const plate  = await response.json();
+    const [ plate ]  = await response.json();
+    // console.log('plate on fetchKarma', plate)
     setPlate(plate)
     return plate
   }
@@ -85,11 +97,13 @@ export const MyPlate = (props) => {
     })
   };
 
-
   return (
     <div className="plate">
       <Link to="/" className="plates-back-link">
-          <button>Go Back</button>
+        <button>Go Back</button>
+      </Link>
+      <Link to="/plate-list" className="plates-back-link">
+        <button>My Plates</button>
       </Link>
       <h4>{localStorage.myPlate}</h4>
       <p>{localStorage.myState}</p>
@@ -101,7 +115,6 @@ export const MyPlate = (props) => {
         
       </ul>
     </div>
-
   );
 };
 

@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import Spinner from 'react-spinkit';
 import '../styles/reviews.css'
 import { Redirect } from 'react-router-dom';
-
-
 import { Icon } from 'react-materialize';
 
 export const Review = (props) => {
@@ -16,7 +14,6 @@ export const Review = (props) => {
 
     const [ redirect, setRedirect ] = useState(false)
 
-    const { searchReviews, searchInput } = props;
     const reviews = props.reviews;
     // console.log('props on Review component: ', props);
 
@@ -45,7 +42,7 @@ export const Review = (props) => {
     let rating;
    
     if (reviews) {
-      console.log(reviews);
+      // console.log(reviews);
        review = reviews.map((review, index) => { 
         let driverComment;
         if (review.isPositive === 'true') {
@@ -59,7 +56,6 @@ export const Review = (props) => {
         } 
 
         if(redirect) {
-
           return <Redirect to='/plate'/>
         }
 
@@ -77,7 +73,6 @@ export const Review = (props) => {
                 <button onClick={()=>handleClick()}> 
                   {review.plateNumber} {review.plateState}
                 </button>
-               
                 
                 <p id='review-time'>{today}</p>
               </article>
