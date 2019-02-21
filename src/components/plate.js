@@ -3,29 +3,14 @@ import {API_BASE_URL} from '../config';
 import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
 
-// const customStyles = {
-//   content : {
-//     top                   : '50%',
-//     left                  : '50%',
-//     right                 : 'auto',
-//     bottom                : 'auto',
-//     marginRight           : '-50%',
-//     transform             : 'translate(-50%, -50%)'
-//   }
-// };
-
 export const Plate = (props) => {
   const [ reviews, setReviews] = useState("");
   const [ plate, setPlate ] = useState("");
-
-  // console.log(localStorage.currentPlateState)
-  // console.log(localStorage.currentPlateNumber)
 
     const fetchReviews = async () => {
       let url = `${API_BASE_URL}/reviews/${localStorage.currentPlateState}/${localStorage.currentPlateNumber}`;
       const response = await fetch(url);
       const reviews  = await response.json();
-      console.log(reviews)
       setReviews(reviews)
       return reviews
     }
@@ -43,14 +28,9 @@ export const Plate = (props) => {
       fetchKarma();
     }, []);
 
-
-    console.log('reviews"', reviews);
-
     let rating;
     let review;
     let driverComment;
-
-    console.log('karma', plate)
 
     if (reviews) {
       review = reviews.map((review, index) => { 
@@ -78,10 +58,8 @@ export const Plate = (props) => {
               </article>
             </article>
             {/* <h1 className='plate-number'>{review.plateNumber}</h1><br/> */}
-            {/* <img className='review-img' src='https://i.pinimg.com/236x/29/55/38/295538a452d701c9189d0fa8f5b36938--white-truck-bad-parking.jpg' alt='review'></img> */}
-            
-            {/* Do we want to add information about how long ago this was posted, i.e. 2m or 2h */}
-            
+            {/* <img className='review-img' src='https://i.pinimg.com/236x/29/55/38/295538a452d701c9189d0fa8f5b36938--white-truck-bad-parking.jpg' alt='review'></img> */}            
+            {/* Do we want to add information about how long ago this was posted, i.e. 2m or 2h */}          
             <p className='message'>Review: {review.message}</p>
             <p>{driverComment}</p>
           </li>
