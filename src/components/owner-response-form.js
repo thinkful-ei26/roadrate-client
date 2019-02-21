@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect} from 'react-router-dom';
 import { API_BASE_URL } from '../config';
 
 export const CreatePlateForm = (props) => {
   const [ ownerResponse, setOwnerResponse ] = useState('');
-  const [ hideForm, setHideForm ] = useState(false);
+  const [ successMessage, setSuccessMessage ] = useState('');
   // const [ plateState, setPlateState ] = useState('');
 
   const { reviewId } = props;
  
   const handleSubmit = (e) => {
-      e.preventDefault();
+      // e.preventDefault();
       const userId = localStorage.userId;
 
       return fetch(`${API_BASE_URL}/reviews/${reviewId}`, {
@@ -28,43 +28,49 @@ export const CreatePlateForm = (props) => {
           return res.json();
         })
         .then(data => {
-          console.log('DATA REGISTER PLATE:', data)
-
+          setSuccessMessage(true)
           return data
         })
         .catch(err => console.log(err))
       }
 
+      let formBody;
+      if (successMessage) {
+        formBody = <p>Thanks. Your response was saved.</p>
+        // return <Redirect to='/my-plate' />
+      } else {
+        formBody = (<fieldset>
+          <legend>License Plate Number</legend>
+          <form 
+            id="owner-response-form"
+            onSubmit={handleSubmit}
+          >
+            <label 
+              htmlFor="submit-response"
+              className="owner-response-label"
+              aria-label="owner-response-form"
+            >
+              <input
+                value={ownerResponse}
+                onChange={e => setOwnerResponse(e.target.value)}
+                type="text"
+                id="owner-response"
+                name="owner-response"
+                placeholder="Your response"
+              />
+            </label>
+    
+            <button id="submit-owner-response">
+                Submit
+            </button>
+          </form>
+        </fieldset>)
+      }
+
 
   return (
       <div className="submit-response">
-       <fieldset>
-        <legend>License Plate Number</legend>
-        <form 
-          id="owner-response-form"
-          onSubmit={handleSubmit}
-        >
-          <label 
-            htmlFor="submit-response"
-            className="owner-response-label"
-            aria-label="owner-response-form"
-          >
-            <input
-              value={ownerResponse}
-              onChange={e => setOwnerResponse(e.target.value)}
-              type="text"
-              id="owner-response"
-              name="owner-response"
-              placeholder="Your response"
-            />
-          </label>
-  
-          <button id="submit-owner-response">
-              Submit
-          </button>
-        </form>
-      </fieldset>
-        
+        {formBody}
       </div>  
   )
 }
