@@ -123,6 +123,7 @@ export const claimPlate = (props) => {
     <table>
       <tr>
         <th>License Plate</th>
+        <th>State</th>
         <th>Karma Score</th> 
         <th>Ratings</th>
         <th>Add to Your Account</th>
@@ -131,6 +132,7 @@ export const claimPlate = (props) => {
         </tr>
         <tr>
           <td>{plates.plateNumber}</td>
+          <td>{plates.plateState}</td>
           <td>{plates.karma}</td>
           {/* need to get reviews.length of all of the reviews that have ever mentioned this license plate */}
           <td>0</td>
@@ -150,6 +152,7 @@ export const claimPlate = (props) => {
       <table>
       <tr>
         <th>License Plate</th>
+        <th>State</th>
         <th>Karma Score</th> 
         <th>Ratings</th>
         <th>Register Your Plate</th>
@@ -163,12 +166,14 @@ export const claimPlate = (props) => {
       <table>
         <tr>
           <th>License Plate</th>
+          <th>State</th>
           <th>Karma Score</th> 
           <th>Ratings</th>
           <th>Register Your Plate</th>
         </tr>
         <tr>
           <td>{plateNumber}</td>
+          <td>{plateState}</td>
           <td>No Karma Score Yet!</td>
           {/* need to get reviews.length of all of the reviews that have ever mentioned this license plate */}
           <td>No Reviews Yet!</td>
@@ -185,6 +190,7 @@ export const claimPlate = (props) => {
       <table>
         <tr>
           <th>License Plate</th>
+          <th>State</th>
           <th>Karma Score</th> 
           <th>Ratings</th>
           <th>Add to Your Account</th>
@@ -193,6 +199,7 @@ export const claimPlate = (props) => {
           </tr>
           <tr>
             <td>{plates.plateNumber}</td>
+            <td>{plates.plateState}</td>
             <td>{plates.karma}</td>
             {/* need to get reviews.length of all of the reviews that have ever mentioned this license plate */}
             <td>0</td>
