@@ -67,7 +67,7 @@ export const LoginForm = () => {
 
   /* ==== RENDER VALIDATION ERROR MESSAGE ==== */
   let errorMessage;
-  console.log('errorMessage: ',errorMessage)
+  // console.log('errorMessage: ',errorMessage)
   if(authError && username.length > 0 ){
     errorMessage = <p>Login Failed. Check your credentials and resubmit.</p>
     setInterval(function(){ localStorage.removeItem('error') }, 2000);
