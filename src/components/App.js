@@ -39,7 +39,7 @@ export const App = () => {
         )}
 			<Route exact path="/" component={LandingPage} />
       <Route exact path="/create-plate" component={CreatePlatePage} />
-      <Route exact path="/plate" component={Plate} />
+      <Route path="/plate" component={Plate} />
 			<Route exact path="/login" component={LoginForm} storeUser={storeUser} />
 			<Route exact path="/about" component={About} storeUser={storeUser} />
       <Route exact path="/claim-plate" component={ClaimPlate} storeUser={storeUser} />
