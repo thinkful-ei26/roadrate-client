@@ -73,7 +73,7 @@ export const claimPlate = (props) => {
     })
     .then(data => {
       console.log('DATA REGISTER PLATE:', data)
-      setSuccessMessage('Congrats! Your plate was registered.')
+      setSuccessMessage(`Congrats! Your plate ${localStorage.myPlate} - ${localStorage.myState} was registered.`)
       return data
     })
     .catch(err => console.log(err))
@@ -103,7 +103,7 @@ export const claimPlate = (props) => {
     })
     .then(res => {
       console.log('res inside handleLink >>>', res);
-      setSuccessMessage('Congrats! Your plate was registered.')
+      setSuccessMessage(`Congrats! Your plate ${localStorage.myPlate} - ${localStorage.myState} was registered.`)
       return res.json();
     })
     .catch(err => console.log(err))
