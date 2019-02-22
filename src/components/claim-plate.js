@@ -103,12 +103,8 @@ export const claimPlate = (props) => {
     })
     .then(res => {
       console.log('res inside handleLink >>>', res);
-      return res.json();
-    })
-    .then(data => {
-      console.log('DATA CLAIM PLATE link:', data)
       setSuccessMessage('Congrats! Your plate was registered.')
-      return data
+      return res.json();
     })
     .catch(err => console.log(err))
   }
@@ -127,7 +123,6 @@ export const claimPlate = (props) => {
         <th>Ratings</th>
         <th>Add to Your Account</th>
         <th>Register Your Plate</th>
-        <th>Add to Your Account</th>
         </tr>
         <tr>
           <td>{plates.plateNumber}</td>
@@ -173,7 +168,12 @@ export const claimPlate = (props) => {
           {/* need to get reviews.length of all of the reviews that have ever mentioned this license plate */}
           <td>No Reviews Yet!</td>
           <td>
-          <button className='register-plate' onClick={(e) => handleRegisterPlate(e)}>Register Plate</button>
+          <button 
+            className='register-plate' 
+            onClick={(e) => handleRegisterPlate(e)}
+          >
+            Register Plate
+          </button>
           </td>
         </tr>
       </table>
@@ -189,7 +189,6 @@ export const claimPlate = (props) => {
           <th>Ratings</th>
           <th>Add to Your Account</th>
           <th>Register Your Plate</th>
-          <th>Add to Your Account</th>
           </tr>
           <tr>
             <td>{plates.plateNumber}</td>
