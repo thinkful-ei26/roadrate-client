@@ -1,61 +1,20 @@
-import React, { useState, setState } from 'react'; 
+import React, { useState } from 'react'; 
 import { API_BASE_URL } from '../config';
 import { Link, Redirect } from 'react-router-dom';
 import { Button, Icon } from 'react-materialize';
-import decode from 'jwt-decode';
 import Input from 'react-materialize/lib/Input';
-
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [authToken, setAuthToken] = useState("")
   const [loggedIn, setLoggedIn] = useState(true)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-
-  const authenticated = () => {
-    setIsAuthenticated(isAuthenticated)
-    const token = getToken()
-
-    if (localStorage.token === undefined){
-      localStorage.loggedIn = false
-    }
-
-    return !!token && !isTokenExpired(token)
-  }
-
-  const isTokenExpired = (token) => {
-    try {
-      const decoded = decode(token);
-      if (decoded.exp < Date.now() / 1000){
-        return true;
-      }
-      else 
-        return false;
-    }
-    catch (err) {
-      return false;
-    }
-  }
-
-  const getToken = () => {
-    return localStorage.getItem('authToken')
-  }
-
-  const noEntry = () => {
-    return (
-      <div>
-        <p>Not a registered user</p>
-      </div>
-    )
-  }
-
+  const [authError, setAuthError] = useState(false)
+ 
   const handleSubmit = e => {
-    e.preventDefault(); 
+    e.preventDefault(e); 
 
-    localStorage.setItem("user", username);
     setUsername(username)
-    localStorage.setItem("loggedIn", loggedIn);
     setLoggedIn(loggedIn)
     localStorage.removeItem("logout")
 
@@ -64,16 +23,7 @@ export const LoginForm = () => {
       'Accept': 'application/json'
     }
 
-    if (authenticated()) {
-      headers['Authorization'] = 'Bearer ' + this.getToken()
-    }
-
-    if (localStorage.authToken === undefined) {
-      return noEntry
-    }
-
-    else {
-      return fetch(`${API_BASE_URL}/login`, {
+      return fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers,
         body: JSON.stringify({
@@ -86,9 +36,22 @@ export const LoginForm = () => {
         return res.json();
       })
       .then( ( auth ) => {  
-        localStorage.setItem("authToken", auth.authToken);
-        setAuthToken(auth)
-      return auth;
+        const { message, code, name } = auth;
+        console.log(auth)
+
+        if(code === 401 || message === 'Unauthorized' || name === 'AuthenticationError') {
+          setAuthError(true)
+          localStorage.setItem("error", name)
+        }
+
+        if (auth.hasOwnProperty("authToken")){
+          localStorage.setItem("user", username);
+          localStorage.setItem("loggedIn", loggedIn);
+          localStorage.setItem("authToken", auth.authToken);
+          localStorage.removeItem("error")
+          setAuthToken(auth)
+        }
+        return auth;
       })
       .catch(err => {
         const { code } = err;
@@ -100,11 +63,24 @@ export const LoginForm = () => {
           })
         )
       })
-    }
   };
+
+  /* ==== RENDER VALIDATION ERROR MESSAGE ==== */
+  let errorMessage;
+  // console.log('errorMessage: ',errorMessage)
+  if(authError && username.length > 0 ){
+    errorMessage = <p>Login Failed. Check your credentials and resubmit.</p>
+    setInterval(function(){ localStorage.removeItem('error') }, 2000);
+  } else if (localStorage.error){
+    errorMessage = <p>Login Failed. Check your credentials and resubmit.</p>
+    setInterval(function(){ localStorage.removeItem('error') }, 2000);
+  } else {
+    errorMessage = <p></p>
+  }
 
   return(
     <div className="login-container">
+      {errorMessage}
       {
         localStorage.loggedIn ? (
           <Redirect to="/dashboard" />

@@ -39,7 +39,6 @@ export const CreatePlateForm = () => {
     })
     .then(res => {
       console.log('res inside handleSubmit', res);
-
       return res.json();
     })
     .then(data => {

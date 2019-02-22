@@ -4,9 +4,6 @@ import { API_BASE_URL } from '../config';
 import { Button, Icon } from 'react-materialize';
 import "../styles/App.css";
 
-// check if a username exists and throw an error if it does
-// the username should be sent to the server, server side should validate this for security reasons
-
 export const RegistrationForm = () => {
   // split state into different declarations
   const [name, setName] = useState("");
@@ -16,41 +13,55 @@ export const RegistrationForm = () => {
   const [email, setEmail] = useState("")
   const [confirmEmail, setConfirmEmail] = useState("")
   const [authToken, setAuthToken] = useState("") 
-  const [loggedIn, SetLoggedIn] = useState(true)
+  const [loggedIn, setLoggedIn] = useState(true)
   const [validUsername, SetValidUsername] = useState('')
   
-  const logIn = (data) => {
-    if (!username || username === '') return;
-    if (!password || password === '') return;
+  const logIn = data => {
+  
+    console.log('user data: ',data);
 
-    localStorage.setItem("user", username);
-    localStorage.setItem("loggedIn", loggedIn);
+    setUsername(username)
+    setLoggedIn(loggedIn)
     localStorage.removeItem("logout")
-    
-    return fetch(`${API_BASE_URL}/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        username,
-        password
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+
+      return fetch(`${API_BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          username,
+          password
+        })
       })
-    })
-    .then(res => {
-      // console.log('res', res.body)
-      return res.json();
-    })
-    .then( ( auth ) => {  
-      localStorage.setItem("authToken", auth.authToken);
-      setAuthToken(auth)
-    return auth;
-    })
-    .catch(err => {
-      console.log('ERR',err)
-    })
-  };
+      .then(res => {
+        console.log('res', res.body)
+        return res.json();
+      })
+      .then( ( auth ) => {  
+        console.log('auth: ',auth)
+        if (auth.hasOwnProperty("authToken")){
+          localStorage.setItem("user", username);
+          localStorage.setItem("loggedIn", loggedIn);
+          localStorage.setItem("authToken", auth.authToken);
+          setAuthToken(auth)
+        }
+        return auth;
+      })
+      .catch(err => {
+        const { code } = err;
+        const message = code === 401 ? 'Incorrect username or password' : 'Unable to login, please try again';
+        
+        return Promise.reject(
+          new Error({
+            _error: message
+          })
+        )
+      });
+  }
 
   const validateUsername = async (username) => {
     // send username to server on Change of `username` state
@@ -63,7 +74,7 @@ export const RegistrationForm = () => {
     // Pull out the data from response
     const _username = await res.json();
    
-    // if the username matches something in the db
+    // if the username alreadu exists in the DB
     if(_username.length > 0 && validUsername !== '') {
       console.log('username exists', _username)
       localStorage.setItem('validUsername', 'Username taken. Pick another.')
@@ -82,7 +93,7 @@ export const RegistrationForm = () => {
   }, [username])
   
   const handleSubmit = e => {
-    e.preventDefault(); 
+    e.preventDefault(e); 
    
     // console.log(`username: ${username}, password: ${password}, confirmPassword: ${confirmPassword}, email: ${email}, confirmEmail: ${confirmEmail}`)
 
@@ -153,9 +164,8 @@ export const RegistrationForm = () => {
         />
         </label>
 
-       {/* {localStorage.validUsername === 'Username taken. Pick another.' ? (<p>{localStorage.validUsername}</p>): (<p>Username is valid</p>) } */}
-       {/* { validUsername ? (<p>Username is valid</p>): (<p>Username is taken</p>) } */}
         {usernameValidation}
+
         <label htmlFor="username">Username:
         <input
           value={username}
@@ -217,7 +227,7 @@ export const RegistrationForm = () => {
           waves="light "
           type="submit" 
           className="login-submit"
-          disabled={ !username || !password }
+          disabled={ !username || !password || !validUsername }
         >
           <Icon>thumb_up</Icon>
           Submit
