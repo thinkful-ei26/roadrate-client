@@ -56,8 +56,6 @@ export const LoginForm = () => {
       })
   };
 
-  console.log('authToken', authToken);
-
   return(
     <div className="login-container">
       {
