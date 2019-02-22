@@ -312,6 +312,7 @@ export const claimPlate = (props) => {
         <button
           className="search-btn" 
           aria-label="search-btn"
+          onClick={() => {setSuccessMessage('')}}
           disabled={!plateNumber || !plateState}
         >
           search
