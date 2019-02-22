@@ -30,6 +30,7 @@ export const MyReviews = (props) => {
     if (reviews) {
       let filteredReviews = reviews.filter(review => review.plateNumber.includes(searchInput));
       review = filteredReviews.map((review, index) => { 
+        console.log('review.isPositive',review.isPostive)
         if (review.isPostive === 'true') {
           rating = <Icon>thumb_up</Icon>
         } else {
