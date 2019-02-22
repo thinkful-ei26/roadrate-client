@@ -92,4 +92,4 @@ A tab for “My Reviews”
 
 ## Wireframes
 
-<img src='https://github.com/thinkful-ei26/roadrate-client/blob/registration/fix/src/assets/wireframe.png' alt='RoadRate Wireframes' width='800px'/>
+<img src='./src/assets/wireframe.png' alt='RoadRate Wireframes' width='800px'/>

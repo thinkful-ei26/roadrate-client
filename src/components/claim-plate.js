@@ -73,7 +73,7 @@ export const claimPlate = (props) => {
     })
     .then(data => {
       console.log('DATA REGISTER PLATE:', data)
-      setSuccessMessage('Congrats! Your plate was registered.')
+      setSuccessMessage(`Congrats! Your plate ${localStorage.myPlate} - ${localStorage.myState} was registered.`)
       return data
     })
     .catch(err => console.log(err))
@@ -103,12 +103,8 @@ export const claimPlate = (props) => {
     })
     .then(res => {
       console.log('res inside handleLink >>>', res);
+      setSuccessMessage(`Congrats! Your plate ${localStorage.myPlate} - ${localStorage.myState} was registered.`)
       return res.json();
-    })
-    .then(data => {
-      console.log('DATA CLAIM PLATE link:', data)
-      setSuccessMessage('Congrats! Your plate was registered.')
-      return data
     })
     .catch(err => console.log(err))
   }
@@ -128,7 +124,6 @@ export const claimPlate = (props) => {
         <th>Ratings</th>
         <th>Add to Your Account</th>
         <th>Register Your Plate</th>
-        <th>Add to Your Account</th>
         </tr>
         <tr>
           <td>{plates.plateNumber}</td>
@@ -139,7 +134,8 @@ export const claimPlate = (props) => {
           <td>
             <button 
               className='add-to-user-button' 
-              onClick={(e) => handleClaimClick(e)}
+              onClick={(e) => {handleClaimClick(e)}}
+              disabled={successMessage}
             >
               Claim
             </button>
@@ -178,7 +174,13 @@ export const claimPlate = (props) => {
           {/* need to get reviews.length of all of the reviews that have ever mentioned this license plate */}
           <td>No Reviews Yet!</td>
           <td>
-          <button className='register-plate' onClick={(e) => handleRegisterPlate(e)}>Register Plate</button>
+          <button 
+            className='register-plate' 
+            onClick={(e) => handleRegisterPlate(e)}
+            disabled={successMessage}
+          >
+            Register Plate
+          </button>
           </td>
         </tr>
       </table>
@@ -195,7 +197,6 @@ export const claimPlate = (props) => {
           <th>Ratings</th>
           <th>Add to Your Account</th>
           <th>Register Your Plate</th>
-          <th>Add to Your Account</th>
           </tr>
           <tr>
             <td>{plates.plateNumber}</td>
@@ -318,6 +319,7 @@ export const claimPlate = (props) => {
         <button
           className="search-btn" 
           aria-label="search-btn"
+          onClick={() => {setSuccessMessage('')}}
           disabled={!plateNumber || !plateState}
         >
           search

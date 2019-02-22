@@ -28,6 +28,7 @@ export const PlateList = (props) => {
 
   useEffect(() => {
     fetchPlates();
+    localStorage.removeItem('unclaimedPlate')
   }, []);
 
   // console.log('plates', plates);
