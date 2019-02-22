@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
+import '../styles/claim-plate.css';
+
+// client validation if a plate is not found on the DB
 
 export const claimPlate = (props) => {
   const [ plateNumber, setPlateNumber ] = useState('');
@@ -8,7 +11,42 @@ export const claimPlate = (props) => {
   const [ successMessage, setSuccessMessage ] = useState('');
   const [ plates, setPlates ] = useState('before search');
 
+  /* ========= SEARCH LICENSE PLATE TO CLAIM ========== */
+  const handleSubmit = e => {
+    e.preventDefault(e); 
 
+    return fetch(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${localStorage.authToken}`
+      }
+    })
+    .then(res => {
+      console.log('response: >>>', res)
+      return res.json();
+      })
+    .then(data => {
+      if(data === undefined){
+        console.log('undefined')
+      }
+      console.log('data on searchPlate',data);
+      setPlates(data[0])
+    })
+    .catch(err => {
+      console.log(err)
+      console.log('There is no match for that ID');
+      setPlates('');
+      if(err === 'TypeError: Failed to fetch'){
+        return Promise.reject(err)
+      }
+      console.log(err)
+      }
+    )
+  };
+
+ /* ========= POST A NEW PLATE ========== */
   const handleRegisterPlate = (e) => {
     e.preventDefault();
     const userId = localStorage.userId;
@@ -31,7 +69,6 @@ export const claimPlate = (props) => {
     })
     .then(res => {
       console.log('res inside handleSubmit', res);
-
       return res.json();
     })
     .then(data => {
@@ -42,6 +79,8 @@ export const claimPlate = (props) => {
     .catch(err => console.log(err))
   }
 
+  /* ========= UPDATE AN EXISTING PLATE ========== */
+  // PUT to link an existing plate to the current user
   const handleClaimClick = e => {
     e.preventDefault();
     const userId = localStorage.userId;
@@ -74,43 +113,13 @@ export const claimPlate = (props) => {
     .catch(err => console.log(err))
   }
 
-  /* ========= SEARCH LICENSE PLATE TO CLAIM ========== */
-  const handleSubmit = e => {
-    e.preventDefault(); 
-
-    // console.log(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`)
-    return fetch(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${localStorage.authToken}`
-      }
-    })
-    .then(res => {
-      console.log('response: >>>', res.body)
-      return res.json();
-      })
-    .then(data => {
-      console.log('data on searchPlate',data);
-      setPlates(data[0])
-    })
-    .catch(err => {
-      console.log(err)
-      console.log('There is no match for that ID');
-      setPlates('');
-      if(err === 'TypeError: Failed to fetch'){
-        return Promise.reject(err)
-      }
-      console.log(err)
-      }
-    )
-  };
-
+  console.log('plate result from GET', plates)
+  /* ========= DYNAMIC SEARCH RESULT TABLE ========== */
   let plateTable;
 
-  if (plates && plates !== 'before search') {
-  let plateTable = (
+  // if (plates && plates !== 'before search') {
+  if (plates && plates !== 'before search' && !plates.userId ) {
+  plateTable = (
     <table>
       <tr>
         <th>License Plate</th>
@@ -136,7 +145,7 @@ export const claimPlate = (props) => {
         </tr>
       </table>
     )
-  } else if (plates) {
+  } else if (plateNumber === '') {
     plateTable = (
       <table>
       <tr>
@@ -148,7 +157,8 @@ export const claimPlate = (props) => {
       <p>Please Search for a Valid Plate</p>
     </table>
     )
-  } else {
+  } else if (plates === [] || plates === undefined) {
+    // if the plateNumber is not in DB, then allow user to create a new plate & register it as theirs
     plateTable = (
       <table>
         <tr>
@@ -168,8 +178,44 @@ export const claimPlate = (props) => {
         </tr>
       </table>
     )
+  } else if (plates.userId === "5c6c8c594c6e3226fb0be3eb") {
+    //if a plate has already been registered
+    plateTable = (
+    <div className="plateTable">
+      <table>
+        <tr>
+          <th>License Plate</th>
+          <th>Karma Score</th> 
+          <th>Ratings</th>
+          <th>Add to Your Account</th>
+          <th>Register Your Plate</th>
+          <th>Add to Your Account</th>
+          </tr>
+          <tr>
+            <td>{plates.plateNumber}</td>
+            <td>{plates.karma}</td>
+            {/* need to get reviews.length of all of the reviews that have ever mentioned this license plate */}
+            <td>0</td>
+            <td>
+              ALREADY CLAIMED
+            </td>
+          </tr>
+        </table>
+
+        <p>
+          Need to <strong>Unlink</strong> your plate? Go to:
+        </p>
+        <Link to="/plate-list">
+          <span className="my-plates-link">My Plates</span>
+        </Link>
+
+      </div>
+    )
+  } else {
+    plateTable = (<p>Submit a search</p>)
   }
 
+  /* ========= RENDER CLAIM PLATE PAGE ========== */
   return (
     <div className="claimPlate">
     <h2>Claim A Plate</h2>
