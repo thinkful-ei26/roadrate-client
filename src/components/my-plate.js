@@ -19,6 +19,7 @@ export const MyPlate = (props) => {
   const [ reviews, setReviews] = useState("");
   const [ plate, setPlate ] = useState("");
   const [ submitResponse, setSubmitResponse] = useState('');
+  const [ unclaimMessage, setUnclaimMessage ] = useState('');
 
   const fetchReviews = async () => {
     let url = `${API_BASE_URL}/reviews/${localStorage.myState}/${localStorage.myPlate}`;
@@ -41,6 +42,34 @@ export const MyPlate = (props) => {
     fetchReviews();
     fetchKarma();
   }, []);
+
+   /* ========= UPDATE AN EXISTING PLATE ========== */
+  // PUT to link an existing plate to the current user
+  const unClaimPlateClick = e => {
+    e.preventDefault(e);
+    const userId = localStorage.userId;
+ 
+    return fetch(`${API_BASE_URL}/plates/unclaim/${localStorage.userId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${localStorage.authToken}`
+      },
+      body: JSON.stringify({
+        userId,
+        plateNumber: localStorage.myPlate,
+        plateState: localStorage.myState
+      })
+    })
+    .then(res => {
+      console.log('res inside handleLink >>>', res);
+      localStorage.setItem('unclaimedPlate', localStorage.myPlate)
+      setUnclaimMessage(`You successfully unclaimed your plate.`)
+      return res.json();
+    })
+    .catch(err => console.log(err))
+  }
 
   let rating;
   let review;
@@ -101,21 +130,36 @@ export const MyPlate = (props) => {
 
   return (
     <div className="plate">
+    {/* ===== CONTROLS ===== */}
       <Link to="/" className="plates-back-link">
         <button>Go Back</button>
       </Link>
       <Link to="/plate-list" className="plates-back-link">
         <button>My Plates</button>
       </Link>
+
+    {/* ===== PLATE DETAILS ===== */} 
       <h4>{localStorage.myPlate}</h4>
       <p>{localStorage.myState}</p>
       <div className="karma-wrapper">
         <p className="karma-score">Karma Score: {plate.karma}</p>
       </div>
+    
+    {/* ===== PLATE REVIEW LIST ===== */} 
       <ul className='reviews'>
         {review}
-        
       </ul>
+
+    {/* ===== UNCLAIM A PLATE ===== */} 
+    {
+      !localStorage.unclaimedPlate ? (<button
+        onClick={e => unClaimPlateClick(e)}
+      >
+        Unclaim {localStorage.myPlate} - {localStorage.myState}
+      </button>) : (<p>{unclaimMessage}</p>)
+    }
+      
+
     </div>
   );
 };
