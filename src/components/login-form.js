@@ -9,9 +9,10 @@ export const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [authToken, setAuthToken] = useState("")
   const [loggedIn, setLoggedIn] = useState(true)
+  const [authError, setAuthError] = useState(false)
  
   const handleSubmit = e => {
-    e.preventDefault(); 
+    e.preventDefault(e); 
 
     setUsername(username)
     setLoggedIn(loggedIn)
@@ -35,11 +36,19 @@ export const LoginForm = () => {
         return res.json();
       })
       .then( ( auth ) => {  
-        console.log('auth: ',auth)
+        const { message, code, name } = auth;
+        console.log(auth)
+
+        if(code === 401 || message === 'Unauthorized' || name === 'AuthenticationError') {
+          setAuthError(true)
+          localStorage.setItem("error", name)
+        }
+
         if (auth.hasOwnProperty("authToken")){
           localStorage.setItem("user", username);
           localStorage.setItem("loggedIn", loggedIn);
           localStorage.setItem("authToken", auth.authToken);
+          localStorage.removeItem("error")
           setAuthToken(auth)
         }
         return auth;
@@ -56,8 +65,22 @@ export const LoginForm = () => {
       })
   };
 
+  /* ==== RENDER VALIDATION ERROR MESSAGE ==== */
+  let errorMessage;
+  console.log('errorMessage: ',errorMessage)
+  if(authError && username.length > 0 ){
+    errorMessage = <p>Login Failed. Check your credentials and resubmit.</p>
+    setInterval(function(){ localStorage.removeItem('error') }, 2000);
+  } else if (localStorage.error){
+    errorMessage = <p>Login Failed. Check your credentials and resubmit.</p>
+    setInterval(function(){ localStorage.removeItem('error') }, 2000);
+  } else {
+    errorMessage = <p></p>
+  }
+
   return(
     <div className="login-container">
+      {errorMessage}
       {
         localStorage.loggedIn ? (
           <Redirect to="/dashboard" />

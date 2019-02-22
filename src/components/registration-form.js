@@ -16,44 +16,10 @@ export const RegistrationForm = () => {
   const [loggedIn, setLoggedIn] = useState(true)
   const [validUsername, SetValidUsername] = useState('')
   
-  // const logIn = (data) => {
-
-  //   setUsername(username)
-  //   setLoggedIn(loggedIn)
-  //   localStorage.removeItem("logout")
-    
-  //   return fetch(`${API_BASE_URL}/login`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       username,
-  //       password
-  //     })
-  //   })
-  //   .then(res => {
-  //     // console.log('res', res.body)
-  //     return res.json();
-  //   })
-  //   .then( ( auth ) => {  
-  //     if(auth.hasOwnProperty("authToken")){
-
-  //     }
-  //     localStorage.setItem("authToken", auth.authToken);
-  //     setAuthToken(auth)
-  //   return auth;
-  //   })
-  //   .catch(err => {
-  //     console.log('ERR',err)
-  //   })
-  // };
-
   const logIn = data => {
   
-    console.log(data);
-    
+    console.log('user data: ',data);
+
     setUsername(username)
     setLoggedIn(loggedIn)
     localStorage.removeItem("logout")
