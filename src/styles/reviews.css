@@ -5,3 +5,18 @@
 .review-container {
   margin: 0 auto;
 }
+
+#review-date {
+  color: grey;
+  font-size: 12px;
+}
+
+#elapsed-time {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.review-title {
+  align-items: center;
+  display: flex;
+}
