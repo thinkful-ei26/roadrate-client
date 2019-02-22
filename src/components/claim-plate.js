@@ -132,7 +132,7 @@ export const claimPlate = (props) => {
           <td>
             <button 
               className='add-to-user-button' 
-              onClick={(e) => handleClaimClick(e)}
+              onClick={(e) => {handleClaimClick(e)}}
               disabled={successMessage}
             >
               Claim
