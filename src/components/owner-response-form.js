@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Redirect} from 'react-router-dom';
+import React, { useState } from 'react';
 import { API_BASE_URL } from '../config';
 
 export const CreatePlateForm = (props) => {
@@ -11,7 +10,6 @@ export const CreatePlateForm = (props) => {
  
   const handleSubmit = (e) => {
       // e.preventDefault();
-      const userId = localStorage.userId;
 
       return fetch(`${API_BASE_URL}/reviews/${reviewId}`, {
           method: 'PUT',

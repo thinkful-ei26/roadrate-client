@@ -102,7 +102,7 @@ export const MyPlate = (props) => {
   return (
     <div className="plate">
       <Link to="/" className="plates-back-link">
-        <button>Go Back</button>
+        <button>Home</button>
       </Link>
       <Link to="/plate-list" className="plates-back-link">
         <button>My Plates</button>
