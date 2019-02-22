@@ -178,7 +178,7 @@ export const claimPlate = (props) => {
         </tr>
       </table>
     )
-  } else if (plates.userId === "5c6c8c594c6e3226fb0be3eb") {
+  } else if (plates.userId) {
     //if a plate has already been registered
     plateTable = (
     <div className="plateTable">
