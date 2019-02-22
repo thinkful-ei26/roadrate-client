@@ -73,9 +73,6 @@ export const Review = (props) => {
                 <button onClick={()=>handleClick()}> 
                   {review.plateNumber} {review.plateState}
                 </button>
-                
-                <p id='current-date'>Today: {today}</p>
-                <p id='review-time'>Updated On: {review.updatedAt.substr(0,10)}</p>
               </article>
               <article className='review-rating'>
                 <p className='rating'>{rating}</p>
