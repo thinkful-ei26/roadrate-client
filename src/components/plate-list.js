@@ -35,12 +35,16 @@ export const PlateList = (props) => {
   /* plate is still fetching/loading */
   let plate;
 
+
   const myPlateClick = (plate) => {
     console.log('plate inside li',plate)
     localStorage.setItem('myPlate', plate.plateNumber)
     localStorage.setItem('myState', plate.plateState)
+    localStorage.setItem('myPlateId', plate.id)
     return plate
   }
+  
+  let plateEndpoint = `/my-plate/id/${localStorage.myPlateId}`;
 
   const noPlatesMessage = () => {
     if(localStorage.hasPlates === '' || !plates) {
@@ -79,7 +83,7 @@ export const PlateList = (props) => {
       </Link>
 
       <ul className='plates'>
-        <Link to="/plate-list/id/">
+        <Link to={plateEndpoint}>
           {plate}
         </Link>
       </ul>

@@ -14,6 +14,13 @@ export const Review = (props) => {
       </div>
     )
 
+        //  const handleClick = (e) => {
+        //   localStorage.setItem('currentPlateState', review.plateState)
+        //   localStorage.setItem('currentPlateNumber', review.plateNumber)
+        //   console.log('redirecting')
+        //   setRedirect(true)
+        // }
+
     let rating;
     if (reviews) {
       console.log(reviews);
@@ -29,15 +36,21 @@ export const Review = (props) => {
           driverComment = <p> Driver Response: {review.ownerResponse}</p>
         } 
 
-        // console.log(review.plateId)
-        let redirectLink = `/plate`;
+        console.log(review.plateId)
+
+        let redirectLink = `/plate/${localStorage.plateId}`;
+
+        console.log('ridirect link', localStorage.plateId)
+
         if(redirect) {
           return <Redirect to={redirectLink} />
         }
 
-        const handleClick = () => {
+        const handleClick = (e) => {
           localStorage.setItem('currentPlateState', review.plateState)
           localStorage.setItem('currentPlateNumber', review.plateNumber)
+          localStorage.setItem('plateId', review.plateId)
+          console.log('redirecting')
           setRedirect(true)
         }
 
@@ -141,7 +154,7 @@ export const Review = (props) => {
             <article className='review-header'>
               <article className='review-title'>
                 <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
-                <button onClick={()=>handleClick()}> 
+                <button onClick={(e)=>handleClick(e)}> 
                   {review.plateNumber} {review.plateState}
                 </button>     
                 <p id="elapsed-time">{elapsedTime}</p>
