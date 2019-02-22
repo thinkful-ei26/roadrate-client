@@ -42,7 +42,7 @@ export const Review = (props) => {
     let rating;
    
     if (reviews) {
-      // console.log(reviews);
+      console.log('reviews: ',reviews);
        review = reviews.map((review, index) => { 
         let driverComment;
         if (review.isPositive === 'true') {
@@ -74,7 +74,8 @@ export const Review = (props) => {
                   {review.plateNumber} {review.plateState}
                 </button>
                 
-                <p id='review-time'>{today}</p>
+                <p id='current-date'>Today: {today}</p>
+                <p id='review-time'>Updated On: {review.updatedAt.substr(0,10)}</p>
               </article>
               <article className='review-rating'>
                 <p className='rating'>{rating}</p>
