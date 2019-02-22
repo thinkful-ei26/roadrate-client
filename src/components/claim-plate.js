@@ -133,6 +133,7 @@ export const claimPlate = (props) => {
             <button 
               className='add-to-user-button' 
               onClick={(e) => handleClaimClick(e)}
+              disabled={successMessage}
             >
               Claim
             </button>
@@ -171,6 +172,7 @@ export const claimPlate = (props) => {
           <button 
             className='register-plate' 
             onClick={(e) => handleRegisterPlate(e)}
+            disabled={successMessage}
           >
             Register Plate
           </button>
