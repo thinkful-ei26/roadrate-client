@@ -1,61 +1,19 @@
-import React, { useState, setState } from 'react'; 
+import React, { useState } from 'react'; 
 import { API_BASE_URL } from '../config';
 import { Link, Redirect } from 'react-router-dom';
 import { Button, Icon } from 'react-materialize';
-import decode from 'jwt-decode';
 import Input from 'react-materialize/lib/Input';
-
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [authToken, setAuthToken] = useState("")
   const [loggedIn, setLoggedIn] = useState(true)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-
-  const authenticated = () => {
-    setIsAuthenticated(isAuthenticated)
-    const token = getToken()
-
-    if (localStorage.token === undefined){
-      localStorage.loggedIn = false
-    }
-
-    return !!token && !isTokenExpired(token)
-  }
-
-  const isTokenExpired = (token) => {
-    try {
-      const decoded = decode(token);
-      if (decoded.exp < Date.now() / 1000){
-        return true;
-      }
-      else 
-        return false;
-    }
-    catch (err) {
-      return false;
-    }
-  }
-
-  const getToken = () => {
-    return localStorage.getItem('authToken')
-  }
-
-  const noEntry = () => {
-    return (
-      <div>
-        <p>Not a registered user</p>
-      </div>
-    )
-  }
-
+ 
   const handleSubmit = e => {
     e.preventDefault(); 
 
-    localStorage.setItem("user", username);
     setUsername(username)
-    localStorage.setItem("loggedIn", loggedIn);
     setLoggedIn(loggedIn)
     localStorage.removeItem("logout")
 
@@ -64,16 +22,7 @@ export const LoginForm = () => {
       'Accept': 'application/json'
     }
 
-    if (authenticated()) {
-      headers['Authorization'] = 'Bearer ' + this.getToken()
-    }
-
-    if (localStorage.authToken === undefined) {
-      return noEntry
-    }
-
-    else {
-      return fetch(`${API_BASE_URL}/login`, {
+      return fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers,
         body: JSON.stringify({
@@ -86,9 +35,14 @@ export const LoginForm = () => {
         return res.json();
       })
       .then( ( auth ) => {  
-        localStorage.setItem("authToken", auth.authToken);
-        setAuthToken(auth)
-      return auth;
+        console.log('auth: ',auth)
+        if (auth.hasOwnProperty("authToken")){
+          localStorage.setItem("user", username);
+          localStorage.setItem("loggedIn", loggedIn);
+          localStorage.setItem("authToken", auth.authToken);
+          setAuthToken(auth)
+        }
+        return auth;
       })
       .catch(err => {
         const { code } = err;
@@ -100,8 +54,9 @@ export const LoginForm = () => {
           })
         )
       })
-    }
   };
+
+  console.log('authToken', authToken);
 
   return(
     <div className="login-container">
