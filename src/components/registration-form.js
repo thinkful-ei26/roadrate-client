@@ -63,7 +63,7 @@ export const RegistrationForm = () => {
     // Pull out the data from response
     const _username = await res.json();
    
-    // if the username matches something in the db
+    // if the username alreadu exists in the DB
     if(_username.length > 0 && validUsername !== '') {
       console.log('username exists', _username)
       localStorage.setItem('validUsername', 'Username taken. Pick another.')
@@ -217,7 +217,7 @@ export const RegistrationForm = () => {
           waves="light "
           type="submit" 
           className="login-submit"
-          disabled={ !username || !password }
+          disabled={ !username || !password || !validUsername }
         >
           <Icon>thumb_up</Icon>
           Submit
