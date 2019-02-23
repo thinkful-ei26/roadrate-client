@@ -8,23 +8,6 @@ export const PublicPlate = () => {
   const [plate, setPlate] = useState('');
   const [plateId, setPlateId] = useState('');
   const [ reviews, setReviews] = useState('');
-  // const [ plate, setPlate ] = useState("");
-
-  // const fetchPlate = async () => {
-  //   console.log('fetchPlate plateId: ', plateId)
-  //   let url = `${API_BASE_URL}/plate/${plateId}`;
-  //   console.log(url)
-  //   const response = await fetch(url);
-  //   const data  = await response.json();
-  //   console.log('data: ',data);
-  //   setPlate(data)
-
-  //   // let reviewsByPlateId = `${API_BASE_URL}/reviews/plate/${plateId}`
-    
-  //   // const fetchReviews = await fetch(reviewsByPlateId);
-  //   // const reviews = await fetchReviews.json();
-  //   // setReviews(reviews)
-  // }
 
   const fetchPlate = async () => {
     /* ==== extract plateId from url ==== */
@@ -51,28 +34,8 @@ export const PublicPlate = () => {
     return reviews
   }
 
-    // const fetchReviews = async () => {
-    //   console.log('fetchReviews plateId: ',plateId)
-    //   let url = `${API_BASE_URL}/reviews/plate/${plateId}`;
-    //   console.log('fetchReviews url: ', url)
-    //   const response = await fetch(url);
-    //   const reviews  = await response.json();
-    //   setReviews(reviews)
-    //   return reviews
-    // }
-
-  //   const fetchKarma = async () => {
-  //     let url = `${API_BASE_URL}/plates/${localStorage.currentPlateState}/${localStorage.currentPlateNumber}`;
-  //     const response = await fetch(url);
-  //     const plate  = await response.json();
-  //     setPlate(plate[0])
-  //     return plate
-  //   }
-
     useEffect(() => {
       fetchPlate()
-      // fetchReviews();
-      // fetchKarma();
     }, []);
 
   console.log('plate data: ', plate)
@@ -201,7 +164,7 @@ export const PublicPlate = () => {
         }
 
         return (
-          <li className='review-item' key={review._id} tabIndex='0'>
+          <li className='review-item' key={index} id={review._id} tabIndex='0'>
             <article className='review-header'>
               <article className='review-title'>
                 <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
@@ -225,7 +188,7 @@ export const PublicPlate = () => {
       console.log('fetching plate: ', plate)
       _plate = (
         <div className="public-plate-wrapper">
-          <h2>{plate.plateNumber}</h2>
+          <h2 id={plateId}>{plate.plateNumber}</h2>
           <p>State: {plate.plateState}</p>
           <p>Karma Score: {plate.karma}</p>
         </div>
@@ -233,7 +196,12 @@ export const PublicPlate = () => {
     }
 
   return (
-    // ==== When a User clicks on a plate link inside the review page, this will render
+    /* FETCHING PUBLIC PLATES & REVIEWS 
+    - An unregistered user can share this unique endpoint & render all plate info & its associated reviews
+    - Ex: http://localhost:3000/plate/id/5c7082ce36aad20017f75ef8
+    - Tested on Chrome, Firefox, & Safari
+    - Doesn't rely on localStorage
+    */
     <div className="plate">
       <Link to="/" className="plates-back-link">
           <button>Go Back</button>
@@ -241,11 +209,6 @@ export const PublicPlate = () => {
      
       {_plate}
     
-      {/* <h4>{localStorage.currentPlateNumber}</h4>
-      <p>{localStorage.currentPlateState}</p>
-      <div className="karma-wrapper">
-        <p className="karma-score">Karma Score: {plate.karma}</p>
-      </div> */}
       <ul className='reviews'>
         {review}
       </ul>

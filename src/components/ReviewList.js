@@ -9,7 +9,7 @@ import '../styles/reviews.css'
 
 export const ReviewList = () => {
   const [ reviews, setReviews] = useState("");
-  const [ redirect, setRedirect ] = useState(false)
+  // const [ redirect, setRedirect ] = useState(false)
 
     const fetchReviews = async () => {
       let url = `${API_BASE_URL}/reviews`;
@@ -60,14 +60,14 @@ export const ReviewList = () => {
         //   return <Redirect to={redirectLink} />
         // }
 
-        const plateClick = (plate) => {
-          console.log('plate inside li',plate)
-          localStorage.setItem('currentPlate', plate.plateNumber)
-          localStorage.setItem('currentState', plate.plateState)
-          localStorage.setItem('currentPlateId', plate.id)
-          setRedirect(true)
-          return plate
-        }
+        // const plateClick = (plate) => {
+        //   console.log('plate inside li',plate)
+        //   localStorage.setItem('currentPlate', plate.plateNumber)
+        //   localStorage.setItem('currentState', plate.plateState)
+        //   localStorage.setItem('currentPlateId', plate.id)
+        //   setRedirect(true)
+        //   return plate
+        // }
 
         const thisDate = new Date();
         
