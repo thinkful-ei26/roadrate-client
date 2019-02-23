@@ -28,8 +28,8 @@ export const MyPlate = () => {
   //   return reviews
   // }
 
-   const fetchReviewsByPlateId = async () => {
-    let url = `${API_BASE_URL}/reviews/${localStorage.myPlateId}`;
+  const fetchReviewsByPlateId = async () => {
+    let url = `${API_BASE_URL}/reviews/my-plates/${localStorage.myPlateId}`;
     const response = await fetch(url);
     const reviews  = await response.json();
     setReviews(reviews)
