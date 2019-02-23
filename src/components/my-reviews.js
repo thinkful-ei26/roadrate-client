@@ -1,38 +1,38 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
-import { Icon } from 'react-materialize';
+// import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
-import Review from './Review'
+import ReviewList from './ReviewList'
 import '../styles/my-reviews.css';
 
-export const MyReviews = (props) => {
-  const [ reviews, setReviews] = useState("");
+export const MyReviews = () => {
+  // const [ reviews, setReviews] = useState("");
   const [ searchInput, setSearchInput ] = useState("");
-  // const [ filteredReviews, setFilteredReviews ] = useState("");
+  const [ filteredReviews, setFilteredReviews ] = useState("");
 
-    const fetchReviews = async () => {
-      let url = `${API_BASE_URL}/reviews/${localStorage.user}`;
-      const response = await fetch(url);
-      const reviews  = await response.json();
-      console.log(reviews)
-      setReviews(reviews)
-      return reviews
-    }
+    // const fetchReviews = async () => {
+    //   let url = `${API_BASE_URL}/reviews/${localStorage.user}`;
+    //   const response = await fetch(url);
+    //   const reviews  = await response.json();
+    //   console.log(reviews)
+    //   setReviews(reviews)
+    //   return reviews
+    // }
 
-    useEffect(() => {
-      fetchReviews();
-    }, []);
+    // useEffect(() => {
+    //   fetchReviews();
+    // }, []);
 
-    const handleSubmit = () => {
-      console.log(searchInput)
-    }
+    // const handleSubmit = () => {
+    //   console.log(searchInput)
+    // }
 
-    let rating;
-    let review;
-    let driverComment;
-    let filteredReviews;
-    if (reviews) {
-      filteredReviews = reviews.filter(review => review.plateNumber.includes(searchInput.toUpperCase()));
+    // let rating;
+    // let review;
+    // let driverComment;
+    // let filteredReviews;
+    // if (reviews) {
+    //   filteredReviews = reviews.filter(review => review.plateNumber.includes(searchInput.toUpperCase()));
       // review = filteredReviews.map((review, index) => { 
       //   if (review.isPostive === 'true') {
       //     rating = <Icon>thumb_up</Icon>
@@ -64,7 +64,7 @@ export const MyReviews = (props) => {
       //     </li>
       //   )
       // })
-    };
+    // };
 
   return (
     <div className="my-reviews">
@@ -79,7 +79,7 @@ export const MyReviews = (props) => {
             <form 
               id="search-form"
               className="search-form"
-              onKeyUp={handleSubmit}
+              // onKeyUp={handleSubmit}
             >
               <div className="input-wrapper">
                 <label 
@@ -102,7 +102,7 @@ export const MyReviews = (props) => {
           </fieldset>
           </div>
         <ul className='reviews'>
-          <Review reviews={filteredReviews}/>
+          <ReviewList />
         </ul>
       </section>
     </div>
