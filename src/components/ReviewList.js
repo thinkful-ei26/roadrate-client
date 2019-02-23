@@ -21,7 +21,7 @@ export const ReviewList = () => {
 
     useEffect(() => {
       fetchReviews()
-    }, []);
+    }, [reviews]);
 
     let review = (
       <div className="spinner" style={{}}>
@@ -182,8 +182,9 @@ export const ReviewList = () => {
                 </button>    
               </Link> 
 
-                <p id="elapsed-time">{elapsedTime}</p>
+              <p id="elapsed-time">{elapsedTime}</p>
               </article>
+
               <article className='review-rating'>
                 <p className='rating'>{rating}</p>
               </article>
