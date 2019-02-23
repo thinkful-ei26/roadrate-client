@@ -19,7 +19,7 @@ export const MyReviews = () => {
 
     useEffect(() => {
       fetchReviews();
-    }, [reviews]);
+    }, []);
 
     const handleSubmit = () => {
       console.log(searchInput)
@@ -31,8 +31,10 @@ export const MyReviews = () => {
     let filteredReviews;
     if (reviews) {
       filteredReviews = reviews.filter(review => review.plateNumber.includes(searchInput.toUpperCase()));
+
+      // console.log('FILTERED REVIEWS: ', filteredReviews);
       review = filteredReviews.map((review, index) => { 
-        if (review.isPostive === 'true') {
+        if (review.isPositive === 'true') {
           rating = <Icon>thumb_up</Icon>
         } else {
           rating = <Icon>thumb_down</Icon>
