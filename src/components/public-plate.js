@@ -1,10 +1,9 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
-import Review from './Review';
 import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
 
-export const Plate = (props) => {
+export const PublicPlate = () => {
   const [ reviews, setReviews] = useState("");
   const [ plate, setPlate ] = useState("");
 
@@ -140,7 +139,6 @@ export const Plate = (props) => {
           convert(timePassed)
         }
 
-
         return (
           <li className='review-item' key={review._id} tabIndex='0'>
             <article className='review-header'>
@@ -153,10 +151,7 @@ export const Plate = (props) => {
               <article className='review-rating'>
                 <p className='rating'>{rating}</p>
               </article>
-            </article>
-            {/* <h1 className='plate-number'>{review.plateNumber}</h1><br/> */}
-            {/* <img className='review-img' src='https://i.pinimg.com/236x/29/55/38/295538a452d701c9189d0fa8f5b36938--white-truck-bad-parking.jpg' alt='review'></img> */}            
-            {/* Do we want to add information about how long ago this was posted, i.e. 2m or 2h */}          
+            </article>        
             <p className='message'>Review: {review.message}</p>
             <p>{driverComment}</p>
             {dateString}
@@ -178,7 +173,6 @@ export const Plate = (props) => {
         <p className="karma-score">Karma Score: {plate.karma}</p>
       </div>
       <ul className='reviews'>
-        {/* <Review reviews={reviews} /> */}
         {review}
       </ul>
     </div>
@@ -186,4 +180,4 @@ export const Plate = (props) => {
   );
 };
 
-export default Plate;
+export default PublicPlate;

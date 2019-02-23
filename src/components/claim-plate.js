@@ -31,7 +31,7 @@ export const claimPlate = (props) => {
       if(data === undefined){
         console.log('undefined')
       }
-      console.log('data on searchPlate',data);
+      // console.log('data on searchPlate',data);
       setPlates(data[0])
     })
     .catch(err => {
@@ -68,11 +68,11 @@ export const claimPlate = (props) => {
       })
     })
     .then(res => {
-      console.log('res inside handleSubmit', res);
+      // console.log('res inside handleSubmit', res);
       return res.json();
     })
     .then(data => {
-      console.log('DATA REGISTER PLATE:', data)
+      // console.log('DATA REGISTER PLATE:', data)
       setSuccessMessage(`Congrats! Your plate ${localStorage.myPlate} - ${localStorage.myState} was registered.`)
       return data
     })
@@ -102,18 +102,17 @@ export const claimPlate = (props) => {
       })
     })
     .then(res => {
-      console.log('res inside handleLink >>>', res);
+      // console.log('res inside handleLink >>>', res);
       setSuccessMessage(`Congrats! Your plate ${localStorage.myPlate} - ${localStorage.myState} was registered.`)
       return res.json();
     })
     .catch(err => console.log(err))
   }
 
-  console.log('plate result from GET', plates)
+  // console.log('plate result from GET', plates)
   /* ========= DYNAMIC SEARCH RESULT TABLE ========== */
   let plateTable;
 
-  // if (plates && plates !== 'before search') {
   if (plates && plates !== 'before search' && !plates.userId ) {
   plateTable = (
     <table>
@@ -213,7 +212,7 @@ export const claimPlate = (props) => {
         <p>
           Need to <strong>Unlink</strong> your plate? Go to:
         </p>
-        <Link to="/plate-list">
+        <Link to="/my-plates">
           <span className="my-plates-link">My Plates</span>
         </Link>
 
@@ -232,106 +231,108 @@ export const claimPlate = (props) => {
       <button>Go Back</button>
     </Link>
 
-     <fieldset>
+    <div className="claim-search">
+     <fieldset id="claim-plate-search">
       <legend>License Plate Number</legend>
-      <form 
-        id="search-form"
-        className="search-form"
-        onSubmit={handleSubmit}
-      >
-        <label 
-          htmlFor="search"
-          className="search-label"
-          aria-label="search-form"
+        <form 
+          id="claim-search-form"
+          className="claim-search-form"
+          onSubmit={handleSubmit}
         >
-          <input
-            value={plateNumber}
-            onChange={e => setPlateNumber(e.target.value.toUpperCase())}
-            type="search"
-            id="search"
-            name="search"
-            className="search-input"
-            placeholder="Search..."
-          />
-        </label>
-
-        <label htmlFor='plateState'>State: 
-          <select 
-            className='browser-default' 
-            value={plateState} 
-            onChange={(e) => setPlateState(e.target.value)}
+        <div className="inline-search">
+          <label 
+            htmlFor="claim-search"
+            className="claim-search-label"
+            aria-label="claim-search-form"
           >
-            <option value=''>Select State</option>
-            <option value="AL">Alabama</option>
-            <option value="AK">Alaska</option>
-            <option value="AZ">Arizona</option>
-            <option value="AR">Arkansas</option>
-            <option value="CA">California</option>
-            <option value="CO">Colorado</option>
-            <option value="CT">Connecticut</option>
-            <option value="DE">Delaware</option>
-            <option value="DC">District Of Columbia</option>
-            <option value="FL">Florida</option>
-            <option value="GA">Georgia</option>
-            <option value="HI">Hawaii</option>
-            <option value="ID">Idaho</option>
-            <option value="IL">Illinois</option>
-            <option value="IN">Indiana</option>
-            <option value="IA">Iowa</option>
-            <option value="KS">Kansas</option>
-            <option value="KY">Kentucky</option>
-            <option value="LA">Louisiana</option>
-            <option value="ME">Maine</option>
-            <option value="MD">Maryland</option>
-            <option value="MA">Massachusetts</option>
-            <option value="MI">Michigan</option>
-            <option value="MN">Minnesota</option>
-            <option value="MS">Mississippi</option>
-            <option value="MO">Missouri</option>
-            <option value="MT">Montana</option>
-            <option value="NE">Nebraska</option>
-            <option value="NV">Nevada</option>
-            <option value="NH">New Hampshire</option>
-            <option value="NJ">New Jersey</option>
-            <option value="NM">New Mexico</option>
-            <option value="NY">New York</option>
-            <option value="NC">North Carolina</option>
-            <option value="ND">North Dakota</option>
-            <option value="OH">Ohio</option>
-            <option value="OK">Oklahoma</option>
-            <option value="OR">Oregon</option>
-            <option value="PA">Pennsylvania</option>
-            <option value="RI">Rhode Island</option>
-            <option value="SC">South Carolina</option>
-            <option value="SD">South Dakota</option>
-            <option value="TN">Tennessee</option>
-            <option value="TX">Texas</option>
-            <option value="UT">Utah</option>
-            <option value="VT">Vermont</option>
-            <option value="VA">Virginia</option>
-            <option value="WA">Washington</option>
-            <option value="WV">West Virginia</option>
-            <option value="WI">Wisconsin</option>
-            <option value="WY">Wyoming</option>
-          </select>
-        </label>
+            <input
+              value={plateNumber}
+              onChange={e => setPlateNumber(e.target.value.toUpperCase())}
+              type="search"
+              id="claim-search"
+              name="claim-search"
+              className="claim-search-input"
+              placeholder="Search..."
+            />
+          </label>
 
-        <button
-          className="search-btn" 
-          aria-label="search-btn"
-          onClick={() => {setSuccessMessage('')}}
-          disabled={!plateNumber || !plateState}
-        >
-          search
-        </button>
-      </form>
-    </fieldset>
+          <label className='plateState-label' htmlFor='plateState'>State: </label>
+            <select 
+              className='browser-default' 
+              value={plateState} 
+              onChange={(e) => setPlateState(e.target.value)}
+            >
+              <option value=''>Select State</option>
+              <option value="AL">Alabama</option>
+              <option value="AK">Alaska</option>
+              <option value="AZ">Arizona</option>
+              <option value="AR">Arkansas</option>
+              <option value="CA">California</option>
+              <option value="CO">Colorado</option>
+              <option value="CT">Connecticut</option>
+              <option value="DE">Delaware</option>
+              <option value="DC">District Of Columbia</option>
+              <option value="FL">Florida</option>
+              <option value="GA">Georgia</option>
+              <option value="HI">Hawaii</option>
+              <option value="ID">Idaho</option>
+              <option value="IL">Illinois</option>
+              <option value="IN">Indiana</option>
+              <option value="IA">Iowa</option>
+              <option value="KS">Kansas</option>
+              <option value="KY">Kentucky</option>
+              <option value="LA">Louisiana</option>
+              <option value="ME">Maine</option>
+              <option value="MD">Maryland</option>
+              <option value="MA">Massachusetts</option>
+              <option value="MI">Michigan</option>
+              <option value="MN">Minnesota</option>
+              <option value="MS">Mississippi</option>
+              <option value="MO">Missouri</option>
+              <option value="MT">Montana</option>
+              <option value="NE">Nebraska</option>
+              <option value="NV">Nevada</option>
+              <option value="NH">New Hampshire</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NM">New Mexico</option>
+              <option value="NY">New York</option>
+              <option value="NC">North Carolina</option>
+              <option value="ND">North Dakota</option>
+              <option value="OH">Ohio</option>
+              <option value="OK">Oklahoma</option>
+              <option value="OR">Oregon</option>
+              <option value="PA">Pennsylvania</option>
+              <option value="RI">Rhode Island</option>
+              <option value="SC">South Carolina</option>
+              <option value="SD">South Dakota</option>
+              <option value="TN">Tennessee</option>
+              <option value="TX">Texas</option>
+              <option value="UT">Utah</option>
+              <option value="VT">Vermont</option>
+              <option value="VA">Virginia</option>
+              <option value="WA">Washington</option>
+              <option value="WV">West Virginia</option>
+              <option value="WI">Wisconsin</option>
+              <option value="WY">Wyoming</option>
+            </select>
+        </div>
+          <button
+            className="search-btn" 
+            aria-label="search-btn"
+            onClick={() => {setSuccessMessage('')}}
+            disabled={!plateNumber || !plateState}
+          >
+            search
+          </button>
+        </form>
+      </fieldset>
+    </div>
 
     <div className="plate-table">
       {plateTable}
     </div>
     <p>{successMessage}</p>
-    </div> 
+  </div> 
   )
 }
 

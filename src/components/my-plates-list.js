@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 //   }
 // };
 
-export const PlateList = (props) => {
+export const MyPlatesList = () => {
   const [ plates, setPlates ] = useState([]);
 
   const fetchPlates = async () => {
@@ -39,8 +39,11 @@ export const PlateList = (props) => {
     console.log('plate inside li',plate)
     localStorage.setItem('myPlate', plate.plateNumber)
     localStorage.setItem('myState', plate.plateState)
+    localStorage.setItem('myPlateId', plate.id)
     return plate
   }
+
+  let plateEndpoint = `/my-plates/id/${localStorage.myPlateId}`;
 
   const noPlatesMessage = () => {
     if(localStorage.hasPlates === '' || !plates) {
@@ -79,7 +82,7 @@ export const PlateList = (props) => {
       </Link>
 
       <ul className='plates'>
-        <Link to="/plate-list/id/">
+        <Link to={plateEndpoint}>
           {plate}
         </Link>
       </ul>
@@ -89,4 +92,4 @@ export const PlateList = (props) => {
   );
 };
 
-export default PlateList;
+export default MyPlatesList;

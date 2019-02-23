@@ -78,7 +78,7 @@ export const Dashboard = (props) => {
           <button>Claim A Plate</button>
         </Link>
 
-        <Link to="/plate-list">
+        <Link to="/my-plates">
           <button>MyPlates</button>
         </Link>
 

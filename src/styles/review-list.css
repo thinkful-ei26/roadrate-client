@@ -55,6 +55,10 @@ legend {
   justify-content: space-between;
 }
 
+.input-wrapper {
+  width: 100%;
+}
+
 .search-label {
   flex: 1;
 }
@@ -80,4 +84,3 @@ legend {
 #search-state {
   width: 68px;
 }
-

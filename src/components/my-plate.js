@@ -15,7 +15,7 @@ import OwnerResponseForm from './owner-response-form';
 //   }
 // };
 
-export const MyPlate = (props) => {
+export const MyPlate = () => {
   const [ reviews, setReviews] = useState("");
   const [ plate, setPlate ] = useState("");
   const [ submitResponse, setSubmitResponse] = useState('');
@@ -33,7 +33,6 @@ export const MyPlate = (props) => {
     let url = `${API_BASE_URL}/plates/${localStorage.myState}/${localStorage.myPlate}`;
     const response = await fetch(url);
     const [ plate ]  = await response.json();
-    // console.log('plate on fetchKarma', plate)
     setPlate(plate)
     return plate
   }
@@ -101,27 +100,21 @@ export const MyPlate = (props) => {
       }
 
       return (
-        <li className='review-item' key={review._id} tabIndex='0'>
+        <li className='review-item' key={index} id={review.id} tabIndex='0'>
           <article className='review-header'>
             <article className='review-title'>
               <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
                 {review.plateNumber} {review.plateState}         
-              {/* <p id='review-time'>{today}</p> */}
             </article>
             
             <article className='review-rating'>
               <p className='rating'>{rating}</p>
             </article>
           </article>
-          {/* <h1 className='plate-number'>{review.plateNumber}</h1><br/> */}
-          {/* <img className='review-img' src='https://i.pinimg.com/236x/29/55/38/295538a452d701c9189d0fa8f5b36938--white-truck-bad-parking.jpg' alt='review'></img> */}
-          
-          {/* Do we want to add information about how long ago this was posted, i.e. 2m or 2h */}
           
           <p className='message'>Review: {review.message}</p>
           {ownerComment}
           {responseButton}
-          {/* {submitResponse} */}
           {responseForm}
         </li>
       )
@@ -131,12 +124,12 @@ export const MyPlate = (props) => {
   return (
     <div className="plate">
     {/* ===== CONTROLS ===== */}
-      <Link to="/" className="plates-back-link">
+      {/* <Link to="/" className="plates-back-link">
         <button>Home</button>
       </Link>
-      <Link to="/plate-list" className="plates-back-link">
+      <Link to="/my-plates" className="plates-back-link">
         <button>My Plates</button>
-      </Link>
+      </Link> */}
 
     {/* ===== PLATE DETAILS ===== */} 
       <h4>{localStorage.myPlate}</h4>
@@ -144,22 +137,21 @@ export const MyPlate = (props) => {
       <div className="karma-wrapper">
         <p className="karma-score">Karma Score: {plate.karma}</p>
       </div>
-    
-    {/* ===== PLATE REVIEW LIST ===== */} 
-      <ul className='reviews'>
-        {review}
-      </ul>
 
-    {/* ===== UNCLAIM A PLATE ===== */} 
-    {
+     {/* ===== UNCLAIM A PLATE ===== */} 
+     {
       !localStorage.unclaimedPlate ? (<button
         onClick={e => unClaimPlateClick(e)}
       >
         Unclaim {localStorage.myPlate} - {localStorage.myState}
       </button>) : (<p>{unclaimMessage}</p>)
     }
-      
-
+    
+    {/* ===== PLATE REVIEW LIST ===== */} 
+      <ul className='reviews'>
+        {review}
+      </ul>
+   
     </div>
   );
 };
