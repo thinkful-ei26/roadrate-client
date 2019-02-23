@@ -20,8 +20,16 @@ export const MyPlate = () => {
   const [ submitResponse, setSubmitResponse] = useState('');
   const [ unclaimMessage, setUnclaimMessage ] = useState('');
 
-  const fetchReviews = async () => {
-    let url = `${API_BASE_URL}/reviews/${localStorage.myState}/${localStorage.myPlate}`;
+  // const fetchReviews = async () => {
+  //   let url = `${API_BASE_URL}/reviews/${localStorage.myState}/${localStorage.myPlate}`;
+  //   const response = await fetch(url);
+  //   const reviews  = await response.json();
+  //   setReviews(reviews)
+  //   return reviews
+  // }
+
+   const fetchReviewsByPlateId = async () => {
+    let url = `${API_BASE_URL}/reviews/${localStorage.myPlateId}`;
     const response = await fetch(url);
     const reviews  = await response.json();
     setReviews(reviews)
@@ -37,9 +45,10 @@ export const MyPlate = () => {
   }
 
   useEffect(() => {
-    fetchReviews();
+    // fetchReviews();
+    fetchReviewsByPlateId()
     fetchKarma();
-  }, []);
+  }, [reviews]);
 
    /* ========= UPDATE AN EXISTING PLATE ========== */
   // PUT to link an existing plate to the current user
@@ -68,6 +77,7 @@ export const MyPlate = () => {
     })
     .catch(err => console.log(err))
   }
+
 
   let rating;
   let review;
