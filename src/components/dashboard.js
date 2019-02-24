@@ -46,7 +46,7 @@ export const Dashboard = (props) => {
     localStorage.removeItem('unclaimedPlate')
   }, []);
 
-  console.log('storePlates on dashboard', storePlates)
+  // console.log('storePlates on dashboard', storePlates)
 
   let reviewForm;
   if (submitReview === true) {

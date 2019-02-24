@@ -54,7 +54,6 @@ export const ReviewList = () => {
           // setRedirect(true)
         }
 
-
         // let redirectLink = `/plate/id/${localStorage.myPlateId}`;
         // if(redirect) {
         //   return <Redirect to={redirectLink} />

@@ -48,7 +48,7 @@ export const MyPlate = () => {
     // fetchReviews();
     fetchReviewsByPlateId()
     fetchKarma();
-  }, [reviews]);
+  }, []);
 
    /* ========= UPDATE AN EXISTING PLATE ========== */
   // PUT to link an existing plate to the current user
@@ -77,7 +77,6 @@ export const MyPlate = () => {
     })
     .catch(err => console.log(err))
   }
-
 
   let rating;
   let review;
@@ -132,13 +131,19 @@ export const MyPlate = () => {
 
   return (
     <div className="plate">
-    {/* ===== CONTROLS ===== */}
-      {/* <Link to="/" className="plates-back-link">
-        <button>Home</button>
-      </Link>
-      <Link to="/my-plates" className="plates-back-link">
-        <button>My Plates</button>
-      </Link> */}
+
+     {/* ===== UNCLAIM A PLATE ===== */} 
+     {
+        !localStorage.unclaimedPlate ? (
+          <button
+            
+            onClick={e => unClaimPlateClick(e)}
+            disabled={unclaimMessage}
+          >
+            Unclaim {localStorage.myPlate} - {localStorage.myState}
+          </button>
+        ) : (<p>{unclaimMessage}</p>)
+      }
 
     {/* ===== PLATE DETAILS ===== */} 
       <h4>{localStorage.myPlate}</h4>
@@ -147,15 +152,6 @@ export const MyPlate = () => {
         <p className="karma-score">Karma Score: {plate.karma}</p>
       </div>
 
-     {/* ===== UNCLAIM A PLATE ===== */} 
-     {
-      !localStorage.unclaimedPlate ? (<button
-        onClick={e => unClaimPlateClick(e)}
-      >
-        Unclaim {localStorage.myPlate} - {localStorage.myState}
-      </button>) : (<p>{unclaimMessage}</p>)
-    }
-    
     {/* ===== PLATE REVIEW LIST ===== */} 
       <ul className='reviews'>
         {review}

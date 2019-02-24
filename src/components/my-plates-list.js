@@ -29,7 +29,7 @@ export const MyPlatesList = () => {
   useEffect(() => {
     fetchPlates();
     localStorage.removeItem('unclaimedPlate')
-  }, []);
+  }, [plates]);
 
   // console.log('plates', plates);
   /* plate is still fetching/loading */
@@ -62,6 +62,7 @@ export const MyPlatesList = () => {
         <li className='plate-item' key={index} tabIndex='0'>
           <div className='plate-wrapper'>
             <button 
+              className="plate"
               onClick={ () => myPlateClick(plate) }
             >
               {plate.plateNumber}
