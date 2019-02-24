@@ -48,7 +48,7 @@ export const MyPlate = () => {
     // fetchReviews();
     fetchReviewsByPlateId()
     fetchKarma();
-  }, []);
+  }, [reviews]);
 
    /* ========= UPDATE AN EXISTING PLATE ========== */
   // PUT to link an existing plate to the current user
