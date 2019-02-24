@@ -132,7 +132,14 @@ export const MyPlate = () => {
   return (
     <div className="plate">
 
-     {/* ===== UNCLAIM A PLATE ===== */} 
+    {/* ===== PLATE DETAILS ===== */} 
+      <h4>{localStorage.myPlate}</h4>
+      <p>{localStorage.myState}</p>
+      <div className="karma-wrapper">
+        <p className="karma-score">Karma Score: {plate.karma}</p>
+      </div>
+
+    {/* ===== UNCLAIM A PLATE ===== */} 
      {
         !localStorage.unclaimedPlate ? (
           <button
@@ -143,14 +150,7 @@ export const MyPlate = () => {
             Unclaim {localStorage.myPlate} - {localStorage.myState}
           </button>
         ) : (<p>{unclaimMessage}</p>)
-      }
-
-    {/* ===== PLATE DETAILS ===== */} 
-      <h4>{localStorage.myPlate}</h4>
-      <p>{localStorage.myState}</p>
-      <div className="karma-wrapper">
-        <p className="karma-score">Karma Score: {plate.karma}</p>
-      </div>
+    }
 
     {/* ===== PLATE REVIEW LIST ===== */} 
       <ul className='reviews'>

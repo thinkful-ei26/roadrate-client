@@ -1,11 +1,3 @@
-.my-plates-link {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.my-plates-link:hover {
-  color: white;
-}
 /* 
 #claim-search-form.claim-search-form {
   display: flex;
@@ -47,6 +39,17 @@ select.browser-default {
   display: block;
   margin: 0 auto;
 }
+
+.claim-back-link {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.claim-back-link:hover {
+  color: white;
+}
+
 /* ----------- iPhone 4 and 4S ----------- */
 
 /* Portrait and Landscape */

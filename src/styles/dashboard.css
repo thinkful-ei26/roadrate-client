@@ -15,3 +15,42 @@
   color: whitesmoke;
   font-size: 18px;
 }
+
+.dashboard-nav-wrapper {
+  display: flex;
+  border: 1px solid whitesmoke;
+}
+
+.dashboard-nav {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  vertical-align: center;
+}
+
+.claim-link, .my-plates-link, .my-reviews-link  {
+  color: whitesmoke;
+  padding: 10px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.claim-link:hover, .my-plates-link:hover, .my-reviews-link:hover {
+  color: white;
+}
+
+#review-form-button {
+  background-color: transparent;
+  border: none;
+  color: whitesmoke;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+}

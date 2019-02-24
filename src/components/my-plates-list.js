@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
 import { Link } from 'react-router-dom';
+import '../styles/my-plates.css'
 
 // const customStyles = {
 //   content : {
@@ -18,7 +19,7 @@ export const MyPlatesList = () => {
 
   const fetchPlates = async () => {
     let url = `${API_BASE_URL}/plates/all/${localStorage.userId}`;
-    console.log('fetching Plates on: ',url)
+    // console.log('fetching Plates on: ',url)
     const response = await fetch(url);
     const plates = await response.json();
     // console.log('plateS on fetchPlates', plates)
@@ -36,7 +37,7 @@ export const MyPlatesList = () => {
   let plate;
 
   const myPlateClick = (plate) => {
-    console.log('plate inside li',plate)
+    // console.log('plate inside li',plate)
     localStorage.setItem('myPlate', plate.plateNumber)
     localStorage.setItem('myState', plate.plateState)
     localStorage.setItem('myPlateId', plate.id)
@@ -65,7 +66,7 @@ export const MyPlatesList = () => {
               className="plate"
               onClick={ () => myPlateClick(plate) }
             >
-              {plate.plateNumber}
+              {plate.plateNumber} - {plate.plateState}
             </button>
           </div>
         </li>
@@ -75,13 +76,15 @@ export const MyPlatesList = () => {
 
   return (
     <div className="my-plates">
+      <Link to="/"
+        className="my-plates-back-link"
+      >
+        Go Back
+      </Link>
+
       <h2>My Plates</h2>
       {noPlatesMessage()}
       
-      <Link to="/" className="plates-back-link">
-        <button>Go Back</button>
-      </Link>
-
       <ul className='plates'>
         <Link to={plateEndpoint}>
           {plate}

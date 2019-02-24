@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
 import '../styles/claim-plate.css';
 
-// client validation if a plate is not found on the DB
-
-export const claimPlate = (props) => {
+export const claimPlate = () => {
   const [ plateNumber, setPlateNumber ] = useState('');
   const [ plateState, setPlateState ] = useState('');
   const [ successMessage, setSuccessMessage ] = useState('');
@@ -225,11 +223,10 @@ export const claimPlate = (props) => {
   /* ========= RENDER CLAIM PLATE PAGE ========== */
   return (
     <div className="claimPlate">
-    <h2>Claim A Plate</h2>
-
-    <Link to="/" className="plates-back-claim">
-      <button>Go Back</button>
+    <Link to="/" className="claim-back-link">
+      Go Back
     </Link>
+    <h2>Claim A Plate</h2>
 
     <div className="claim-search">
      <fieldset id="claim-plate-search">
