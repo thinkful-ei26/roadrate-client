@@ -7,16 +7,17 @@ export const DashboardNav = () => {
 
   return(
     <header class="site-header" id="site-header">
-
-      <div class="logo">
-        <Link to="/">
-          <img 
-            src={icon} 
-            alt="RoadRate icon" 
-            className="icon"
-          />
-          <h1>RoadRate</h1>
-        </Link>
+      <div class="logo-wrapper">
+        <div class="logo">
+          <Link to="/">
+            <img 
+              src={icon} 
+              alt="RoadRate icon" 
+              className="icon"
+            />
+            <h1>RoadRate</h1>
+          </Link>
+        </div>
       </div>
 
       <div class="header-middle-area">

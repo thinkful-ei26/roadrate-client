@@ -9,16 +9,6 @@ h1 {
   display: flex;
   align-items: center;
   background: #039be5;
-  border-bottom: 1px solid #0284c5;
-}
-
-.logo {
-  display: flex;
-  flex: 0;
-  padding: 0 30px;
-  position: relative;
-  align-self: stretch;
-  align-items: center;
 }
 
 .icon {
@@ -47,19 +37,30 @@ nav {
   box-shadow: none;
 }
 
+nav ul a {
+  color: #011d2b;
+}
+
 @media only screen and (min-width: 320px)
 and (max-width: 480px) {
+
   header {
     line-height: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .logo {
     margin: 0 auto;
-    padding-top: 10px;
+    padding: 10px;
   }
 
+  .logo-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    border-bottom: 1px solid #0284c5;
+  }
+  
   .header-middle-area {
     background-color: inherit;
     width: 100%;
@@ -67,5 +68,17 @@ and (max-width: 480px) {
 
   nav {
     height: 0;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+
+  .logo {
+    margin: 0 auto;
+    padding: 10px 40px 10px 40px;
+  }
+  
+  .site-header {
+    border-bottom: 1px solid #0284c5;
   }
 }
