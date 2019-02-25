@@ -4,6 +4,8 @@ import { API_BASE_URL } from '../config';
 export const CreatePlateForm = (props) => {
   const [ ownerResponse, setOwnerResponse ] = useState('');
   const [ successMessage, setSuccessMessage ] = useState('');
+  const [ anything, setAnything ] = useState('');
+
   // const [ plateState, setPlateState ] = useState('');
 
   
@@ -12,8 +14,6 @@ export const CreatePlateForm = (props) => {
  
   const handleSubmit = (e) => {
       e.preventDefault();
-
-      
 
       return fetch(`${API_BASE_URL}/reviews/${reviewId}`, {
           method: 'PUT',
@@ -66,10 +66,15 @@ export const CreatePlateForm = (props) => {
             <button id="submit-owner-response">
               Submit
             </button>
-            <button id="cancel-owner-response-from" onClick={() => localStorage.removeItem('submitResponse')}> 
+          </form>
+            <button id="cancel-owner-response-from" onClick={() => {
+              console.log(successMessage)
+              localStorage.setItem('submitResponse', false);
+              setAnything('something');
+            }
+              }> 
               Cancel
             </button>
-          </form>
         </fieldset>)
       }
 
