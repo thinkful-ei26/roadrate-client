@@ -1,24 +1,15 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+import '../styles/my-plates.css'
 
-// const customStyles = {
-//   content : {
-//     top                   : '50%',
-//     left                  : '50%',
-//     right                 : 'auto',
-//     bottom                : 'auto',
-//     marginRight           : '-50%',
-//     transform             : 'translate(-50%, -50%)'
-//   }
-// };
-
-export const PlateList = (props) => {
+export const MyPlatesList = () => {
   const [ plates, setPlates ] = useState([]);
+  const [ redirect, setRedirect ] = useState(false);
 
   const fetchPlates = async () => {
     let url = `${API_BASE_URL}/plates/all/${localStorage.userId}`;
-    console.log('fetching Plates on: ',url)
+    // console.log('fetching Plates on: ',url)
     const response = await fetch(url);
     const plates = await response.json();
     // console.log('plateS on fetchPlates', plates)
@@ -28,6 +19,8 @@ export const PlateList = (props) => {
 
   useEffect(() => {
     fetchPlates();
+    setRedirect(false)
+    localStorage.removeItem('responseSuccess')
     localStorage.removeItem('unclaimedPlate')
   }, []);
 
@@ -35,11 +28,22 @@ export const PlateList = (props) => {
   /* plate is still fetching/loading */
   let plate;
 
+
+
   const myPlateClick = (plate) => {
-    console.log('plate inside li',plate)
+    // console.log('plate inside li',plate)
     localStorage.setItem('myPlate', plate.plateNumber)
     localStorage.setItem('myState', plate.plateState)
+    localStorage.setItem('myPlateId', plate.id)
+    localStorage.removeItem('success')
+    setRedirect(true);
     return plate
+  }
+  
+  let plateEndpoint = `/my-plates/id/${localStorage.myPlateId}`;
+
+  if (redirect) {
+    return <Redirect to={plateEndpoint} />
   }
 
   const noPlatesMessage = () => {
@@ -59,9 +63,10 @@ export const PlateList = (props) => {
         <li className='plate-item' key={index} tabIndex='0'>
           <div className='plate-wrapper'>
             <button 
+              className="plate"
               onClick={ () => myPlateClick(plate) }
             >
-              {plate.plateNumber}
+              {plate.plateNumber} - {plate.plateState}
             </button>
           </div>
         </li>
@@ -71,17 +76,22 @@ export const PlateList = (props) => {
 
   return (
     <div className="my-plates">
+      <Link to="/"
+        className="my-plates-back-link"
+      >
+        Go Back
+      </Link>
+
+      {localStorage.unclaimedPlate ? (<p>Successfully unclaimed plate</p>) : (<p></p>)}
+
       <h2>My Plates</h2>
       {noPlatesMessage()}
       
-      <Link to="/" className="plates-back-link">
-        <button>Go Back</button>
-      </Link>
-
       <ul className='plates'>
-        <Link to="/plate-list/id/">
+        {/* <Link to={plateEndpoint}>
           {plate}
-        </Link>
+        </Link> */}
+        {plate}
       </ul>
 
     </div>
@@ -89,4 +99,4 @@ export const PlateList = (props) => {
   );
 };
 
-export default PlateList;
+export default MyPlatesList;

@@ -1,28 +1,27 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
-import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
+import { Icon } from 'react-materialize';
 import OwnerResponseForm from './owner-response-form';
 
-// const customStyles = {
-//   content : {
-//     top                   : '50%',
-//     left                  : '50%',
-//     right                 : 'auto',
-//     bottom                : 'auto',
-//     marginRight           : '-50%',
-//     transform             : 'translate(-50%, -50%)'
-//   }
-// };
-
-export const MyPlate = (props) => {
+export const MyPlate = () => {
   const [ reviews, setReviews] = useState("");
   const [ plate, setPlate ] = useState("");
   const [ submitResponse, setSubmitResponse] = useState('');
   const [ unclaimMessage, setUnclaimMessage ] = useState('');
+  const [ responseSubmitted, setResponseSubmitted ] = useState(false);
 
-  const fetchReviews = async () => {
-    let url = `${API_BASE_URL}/reviews/${localStorage.myState}/${localStorage.myPlate}`;
+  // const fetchReviews = async () => {
+  //   let url = `${API_BASE_URL}/reviews/${localStorage.myState}/${localStorage.myPlate}`;
+  //   const response = await fetch(url);
+  //   const reviews  = await response.json();
+  //   setReviews(reviews)
+  //   return reviews
+  // }
+
+  const fetchReviewsByPlateId = async () => {
+    console.log('fetch reviews by ID clicked')
+    let url = `${API_BASE_URL}/reviews/my-plates/${localStorage.myPlateId}`;
     const response = await fetch(url);
     const reviews  = await response.json();
     setReviews(reviews)
@@ -33,15 +32,18 @@ export const MyPlate = (props) => {
     let url = `${API_BASE_URL}/plates/${localStorage.myState}/${localStorage.myPlate}`;
     const response = await fetch(url);
     const [ plate ]  = await response.json();
-    // console.log('plate on fetchKarma', plate)
     setPlate(plate)
     return plate
   }
 
   useEffect(() => {
-    fetchReviews();
+    // fetchReviews();
+    fetchReviewsByPlateId()
     fetchKarma();
   }, []);
+
+  console.log('revoews', reviews);
+  console.log('plate', plate);
 
    /* ========= UPDATE AN EXISTING PLATE ========== */
   // PUT to link an existing plate to the current user
@@ -49,6 +51,8 @@ export const MyPlate = (props) => {
     e.preventDefault(e);
     const userId = localStorage.userId;
  
+    localStorage.setItem('unclaimedPlate', localStorage.myPlate)
+
     return fetch(`${API_BASE_URL}/plates/unclaim/${localStorage.userId}`, {
       method: 'PUT',
       headers: {
@@ -63,8 +67,8 @@ export const MyPlate = (props) => {
       })
     })
     .then(res => {
-      console.log('res inside handleLink >>>', res);
-      localStorage.setItem('unclaimedPlate', localStorage.myPlate)
+      // console.log('res inside handleLink >>>', res);
+      localStorage.setItem('success', 'unclaimed')
       setUnclaimMessage(`You successfully unclaimed your plate.`)
       return res.json();
     })
@@ -84,58 +88,66 @@ export const MyPlate = (props) => {
       }
 
       let responseButton;
+
+      console.log(review.ownerResponse)
+
       if (review.ownerResponse) {
         ownerComment = <p>Driver Response: {review.ownerResponse}</p>
       } else {
-        responseButton = <button onClick={() => setSubmitResponse(review._id)}>Leave a response</button>
+        responseButton = <button onClick={() => {
+          localStorage.setItem('submitResponse', review._id);
+          setSubmitResponse(review._id)
+        }       
+      }>Leave a response</button>
       }
 
       let responseForm;
-      if (submitResponse === review._id) {
-        responseForm = <OwnerResponseForm reviewId={review._id}/>
-        responseButton = <button onClick={() => setSubmitResponse('')}>Cancel</button>
-      }
-
-      if (review.ownerResponse) {
-        responseButton = '';
-      }
+      if (localStorage.submitResponse === review._id) {
+        console.log('here', localStorage.submitResponse, 'review Id', review._id)
+        responseForm = <OwnerResponseForm reviewId={review._id} fetchReviews={fetchReviewsByPlateId()}/>
+        // responseButton = '';
+        responseButton = <button onClick={() => {
+          localStorage.removeItem('submitResponse')
+          setSubmitResponse('')}
+        }>Cancel</button>
+      } 
+      // else {
+      //   console.log('here', localStorage.submitResponse, 'review Id', review._id)
+      //   responseForm = '';
+      // }
+     
 
       return (
-        <li className='review-item' key={review._id} tabIndex='0'>
+        <li className='review-item' key={index} id={review.id} tabIndex='0'>
           <article className='review-header'>
             <article className='review-title'>
               <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
                 {review.plateNumber} {review.plateState}         
-              {/* <p id='review-time'>{today}</p> */}
             </article>
             
             <article className='review-rating'>
               <p className='rating'>{rating}</p>
             </article>
           </article>
-          {/* <h1 className='plate-number'>{review.plateNumber}</h1><br/> */}
-          {/* <img className='review-img' src='https://i.pinimg.com/236x/29/55/38/295538a452d701c9189d0fa8f5b36938--white-truck-bad-parking.jpg' alt='review'></img> */}
-          
-          {/* Do we want to add information about how long ago this was posted, i.e. 2m or 2h */}
           
           <p className='message'>Review: {review.message}</p>
           {ownerComment}
           {responseButton}
-          {/* {submitResponse} */}
           {responseForm}
         </li>
       )
     })
   };
 
+  console.log(unclaimMessage)
+
   return (
     <div className="plate">
-    {/* ===== CONTROLS ===== */}
-      <Link to="/" className="plates-back-link">
-        <button>Home</button>
-      </Link>
-      <Link to="/plate-list" className="plates-back-link">
-        <button>My Plates</button>
+    <Link to="/my-plates" className="claim-back-link"> Go Back </Link>
+    <Link to="/"
+        className="my-plates-home-link"
+      >
+        Home
       </Link>
 
     {/* ===== PLATE DETAILS ===== */} 
@@ -144,22 +156,28 @@ export const MyPlate = (props) => {
       <div className="karma-wrapper">
         <p className="karma-score">Karma Score: {plate.karma}</p>
       </div>
-    
+
+    {/* ===== UNCLAIM A PLATE ===== */} 
+      {
+        !localStorage.unclaimedPlate ? (
+          <button
+            onClick={e => unClaimPlateClick(e)}
+            disabled={localStorage.success === 'unclaimed'}
+          >
+            Unclaim {localStorage.myPlate} - {localStorage.myState}
+          </button>
+        ) : (<p></p>)
+      }
+
+      {
+        unclaimMessage ? (<p>{unclaimMessage}</p>) : (<p></p>)
+      }
+
     {/* ===== PLATE REVIEW LIST ===== */} 
       <ul className='reviews'>
         {review}
       </ul>
-
-    {/* ===== UNCLAIM A PLATE ===== */} 
-    {
-      !localStorage.unclaimedPlate ? (<button
-        onClick={e => unClaimPlateClick(e)}
-      >
-        Unclaim {localStorage.myPlate} - {localStorage.myState}
-      </button>) : (<p>{unclaimMessage}</p>)
-    }
-      
-
+   
     </div>
   );
 };

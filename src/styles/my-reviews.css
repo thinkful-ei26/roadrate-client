@@ -4,4 +4,11 @@
 
 .my-reviews-back-link {
   text-align: left;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.my-reviews-back-link:hover {
+  color: white;
 }
