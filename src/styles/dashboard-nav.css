@@ -1,0 +1,59 @@
+h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 32px;
+}
+.site-header {
+  position: relative;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  background: #039be5;
+  border-bottom: 1px solid #0284c5;
+}
+
+.logo {
+  flex: 0;
+  padding: 0 30px;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 30px;
+}
+
+.header-middle-area {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: inherit;
+}
+
+.search {
+  display: none;
+  padding-left: 15px;
+  justify-content: flex-end;
+  flex-direction: flex-end;
+}
+
+nav {
+  color: #fff;
+  background-color: transparent;
+  width: 100%;
+  height: 80px;
+  border: none;
+  box-shadow: none;
+}
+
+.logout {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.logout:hover {
+  color: white;
+}
