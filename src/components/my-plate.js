@@ -1,24 +1,16 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
+import { Link } from 'react-router-dom';
 import { Icon } from 'react-materialize';
 import OwnerResponseForm from './owner-response-form';
-
-// const customStyles = {
-//   content : {
-//     top                   : '50%',
-//     left                  : '50%',
-//     right                 : 'auto',
-//     bottom                : 'auto',
-//     marginRight           : '-50%',
-//     transform             : 'translate(-50%, -50%)'
-//   }
-// };
 
 export const MyPlate = () => {
   const [ reviews, setReviews] = useState("");
   const [ plate, setPlate ] = useState("");
-  const [ submitResponse, setSubmitResponse] = useState('');
+  // const [ submitResponse, setSubmitResponse] = useState('');
   const [ unclaimMessage, setUnclaimMessage ] = useState('');
+
+  
 
   // const fetchReviews = async () => {
   //   let url = `${API_BASE_URL}/reviews/${localStorage.myState}/${localStorage.myPlate}`;
@@ -29,6 +21,7 @@ export const MyPlate = () => {
   // }
 
   const fetchReviewsByPlateId = async () => {
+    console.log('fetch reviews by ID clicked')
     let url = `${API_BASE_URL}/reviews/my-plates/${localStorage.myPlateId}`;
     const response = await fetch(url);
     const reviews  = await response.json();
@@ -48,7 +41,10 @@ export const MyPlate = () => {
     // fetchReviews();
     fetchReviewsByPlateId()
     fetchKarma();
-  }, [reviews]);
+  }, []);
+
+  console.log('revoews', reviews);
+  console.log('plate', plate);
 
    /* ========= UPDATE AN EXISTING PLATE ========== */
   // PUT to link an existing plate to the current user
@@ -93,22 +89,23 @@ export const MyPlate = () => {
       }
 
       let responseButton;
+
+      console.log(review.ownerResponse)
+
       if (review.ownerResponse) {
         ownerComment = <p>Driver Response: {review.ownerResponse}</p>
       } else {
-        responseButton = <button onClick={() => setSubmitResponse(review._id)}>Leave a response</button>
+        responseButton = <button onClick={() => localStorage.setItem('submitResponse', review._id)}>Leave a response</button>
       }
 
       let responseForm;
-      if (submitResponse === review._id) {
+      if (localStorage.submitResponse === review._id) {
+        console.log('here', localStorage.submitResponse, 'review Id', review._id)
         responseForm = <OwnerResponseForm reviewId={review._id}/>
-        responseButton = <button onClick={() => setSubmitResponse('')}>Cancel</button>
-      }
-
-      if (review.ownerResponse) {
         responseButton = '';
+        // responseButton = <button onClick={() => setSubmitResponse('')} disabled={localStorage.responseSuccess}>Cancel</button>
       }
-
+     
       return (
         <li className='review-item' key={index} id={review.id} tabIndex='0'>
           <article className='review-header'>
@@ -132,8 +129,15 @@ export const MyPlate = () => {
   };
 
   console.log(unclaimMessage)
+
   return (
     <div className="plate">
+    <Link to="/my-plates" className="claim-back-link"> Go Back </Link>
+    <Link to="/"
+        className="my-plates-home-link"
+      >
+        Home
+      </Link>
 
     {/* ===== PLATE DETAILS ===== */} 
       <h4>{localStorage.myPlate}</h4>

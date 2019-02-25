@@ -43,13 +43,8 @@ export const App = () => {
 			<Route exact path="/login" component={LoginForm} storeUser={storeUser} />
 			<Route exact path="/about" component={About} storeUser={storeUser} />
       <Route exact path="/claim-plate" component={ClaimPlate} storeUser={storeUser} />
-<<<<<<< HEAD
-      <Route path="/plate-list" component={PlateList} storeUser={storeUser} />
-      <Route path="/my-plate" component={MyPlate} storeUser={storeUser} />
-=======
       <Route path="/my-plates" component={MyPlatesList} storeUser={storeUser} /> 
       <Route path="/my-plates/id" component={MyPlate} storeUser={storeUser} />
->>>>>>> af1b07e3323fd90521b4a74f18b447aa257a831a
       <Route exact path="/my-reviews" component={MyReviews} />
 		</div>
 	)

@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import '../styles/my-plates.css'
 
 // const customStyles = {
@@ -16,6 +16,7 @@ import '../styles/my-plates.css'
 
 export const MyPlatesList = () => {
   const [ plates, setPlates ] = useState([]);
+  const [ redirect, setRedirect ] = useState(false);
 
   const fetchPlates = async () => {
     let url = `${API_BASE_URL}/plates/all/${localStorage.userId}`;
@@ -29,6 +30,8 @@ export const MyPlatesList = () => {
 
   useEffect(() => {
     fetchPlates();
+    setRedirect(false)
+    localStorage.removeItem('responseSuccess')
     localStorage.removeItem('unclaimedPlate')
   }, []);
 
@@ -37,18 +40,22 @@ export const MyPlatesList = () => {
   let plate;
 
 
+
   const myPlateClick = (plate) => {
     // console.log('plate inside li',plate)
     localStorage.setItem('myPlate', plate.plateNumber)
     localStorage.setItem('myState', plate.plateState)
     localStorage.setItem('myPlateId', plate.id)
     localStorage.removeItem('success')
+    setRedirect(true);
     return plate
   }
   
-  let plateEndpoint = `/my-plate/id/${localStorage.myPlateId}`;
-
   let plateEndpoint = `/my-plates/id/${localStorage.myPlateId}`;
+
+  if (redirect) {
+    return <Redirect to={plateEndpoint} />
+  }
 
   const noPlatesMessage = () => {
     if(localStorage.hasPlates === '' || !plates) {
@@ -80,11 +87,12 @@ export const MyPlatesList = () => {
 
   return (
     <div className="my-plates">
-      <Link to="/"
+      <Link to="/my-plates"
         className="my-plates-back-link"
       >
         Go Back
       </Link>
+
 
       {localStorage.unclaimedPlate ? (<p>Successfully unclaimed plate</p>) : (<p></p>)}
 
@@ -92,9 +100,10 @@ export const MyPlatesList = () => {
       {noPlatesMessage()}
       
       <ul className='plates'>
-        <Link to={plateEndpoint}>
+        {/* <Link to={plateEndpoint}>
           {plate}
-        </Link>
+        </Link> */}
+        {plate}
       </ul>
 
     </div>

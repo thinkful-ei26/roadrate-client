@@ -6,10 +6,14 @@ export const CreatePlateForm = (props) => {
   const [ successMessage, setSuccessMessage ] = useState('');
   // const [ plateState, setPlateState ] = useState('');
 
+  
+
   const { reviewId } = props;
  
   const handleSubmit = (e) => {
-      // e.preventDefault();
+      e.preventDefault();
+
+      
 
       return fetch(`${API_BASE_URL}/reviews/${reviewId}`, {
           method: 'PUT',
@@ -27,6 +31,7 @@ export const CreatePlateForm = (props) => {
         })
         .then(data => {
           setSuccessMessage(true)
+          localStorage.removeItem('submitResponse');
           return data
         })
         .catch(err => console.log(err))
@@ -59,7 +64,10 @@ export const CreatePlateForm = (props) => {
             </label>
     
             <button id="submit-owner-response">
-                Submit
+              Submit
+            </button>
+            <button id="cancel-owner-response-from" onClick={() => localStorage.removeItem('submitResponse')}> 
+              Cancel
             </button>
           </form>
         </fieldset>)
