@@ -79,7 +79,7 @@ export const PlateList = (props) => {
       </Link>
 
       <ul className='plates'>
-        <Link to="/my-plate">
+        <Link to="/plate-list/id/">
           {plate}
         </Link>
       </ul>

@@ -16,6 +16,7 @@ export const Review = (props) => {
 
     let rating;
     if (reviews) {
+      console.log(reviews);
        review = reviews.map((review, index) => { 
         let driverComment;
         if (review.isPositive === 'true') {
@@ -28,7 +29,11 @@ export const Review = (props) => {
           driverComment = <p> Driver Response: {review.ownerResponse}</p>
         } 
 
-        review.redirectLink = `/plate/${review.plateId}`
+        // console.log(review.plateId)
+        let redirectLink = `/plate`;
+        if(redirect) {
+          return <Redirect to={redirectLink} />
+        }
 
         const handleClick = () => {
           // localStorage.setItem('currentPlateState', review.plateState)
@@ -98,8 +103,6 @@ export const Review = (props) => {
         let yearTime = ` - ${day} ${month} ${year}`
         const dateString = hourTime + yearTime;
 
-        console.log(thisDate - date);
-
         const timePassed = thisDate - date;
 
         let elapsedTime;
@@ -131,7 +134,6 @@ export const Review = (props) => {
 
         if (timePassed) {
           convert(timePassed)
-          console.log('hello', elapsedTime );
         }
 
         return (
