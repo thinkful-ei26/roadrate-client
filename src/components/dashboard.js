@@ -72,7 +72,7 @@ export const Dashboard = (props) => {
         </Link >
       </div>
       <button 
-          className="add-review-button"
+          className="add-review"
           onClick={ e => {
               e.preventDefault(); 
               setSubmitReview(!submitReview); 
