@@ -3,7 +3,6 @@ import { API_BASE_URL } from '../config';
 import { Link } from 'react-router-dom';
 import ReviewList from './ReviewList';
 import '../styles/dashboard.css';
-import DashboardNav from './dashboard-nav';
 import ReviewForm from './review-form';
 
 export const Dashboard = (props) => {
@@ -57,47 +56,33 @@ export const Dashboard = (props) => {
  
   return (
     <div className="dashboard">
-      <DashboardNav props={props}/>
-    { /*
+
       <div className="dashboard-nav-wrapper">
-        <div className="icon">
-          {/* <img 
-            src={icon} 
-            alt="RoadRate icon" 
-            className="icon"
-          /> 
-          <img 
-            src={logo} 
-            alt="RoadRate logo" 
-            className="logo"
-          />
-        </div>
         <div className="dashboard-nav">
         
           <Link to="/claim-plate"
             className="claim-link"
           >
-            <span>
+            <button>
               Claim A Plate
-            </span>
+            </button>
           </Link>
 
           <Link to="/my-plates" 
             className="my-plates-link">
-            <span >
+            <button >
               MyPlates
-            </span>
+            </button>
           </Link>
 
           <Link to='/my-reviews' 
             className="my-reviews-link">
-            <span >
+            <button >
               My Reviews
-            </span>
+            </button>
           </Link>
         </div>
       </div>
-    */}
       <div className="dashboard-greeting">
         <p>Hi, {username}!</p>
 
