@@ -4,11 +4,19 @@ import { API_BASE_URL } from '../config';
 export const CreatePlateForm = (props) => {
   const [ ownerResponse, setOwnerResponse ] = useState('');
   const [ successMessage, setSuccessMessage ] = useState('');
-  const [ anything, setAnything ] = useState('');
+  const [ hideForm, setHideForm ] = useState(false);
 
   // const [ plateState, setPlateState ] = useState('');
 
-  
+  const hideTheForm = () => {
+    setHideForm(true)
+  }
+
+  let formBody;
+
+  if (hideForm) {
+    formBody = ''
+  }
 
   const { reviewId } = props;
  
@@ -32,12 +40,13 @@ export const CreatePlateForm = (props) => {
         .then(data => {
           setSuccessMessage(true)
           localStorage.removeItem('submitResponse');
+          props.fetchReviews()
           return data
         })
         .catch(err => console.log(err))
       }
 
-      let formBody;
+      
       if (successMessage) {
         formBody = <p>Thanks. Your response was saved.</p>
         // return <Redirect to='/my-plate' />
@@ -67,14 +76,14 @@ export const CreatePlateForm = (props) => {
               Submit
             </button>
           </form>
-            <button id="cancel-owner-response-from" onClick={() => {
-              console.log(successMessage)
+            {/* <button id="cancel-owner-response-from" onClick={() => {
+              console.log('hi')
               localStorage.setItem('submitResponse', false);
-              setAnything('something');
+              hideTheForm();
             }
               }> 
               Cancel
-            </button>
+            </button> */}
         </fieldset>)
       }
 
