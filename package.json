@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "jwt-decode": "^2.2.0",
+    "material-icons-react": "^1.0.4",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-modal": "^3.8.1",

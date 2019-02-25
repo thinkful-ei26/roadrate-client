@@ -56,6 +56,7 @@ img {
 .plate-review-list {
   margin: 0;
   padding: 0;
+  list-style-type: none;
 }
 
 .plate-review-item {

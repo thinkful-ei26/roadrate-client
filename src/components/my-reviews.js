@@ -1,6 +1,5 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
-import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import Review from './Review'
 import '../styles/my-reviews.css';

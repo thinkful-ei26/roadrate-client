@@ -1,8 +1,6 @@
 import React, { useState } from 'react'; 
 import { API_BASE_URL } from '../config';
 import { Link, Redirect } from 'react-router-dom';
-import { Button, Icon } from 'react-materialize';
-import Input from 'react-materialize/lib/Input';
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -89,7 +87,7 @@ export const LoginForm = () => {
             onSubmit={handleSubmit}
           >
             <label htmlFor="username">Username:
-            <Input
+            <input
               value={username}
               onChange={e => setUsername(e.target.value)}
               placeholder="username"
@@ -102,7 +100,7 @@ export const LoginForm = () => {
             />
             </label>
             <label htmlFor="password">Password:
-            <Input
+            <input
               value={password}
               onChange={e => setPassword(e.target.value)}
               placeholder="password"
@@ -113,10 +111,10 @@ export const LoginForm = () => {
               required
             />
             </label>
-            <Button waves="teal" type="submit" className="login-submit">
-              <Icon>thumb_up</Icon>
+            <button waves="teal" type="submit" className="login-submit">
+              {/* <Icon>thumb_up</Icon> */}
               Submit
-            </Button>
+            </button>
             <Link to="/">Back</Link>
           </form>
         )
