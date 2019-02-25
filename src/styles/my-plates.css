@@ -1,0 +1,16 @@
+.my-plates-back-link {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.my-plates-back-link:hover {
+  color: white;
+}
+
+button.plate {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bolder;
+  width: 300px;
+}

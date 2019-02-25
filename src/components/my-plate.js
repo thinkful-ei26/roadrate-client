@@ -56,6 +56,8 @@ export const MyPlate = () => {
     e.preventDefault(e);
     const userId = localStorage.userId;
  
+    localStorage.setItem('unclaimedPlate', localStorage.myPlate)
+
     return fetch(`${API_BASE_URL}/plates/unclaim/${localStorage.userId}`, {
       method: 'PUT',
       headers: {
@@ -70,8 +72,8 @@ export const MyPlate = () => {
       })
     })
     .then(res => {
-      console.log('res inside handleLink >>>', res);
-      localStorage.setItem('unclaimedPlate', localStorage.myPlate)
+      // console.log('res inside handleLink >>>', res);
+      localStorage.setItem('success', 'unclaimed')
       setUnclaimMessage(`You successfully unclaimed your plate.`)
       return res.json();
     })
@@ -129,21 +131,9 @@ export const MyPlate = () => {
     })
   };
 
+  console.log(unclaimMessage)
   return (
     <div className="plate">
-
-     {/* ===== UNCLAIM A PLATE ===== */} 
-     {
-        !localStorage.unclaimedPlate ? (
-          <button
-            
-            onClick={e => unClaimPlateClick(e)}
-            disabled={unclaimMessage}
-          >
-            Unclaim {localStorage.myPlate} - {localStorage.myState}
-          </button>
-        ) : (<p>{unclaimMessage}</p>)
-      }
 
     {/* ===== PLATE DETAILS ===== */} 
       <h4>{localStorage.myPlate}</h4>
@@ -151,6 +141,22 @@ export const MyPlate = () => {
       <div className="karma-wrapper">
         <p className="karma-score">Karma Score: {plate.karma}</p>
       </div>
+
+    {/* ===== UNCLAIM A PLATE ===== */} 
+      {
+        !localStorage.unclaimedPlate ? (
+          <button
+            onClick={e => unClaimPlateClick(e)}
+            disabled={localStorage.success === 'unclaimed'}
+          >
+            Unclaim {localStorage.myPlate} - {localStorage.myState}
+          </button>
+        ) : (<p></p>)
+      }
+
+      {
+        unclaimMessage ? (<p>{unclaimMessage}</p>) : (<p></p>)
+      }
 
     {/* ===== PLATE REVIEW LIST ===== */} 
       <ul className='reviews'>

@@ -3,6 +3,7 @@ import {API_BASE_URL} from '../config';
 import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import Spinner from 'react-spinkit';
+import '../styles/public-plate.css';
 
 export const PublicPlate = () => {
   const [plate, setPlate] = useState('');
@@ -22,12 +23,12 @@ export const PublicPlate = () => {
     console.log(plateUrl)
     const res = await fetch(plateUrl);
     const plate  = await res.json();
-    console.log('plate: ',plate);
+    // console.log('plate: ',plate);
     setPlate(plate)
 
     /* ==== fetch reviews using plateId ==== */
     let reviewURL = `${API_BASE_URL}/reviews/plate/${plateId}`;
-    console.log('fetchReviews url: ', reviewURL)
+    // console.log('fetchReviews url: ', reviewURL)
     const response = await fetch(reviewURL);
     const reviews  = await response.json();
     setReviews(reviews)
@@ -38,8 +39,8 @@ export const PublicPlate = () => {
       fetchPlate()
     }, []);
 
-  console.log('plate data: ', plate)
-  console.log('reviews: ', reviews)
+  // console.log('plate data: ', plate)
+  // console.log('reviews: ', reviews)
 
   let _plate = (
     <div className="spinner" style={{margin: '0 auto'}}>
@@ -204,7 +205,7 @@ export const PublicPlate = () => {
     */
     <div className="plate">
       <Link to="/" className="plates-back-link">
-          <button>Go Back</button>
+        Go Back
       </Link>
      
       {_plate}

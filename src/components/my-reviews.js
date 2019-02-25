@@ -65,7 +65,7 @@ export const MyReviews = () => {
   return (
     <div className="my-reviews">
       <Link to="/" className="my-reviews-back-link">
-          <button>Go Back</button>
+        Go Back
       </Link>
       <section className='my-reviews-content'>
         <h2>My Reviews</h2>
