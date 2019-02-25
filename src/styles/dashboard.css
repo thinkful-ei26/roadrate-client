@@ -1,26 +1,24 @@
 .dashboard {
-  background: #10618a;
+  background: #039be5;
   height: 100vh;
   max-width: 100%;
-}
-
-.dashboard-nav {
-  display: flex;
-  justify-content: space-evenly;
-  max-width: 100%;
+  align-items: center;
 }
 
 button.logout {
   margin: 10px;
-  background: #10618a;
+  background: #039be5;
   border: none;
   color: aliceblue;
+}
+
+.add-review-button {
+  margin: 5px auto;
 }
 
 .dashboard-greeting {
   padding: 8px;
   display: flex;
-  justify-content: space-around;
   align-items: center;
 }
 

@@ -56,7 +56,9 @@ export const Dashboard = (props) => {
  
   return (
     <div className="dashboard">
-      <div className="dashboard-greeting">
+      <div className="dashboard-nav">
+        <DashboardNav />
+        <div className="dashboard-greeting">
         <p>Hi, {username}!</p>
 
         <Link to="/">
@@ -69,10 +71,8 @@ export const Dashboard = (props) => {
         </Link >
 
       </div>
-
-      <div className="dashboard-nav">
-        <DashboardNav />
-        <button 
+      <button 
+          className="add-review-button"
           onClick={ e => {
               e.preventDefault(); 
               setSubmitReview(!submitReview); 
@@ -81,7 +81,6 @@ export const Dashboard = (props) => {
         >
           Add a review
         </button>
-
       </div>
       
 

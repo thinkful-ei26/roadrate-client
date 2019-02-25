@@ -1,23 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import icon from '../assets/thumbs-up.png';
-// import '../styles/dashboard-nav.css';
+import '../styles/dashboard-nav.css';
 
 export const DashboardNav = () => {
 
   return(
-    <header className="site-header" id="site-header">
+      <div className="header-logo-combo">
       <div className="logo-wrapper">
-        <div className="logo">
+        <ul className="header-logo">
           <Link to="/">
-            <img 
-              src={icon} 
-              alt="RoadRate icon" 
-              className="icon"
-            />
-            <h1>RoadRate</h1>
+                <li className="header"><h1>RoadRate</h1></li>
           </Link>
-        </div>
+                <li className="icon"><img 
+                src={icon} 
+                alt="RoadRate icon" 
+                className="icon"
+                />
+                </li>
+        </ul>
       </div>
 
       <div className="header-middle-area">
@@ -57,7 +58,7 @@ export const DashboardNav = () => {
           </ul>
         </nav>
       </div> 
-    </header>
+    </div>
   );
 }
 

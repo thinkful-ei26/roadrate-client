@@ -3,23 +3,21 @@ h1 {
     font-size: 32px;
     color: #011d2b;
   }
-  .site-header {
-    position: relative;
+  .header-logo-combo {
     z-index: 1000;
-    display: flex;
-    align-items: center;
     background: #039be5;
+    padding: 5px;
   }
   
-  .icon {
-    width: 30px;
-  }
-  
-  .header-middle-area {
+  .main-sections {
+    display: flex;
     padding: 0;
     margin: 0;
-    border: none;
-    background-color: inherit;
+    list-style: none;
+  }
+
+  .main-sections span {
+    justify-content: space-evenly;
   }
   
   .search {
@@ -28,6 +26,29 @@ h1 {
     justify-content: flex-end;
     flex-direction: flex-end;
   }
+
+  .header-logo {
+    display: flex;
+    margin: 0 auto;
+    padding: 10px;
+    list-style: none;
+  }
+
+  ul a {
+    text-decoration: none;
+    margin: 5px;
+  }
+
+  .icon {
+    width: 30px;
+    margin-top: 5px;
+  }
+
+  .logo-wrapper {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+  }
   
   nav {
     color: #fff;
@@ -35,50 +56,10 @@ h1 {
     width: 100%;
     border: none;
     box-shadow: none;
+    text-decoration: none;
   }
   
   nav ul a {
     color: #011d2b;
-  }
-  
-  @media only screen and (min-width: 320px)
-  and (max-width: 480px) {
-  
-    header {
-      line-height: 0;
-      display: flex;
-      flex-direction: column-reverse;
-    }
-  
-    .logo {
-      margin: 0 auto;
-      padding: 10px;
-    }
-  
-    .logo-wrapper {
-      width: 100%;
-      margin: 0 auto;
-      border-bottom: 1px solid #0284c5;
-    }
-    
-    .header-middle-area {
-      background-color: inherit;
-      width: 100%;
-    }
-  
-    nav {
-      height: 0;
-    }
-  }
-  
-  @media only screen and (min-width: 481px) {
-  
-    .logo {
-      margin: 0 auto;
-      padding: 10px 40px 10px 40px;
-    }
-    
-    .site-header {
-      border-bottom: 1px solid #0284c5;
-    }
+    text-decoration: none;
   }
