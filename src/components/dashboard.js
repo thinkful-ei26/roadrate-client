@@ -62,26 +62,28 @@ export const Dashboard = (props) => {
         <div className="dashboard-greeting">
         <p>Hi, {username}!</p>
 
-        <Link to="/">
+        {/* <Link to="/">
           <button className="logout" onClick={() => {
             props.logout()
             localStorage.setItem("logout", true)
             }}>
             Logout
           </button>
-        </Link >
+        </Link > */}
       </div>
+
+      </div>
+
       <button 
-          className="add-review"
-          onClick={ e => {
-              e.preventDefault(); 
-              setSubmitReview(!submitReview); 
+            className="add-review"
+            onClick={ e => {
+                e.preventDefault(); 
+                setSubmitReview(!submitReview); 
+              }
             }
-          }
-        >
-          Add a review
-        </button>
-      </div>
+          >
+            New Review
+          </button>
       
 
       {reviewForm}

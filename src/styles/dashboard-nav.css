@@ -3,6 +3,11 @@ h1 {
     font-size: 32px;
     color: #011d2b;
   }
+
+  .dashboard-nav {
+    align-content: space-around;
+  }
+
   .header-logo-combo {
     z-index: 1000;
     background: #039be5;
@@ -14,14 +19,10 @@ h1 {
     padding: 0;
     margin: 0;
     list-style: none;
-  }
-
-  .main-sections span {
-    justify-content: space-evenly;
+    justify-content: space-around;
   }
   
   .search {
-    display: none;
     padding-left: 15px;
     justify-content: flex-end;
     flex-direction: flex-end;

@@ -15,10 +15,10 @@ body {
 html {
   display: flex;
   max-width: 100%;
+  flex-wrap: wrap;
 }
 
 input {
-  display: flex;
   border-radius: 8px;
   border-style: none;
   border: 1px solid #e4e6e8;

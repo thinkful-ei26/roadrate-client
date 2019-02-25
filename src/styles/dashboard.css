@@ -6,19 +6,23 @@
 }
 
 button.logout {
-  margin: 10px;
   background: #039be5;
   border: none;
   color: aliceblue;
 }
 
 button.add-review {
-  margin: 10px;
+  background: rgb(60, 199, 60);
+  padding: 10px 15px;
+  color: aliceblue;
+  margin-left: 15px;
 }
 
 .dashboard-greeting {
-  padding: 8px;
   display: flex;
+  padding: 10px;
+  margin-left: 50px;
+  justify-content: center;
   align-items: center;
 }
 
