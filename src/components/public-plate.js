@@ -1,36 +1,60 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
-import Review from './Review';
 import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
+import Spinner from 'react-spinkit';
+import '../styles/public-plate.css';
 
-export const Plate = (props) => {
-  const [ reviews, setReviews] = useState("");
-  const [ plate, setPlate ] = useState("");
+export const PublicPlate = () => {
+  const [plate, setPlate] = useState('');
+  const [plateId, setPlateId] = useState('');
+  const [ reviews, setReviews] = useState('');
 
-    const fetchReviews = async () => {
-      let url = `${API_BASE_URL}/reviews/${localStorage.currentPlateState}/${localStorage.currentPlateNumber}`;
-      const response = await fetch(url);
-      const reviews  = await response.json();
-      setReviews(reviews)
-      return reviews
-    }
+  const fetchPlate = async () => {
+    /* ==== extract plateId from url ==== */
+    console.log('address: ',document.location.href);
+    const address = document.location.href;
+    const plateId = address.substring((address.indexOf('d')+ 2), address.length);
+    setPlateId(plateId)
+    console.log('plateId from addressbar: ',plateId)
+    
+    /* ==== fetch plate info using plateId ==== */
+    let plateUrl = `${API_BASE_URL}/plates/${plateId}`;
+    console.log(plateUrl)
+    const res = await fetch(plateUrl);
+    const plate  = await res.json();
+    // console.log('plate: ',plate);
+    setPlate(plate)
 
-    const fetchKarma = async () => {
-      let url = `${API_BASE_URL}/plates/${localStorage.currentPlateState}/${localStorage.currentPlateNumber}`;
-      const response = await fetch(url);
-      const plate  = await response.json();
-      setPlate(plate[0])
-      return plate
-    }
+    /* ==== fetch reviews using plateId ==== */
+    let reviewURL = `${API_BASE_URL}/reviews/plate/${plateId}`;
+    // console.log('fetchReviews url: ', reviewURL)
+    const response = await fetch(reviewURL);
+    const reviews  = await response.json();
+    setReviews(reviews)
+    return reviews
+  }
 
     useEffect(() => {
-      fetchReviews();
-      fetchKarma();
+      fetchPlate()
     }, []);
 
+  // console.log('plate data: ', plate)
+  // console.log('reviews: ', reviews)
+
+  let _plate = (
+    <div className="spinner" style={{margin: '0 auto'}}>
+      <Spinner name="line-spin-fade-loader" color="green"/>
+    </div>
+  )
+
     let rating;
-    let review;
+    let review = (
+      <div className="spinner" style={{margin: '0 auto'}}>
+        <Spinner name="line-spin-fade-loader" color="green"/>
+      </div>
+    )
+
     let driverComment;
 
     if (reviews) {
@@ -140,9 +164,8 @@ export const Plate = (props) => {
           convert(timePassed)
         }
 
-
         return (
-          <li className='review-item' key={review._id} tabIndex='0'>
+          <li className='review-item' key={index} id={review._id} tabIndex='0'>
             <article className='review-header'>
               <article className='review-title'>
                 <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
@@ -153,10 +176,7 @@ export const Plate = (props) => {
               <article className='review-rating'>
                 <p className='rating'>{rating}</p>
               </article>
-            </article>
-            {/* <h1 className='plate-number'>{review.plateNumber}</h1><br/> */}
-            {/* <img className='review-img' src='https://i.pinimg.com/236x/29/55/38/295538a452d701c9189d0fa8f5b36938--white-truck-bad-parking.jpg' alt='review'></img> */}            
-            {/* Do we want to add information about how long ago this was posted, i.e. 2m or 2h */}          
+            </article>        
             <p className='message'>Review: {review.message}</p>
             <p>{driverComment}</p>
             {dateString}
@@ -165,20 +185,32 @@ export const Plate = (props) => {
       })
     };
   
+    if(plate){
+      console.log('fetching plate: ', plate)
+      _plate = (
+        <div className="public-plate-wrapper">
+          <h2 id={plateId}>{plate.plateNumber}</h2>
+          <p>State: {plate.plateState}</p>
+          <p>Karma Score: {plate.karma}</p>
+        </div>
+      )
+    }
 
   return (
-    // ==== When a User clicks on a plate link inside the review page, this will render
+    /* FETCHING PUBLIC PLATES & REVIEWS 
+    - An unregistered user can share this unique endpoint & render all plate info & its associated reviews
+    - Ex: http://localhost:3000/plate/id/5c7082ce36aad20017f75ef8
+    - Tested on Chrome, Firefox, & Safari
+    - Doesn't rely on localStorage
+    */
     <div className="plate">
       <Link to="/" className="plates-back-link">
-          <button>Go Back</button>
+        Go Back
       </Link>
-      <h4>{localStorage.currentPlateNumber}</h4>
-      <p>{localStorage.currentPlateState}</p>
-      <div className="karma-wrapper">
-        <p className="karma-score">Karma Score: {plate.karma}</p>
-      </div>
+     
+      {_plate}
+    
       <ul className='reviews'>
-        {/* <Review reviews={reviews} /> */}
         {review}
       </ul>
     </div>
@@ -186,4 +218,4 @@ export const Plate = (props) => {
   );
 };
 
-export default Plate;
+export default PublicPlate;

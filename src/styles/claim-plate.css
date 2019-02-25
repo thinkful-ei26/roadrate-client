@@ -1,8 +1,46 @@
-.my-plates-link {
-  font-size: 16px;
-  font-weight: bold;
+.inline-search {
+  display: flex;
 }
 
-.my-plates-link:hover {
+#claim-search.claim-search-input {
+  background-color: white;
+  display: inline-block;
+  width: 200px;
+}
+
+select.browser-default {
+  font-size: 12px;
+  text-align-last:center; 
+  display: inline-block;
+  width: 100px;
+}
+
+.claim-search {
+  margin: 0 auto;
+}
+
+.claim-search-label, .plateState-label {
+  flex: 1;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+}
+
+.plateState-label{
+  display: none;
+}
+
+.search-btn {
+  display: block;
+  margin: 0 auto;
+}
+
+.claim-back-link {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.claim-back-link:hover {
   color: white;
 }
