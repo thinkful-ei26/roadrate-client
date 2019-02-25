@@ -1,17 +1,30 @@
 .dashboard {
-  background: #039be5;
+  background: #10618a;
   height: 100vh;
+}
+
+.dashboard-nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button.logout {
+  margin: 10px;
+  background: #10618a;
+  border: none;
+  color: aliceblue;
 }
 
 .dashboard-greeting {
   padding: 8px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
 .dashboard-greeting p {
-  margin: 4px;
+  margin: 10px;
   color: whitesmoke;
   font-size: 18px;
+  font-weight: 600;
 }

@@ -87,7 +87,6 @@ export const Dashboard = (props) => {
         </Link>
         
         <button 
-          id='review-form-button' 
           onClick={ e => {
               e.preventDefault(); 
               setSubmitReview(!submitReview); 

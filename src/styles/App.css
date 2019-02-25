@@ -2,8 +2,20 @@
   outline: 0;
 }
 
+body {
+  font-family: 
+    "rubik";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #10618a;
+}
+
+html {
+  display: flex;
+}
+
 .App {
-  font-family: sans-serif;
+  font-family: "rubik";
   display: flex;
   text-align: center;
   align-items: center;
@@ -29,8 +41,6 @@ input:hover {
 }
 
 button {
-  margin: 0.8em;
-  /* padding: 1em; */
   border: 1px solid #e4e6e8;
   border-radius: 5px;
   cursor: pointer;
