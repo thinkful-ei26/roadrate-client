@@ -3,17 +3,6 @@ import {API_BASE_URL} from '../config';
 import { Redirect, Link } from 'react-router-dom';
 import '../styles/my-plates.css'
 
-// const customStyles = {
-//   content : {
-//     top                   : '50%',
-//     left                  : '50%',
-//     right                 : 'auto',
-//     bottom                : 'auto',
-//     marginRight           : '-50%',
-//     transform             : 'translate(-50%, -50%)'
-//   }
-// };
-
 export const MyPlatesList = () => {
   const [ plates, setPlates ] = useState([]);
   const [ redirect, setRedirect ] = useState(false);
@@ -87,12 +76,11 @@ export const MyPlatesList = () => {
 
   return (
     <div className="my-plates">
-      <Link to="/my-plates"
+      <Link to="/"
         className="my-plates-back-link"
       >
         Go Back
       </Link>
-
 
       {localStorage.unclaimedPlate ? (<p>Successfully unclaimed plate</p>) : (<p></p>)}
 

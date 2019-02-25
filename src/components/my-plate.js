@@ -101,8 +101,6 @@ export const MyPlate = () => {
       }>Leave a response</button>
       }
 
-
-
       let responseForm;
       if (localStorage.submitResponse === review._id) {
         console.log('here', localStorage.submitResponse, 'review Id', review._id)
