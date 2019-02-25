@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
 import ReviewList from './ReviewList';
+import DashboardNav from './dashboard-nav';
 import '../styles/dashboard.css';
 
 export const Dashboard = (props) => {
@@ -70,22 +71,7 @@ export const Dashboard = (props) => {
       </div>
 
       <div className="dashboard-nav">
-        {/* <Link to="/create-plate">
-          <button>Register A New Plate</button>
-        </Link> */}
-
-        <Link to="/claim-plate">
-          <button>Claim A Plate</button>
-        </Link>
-
-        <Link to="/plate-list">
-          <button>MyPlates</button>
-        </Link>
-
-        <Link to='/my-reviews'>
-          <button>My Reviews</button>
-        </Link>
-        
+        <DashboardNav />
         <button 
           onClick={ e => {
               e.preventDefault(); 

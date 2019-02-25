@@ -1,11 +1,13 @@
 .dashboard {
   background: #10618a;
   height: 100vh;
+  max-width: 100%;
 }
 
 .dashboard-nav {
   display: flex;
   justify-content: space-evenly;
+  max-width: 100%;
 }
 
 button.logout {

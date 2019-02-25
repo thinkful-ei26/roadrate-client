@@ -8,10 +8,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #10618a;
+  max-width: 100%;
 }
 
 html {
   display: flex;
+  max-width: 100%;
 }
 
 .App {
@@ -22,18 +24,16 @@ html {
   flex-direction: column;
   background: rgb(55, 71, 79);
   color: whitesmoke;
+  max-width: 100%;
 }
 
 input {
-  display: block;
-  min-width: 90%;
-  margin: 1em;
-  padding: 1em;
-  width: 35em;
+  display: flex;
   border-radius: 8px;
   border-style: none;
   border: 1px solid #e4e6e8;
   transition: 0.1s ease;
+  max-width: 100%;
 }
 
 input:hover {
@@ -67,6 +67,7 @@ img {
   margin: 0;
   padding: 0;
   list-style-type: none;
+  max-width: 100%;
 }
 
 .plate-review-item {
@@ -74,6 +75,7 @@ img {
   list-style-type: none;
   padding: 10px;
   margin: 0 10px 0 10px;
+  max-width: 100%;
 }
 
 table {
