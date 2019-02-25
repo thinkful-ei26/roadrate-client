@@ -3,6 +3,7 @@ import {API_BASE_URL} from '../config';
 import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import Spinner from 'react-spinkit';
+import '../styles/public-plate.css';
 
 export const PublicPlate = () => {
   const [plate, setPlate] = useState('');
@@ -204,7 +205,7 @@ export const PublicPlate = () => {
     */
     <div className="plate">
       <Link to="/" className="plates-back-link">
-          <button>Go Back</button>
+        Go Back
       </Link>
      
       {_plate}
