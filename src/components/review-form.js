@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {API_BASE_URL} from '../config';
-import { Button, Icon } from 'react-materialize';
 import '../styles/review-form.css';
 
 export const ReviewForm = (props) => {
@@ -152,13 +151,13 @@ export const ReviewForm = (props) => {
         />
         </label>
         
-        <Button
+        <button
         type="submit" 
         className="review-submit"
         disabled={plateNumber === '' || plateState === '' || !rating || message === '' }
         >
         Submit Review
-      </Button>
+      </button>
       </form>
       {successMessage}  
     </div>

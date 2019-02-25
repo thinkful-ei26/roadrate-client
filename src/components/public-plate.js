@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
-import { Icon } from 'react-materialize';
+import Review from './Review';
+import MaterialIcon, {colorPalette} from 'material-icons-react';
 import { Link } from 'react-router-dom';
 import Spinner from 'react-spinkit';
 import '../styles/public-plate.css';
@@ -60,9 +61,9 @@ export const PublicPlate = () => {
     if (reviews) {
       review = reviews.map((review, index) => { 
         if (review.isPositive === 'true') {
-          rating = <Icon>thumb_up</Icon>
+          rating = <MaterialIcon icon="thumb_up" />
         } else {
-          rating = <Icon>thumb_down</Icon>
+          rating = <MaterialIcon icon="thumb_down" />
         }
 
         if (review.comment) {

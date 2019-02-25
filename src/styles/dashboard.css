@@ -1,51 +1,30 @@
 .dashboard {
   background: #039be5;
   height: 100vh;
+  max-width: 100%;
+  align-items: center;
+}
+
+button.logout {
+  margin: 10px;
+  background: #039be5;
+  border: none;
+  color: aliceblue;
+}
+
+.add-review-button {
+  margin: 5px auto;
 }
 
 .dashboard-greeting {
   padding: 8px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
 .dashboard-greeting p {
-  margin: 4px;
+  margin: 10px;
   color: whitesmoke;
   font-size: 18px;
-}
-
-/* .dashboard-nav-wrapper {
-  display: flex;
-  border: 1px solid whitesmoke;
-} */
-/* 
-.dashboard-nav {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  vertical-align: center;
-} */
-
-.logout {
-  background-color: transparent;
-  border: none; 
-  color: whitesmoke;
-  margin: 0;
-  padding: 10px;
-}
-
-.logout:hover {
-  color: white;
-}
-
-#review-form-button {
-  /* background-color: transparent;
-  border: none; 
-  color: whitesmoke;*/
-  margin: 0;
-  padding: 10px;
+  font-weight: 600;
 }

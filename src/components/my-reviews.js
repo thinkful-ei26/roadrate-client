@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
-import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
+import MaterialIcon, {colorPalette} from 'material-icons-react';
 import '../styles/my-reviews.css';
 
 export const MyReviews = () => {
@@ -35,9 +35,9 @@ export const MyReviews = () => {
       // console.log('FILTERED REVIEWS: ', filteredReviews);
       review = filteredReviews.map((review, index) => { 
         if (review.isPositive === 'true') {
-          rating = <Icon>thumb_up</Icon>
+          rating = <MaterialIcon icon="thumb_up" />
         } else {
-          rating = <Icon>thumb_down</Icon>
+          rating = <MaterialIcon icon="thumb_down" />
         }
 
         if (review.comment) {
