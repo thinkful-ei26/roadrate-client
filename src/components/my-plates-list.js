@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 //   }
 // };
 
-export const PlateList = (props) => {
+export const MyPlatesList = () => {
   const [ plates, setPlates ] = useState([]);
 
   const fetchPlates = async () => {
@@ -29,7 +29,7 @@ export const PlateList = (props) => {
   useEffect(() => {
     fetchPlates();
     localStorage.removeItem('unclaimedPlate')
-  }, []);
+  }, [plates]);
 
   // console.log('plates', plates);
   /* plate is still fetching/loading */
@@ -45,6 +45,8 @@ export const PlateList = (props) => {
   }
   
   let plateEndpoint = `/my-plate/id/${localStorage.myPlateId}`;
+
+  let plateEndpoint = `/my-plates/id/${localStorage.myPlateId}`;
 
   const noPlatesMessage = () => {
     if(localStorage.hasPlates === '' || !plates) {
@@ -63,6 +65,7 @@ export const PlateList = (props) => {
         <li className='plate-item' key={index} tabIndex='0'>
           <div className='plate-wrapper'>
             <button 
+              className="plate"
               onClick={ () => myPlateClick(plate) }
             >
               {plate.plateNumber}
@@ -93,4 +96,4 @@ export const PlateList = (props) => {
   );
 };
 
-export default PlateList;
+export default MyPlatesList;

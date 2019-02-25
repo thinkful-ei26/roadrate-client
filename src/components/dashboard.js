@@ -46,7 +46,7 @@ export const Dashboard = (props) => {
     localStorage.removeItem('unclaimedPlate')
   }, []);
 
-  console.log('storePlates on dashboard', storePlates)
+  // console.log('storePlates on dashboard', storePlates)
 
   let reviewForm;
   if (submitReview === true) {
@@ -78,7 +78,7 @@ export const Dashboard = (props) => {
           <button>Claim A Plate</button>
         </Link>
 
-        <Link to="/plate-list">
+        <Link to="/my-plates">
           <button>MyPlates</button>
         </Link>
 
