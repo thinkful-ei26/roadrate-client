@@ -16,11 +16,11 @@
   font-size: 18px;
 }
 
-.dashboard-nav-wrapper {
+/* .dashboard-nav-wrapper {
   display: flex;
   border: 1px solid whitesmoke;
-}
-
+} */
+/* 
 .dashboard-nav {
   max-width: 600px;
   margin: 0 auto;
@@ -28,16 +28,17 @@
   justify-content: space-around;
   text-align: center;
   vertical-align: center;
-}
+} */
 
-.claim-link, .my-plates-link, .my-reviews-link  {
+.logout {
+  background-color: transparent;
+  border: none; 
   color: whitesmoke;
+  margin: 0;
   padding: 10px;
-  text-align: center;
-  margin: 0 auto;
 }
 
-.claim-link:hover, .my-plates-link:hover, .my-reviews-link:hover {
+.logout:hover {
   color: white;
 }
 
