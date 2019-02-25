@@ -41,6 +41,7 @@ export const MyPlatesList = () => {
     localStorage.setItem('myPlate', plate.plateNumber)
     localStorage.setItem('myState', plate.plateState)
     localStorage.setItem('myPlateId', plate.id)
+    localStorage.removeItem('success')
     return plate
   }
 
@@ -81,6 +82,8 @@ export const MyPlatesList = () => {
       >
         Go Back
       </Link>
+
+      {localStorage.unclaimedPlate ? (<p>Successfully unclaimed plate</p>) : (<p></p>)}
 
       <h2>My Plates</h2>
       {noPlatesMessage()}

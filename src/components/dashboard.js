@@ -45,6 +45,7 @@ export const Dashboard = (props) => {
     setUsername(localStorage.user)
     storeUser(userId, name, storePlates);
     localStorage.removeItem('unclaimedPlate')
+    localStorage.removeItem('success')
   }, []);
 
   console.log('storePlates on dashboard', storePlates)
