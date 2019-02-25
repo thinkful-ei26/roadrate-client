@@ -30,7 +30,7 @@ export const MyPlatesList = () => {
   useEffect(() => {
     fetchPlates();
     localStorage.removeItem('unclaimedPlate')
-  }, [plates]);
+  }, []);
 
   // console.log('plates', plates);
   /* plate is still fetching/loading */

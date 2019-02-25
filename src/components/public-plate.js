@@ -23,12 +23,12 @@ export const PublicPlate = () => {
     console.log(plateUrl)
     const res = await fetch(plateUrl);
     const plate  = await res.json();
-    console.log('plate: ',plate);
+    // console.log('plate: ',plate);
     setPlate(plate)
 
     /* ==== fetch reviews using plateId ==== */
     let reviewURL = `${API_BASE_URL}/reviews/plate/${plateId}`;
-    console.log('fetchReviews url: ', reviewURL)
+    // console.log('fetchReviews url: ', reviewURL)
     const response = await fetch(reviewURL);
     const reviews  = await response.json();
     setReviews(reviews)
@@ -39,8 +39,8 @@ export const PublicPlate = () => {
       fetchPlate()
     }, []);
 
-  console.log('plate data: ', plate)
-  console.log('reviews: ', reviews)
+  // console.log('plate data: ', plate)
+  // console.log('reviews: ', reviews)
 
   let _plate = (
     <div className="spinner" style={{margin: '0 auto'}}>
