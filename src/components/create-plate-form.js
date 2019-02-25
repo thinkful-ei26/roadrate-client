@@ -38,11 +38,11 @@ export const CreatePlateForm = () => {
       })
     })
     .then(res => {
-      console.log('res inside handleSubmit', res);
+      // console.log('res inside handleSubmit', res);
       return res.json();
     })
     .then(data => {
-      console.log('DATA REGISTER PLATE:', data)
+      // console.log('DATA REGISTER PLATE:', data)
       setSuccessMessage('Congrats! Your plate was registered.')
       return data
     })

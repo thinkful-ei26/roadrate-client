@@ -22,7 +22,7 @@ export const claimPlate = () => {
       }
     })
     .then(res => {
-      console.log('response: >>>', res)
+      // console.log('response: >>>', res)
       return res.json();
       })
     .then(data => {

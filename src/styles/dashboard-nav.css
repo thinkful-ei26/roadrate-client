@@ -1,7 +1,7 @@
 h1 {
-  padding: 0;
   margin: 0;
   font-size: 32px;
+  color: #011d2b;
 }
 .site-header {
   position: relative;
@@ -13,11 +13,11 @@ h1 {
 }
 
 .logo {
+  display: flex;
   flex: 0;
   padding: 0 30px;
   position: relative;
   align-self: stretch;
-  display: flex;
   align-items: center;
 }
 
@@ -43,17 +43,29 @@ nav {
   color: #fff;
   background-color: transparent;
   width: 100%;
-  height: 80px;
   border: none;
   box-shadow: none;
 }
 
-.logout {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px;
-}
+@media only screen and (min-width: 320px)
+and (max-width: 480px) {
+  header {
+    line-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
 
-.logout:hover {
-  color: white;
+  .logo {
+    margin: 0 auto;
+    padding-top: 10px;
+  }
+
+  .header-middle-area {
+    background-color: inherit;
+    width: 100%;
+  }
+
+  nav {
+    height: 0;
+  }
 }
