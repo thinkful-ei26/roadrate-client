@@ -28,14 +28,12 @@ export const Review = (props) => {
           driverComment = <p> Driver Response: {review.ownerResponse}</p>
         } 
 
-        if(redirect) {
-          return <Redirect to='/plate'/>
-        }
+        review.redirectLink = `/plate/${review.plateId}`
 
         const handleClick = () => {
-          localStorage.setItem('currentPlateState', review.plateState)
-          localStorage.setItem('currentPlateNumber', review.plateNumber)
-          setRedirect(true)
+          // localStorage.setItem('currentPlateState', review.plateState)
+          // localStorage.setItem('currentPlateNumber', review.plateNumber)
+          setRedirect(true);
         }
 
         const thisDate = new Date();
