@@ -71,9 +71,6 @@ export const Dashboard = (props) => {
           </button>
         </Link > */}
       </div>
-
-      </div>
-
       <button 
             className="add-review"
             onClick={ e => {
@@ -84,6 +81,7 @@ export const Dashboard = (props) => {
           >
             New Review
           </button>
+      </div>
       
 
       {reviewForm}
