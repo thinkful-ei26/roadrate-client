@@ -1,18 +1,22 @@
 # RoadRate
 Choose Rate, not Rage
 
+## Logo
+
+## Why & What
 Your driving is now public information. Leave reviews, ratings, comments, and tips for drivers. Learn how your driving effects others and make the roads safer
 
 ## Quick Links
 - [Client Repo](https://github.com/thinkful-ei26/roadrate-client)
 - [Server Repo](https://github.com/thinkful-ei26/roadrate-server)
-- [Deployed Client](#placeholder)
-- [Deployed Server](#placeholder) 
+- [Deployed Client](https://road-rate-client.herokuapp.com/)
+- [Deployed Server](http://road-rate-server.herokuapp.com/) 
 
-## MVP
-Should be deployable by Monday, 2/18/19
 
-*For Next Monday*
+## ScreenShot
+
+
+## V1 Features
 - User Reg/Auth/Login
 - Info Modal/User Onboarding on landing page
 - Users can leave public reviews
@@ -24,16 +28,24 @@ A tab for “My Reviews”
 - Public reviews are accessible by anyone
 - Filter feature for reviews by license plate #
 
+## V2 Features
+- Anonymous tipping
+- Karma Score Gamification
+
+## Trello 
+[RoadRate Trello Board](https://trello.com/b/Zc46dooe/oh-my-quad)
+
 ## Tech Stack
-- **Front End:** React/Redux, CSS, HTML
-- **Back End:** Node.js, Express, mLab
+- **Front End:** React Hooks, CSS, HTML
+- **Back End:** Node.JS, Express, MongoDB Atlas
 - **Testing:** Mocha/Chai
+- **Workflow** Daily Agile/Scrum
 
 ## Roles
-- **Design Lead:** Jordan
-- **Project Manager:** Trisha
-- **QA Lead:** RP
-- **Product Manager:** Randy
+- **Design Lead:** [Jordan Haddadi](https://github.com/jordanhaddadi)
+- **Project Manager:** [Trisha Aguinaldo](https://github.com/kronicle114)
+- **QA Lead:** [RP Boyle](https://github.com/RPBoyle11)
+- **Product Manager:** [Randy Sartor](https://github.com/Rjsartor)
 
 ## User Stories/Hierarchy
 
@@ -86,9 +98,7 @@ A tab for “My Reviews”
 - [TJ’s flexbox material](https://docs.google.com/document/d/16FepalC5m0DIjKtpvnJed5wZ34IhBrRKrdvcuOI8oU8/edit)
 - Mongo/MongoDB over mLab
 
-## Additional Features:
-- Anonymous tipping feature 
-- Karma Score feature
+## Twitter/ProductHunt
 
 ## Wireframes
 

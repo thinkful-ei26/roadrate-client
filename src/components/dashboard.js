@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../config';
 import { Link } from 'react-router-dom';
 import ReviewList from './ReviewList';
+import DashboardNav from './dashboard-nav';
 import '../styles/dashboard.css';
 import ReviewForm from './review-form';
 
@@ -56,56 +57,32 @@ export const Dashboard = (props) => {
  
   return (
     <div className="dashboard">
-
-      <div className="dashboard-nav-wrapper">
-        <div className="dashboard-nav">
-        
-          <Link to="/claim-plate"
-            className="claim-link"
-          >
-            <button>
-              Claim A Plate
-            </button>
-          </Link>
-
-          <Link to="/my-plates" 
-            className="my-plates-link">
-            <button >
-              MyPlates
-            </button>
-          </Link>
-
-          <Link to='/my-reviews' 
-            className="my-reviews-link">
-            <button >
-              My Reviews
-            </button>
-          </Link>
-        </div>
-      </div>
-      <div className="dashboard-greeting">
+      <div className="dashboard-nav">
+        <DashboardNav />
+        <div className="dashboard-greeting">
         <p>Hi, {username}!</p>
 
-        <Link to="/">
+        {/* <Link to="/">
           <button className="logout" onClick={() => {
             props.logout()
             localStorage.setItem("logout", true)
             }}>
             Logout
           </button>
-        </Link >
+        </Link > */}
       </div>
-
       <button 
-        id='review-form-button' 
-        onClick={ e => {
-          e.preventDefault(); 
-          setSubmitReview(!submitReview); 
-          }
-        }
-      >
-        Add a review
-      </button>
+            className="add-review"
+            onClick={ e => {
+                e.preventDefault(); 
+                setSubmitReview(!submitReview); 
+              }
+            }
+          >
+            New Review
+          </button>
+      </div>
+      
 
       {reviewForm}
       <ReviewList />

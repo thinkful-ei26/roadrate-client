@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../config';
 import Spinner from 'react-spinkit';
-import { Icon } from 'react-materialize';
 import {/*  Redirect, */ Link } from 'react-router-dom';
+import MaterialIcon, {colorPalette} from 'material-icons-react';
 // import Review from './Review';
 import '../styles/review-list.css';
 import '../styles/reviews.css'
@@ -59,10 +59,11 @@ export const ReviewList = () => {
        review = reviews.map((review, index) => { 
         let driverComment;
         if (review.isPositive === 'true') {
-          rating = <Icon>thumb_up</Icon>
+          rating = <MaterialIcon icon="thumb_up" />
         } else {
-          rating = <Icon>thumb_down</Icon>
+          rating = <MaterialIcon icon="thumb_down" />
         }
+
 
         if (review.ownerResponse) {
           driverComment = <p> Driver Response: {review.ownerResponse}</p>

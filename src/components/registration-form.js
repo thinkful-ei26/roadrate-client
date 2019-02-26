@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'; 
 import { Link, Redirect } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
-import { Button, Icon } from 'react-materialize';
 import "../styles/App.css";
 
 export const RegistrationForm = () => {
@@ -223,15 +222,14 @@ export const RegistrationForm = () => {
           required
         />
         </label>
-        <Button 
+        <button 
           waves="light "
           type="submit" 
           className="login-submit"
           disabled={ !username || !password || !validUsername }
         >
-          <Icon>thumb_up</Icon>
           Submit
-        </Button>
+        </button>
         <Link to="/">Go Back</Link>
       </form>
       )}
