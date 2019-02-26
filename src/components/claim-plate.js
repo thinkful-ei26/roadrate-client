@@ -50,7 +50,6 @@ export const claimPlate = (props) => {
   const handleRegisterPlate = (e) => {
     e.preventDefault();
     const userId = localStorage.userId;
-
     localStorage.setItem('myPlate', plateNumber.toUpperCase())
     localStorage.setItem('myState', plateState)
 

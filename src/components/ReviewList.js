@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../config';
+import InfiniteScroll from 'react-infinite-scroller';
 import Review from './Review';
 import '../styles/review-list.css';
 
@@ -8,19 +9,41 @@ export const ReviewList = (props) => {
    //storing Review Data in State
 
   //I need to be able to get an array of reviews and set it to the reviews variable below.  I then need to pass reviews as a prop from dashboard to ReviewList so I can map through the data and send those details as props to Review in order to render multiple Reviews at once on the dashboard.
-  const [reviews, setReviews] = useState("");
+  const [reviews, setReviews] = useState([]);
   // const [searchInput, setSearchInput] = useState("");
   const [ searchPlateState, setSearchPlateState ] = useState("");
   const [ searchPlateNumber, setSearchPlateNumber] = useState("");
+  const [ start, setStart ] = useState(0);
+  const [ count, setCount ] = useState(15);
 
     const fetchReviews = async () => {
-      let url = `${API_BASE_URL}/reviews`;
+      let url = `${API_BASE_URL}/reviews/?start=${start}&count=${count}`;
       const response = await fetch(url);
       const reviews  = await response.json();
       // console.log(reviews)
       setReviews(reviews)
       return reviews
     }
+
+    const fetchMoreReviews = e => {
+      // e.preventDefault();
+      console.log('fetch MORE REVIEWS HAS FIRED!!!!!!!!!!!');
+      setStart(start + count);
+      return fetch(`${API_BASE_URL}/reviews/?start=${start}&count=${count}`)
+      .then(res => { 
+        if (!res.ok) {
+          return Promise.reject(res.statusText);
+        }
+        let newReviews = res.json();
+        console.log('new-reviews', newReviews)
+        return newReviews;
+      })
+      .then(newReviews => {
+        console.log('DATA FROM SEARCH-REVIEWS:' ,newReviews)
+        setReviews(reviews.concat(newReviews))
+      })
+      .catch(err => console.log(err))
+  }
     
     useEffect(() => {
       fetchReviews();
@@ -28,8 +51,6 @@ export const ReviewList = (props) => {
 
     const handleSubmit = e => {
       e.preventDefault(); 
-
-
       console.log('sending', searchPlateNumber)
       console.log('sending:', searchPlateState);
       // console.log('search', searchInput)
@@ -135,10 +156,18 @@ export const ReviewList = (props) => {
           </form>
         </fieldset>
         </div>
-        <ul className='review-list'>
-          <Review 
-            reviews={reviews} 
-          />
+        <ul className='review-list' >
+          <InfiniteScroll 
+            pageStart={0}
+            loadMore={fetchMoreReviews}
+            dataLength={reviews.length}
+            hasMore={true}
+            loader={<h4>Loading...</h4>}
+          >
+              <Review 
+                reviews={reviews} 
+              />
+          </InfiniteScroll>
         </ul>
       </div>
     );

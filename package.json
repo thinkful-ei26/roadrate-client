@@ -8,6 +8,7 @@
     "materialize": "^1.0.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
+    "react-infinite-scroller": "^1.2.4",
     "react-materialize": "^2.6.0",
     "react-modal": "^3.8.1",
     "react-modal-hook": "^1.0.3",
