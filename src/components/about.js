@@ -24,7 +24,7 @@ export const About = () => {
     ));
 
     return (
-        <button onClick={showModal}>About RoadRate</button>
+        <button id="about-btn" onClick={showModal}>What's RoadRate?</button>
     );
 }
 

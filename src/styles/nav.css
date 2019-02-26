@@ -28,7 +28,18 @@
 }
 
 #about-btn {
-  margin: 0px;
+  /* padding: 12px; */
+  border-radius: 3px;
+  /* background: whitesmoke; */
+  background: #039be5;
+  border: #039be5;
+  color: whitesmoke;
+  font-size: 20px;
+}
+
+#about-btn:hover {
+  color: darkgrey;
+  opacity: .9;
 }
 
 .login-link:hover, .register-link:hover, .landing-link:hover, .about-link:hover {

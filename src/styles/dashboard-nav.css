@@ -63,4 +63,5 @@ h1 {
   nav ul a {
     color: #011d2b;
     text-decoration: none;
+    margin: auto 12px;
   }
