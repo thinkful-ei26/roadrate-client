@@ -97,11 +97,10 @@ export const LoginForm = () => {
             <form className="login-form"
               onSubmit={handleSubmit}
             >
-              <label htmlFor="login-username">Username:
               <input
                 value={username}
                 onChange={e => setUsername(e.target.value)}
-                placeholder="username"
+                placeholder="enter username"
                 type="text"
                 name="username"
                 pattern="[A-Za-z0-9_]{1,15}"
@@ -109,19 +108,16 @@ export const LoginForm = () => {
                 id="login-username"
                 required
               />
-              </label>
-              <label htmlFor="password">Password:
               <input
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-                placeholder="password"
+                placeholder="enter password"
                 type="password"
                 name="password"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
                 title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                 required
               />
-              </label>
               <button waves="teal" type="submit" className="login-submit">
                 Submit
               </button>

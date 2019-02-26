@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactModal from "react-modal";
 import { useModal }  from 'react-modal-hook';
+import '../styles/about.css';
 
 ReactModal.setAppElement('#root')
 
@@ -24,7 +25,7 @@ export const About = () => {
     ));
 
     return (
-        <button onClick={showModal}>About RoadRate</button>
+        <button className="about-button" onClick={showModal}>About RoadRate</button>
     );
 }
 

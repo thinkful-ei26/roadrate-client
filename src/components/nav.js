@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import LoginForm from './login-form';
-import RegistrationForm from './registration-form';
 import About from './about.js';
 import '../styles/nav.css';
 import '../styles/modal.css';
@@ -61,24 +60,7 @@ export const Nav = () => {
               </div>
             </div>
           );
-      }       
-
-    const RegisterModal = ({ title, onClose }) => {
-        const modalRef = useRef(null);
-  
-        useEffect(() => clickOutside(modalRef, onClose))
-  
-        return (
-            <div className="overlay">
-              <div className="modal">
-                <h2>{title}</h2>
-                <div className="register-content" ref={modalRef}>
-                <RegistrationForm />
-                </div>
-              </div>
-            </div>
-          );
-    }       
+      }             
 
   return(
 
@@ -97,28 +79,16 @@ export const Nav = () => {
                         <LoginModal
                             show={modalOpen === 'login'}
                             toggleModal={setModalOpen}
-                            title="Login"
+                            title="Login to your RoadRate account"
                             onClose={onClose}
                         />
                     )}
                 </li>
 
-                <li className="nav-item">
-                    <button className="registration-button" id="registration-button" onClick={() => setModalOpen('register')}>Register</button>
-                    {modalOpen && (
-                        <RegisterModal
-                            show={modalOpen === 'register'}
-                            toggleModal={setModalOpen}
-                            title="Register"
-                            onClose={onClose}
-                        />
-                    )}
-                </li>
-            </div>
-
-            {/* <li className="nav-item">
+            <li className="nav-item">
                 <Link to="/register" className="register-link">Register</Link>
-            </li> */}
+            </li>
+        </div>
     </ul>
   </div>
   )
