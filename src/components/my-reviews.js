@@ -5,14 +5,19 @@ import MaterialIcon, {colorPalette} from 'material-icons-react';
 import '../styles/my-reviews.css';
 
 export const MyReviews = () => {
-  const [ reviews, setReviews] = useState("");
+  const [ reviews, setReviews] = useState([]);
   const [ searchInput, setSearchInput ] = useState("");
 
     const fetchReviews = async () => {
       let url = `${API_BASE_URL}/reviews/${localStorage.userId}`;
-      const response = await fetch(url);
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${localStorage.authToken}`,
+        }
+      });
       const reviews  = await response.json();
-      // console.log(reviews)
+      console.log(reviews)
       setReviews(reviews)
       return reviews
     }
@@ -29,6 +34,8 @@ export const MyReviews = () => {
     let review;
     let driverComment;
     let filteredReviews;
+    console.log(reviews)
+
     if (reviews) {
       filteredReviews = reviews.filter(review => review.plateNumber.includes(searchInput.toUpperCase()));
 
@@ -60,7 +67,7 @@ export const MyReviews = () => {
           </li>
         )
       })
-    };
+    }
 
   return (
     <div className="my-reviews">
