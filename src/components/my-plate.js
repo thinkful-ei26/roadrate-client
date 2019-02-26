@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
 import { Link } from 'react-router-dom';
-import MaterialIcon, {colorPalette} from 'material-icons-react';
+import { Icon } from 'react-materialize';
 import OwnerResponseForm from './owner-response-form';
 
 export const MyPlate = () => {
@@ -82,9 +83,9 @@ export const MyPlate = () => {
     review = reviews.map((review, index) => { 
       let ownerComment;
       if (review.isPositive === 'true') {
-        rating = <MaterialIcon icon="thumb_up" />
+        rating = <Icon>thumb_up</Icon>
       } else {
-        rating = <MaterialIcon icon="thumb_down" />
+        rating = <Icon>thumb_down</Icon>
       }
 
       let responseButton;
