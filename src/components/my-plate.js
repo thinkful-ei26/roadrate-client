@@ -35,7 +35,7 @@ export const MyPlate = () => {
     setPlate(plate)
     return plate
   }
-
+ 
   useEffect(() => {
     // fetchReviews();
     fetchReviewsByPlateId()
