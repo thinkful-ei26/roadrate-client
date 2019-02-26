@@ -104,6 +104,10 @@ export const Nav = () => {
                 </li>
 
                 <li className="nav-item">
+                    <Link to="/register" className="register-link">Register</Link>
+                </li>
+
+                {/* <li className="nav-item">
                     <button className="registration-button" id="registration-button" onClick={() => setModalOpen('register')}>Register</button>
                     {modalOpen && (
                         <RegisterModal
@@ -113,12 +117,10 @@ export const Nav = () => {
                             onClose={onClose}
                         />
                     )}
-                </li>
+                </li> */}
             </div>
 
-            {/* <li className="nav-item">
-                <Link to="/register" className="register-link">Register</Link>
-            </li> */}
+           
     </ul>
   </div>
   )
