@@ -86,7 +86,7 @@ export const MyPlate = () => {
       } else {
         rating = <MaterialIcon icon="thumb_down" />
       }
-
+ 
       let responseButton;
 
       console.log(review.ownerResponse)
