@@ -1,51 +1,38 @@
 .dashboard {
   background: #039be5;
   height: 100vh;
+  max-width: 100%;
 }
 
-.dashboard-greeting {
-  padding: 8px;
-  display: flex;
-  justify-content: space-between;
+.dashboard :last-child {
+  justify-content: center;
   align-items: center;
+  text-align:center;
+}
+
+/* button.logout {
+  background: #039be5;
+  border: none;
+  color: aliceblue;
+} */
+
+button.add-review {
+  background: rgb(60, 199, 60);
+  padding: 10px 15px;
+  color: aliceblue;
+  position: relative;
+  margin: 0 auto;
+}
+
+.dashboard-greeting :last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
 }
 
 .dashboard-greeting p {
-  margin: 4px;
   color: whitesmoke;
   font-size: 18px;
-}
-
-/* .dashboard-nav-wrapper {
-  display: flex;
-  border: 1px solid whitesmoke;
-} */
-/* 
-.dashboard-nav {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  vertical-align: center;
-} */
-
-.logout {
-  background-color: transparent;
-  border: none; 
-  color: whitesmoke;
-  margin: 0;
-  padding: 10px;
-}
-
-.logout:hover {
-  color: white;
-}
-
-#review-form-button {
-  /* background-color: transparent;
-  border: none; 
-  color: whitesmoke;*/
-  margin: 0;
-  padding: 10px;
+  font-weight: 600;
 }

@@ -12,7 +12,6 @@ import MyPlate from './my-plate';
 import About from './about';
 import MyReviews from './my-reviews'
 import '../styles/App.css';
-import '../styles/index.css';
 
 export const App = () => {
   const [user, setUser] = useState({username: null})
