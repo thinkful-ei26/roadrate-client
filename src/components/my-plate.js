@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
 import { Link } from 'react-router-dom';
-import MaterialIcon, {colorPalette} from 'material-icons-react';
+import MaterialIcon, {colorPalette} from 'material-icons-react'; 
 import OwnerResponseForm from './owner-response-form';
 
 export const MyPlate = () => {
@@ -10,14 +10,6 @@ export const MyPlate = () => {
   const [ submitResponse, setSubmitResponse] = useState('');
   const [ unclaimMessage, setUnclaimMessage ] = useState('');
   const [ responseSubmitted, setResponseSubmitted ] = useState(false);
- 
-  // const fetchReviews = async () => {
-  //   let url = `${API_BASE_URL}/reviews/${localStorage.myState}/${localStorage.myPlate}`;
-  //   const response = await fetch(url);
-  //   const reviews  = await response.json();
-  //   setReviews(reviews)
-  //   return reviews
-  // }
 
   const fetchReviewsByPlateId = async () => {
     console.log('fetch reviews by ID clicked')
