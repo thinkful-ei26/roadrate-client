@@ -10,7 +10,7 @@ export const MyPlate = () => {
   const [ submitResponse, setSubmitResponse] = useState('');
   const [ unclaimMessage, setUnclaimMessage ] = useState('');
   const [ responseSubmitted, setResponseSubmitted ] = useState(false);
-
+ 
   // const fetchReviews = async () => {
   //   let url = `${API_BASE_URL}/reviews/${localStorage.myState}/${localStorage.myPlate}`;
   //   const response = await fetch(url);
