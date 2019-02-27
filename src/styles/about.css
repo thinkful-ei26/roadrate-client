@@ -24,12 +24,12 @@
     border-radius: 3px;
     background-color: rgb(255, 255, 255);
     z-index: 2;
-    padding: 10px;
     height: 450px;
     max-height: 100%;
     width: 625px;
     max-width: 100%;
     text-align: center;
+    overflow: auto;
   }
 
   .modal-guts {
