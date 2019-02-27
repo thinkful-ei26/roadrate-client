@@ -122,6 +122,10 @@ button.plate {
   margin: 28px auto;
 }
 
+.plate-text {
+  font-family: LicensePlate;
+}
+
 .unclaim-div {
   display: flex;
   flex-direction: column;

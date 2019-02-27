@@ -67,7 +67,9 @@ export const MyPlatesList = () => {
               className="plate"
               onClick={ () => myPlateClick(plate) }
             >
-              {plate.plateNumber} - {plate.plateState}
+              <span className="plate-text" >
+                {plate.plateNumber} - {plate.plateState}
+              </span>
             </button>
           </div>
         </li>
