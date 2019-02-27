@@ -73,7 +73,7 @@ export const ReviewForm = (props) => {
           value={plateNumber}
           onChange={(e) => {setPlateNumber(e.target.value); setInvalidMessage('')}}
           required
-          pattern="^[a-zA-Z0-9!@#$()-`.]{1,8}$" 
+          pattern="^[a-zA-Z0-9]{1,8}$" 
           title="Plate number should be between 1 to 8 characters"
         />
         </label>
