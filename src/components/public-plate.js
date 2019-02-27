@@ -169,9 +169,9 @@ export const PublicPlate = () => {
           <li className='review-item' key={index} id={review._id} tabIndex='0'>
             <article className='review-header'>
               <article className='review-title'>
-                <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
-                <p>{review.plateNumber} {review.plateState}</p>       
-                {/* <p id='review-time'>{today}</p> */}
+                {/* <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img> */}
+                <p className='plate-name'>{review.plateNumber}</p>       
+                <p id="elapsed-time">{elapsedTime}</p>
               </article>
               
               <article className='review-rating'>
@@ -180,19 +180,26 @@ export const PublicPlate = () => {
             </article>        
             <p className='message'>Review: {review.message}</p>
             <p>{driverComment}</p>
-            {dateString}
+            <p id='review-date'>{dateString}</p>
           </li>
         )
       })
     };
   
     if(plate){
+      let karmaStyling;
+      if (plate.karma > 0) {
+        karmaStyling = 'public-plate-wrapper-positive'
+      } else if (plate.karma < 0) {
+        karmaStyling = 'public-plate-wrapper-negative'
+
+      }
       console.log('fetching plate: ', plate)
       _plate = (
-        <div className="public-plate-wrapper">
+        <div className={karmaStyling}>
           <h2 id={plateId}>{plate.plateNumber}</h2>
           <p>State: {plate.plateState}</p>
-          <p>Karma Score: {plate.karma}</p>
+          <p>Karma: {plate.karma}</p>
         </div>
       )
     }
@@ -211,7 +218,7 @@ export const PublicPlate = () => {
      
       {_plate}
     
-      <ul className='reviews'>
+      <ul className='review-list'>
         {review}
       </ul>
     </div>

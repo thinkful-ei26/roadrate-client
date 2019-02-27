@@ -67,23 +67,21 @@ export const Dashboard = (props) => {
             </button>
         </Link >
       </div>
+
       <div className="dashboard-nav"> 
         <DashboardNav />
         <div className="dashboard-greeting">
-        <p>Hi, {username}!</p>
-
-      
-      </div>
-      <button 
+          <p>Hi, {username}!</p>
+        </div>
+        <button 
             className="add-review"
             onClick={ e => {
                 e.preventDefault(); 
                 setSubmitReview(!submitReview); 
               }
-            }
-          >
+            }>
             New Review
-          </button>
+        </button>
       </div>
       
 
