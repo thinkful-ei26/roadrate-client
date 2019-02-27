@@ -40,7 +40,7 @@ export const DashboardNav = () => {
                 className="my-plates-link"
               >
                 <span >
-                  MyPlates
+                  My Plates
                 </span>
               </Link>
             </li>

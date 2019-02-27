@@ -8,29 +8,7 @@ import '../styles/modal.css';
 export const Nav = () => {
 
     const [modalOpen, setModalOpen] = useState(false);
-
-    // const onButtonClick = () => setModalOpen(true);
     const onClose = () => setModalOpen(false);
-    // const loginRef = useRef(null);
-    // const registerRef = useRef(null);
-
-    // useEffect(() => clickButton(loginRef, registerRef))
-
-
-    // const clickButton = (ref1, ref2) => {
-    //     const statusChange = (e) => {
-    //         if (!ref1.current.contains(e.target)){
-    //             setModalOpen(modalOpen)
-    //         }
-    //         else if (!ref2.current.contains(e.target)){
-    //             setModalOpen(modalOpen)
-    //         }
-    //     }
-    //     document.addEventListener('click', statusChange)
-    //     return function cleanup() {
-    //         document.removeEventListener('click', statusChange)
-    //     }
-    // }
 
     const clickOutside = (ref, onClose) => {
         const statusChange = (e) => {

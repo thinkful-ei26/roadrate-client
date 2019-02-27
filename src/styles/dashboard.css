@@ -10,11 +10,22 @@
   text-align:center;
 }
 
-/* button.logout {
+
+button.logout {
   background: #039be5;
   border: none;
   color: aliceblue;
-} */
+
+}
+
+#logout-link {
+  text-decoration: none;
+}
+
+.logout-div {
+  margin: 2px 2px 0px 0px;
+  float: right;
+}
 
 button.add-review {
   background: rgb(60, 199, 60);
