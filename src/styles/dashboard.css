@@ -1,5 +1,5 @@
 .dashboard {
-  background: #039be5;
+  background: #f4f4f4;
   height: 100vh;
   /* max-width: 100%; */
   width: 100vw;
@@ -12,7 +12,7 @@
 } */
 
 button.logout {
-  background: #039be5;
+  background: transparent;
   border: none;
   color: aliceblue;
   font-size: 16px;
