@@ -21,13 +21,6 @@
   color: whitesmoke;
 }
 
-.login-button {
-  background: #039be5;
-  color: aliceblue;
-  border: none;
-  font-size: 17px;
-}
-
 .about-links, .nav-items {
   display: inline-block;
   margin: 0 auto;
@@ -55,7 +48,7 @@
   border: #039be5;
   color: whitesmoke;
   font-size: 16px;
-  padding: 5px;
+  padding-right: 28px;
 }
 
 .login-link:hover, .register-link:hover, .landing-link:hover, .about-link:hover {
