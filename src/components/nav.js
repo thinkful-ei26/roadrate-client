@@ -52,7 +52,7 @@ export const Nav = () => {
 
         <div className='right-nav'>
                 <li className="nav-item">
-                    <button className="login-button" id="login-button" onClick={() => setModalOpen('login')}>Login</button>
+                    <button id="login-button" onClick={() => setModalOpen('login')}>Login</button>
                     {modalOpen && (
                         <LoginModal
                             show={modalOpen === 'login'}

@@ -56,25 +56,26 @@ img {
 
 /* on main reviews list */
 .plate-btn {
-  border: 1px solid black;
-  padding: 16px;
+  padding: 14px;
   margin-right: 8px;
   border-radius: 2px;
   background: white;
-  color: darkblue;
+  color: blue;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
+  font-size: 14px;
+  font-family: 'LicensePlate';
 }
 
 /* on public-plate reviews and myPlate reviews */
 .plate-name {
-  border: 1px solid black;
-  padding: 16px;
+  padding: 14px;
   margin-right: 8px;
   border-radius: 2px;
   background: white;
-  color: darkblue;
+  color: blue;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
   font-size: 14px;
+  font-family: 'LicensePlate';
 }
 
 .plate-review-list {
