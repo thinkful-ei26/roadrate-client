@@ -5,11 +5,11 @@
   width: 100vw;
 }
 
-.dashboard :last-child {
+/* .dashboard :last-child {
   justify-content: center;
   align-items: center;
   text-align:center;
-}
+} */
 
 button.logout {
   background: #039be5;

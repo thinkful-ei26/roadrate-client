@@ -78,14 +78,10 @@ export const MyPlatesList = () => {
   return (
     <div className="my-plates">
 
-      <Link to="/"
-        className="my-plates-back-link"
-      >
-        Dashboard
-      </Link>
-  
-      {localStorage.unclaimedPlate ? (<p>Successfully unclaimed plate</p>) : (<p></p>)}
-
+      <div className="my-plates-nav">
+        <Link to="/" className="my-plates-home-link">Dashboard</Link>
+      </div>    
+      
       <h1>My Plates</h1>
       {noPlatesMessage()}
       <img 
@@ -95,7 +91,6 @@ export const MyPlatesList = () => {
       />
       
       <ul className='plates'>
-
         {plate}
       </ul>
 
