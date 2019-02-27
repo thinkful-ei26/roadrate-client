@@ -10,6 +10,7 @@ export const MyPlate = () => {
   const [ plate, setPlate ] = useState("");
   const [ submitResponse, setSubmitResponse] = useState('');
   const [ unclaimMessage, setUnclaimMessage ] = useState('');
+  const [ unclaimWarning, setUnclaimWarning ] = useState('');
   const [ responseSubmitted, setResponseSubmitted ] = useState(false);
 
   const fetchReviewsByPlateId = async () => {
@@ -30,13 +31,9 @@ export const MyPlate = () => {
   }
  
   useEffect(() => {
-    // fetchReviews();
     fetchReviewsByPlateId()
     fetchKarma();
   }, []);
-
-  console.log('revoews', reviews);
-  console.log('plate', plate);
 
    /* ========= UPDATE AN EXISTING PLATE ========== */
   // PUT to link an existing plate to the current user
@@ -62,7 +59,7 @@ export const MyPlate = () => {
     .then(res => {
       // console.log('res inside handleLink >>>', res);
       localStorage.setItem('success', 'unclaimed')
-      setUnclaimMessage(`You successfully unclaimed your plate.`)
+      setUnclaimMessage(`You successfully unclaimed this plate.`)
       return res.json();
     })
     .catch(err => console.log(err))
@@ -104,29 +101,121 @@ export const MyPlate = () => {
           setSubmitResponse('')}
         }>Cancel</button>
       } 
-      // else {
-      //   console.log('here', localStorage.submitResponse, 'review Id', review._id)
-      //   responseForm = '';
-      // }
      
+      // =========Time Stuff===========
+      const thisDate = new Date();
+        
+      const date = new Date(review.createdAt)
+      const year = date.getFullYear();
+      let month = (date.getMonth() + 1).toString();
+      const day = date.getDate();
+      let minutes = date.getMinutes();
+      let hour = date.getHours();
 
+      //add 0 for times less than 10
+      if (minutes < 10) {
+        minutes = '0' + minutes
+      }
+
+      let hourTime;
+      hour > 12 ? hourTime = `${hour - 12}:${minutes} PM ` : hourTime = `${hour}:${minutes} AM `
+      
+      //convert month number to month word
+      switch (month) {
+        case '1':
+          month = 'Jan'
+          break;
+        case '2':
+          month = 'Feb'
+          break;
+        case '3':
+          month = 'Mar'
+          break;
+        case '4':
+          month = 'Apr'
+          break;
+        case '5':
+          month = 'May'
+          break;
+        case '6':
+          month = 'Jun'
+          break;
+        case '7':
+          month = 'Jul'
+          break;
+        case '8':
+          month = 'Aug'
+          break;
+        case '9':
+          month = 'Sep'
+          break;
+        case '10':
+          month = 'Oct'
+          break;
+        case '11':
+          month = 'Nov'
+          break;
+        case '12':
+          month = 'Dec'
+          break;
+        default:
+          month = null
+        }
+      
+      let yearTime = ` - ${day} ${month} ${year}`
+      const dateString = hourTime + yearTime;
+
+      const timePassed = thisDate - date;
+
+      let elapsedTime;
+      const convert = (ms) => {
+        let d, h, m, s;
+        s = Math.floor(ms / 1000);
+        m = Math.floor(s / 60);
+        s = s % 60;
+        h = Math.floor(m / 60);
+        m = m % 60;
+        d = Math.floor(h / 24);
+        h = h % 24;
+
+        if (d < 1 && h < 1) {
+          elapsedTime = `${m}m ago`
+        } else if (d < 1 && h < 2) {
+          elapsedTime = `${h}hr ago`
+        } else if (d < 1 && h > 2) {
+          elapsedTime = `${h}hrs ago`
+          //this will need to be updated for short months
+        } else if (d === 1) {
+          elapsedTime = `${d} day ago`
+        } else if (d > 1 && d < 31) {
+          elapsedTime = `${d} days ago`
+        } else if (d > 31 && d < 62) {
+          elapsedTime = `1 month ago`
+        }
+      };
+
+      if (timePassed) {
+        convert(timePassed)
+      }
+     
       return (
-        <li className='review-item' key={index} id={review.id} tabIndex='0'>
+        <li className='review-item' key={index} id={review._id} tabIndex='0'>
           <article className='review-header'>
             <article className='review-title'>
-              <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
-                {review.plateNumber} {review.plateState}         
+              {/* <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img> */}
+              <p className='plate-name'>{review.plateNumber}</p>       
+              <p id="elapsed-time">{elapsedTime}</p>
             </article>
             
             <article className='review-rating'>
               <p className='rating'>{rating}</p>
             </article>
-          </article>
-          
+          </article>        
           <p className='message'>Review: {review.message}</p>
           {ownerComment}
           {responseButton}
           {responseForm}
+          <p id='review-date'>{dateString}</p>
         </li>
       )
     })
@@ -134,43 +223,124 @@ export const MyPlate = () => {
 
   console.log(unclaimMessage)
 
-  return (
-    <div className="plate">
-    <Link to="/my-plates" className="claim-back-link"> Go Back </Link>
-    <Link to="/"
-        className="my-plates-home-link"
+  let karmaStyling;
+  if (plate.karma > 0) {
+    karmaStyling = 'public-plate-wrapper-positive'
+  } else if (plate.karma < 0) {
+    karmaStyling = 'public-plate-wrapper-negative'
+  } else {
+    karmaStyling = 'public-plate-wrapper-neutral'
+  }
+
+  let unClaimButton = (<button id="unregister-plate-btn" onClick={() => setUnclaimWarning(!unclaimWarning)}>Unclaim this plate</button>)
+  let confirmButton;
+  let areYouSureMessage;
+  let noButton;
+
+  console.log(localStorage.unclaimedPlate)
+  console.log(unclaimWarning)
+
+
+
+  if (unclaimWarning) {
+    confirmButton = (
+      <button
+      className='confirm-buttons'
+      id="unclaim-plate-btn-confirm"
+      onClick={e => unClaimPlateClick(e)}
+      disabled={localStorage.success === 'unclaimed'}
+      >Yes</button>)
+    noButton = (
+      <button
+        className='confirm-buttons'
+        id="unclaim-plate-btn-no"
+        onClick={() => setUnclaimWarning(!unclaimWarning)}
       >
-        Home
-      </Link>
+        No
+      </button>)
+      areYouSureMessage = <p>Are you sure?</p>
+  }
 
-    {/* ===== PLATE DETAILS ===== */} 
-      <h4>{localStorage.myPlate}</h4>
-      <p>{localStorage.myState}</p>
-      <div className="karma-wrapper">
-        <p className="karma-score">Karma Score: {plate.karma}</p>
-      </div>
+  if (unclaimMessage) {
+    confirmButton = '';
+    noButton = '';
+    unClaimButton = '';
+    areYouSureMessage = '';
+  }
 
-    {/* ===== UNCLAIM A PLATE ===== */} 
-      {
-        !localStorage.unclaimedPlate ? (
-          <button
-            onClick={e => unClaimPlateClick(e)}
-            disabled={localStorage.success === 'unclaimed'}
-          >
-            Unclaim {localStorage.myPlate} - {localStorage.myState}
-          </button>
-        ) : (<p></p>)
-      }
+  // {
+  //   unclaimMessage ? (<p>{unclaimMessage}</p>) : (<p></p>)
+  // }
 
-      {
-        unclaimMessage ? (<p>{unclaimMessage}</p>) : (<p></p>)
-      }
+  return (
+    
+    <div className="plate">
+    
+      <div className="my-plates-nav">
+        <Link to="/" className="my-plates-home-link">Home</Link>
+        <Link to="/my-plates" className="my-plates-back-link">Back</Link>
+      </div>    
 
-    {/* ===== PLATE REVIEW LIST ===== */} 
-      <ul className='reviews'>
+      
+      {/* ===== PLATE DETAILS ===== */} 
+        <div className={karmaStyling}>
+          <div className='plate-content'>
+            <div className="plate-title">
+              <h2 id={plate.plateId}>{plate.plateNumber}</h2>     
+            </div>
+
+            <div className="plate-info">
+              <p>State: {plate.plateState}</p>
+              <p>Karma: {plate.karma}</p>       
+            </div>
+          </div>
+        </div>
+
+
+      {/* ===== PLATE REVIEW LIST ===== */} 
+      <ul className='review-list'>
         {review}
-      </ul>
-   
+      </ul> 
+
+      {/* ===== UNCLAIM A PLATE ===== */} 
+      <div className="unclaim-div">
+        {unClaimButton}
+        
+            {/* {
+              !localStorage.unclaimedPlate && unclaimWarning ? (
+                <button
+                  id="unclaim-plate-btn-confirm"
+                  onClick={e => unClaimPlateClick(e)}
+                  disabled={localStorage.success === 'unclaimed'}
+                >
+                  Yes
+                </button>
+
+              ) : (
+                <p></p>
+              )
+              
+              // <button onClick={() => setUnclaimWarning(!unclaimWarning)}>No</button>
+            }
+
+            {
+              unclaimMessage ? (<p>{unclaimMessage}</p>) : (<p></p>)
+            } */}
+
+            <div className="unclaim-options">
+              {areYouSureMessage}
+
+              <div className="buttons-div">
+                {confirmButton} 
+                {noButton}                   
+              </div>
+              {
+                unclaimMessage ? (<p>{unclaimMessage}</p>) : (<p></p>)
+              }
+              
+            
+            </div>
+          </div>
     </div>
   );
 };

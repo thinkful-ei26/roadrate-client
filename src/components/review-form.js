@@ -11,8 +11,9 @@ export const ReviewForm = (props) => {
   const [ invalidMessage, setInvalidMessage ] = useState('')
 
   const userPlates = props.plates.map(plate => {
-    return {userPlateNumber: plate.plateNumber, 
-            userPlateState: plate.plateState}
+    return {
+      userPlateNumber: plate.plateNumber, 
+      userPlateState: plate.plateState}
     });
   
   if (plateState && plateNumber) {
@@ -23,7 +24,7 @@ export const ReviewForm = (props) => {
       }
     })
   };
-  
+
   const handleSubmit = e => {
     const username = localStorage.user
     const reviewerId = localStorage.userId
