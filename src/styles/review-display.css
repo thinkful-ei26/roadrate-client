@@ -1,7 +1,15 @@
 .submit-review {
   /* max-width: 500px; */
-  margin: auto auto;
-  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  z-index: 2;
+  height: 200px;
+  max-height: 100%;
+  width: 400px;
+  max-width: 100%;
+  text-align: center;
 }
 
 #submit-review-form {
@@ -21,10 +29,10 @@
   background-color: #fafafa;
 }
 
-/* .box div{
+.box div{
   width: 200px;
   height: 200px;
-} */
+}
 
 .display {
     display: flex;
