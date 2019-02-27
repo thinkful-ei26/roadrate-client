@@ -114,8 +114,9 @@ export const MyPlate = () => {
         <li className='review-item' key={index} id={review.id} tabIndex='0'>
           <article className='review-header'>
             <article className='review-title'>
-              <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
-                {review.plateNumber} {review.plateState}         
+              {/* we dont want the user icons anymore */}
+              {/* <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img> */}
+                {review.plateNumber} - {review.plateState}         
             </article>
             
             <article className='review-rating'>

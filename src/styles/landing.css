@@ -1,6 +1,7 @@
 .home {
   text-align: center;
   background: #039be5;
+  width: 100vw;
 }
 
 .landing-content {
@@ -17,12 +18,29 @@
   margin: auto;
 }
 
+.landing-text h1 {
+  font-size: 42px;
+  color: whitesmoke;
+}
+
+.landing-text p {
+  margin: 0px;
+  font-size: 14px
+}
+
+#catch-phrase {
+  margin-top: 0px;
+  font-style: italic;
+  color: darkgreen;
+}
+
 #landing-img {
   border-style: none;
   /* max-width: 100%; */
   border-radius: 50%;
   /* height: 62%; */
   /* width: 50%; */
+  margin: 12px;
   height: 200px;
   width: 200px;
 }

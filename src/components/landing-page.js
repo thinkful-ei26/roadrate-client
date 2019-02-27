@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-// import Header from './header';
 import Nav from './nav';
 import ReviewList from './ReviewList';
 import '../styles/landing.css';
@@ -18,8 +17,10 @@ export const LandingPage = (props) => {
             <div className='landing-content'>
                 <div className='landing-text'>
                     <h1>RoadRate</h1>
-                    <img id='landing-img' src={require('../images/road.jpg')} alt='road'></img>
-                    <p>Responsibly rate drivers. 100% anonymous.</p>
+                    <p id="catch-phrase">Choose Rate, not rage.</p>
+                    <img id='landing-img' src={require('../images/road3.jpg')} alt='road'></img>
+                    <p>Responsibly rate drivers.</p>
+                    <p>100% anonymous.</p>
                 </div>        
             </div>
             <ReviewList />

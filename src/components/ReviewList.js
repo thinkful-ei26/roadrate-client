@@ -198,6 +198,7 @@ export const ReviewList = () => {
               {/* ---- ROUTE TO A SHARABLE PUBLIC PLATE LINK ---- */}
               <Link to={`/plate/id/${review.plateId}`}>
                 <button
+                  className="plate-btn"
                   onClick={() => {
                     // localStorage.setItem('currentPlateId', review.plateId)
                     handleClick()

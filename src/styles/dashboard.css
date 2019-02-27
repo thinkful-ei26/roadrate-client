@@ -1,7 +1,8 @@
 .dashboard {
   background: #039be5;
   height: 100vh;
-  max-width: 100%;
+  /* max-width: 100%; */
+  width: 100vw;
 }
 
 .dashboard :last-child {
@@ -10,11 +11,22 @@
   text-align:center;
 }
 
-/* button.logout {
+button.logout {
   background: #039be5;
   border: none;
   color: aliceblue;
-} */
+  font-size: 12px;
+  margin: 4px;
+}
+
+#logout-link {
+  text-decoration: none;
+}
+
+.logout-div {
+  margin: 2px 2px 0px 0px;
+  float: right;
+}
 
 button.add-review {
   background: rgb(60, 199, 60);
@@ -24,15 +36,17 @@ button.add-review {
   margin: 0 auto;
 }
 
-.dashboard-greeting :last-child {
+/* not sure what this is for? the only child in .dashboard-greeting is the p tag below */
+/* .dashboard-greeting :last-child {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 10vh;
-}
+} */
 
 .dashboard-greeting p {
   color: whitesmoke;
   font-size: 18px;
   font-weight: 600;
+  margin: 30px;
 }
