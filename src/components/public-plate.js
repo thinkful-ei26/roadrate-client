@@ -66,8 +66,10 @@ export const PublicPlate = () => {
           rating = <MaterialIcon icon="thumb_down" />
         }
 
-        if (review.comment) {
-          driverComment = <p> Driver Response: {review.comment}</p>
+        console.log(reviews)
+
+        if (review.ownerResponse) {
+          driverComment = <p> Driver Response: {review.ownerResponse}</p>
         } 
 
         const thisDate = new Date();
@@ -179,7 +181,7 @@ export const PublicPlate = () => {
               </article>
             </article>        
             <p className='message'>Review: {review.message}</p>
-            <p>{driverComment}</p>
+            {driverComment}
             <p id='review-date'>{dateString}</p>
           </li>
         )
