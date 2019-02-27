@@ -20,8 +20,8 @@ html {
 }
 
 @font-face {
-  font-family: 'LicensePlate';
+  font-family: LicensePlate;
   font-style: lighter;
-  src: local('LicensePlate'),
-    url('./LicensePlate.ttf') format('tff'), 
+  src: local('License Plate'),
+    url('./LicensePlate.ttf') 
 }

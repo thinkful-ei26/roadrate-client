@@ -237,11 +237,6 @@ export const MyPlate = () => {
   let areYouSureMessage;
   let noButton;
 
-  console.log(localStorage.unclaimedPlate)
-  console.log(unclaimWarning)
-
-
-
   if (unclaimWarning) {
     confirmButton = (
       <button
@@ -267,21 +262,14 @@ export const MyPlate = () => {
     unClaimButton = '';
     areYouSureMessage = '';
   }
-
-  // {
-  //   unclaimMessage ? (<p>{unclaimMessage}</p>) : (<p></p>)
-  // }
-
   return (
-    
     <div className="plate-div">
     
       <div className="my-plates-nav">
-        <Link to="/" className="my-plates-home-link">Home</Link>
+        <Link to="/" className="my-plates-home-link">Dashboard</Link>
         <Link to="/my-plates" className="my-plates-back-link">Back</Link>
       </div>    
 
-      
       {/* ===== PLATE DETAILS ===== */} 
         <div className={karmaStyling}>
           <div className='plate-content'>
@@ -305,27 +293,6 @@ export const MyPlate = () => {
       {/* ===== UNCLAIM A PLATE ===== */} 
       <div className="unclaim-div">
         {unClaimButton}
-        
-            {/* {
-              !localStorage.unclaimedPlate && unclaimWarning ? (
-                <button
-                  id="unclaim-plate-btn-confirm"
-                  onClick={e => unClaimPlateClick(e)}
-                  disabled={localStorage.success === 'unclaimed'}
-                >
-                  Yes
-                </button>
-
-              ) : (
-                <p></p>
-              )
-              
-              // <button onClick={() => setUnclaimWarning(!unclaimWarning)}>No</button>
-            }
-
-            {
-              unclaimMessage ? (<p>{unclaimMessage}</p>) : (<p></p>)
-            } */}
 
             <div className="unclaim-options">
               {areYouSureMessage}
@@ -337,8 +304,7 @@ export const MyPlate = () => {
               {
                 unclaimMessage ? (<p>{unclaimMessage}</p>) : (<p></p>)
               }
-              
-            
+                      
             </div>
           </div>
     </div>

@@ -6,6 +6,7 @@ h1 {
 
   .dashboard-nav {
     align-content: space-around;
+    text-align: center;
   }
 
   .header-logo-combo {
@@ -19,7 +20,7 @@ h1 {
     padding: 0;
     margin: 0;
     list-style: none;
-    justify-content: space-around;
+    justify-content: center;
   }
   
   .search {
