@@ -274,7 +274,7 @@ export const MyPlate = () => {
 
   return (
     
-    <div className="plate">
+    <div className="plate-div">
     
       <div className="my-plates-nav">
         <Link to="/" className="my-plates-home-link">Home</Link>

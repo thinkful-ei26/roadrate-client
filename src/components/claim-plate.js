@@ -250,6 +250,8 @@ export const claimPlate = () => {
               name="claim-search"
               className="claim-search-input"
               placeholder="Search..."
+              pattern="^[a-zA-Z0-9]{1,8}$" 
+              title="Plate number should be between 1 to 8 characters without special characters."
             />
           </label>
 
@@ -334,6 +336,4 @@ export const claimPlate = () => {
 }
 
 export default claimPlate;
-
-
 

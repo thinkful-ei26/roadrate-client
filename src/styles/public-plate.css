@@ -1,9 +1,9 @@
-.plates-back-link  {
+/* .plates-back-link  {
   display: flex;
   justify-content: flex-end;
   padding: 10px;
   text-decoration: none
-}
+} */
 
 .plates-back-link :hover {
   color: grey;
