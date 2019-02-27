@@ -219,10 +219,12 @@ export const PublicPlate = () => {
     - Tested on Chrome, Firefox, & Safari
     - Doesn't rely on localStorage
     */
-    <div className="plate">
-      <Link to="/" className="plates-back-link">
-        Go Back
-      </Link>
+    <div className="plate-div">
+      <div className="plate-div-nav">
+        <Link to="/" className="plates-back-link">
+          Go Back
+        </Link>
+      </div>
      
       {_plate}
     
