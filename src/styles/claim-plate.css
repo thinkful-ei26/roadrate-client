@@ -34,13 +34,3 @@ select.browser-default {
   display: block;
   margin: 0 auto;
 }
-
-.claim-back-link {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px;
-}
-
-.claim-back-link:hover {
-  color: white;
-}

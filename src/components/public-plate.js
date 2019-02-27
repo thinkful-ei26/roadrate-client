@@ -194,14 +194,20 @@ export const PublicPlate = () => {
         karmaStyling = 'public-plate-wrapper-positive'
       } else if (plate.karma < 0) {
         karmaStyling = 'public-plate-wrapper-negative'
-
       }
       console.log('fetching plate: ', plate)
       _plate = (
         <div className={karmaStyling}>
-          <h2 id={plateId}>{plate.plateNumber}</h2>
-          <p>State: {plate.plateState}</p>
-          <p>Karma: {plate.karma}</p>
+          <div className='plate-content'>
+            <div className="plate-title">
+              <h2 id={plate.plateId}>{plate.plateNumber}</h2>     
+            </div>
+
+            <div className="plate-info">
+              <p>State: {plate.plateState}</p>
+              <p>Karma: {plate.karma}</p>       
+            </div>
+          </div>
         </div>
       )
     }
