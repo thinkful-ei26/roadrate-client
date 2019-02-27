@@ -28,7 +28,6 @@
     max-height: 100%;
     width: 625px;
     max-width: 100%;
-    text-align: center;
     overflow: auto;
   }
 
@@ -41,9 +40,10 @@
     overflow: auto;
   }
 
-  .about-modal h2 {
+  .about-modal h1 {
     position: relative;
     padding-top: 10px;
+    padding: 2px;
     margin: 0 auto;
     color: rgb(30, 170, 144);
   }
@@ -64,4 +64,29 @@
 
   .register-link h4 {
     color: rgb(30, 170, 144)
+  }
+
+  .about-icon {
+    height: 40px;
+    padding: 5px;
+  }
+
+  .about p b {
+    color: rgb(20, 89, 136);
+    text-align: left;
+  }
+
+  .about p {
+    text-align: center;
+  }
+
+  .about {
+    /* display: flex;
+    flex-direction: column;
+    width: 400px; */
+    justify-content: center  
+  }
+
+  .about h5 {
+    color: rgb(20, 89, 136)
   }
