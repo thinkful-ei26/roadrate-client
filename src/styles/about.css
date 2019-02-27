@@ -4,3 +4,64 @@
     border: none;
     font-size: 17px;
   }
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.856);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  
+  .about-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50vh;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.705);
+    z-index: 2;
+    padding: 10px;
+    height: 450px;
+    max-height: 100%;
+    width: 625px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .modal-guts {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+
+  .about-modal h2 {
+    position: relative;
+    padding-top: 10px;
+    margin: 0 auto;
+    color: rgb(30, 170, 144);
+  }
+  
+  .close {
+    text-decoration: none;
+    color: red;
+    font-family: sans-serif;
+    font-size: 10px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+
+  .register-link {
+    margin: 0;
+  }
+
+  .register-link h4 {
+    color: rgb(30, 170, 144)
+  }
