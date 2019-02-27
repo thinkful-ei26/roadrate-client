@@ -18,10 +18,3 @@ html {
   text-align: center;
   box-sizing: border-box;
 }
-
-@font-face {
-  font-family: 'LicensePlate';
-  font-style: lighter;
-  src: local('LicensePlate'),
-    url('./LicensePlate.ttf') format('tff'), 
-}

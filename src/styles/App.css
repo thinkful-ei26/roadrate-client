@@ -1,3 +1,10 @@
+@font-face {
+  font-family: LicensePlate;
+  font-style: lighter;
+  src: local('License Plate'),
+    url('./LicensePlate.ttf'); 
+}
+
 * {
   outline: 0;
 }
@@ -63,7 +70,7 @@ img {
   color: blue;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
   font-size: 14px;
-  font-family: 'LicensePlate';
+  font-family: LicensePlate;
 }
 
 .plate-div-nav {
