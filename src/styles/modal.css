@@ -9,16 +9,18 @@
   }
   
   .modal {
-    position: fixed;
-    left: 25%;
+    position: relative;
+    left: 35%;
     right: 10%;
     top: 22vh;
     border-radius: 3px;
     background-color: #fff;
     z-index: 2;
     padding: 15px;
-    height: 50vh;
-    max-width: 120vh;
+    max-height: 200px;
+    height: 100%;
+    max-width: 320px;
+    width: 100%;
     text-align: center;
   }
 
