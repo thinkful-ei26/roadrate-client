@@ -2,10 +2,15 @@
   display: flex;
   justify-content: flex-end;
   padding: 10px;
+  text-decoration: none;
+  position: absolute;
+  top: 0px;
+  right: -5px;
+  color: aliceblue;
 }
 
 .my-plates-back-link:hover {
-  color: white;
+  color: rgb(204, 255, 246);
 }
 
 button.plate {
@@ -13,4 +18,69 @@ button.plate {
   font-size: 16px;
   font-weight: bolder;
   width: 300px;
+}
+
+.my-plates {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.my-plates h1 {
+  position: relative;
+  padding-top: 10px;
+  margin: 0 auto;
+  color: rgb(0, 0, 0);
+}
+
+.my-plates p {
+  position: relative;
+  margin: 0 auto;
+  padding: 10px;
+  color: rgba(0, 0, 0, 0.548);
+  /* font-style: italic; */
+}
+
+.plates-icon {
+  margin: 0 auto;
+  height: 20px;
+  position: absolute;
+  top: 47px;
+  right: 1px;
+}
+
+.plate-item {
+  padding: 10px;
+}
+
+.plate {
+  position: relative;
+  padding-top: 10px;
+  margin: 0 auto;
+  justify-content: space-between;
+  display: block;
+  width: 450px;
+  height: 100px;
+  background-color: rgba(255, 255, 0, 0.911);
+  box-shadow: 10px 10px 5px #888888bd;
+  border: 5px solid black;
+  border-radius: 20px;
+}
+
+button.plate {
+  border: 5px solid black;
+  font-size: 30px;
+}
+
+.plate {
+  border: 5px solid black;
+  background: #ffff00; /* Old browsers */
+background: -moz-linear-gradient(top,  #ffff00 0%, #ffff99 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffff00), color-stop(100%,#ffff66)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ffff00 0%,#ffff99 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ffff00 0%,#ffff99 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ffff00 0%,#ffff99 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ffff00 0%,#ffff99 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff00', endColorstr='#ffff99',GradientType=0 ); /* IE6-9 */
+ 
 }

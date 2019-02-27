@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
 import { Redirect, Link } from 'react-router-dom';
+import icon from '../assets/thumbs-up.png';
 import '../styles/my-plates.css'
 
 export const MyPlatesList = () => {
@@ -76,21 +77,26 @@ export const MyPlatesList = () => {
 
   return (
     <div className="my-plates">
+
       <Link to="/"
         className="my-plates-back-link"
       >
-        Go Back
+        Dashboard
       </Link>
 
+      <img 
+        src={icon} 
+        alt="icon" 
+        className="plates-icon"
+      />
+  
       {localStorage.unclaimedPlate ? (<p>Successfully unclaimed plate</p>) : (<p></p>)}
 
-      <h2>My Plates</h2>
+      <h1>My Plates</h1>
       {noPlatesMessage()}
       
       <ul className='plates'>
-        {/* <Link to={plateEndpoint}>
-          {plate}
-        </Link> */}
+
         {plate}
       </ul>
 
