@@ -1,4 +1,4 @@
-wedn.my-plates-back-link {
+.my-plates-back-link {
   display: flex;
   justify-content: flex-end;
   padding: 10px;
@@ -15,7 +15,6 @@ wedn.my-plates-back-link {
 
 .my-plates-back-link:hover {
   color: grey;
-
 }
 
 button.plate {
@@ -76,6 +75,7 @@ button.plate {
   font-size: 23px;
   font-weight: 400;
   color: rgb(9, 9, 128); 
+}
 
 .my-plates-nav {
   display: flex;

@@ -66,6 +66,10 @@ img {
   font-family: 'LicensePlate';
 }
 
+.plate-div-nav {
+  display: flex;
+}
+
 /* on public-plate reviews and myPlate reviews */
 .plate-name {
   padding: 14px;
