@@ -150,7 +150,6 @@ export const claimPlate = () => {
         <th>Ratings</th>
         <th>Register Your Plate</th>
       </tr>
-      <p>Please Search for a Valid Plate</p>
     </table>
     )
   } else if (plates === [] || plates === undefined) {
@@ -226,11 +225,11 @@ export const claimPlate = () => {
     <Link to="/" className="claim-back-link">
       Go Back
     </Link>
-    <h2>Claim A Plate</h2>
+    <h2>Claim A Plate:</h2>
 
     <div className="claim-search">
      <fieldset id="claim-plate-search">
-      <legend>License Plate Number</legend>
+      <legend>Search a Valid Plate by State</legend>
         <form 
           id="claim-search-form"
           className="claim-search-form"
@@ -249,7 +248,7 @@ export const claimPlate = () => {
               id="claim-search"
               name="claim-search"
               className="claim-search-input"
-              placeholder="Search..."
+              placeholder="Search plate numbers"
               pattern="^[a-zA-Z0-9]{1,8}$" 
               title="Plate number should be between 1 to 8 characters without special characters."
             />

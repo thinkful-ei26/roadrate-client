@@ -1,11 +1,62 @@
-.inline-search {
+.claimPlate {
   display: flex;
+  margin: 10px;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.329);
+}
+
+.claimPlate h2{
+  color: rgb(30, 170, 144);
+  background: white;
+  margin: 0 auto;
+  padding: 8px 15px;
+}
+
+/* .inline-search {
+  display: flex;
+} */
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+tr th:nth-child(1) {
+  width: 10%;
+}
+
+tr th:nth-child(2) {
+  width: 10%;
+}
+
+tr th:nth-child(3) {
+  width: 10%;
+}
+
+tr th:nth-child(4) {
+  width: 10%;
+}
+
+tr th:nth-child(5) {
+  width: 10%;
+}
+
+th, td {
+  padding: 10px;
 }
 
 #claim-search.claim-search-input {
   background-color: white;
   display: inline-block;
   width: 200px;
+  padding: 10px;
 }
 
 select.browser-default {
@@ -33,4 +84,22 @@ select.browser-default {
 .search-btn {
   display: block;
   margin: 0 auto;
+}
+
+#claim-plate-search {
+  margin: 35px;
+  border: 1px solid whitesmoke;
+}
+
+.claim-back-link {
+  margin: 10px;
+}
+
+button.search-btn {
+  padding: 2px 12px;
+  margin: 5px;
+}
+
+legend {
+  font-weight: 600;
 }
