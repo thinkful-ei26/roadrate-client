@@ -107,6 +107,7 @@ export const LoginForm = () => {
                 title="Username should only contain letters, numbers and underscores; no more than 15 characters e.g. Jojo_123"
                 id="login-username"
                 required
+                aria-labelledby="login-username"
               />
               <input
                 value={password}
@@ -117,6 +118,8 @@ export const LoginForm = () => {
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
                 title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                 required
+                id="login-password"
+                aria-labelledby="login-password"
               />
               <button waves="teal" type="submit" className="login-submit">
                 Submit
