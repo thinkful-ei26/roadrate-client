@@ -39,11 +39,11 @@ export const SearchReviews = (props) => {
             name="search"
             className="search-input"
             placeholder="Search..."
+            aria-labelledby="search input"  
           />
           <label 
             htmlFor="search"
             className="search-label"
-            aria-label="search-form"
           >
             <button
               className="search-btn" 
