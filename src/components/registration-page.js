@@ -1,10 +1,17 @@
 import React from 'react';
 import RegistrationForm from './registration-form';
+import icon from '../assets/thumbs-up.png';
+import '../styles/registration-form.css';
 
-export function RegistrationPage(props) {
+export function RegistrationPage() {
     return (
         <div className="registration-page">
-            <h5>Register to start rating</h5>
+            <img 
+                src={icon} 
+                alt="icon" 
+                className="registration-icon"
+            />
+            <h1>Register to RoadRate</h1>
             <RegistrationForm />
         </div>
     );

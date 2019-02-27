@@ -1,30 +1,82 @@
-import React from 'react';
-import ReactModal from "react-modal";
-import { useModal }  from 'react-modal-hook';
+import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-ReactModal.setAppElement('#root')
+import '../styles/about.css';
 
-// const customStyles = { content : { 
-//     top : '50%', left : '50%', right : 'auto',bottom : 'auto',marginRight : '-50%',transform : 'translate(-50%, -50%)' } };
+// ReactModal.setAppElement('#root')
 
 export const About = () => {
+    const [modalOpen, setModalOpen] = useState(false);
 
-    const [showModal, hideModal] = useModal(() => (
-    <ReactModal isOpen closeTimeoutMS={2000} /* style={customStyles} */>
-            <div className="about">
-                    <h1>What is RoadRate?</h1>
-                    <h5><i>RoadRate was founded to safely and anonymously encourage quality road etiquette for the over 220 million drivers currently licensed in America.</i></h5>
+    const onClose = () => setModalOpen(false);
+
+    const clickOutside = (ref, onClose) => {
+        const statusChange = (e) => {
+            if (!ref.current.contains(e.target)){
+                setModalOpen(modalOpen)
+                onClose();
+            }
+        }
+        document.addEventListener('click', statusChange)
+        return function cleanup() {
+            document.removeEventListener('click', statusChange)
+        }
+    }
+
+    const Button = () => {    
+        return (
+          <button className="close" onClick={() => setModalOpen(false)}>x</button>
+        )
+      }
+
+      const AboutModal = ({ title, onClose }) => {
+        const modalRef = useRef(null);
+  
+        useEffect(() => clickOutside(modalRef, onClose))
+  
+          return (
+              <div className="overlay">
+                <div className="about-modal">
+                    <div className="modal-guts">
+                        <h2>{title}</h2>
+                        <div className="content" ref={modalRef}>
+                            <AboutSection />
+                        </div>
+                    </div>
+                </div>
+              </div>
+            );
+        } 
+
+    const AboutSection = () => {
+        return (
+            <div className="about" closeTimeoutMS={2000}>
                     <p><b>Have you ever been perplexed by a neighbor that continuously parks in a way that blocks you from using an otherwise perfectly viable space?</b><br/> With RoadRate, you can find their license plate, rate it, leave a review and upload a photo 100% anonymously.</p>
                     <p><b>What about that time you relied on the help of a stranger for a jump?</b><br/> Use RoadRate to publically acknowledge how impactful the kindness of strangers can be.</p>
-                    <h5>Registered users of RoadRate can leave/recieve anonymous tips for enviable driving skills and random acts of kindness.</h5>
-                    <h4>Login or register to begin RoadRating today!</h4>
-                <button onClick={hideModal}>Close</button>
+                    <p><b>So, what is RoadRate?</b><br />RoadRate is a social platform for reviewing your fellow drivers and seeing how well your own plate's *RoadRate. Register license plates, browse/search/post reviews, and build up your karma score to let other's know you're a great driver. RoadRate was founded to safely and anonymously encourage quality road etiquette for the over 220 million drivers currently licensed in America.</p>
+                    <h5>*RoadRate encourages positive reviews for enviable driving skills and random acts of kindness, and as such, honest negative reviews where there is room for improvement and need are also encouraged.</h5>
+                    <div className="register-link">
+                        <Link to="/register" className="register-link">
+                            <h4>Start your journey with RoadRate today!</h4>
+                        </Link>
+                    </div>
+                <Button />
             </div>
-        </ReactModal>
-    ));
+       )
+    };
 
     return (
-        <button id="about-btn" onClick={showModal}>What's RoadRate?</button>
+        <div className='about'>
+            <button className="about-button" id="about-button" onClick={() => setModalOpen('about')}>About</button>
+            {modalOpen && (
+                <AboutModal
+                    show={modalOpen === 'about'}
+                    toggleModal={setModalOpen}
+                    title="About RoadRate"
+                    onClose={onClose}
+                />
+            )}
+        </div>
     );
 }
 

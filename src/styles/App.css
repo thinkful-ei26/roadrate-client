@@ -13,7 +13,7 @@ body {
 }
 
 html {
-  display: flex;
+  /* display: flex; */
   max-width: 100%;
   flex-wrap: wrap;
 }

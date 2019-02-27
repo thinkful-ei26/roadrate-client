@@ -63,15 +63,6 @@ export const RegistrationForm = () => {
       });
   }
 
-  const Button = () => {
-
-    localStorage.setItem("modalOpen", modalOpen)
-
-    return (
-      <button className="close" onClick={() => setModalOpen(false)}>x</button>
-    )
-  }
-
   const validateUsername = async (username) => {
     // send username to server on Change of `username` state
     // server should check if username exists 
@@ -159,91 +150,78 @@ export const RegistrationForm = () => {
       localStorage.loggedIn ? (
         <Redirect to="/dashboard" />
       ) : (
-      <div className="registration-modal">
+      <div className="registration-form">
         <form className="registration-form"
           onSubmit={handleSubmit}
         >
-          <label htmlFor="name">Name:
           <input
             value={name}
             onChange={e => setName(e.target.value)}
-            placeholder="Name"
+            placeholder="enter name"
             type="text"
             name="name"
             required
           />
-          </label>
 
           {usernameValidation}
 
-          <label htmlFor="username">Username:
           <input
             value={username}
             onChange={e => setUsername(e.target.value)}
-            placeholder="Username"
+            placeholder="enter username"
             type="text"
             name="username"
             id="register-username"
             required
           />
-          </label>
-          <label htmlFor="password">Password:
           <input
             value={password}
             onChange={e => setPassword(e.target.value)}
-            placeholder="Password"
+            placeholder="enter password"
             type="password"
             name="password"
             required
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
             title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
           />
-          </label>
-          <label htmlFor="passwordConfirm">Confirm Password:
           <input
             value={confirmPassword}
             onChange={e => setConfirmPassword(e.target.value)}
-            placeholder="Confirm Password"
+            placeholder="confirm password"
             type="password"
             name="passwordConfirm"
             required
             pattern={password} 
             title={`password: "${password}" & confirmPassword: "${confirmPassword}" must match`}
           />
-          </label>
-          <label htmlFor="email">E-mail:
           <input
             value={email}
             onChange={e => setEmail(e.target.value)}
-            placeholder="Email"
+            placeholder="enter email"
             type="email"
             name="email"
             pattern="^([\w\-\.]+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|(([\w\-]+\.)+)([a-zA-Z]{2,4}))$"
             required
           />
-          </label>
-          <label htmlFor="emailConfirm">Confirm Email:
           <input
             value={confirmEmail}
             onChange={e => setConfirmEmail(e.target.value)}
-            placeholder="Confirm Email"
+            placeholder="confirm email"
             type="email"
             name="emailConfirm"
             pattern={email}
             title={`email: "${email}" & confirmEmail: "${confirmEmail}" must match`}
             required
           />
-          </label>
           <button 
             waves="light "
             type="submit" 
-            className="login-submit"
+            className="registration-submit"
             disabled={ !username || !password || !validUsername }
           >
             Submit
           </button>
-          <Button />
-          <Link to="/">Go Back</Link>
+          <Link to="/" className="registration-link">Go Back</Link>
         </form>
       </div>
       )}

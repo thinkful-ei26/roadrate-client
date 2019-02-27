@@ -21,6 +21,13 @@
   color: whitesmoke;
 }
 
+.login-button {
+  background: #039be5;
+  color: aliceblue;
+  border: none;
+  font-size: 17px;
+}
+
 .about-links, .nav-items {
   display: inline-block;
   margin: 0 auto;
