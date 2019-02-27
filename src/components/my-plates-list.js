@@ -83,17 +83,16 @@ export const MyPlatesList = () => {
       >
         Dashboard
       </Link>
-
-      <img 
-        src={icon} 
-        alt="icon" 
-        className="plates-icon"
-      />
   
       {localStorage.unclaimedPlate ? (<p>Successfully unclaimed plate</p>) : (<p></p>)}
 
       <h1>My Plates</h1>
       {noPlatesMessage()}
+      <img 
+        src={icon} 
+        alt="icon" 
+        className="plates-icon"
+      />
       
       <ul className='plates'>
 
