@@ -13,10 +13,8 @@ export const CreatePlateForm = () => {
       setPlate(plate);
   };
 
-  console.log('plate:', storePlate);
+  // console.log('plate:', storePlate);
 
-  //put request to regular plate endpoint
-  //find on the query to match the 
   const handleSubmit = (e) => {
     e.preventDefault();
     const userId = localStorage.userId;

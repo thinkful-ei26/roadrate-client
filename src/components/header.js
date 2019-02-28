@@ -24,20 +24,6 @@ export const Header = () => {
                 top width="100%"
                 src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80" /> 
             </Card>
-            {/* <ul className="about-links">
-                <li className="login-link">
-                    <Link to="/login">Login</Link>
-                </li>
-                <li className="register-link">
-                    <Link to="/register">Register</Link>
-                </li>
-                <li className="landing-link">
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/about">About RoadRate</Link>
-                </li>
-            </ul> */}
         </div>
     )
 }

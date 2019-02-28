@@ -57,7 +57,7 @@ export const Review = () => {
           localStorage.setItem('currentPlateState', review.plateState)
           localStorage.setItem('currentPlateNumber', review.plateNumber)
           localStorage.setItem('plateId', review.plateId)
-          console.log('redirecting')
+          // console.log('redirecting')
           setRedirect(true)
         }
 

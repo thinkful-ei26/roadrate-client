@@ -18,7 +18,7 @@ export const RegistrationForm = () => {
   
   const logIn = data => {
   
-    console.log('user data: ',data);
+    // console.log('user data: ',data);
 
     setUsername(username)
     setLoggedIn(loggedIn)
@@ -38,11 +38,11 @@ export const RegistrationForm = () => {
         })
       })
       .then(res => {
-        console.log('res', res.body)
+        // console.log('res', res.body)
         return res.json();
       })
       .then( ( auth ) => {  
-        console.log('auth: ',auth)
+        // console.log('auth: ',auth)
         if (auth.hasOwnProperty("authToken")){
           localStorage.setItem("user", username);
           localStorage.setItem("loggedIn", loggedIn);
@@ -137,7 +137,7 @@ export const RegistrationForm = () => {
       };
 
   let usernameValidation;
-  console.log('validUsername: ',validUsername)
+  // console.log('validUsername: ',validUsername)
   if(validUsername === ''){
     usernameValidation = <p></p>
   } else if (!validUsername) {

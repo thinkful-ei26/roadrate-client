@@ -40,12 +40,12 @@ export const LoginForm = () => {
         })
       })
       .then(res => {
-        console.log('res', res.body)
+        // console.log('res', res.body)
         return res.json();
       })
       .then( ( auth ) => {  
         const { message, code, name } = auth;
-        console.log(auth)
+        // console.log(auth)
 
         if(code === 401 || message === 'Unauthorized' || name === 'AuthenticationError') {
           setAuthError(true)

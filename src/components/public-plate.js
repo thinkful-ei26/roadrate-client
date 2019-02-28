@@ -15,7 +15,7 @@ export const PublicPlate = () => {
     /* ==== extract plateId from url ==== */
     console.log('address: ',document.location.href);
     const address = document.location.href;
-    const plateId = address.substring((address.indexOf('d')+ 2), address.length);
+    const plateId = address.substring((address.indexOf('m')+ 11), address.length);
     setPlateId(plateId)
     console.log('plateId from addressbar: ',plateId)
     
@@ -66,7 +66,7 @@ export const PublicPlate = () => {
           rating = <MaterialIcon icon="thumb_down" />
         }
 
-        console.log(reviews)
+        // console.log(reviews)
 
         if (review.ownerResponse) {
           driverComment = <p> Driver Response: {review.ownerResponse}</p>
@@ -195,7 +195,7 @@ export const PublicPlate = () => {
       } else if (plate.karma < 0) {
         karmaStyling = 'public-plate-wrapper-negative'
       }
-      console.log('fetching plate: ', plate)
+      // console.log('fetching plate: ', plate)
       _plate = (
         <div className={karmaStyling}>
           <div className='plate-content'>

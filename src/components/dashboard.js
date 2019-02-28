@@ -48,7 +48,7 @@ export const Dashboard = (props) => {
     localStorage.removeItem('success')
   }, []);
 
-  console.log('storePlates on dashboard', storePlates)
+  // console.log('storePlates on dashboard', storePlates)
 
   let reviewForm;
   if (submitReview === true) {

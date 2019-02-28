@@ -29,8 +29,8 @@ export const ReviewList = () => {
     const handleSubmit = e => {
       e.preventDefault(); 
 
-      console.log('sending', searchPlateNumber)
-      console.log('sending:', searchPlateState);
+      // console.log('sending', searchPlateNumber)
+      // console.log('sending:', searchPlateState);
       // console.log('search', searchInput)
       return fetch(`${API_BASE_URL}/reviews/?number=${searchPlateNumber}`)
         .then(res => { 
