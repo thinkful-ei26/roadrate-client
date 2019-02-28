@@ -136,28 +136,36 @@ button.plate {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #414141;
 }
 
 #unregister-plate-btn {
-  background: #f4f4f4;
+  background: rgb(30, 170, 144);
+  color: #f4f4f4;
+  font-weight: 500;
   border: none;
-  color: aliceblue;
   font-size: 16px;
   margin: 4px;
   margin-bottom: 8px;
+  padding: 10px;
 }
 
-#unclaim-plate-btn {
+#unregister-plate-btn:hover {
+  background-color: #414141;
+  color: #f4f4f4;
+}
+
+/* #unclaim-plate-btn {
   background: none;
   border: none;
   color: aliceblue;
   font-size: 16px;
   margin: 4px;
-}
+} */
 
-.unclaim-options {
+/* .unclaim-options {
   font-size: 14px;
-}
+} */
 
 .buttons-div {
   display: flex;
@@ -167,7 +175,7 @@ button.plate {
 .confirm-buttons {
   background: #f4f4f4;
   border: none;
-  color: aliceblue;
+  color: inherit;
   font-size: 16px;
   margin: 4px;
 }
