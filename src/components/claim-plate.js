@@ -115,19 +115,14 @@ export const claimPlate = () => {
   plateTable = (
     <table>
       <tr>
-        <th>License Plate</th>
+        <th><span className="mobile-hide">License</span> Plate</th>
         <th>State</th>
-        <th>Karma Score</th> 
-        <th>Ratings</th>
-        <th>Add to Your Account</th>
-        <th>Register Your Plate</th>
+        <th>Add<span className="mobile-hide"> to Your Account</span></th>
+        <th>Register <span className="mobile-hide">Your Plate</span></th>
         </tr>
         <tr>
           <td>{plates.plateNumber}</td>
           <td>{plates.plateState}</td>
-          <td>{plates.karma}</td>
-          {/* need to get reviews.length of all of the reviews that have ever mentioned this license plate */}
-          <td>0</td>
           <td>
             <button 
               className='add-to-user-button' 
@@ -144,11 +139,9 @@ export const claimPlate = () => {
     plateTable = (
       <table>
       <tr>
-        <th>License Plate</th>
+      <th><span className="mobile-hide">License</span> Plate</th>
         <th>State</th>
-        <th>Karma Score</th> 
-        <th>Ratings</th>
-        <th>Register Your Plate</th>
+        <th>Register <span className="mobile-hide">Your Plate</span></th>
       </tr>
     </table>
     )
@@ -157,18 +150,14 @@ export const claimPlate = () => {
     plateTable = (
       <table>
         <tr>
-          <th>License Plate</th>
-          <th>State</th>
-          <th>Karma Score</th> 
-          <th>Ratings</th>
-          <th>Register Your Plate</th>
+        <th><span className="mobile-hide">License</span> Plate</th>
+        <th>State</th>
+        <th>Register <span className="mobile-hide">Your Plate</span></th>
         </tr>
         <tr>
           <td>{plateNumber}</td>
           <td>{plateState}</td>
-          <td>No Karma Score Yet!</td>
           {/* need to get reviews.length of all of the reviews that have ever mentioned this license plate */}
-          <td>No Reviews Yet!</td>
           <td>
           <button 
             className='register-plate' 
@@ -182,24 +171,19 @@ export const claimPlate = () => {
       </table>
     )
   } else if (plates.userId) {
-    //if a plate has already been registered
     plateTable = (
     <div className="plateTable">
       <table>
         <tr>
-          <th>License Plate</th>
-          <th>State</th>
-          <th>Karma Score</th> 
-          <th>Ratings</th>
-          <th>Add to Your Account</th>
-          <th>Register Your Plate</th>
-          </tr>
+            <th><span className="mobile-hide">License</span> Plate</th>
+            <th>State</th>
+            <th><span className="mobile-hide">Karma Score</span></th><th><span className="mobile-hide">Ratings</span></th>
+            <th>Add<span className="mobile-hide"> to Your Account</span></th>
+            <th>Register <span className="mobile-hide">Your Plate</span></th>
+        </tr>
           <tr>
             <td>{plates.plateNumber}</td>
             <td>{plates.plateState}</td>
-            <td>{plates.karma}</td>
-            {/* need to get reviews.length of all of the reviews that have ever mentioned this license plate */}
-            <td>0</td>
             <td>
               ALREADY CLAIMED
             </td>
