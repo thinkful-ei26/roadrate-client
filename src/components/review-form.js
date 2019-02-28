@@ -167,7 +167,7 @@ export const ReviewForm = (props) => {
           id='review-message-input'
           type='text' 
           name='message' 
-          placeholder='Briefly explain your RoadRating'
+          placeholder='Explain your RoadRating'
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
