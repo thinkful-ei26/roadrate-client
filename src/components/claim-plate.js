@@ -205,10 +205,14 @@ export const claimPlate = () => {
 
   /* ========= RENDER CLAIM PLATE PAGE ========== */
   return (
+    
     <div className="claimPlate">
-    <Link to="/" className="claim-back-link">
-      Go Back
-    </Link>
+      <div className="my-plates-nav"> 
+        <Link to="/" className="my-plates-home-link">
+          Dashboard
+        </Link> 
+     </div>
+      
     <h2>Claim A Plate:</h2>
 
     <div className="claim-search">
