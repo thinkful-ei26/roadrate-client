@@ -172,7 +172,7 @@ export const MyReviews = () => {
         <Link to="/" className="my-plates-home-link">Dashboard</Link>
       </div>  
       <section className='my-reviews-content'>
-        <h2>My Reviews</h2>
+          <h2>My Reviews</h2>
 
         <div className="search-section">
           <fieldset id="review-search">

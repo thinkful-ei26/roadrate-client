@@ -82,9 +82,9 @@ export const MyPlate = () => {
       console.log(review.ownerResponse)
 
       if (review.ownerResponse) {
-        ownerComment = <p>Driver Response: {review.ownerResponse}</p>
+        ownerComment = <p>Your Response: {review.ownerResponse}</p>
       } else {
-        responseButton = <button onClick={() => {
+        responseButton = <button id="owner-response-btn" onClick={() => {
           localStorage.setItem('submitResponse', review._id);
           setSubmitResponse(review._id)
         }       
@@ -96,7 +96,7 @@ export const MyPlate = () => {
         console.log('here', localStorage.submitResponse, 'review Id', review._id)
         responseForm = <OwnerResponseForm reviewId={review._id} fetchReviews={fetchReviewsByPlateId()}/>
         // responseButton = '';
-        responseButton = <button onClick={() => {
+        responseButton = <button id="owner-response-btn" onClick={() => {
           localStorage.removeItem('submitResponse')
           setSubmitResponse('')}
         }>Cancel</button>

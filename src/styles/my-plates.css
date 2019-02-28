@@ -22,6 +22,12 @@ button.plate {
   width: 300px;
 }
 
+.header-wrapper {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  padding: 20px;
+}
+
 .my-plates {
   display: flex;
   flex-direction: column;
@@ -80,7 +86,7 @@ button.plate {
   background: white;
   color: rgb(30, 170, 144);
   box-shadow: 0 1px 1px 0 rgba(19, 18, 18, 0.1);
-  font-size: 24px;
+  font-size: 46px;
 }
 
 .my-plates-nav {
@@ -133,6 +139,7 @@ button.plate {
 
 .plate-text {
   font-family: LicensePlate;
+  font-weight: lighter;
 }
 
 .unclaim-div {
@@ -144,7 +151,7 @@ button.plate {
 
 #unregister-plate-btn {
   background: none;
-  color: #414141;
+  color: rgb(30, 170, 144);
   font-weight: 500;
   border: none;
   font-size: 16px;

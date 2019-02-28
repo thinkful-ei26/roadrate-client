@@ -87,7 +87,7 @@ img {
 .plate-name {
   padding: 4px;
   padding-top: 9px;
-  background: whitesmoke;
+  background: white;;
   color: rgb(30, 170, 144);
   box-shadow: 0 1px 1px 0 rgba(19, 18, 18, 0.3);
   border-radius: 5px;
@@ -113,6 +113,45 @@ img {
   padding: 10px;
   margin: 0 10px 0 10px;
   max-width: 100%;
+}
+
+#owner-response-btn {
+  padding: 8px;
+  font-size: 14px;
+  margin: auto auto;
+  color: whitesmoke;
+  background: rgb(30, 170, 144);
+  box-shadow: 0 1px 1px 0 rgba(19, 18, 18, 0.3);
+  border: none;
+}
+
+.submit-response {
+  margin-top: 8px;
+  text-align: center;
+}
+
+#owner-submit-form {
+  border: none;
+}
+
+#owner-response {
+  width: 100%;
+  margin: 6px auto;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+}
+
+#submit-owner-response-btn {
+  padding: 8px;
+  font-size: 14px;
+  margin: auto auto;
+  color: black;
+  background: lightgrey;
+  box-shadow: 0 1px 1px 0 rgba(19, 18, 18, 0.3);
+  border: none;
 }
 
 table {

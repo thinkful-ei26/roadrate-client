@@ -8,10 +8,6 @@ export const CreatePlateForm = (props) => {
 
   // const [ plateState, setPlateState ] = useState('');
 
-  const hideTheForm = () => {
-    setHideForm(true)
-  }
-
   let formBody;
 
   if (hideForm) {
@@ -51,8 +47,8 @@ export const CreatePlateForm = (props) => {
         formBody = <p>Thanks. Your response was saved.</p>
         // return <Redirect to='/my-plate' />
       } else {
-        formBody = (<fieldset>
-          <legend>License Plate Number</legend>
+        formBody = (<fieldset id='owner-submit-form'>
+        <legend>Leave a Response</legend>
           <form 
             id="owner-response-form"
             onSubmit={handleSubmit}
@@ -62,17 +58,17 @@ export const CreatePlateForm = (props) => {
               className="owner-response-label"
               aria-label="owner-response-form"
             >
-              <input
+              <textarea
                 value={ownerResponse}
                 onChange={e => setOwnerResponse(e.target.value)}
-                type="text"
+                type="textbox"
                 id="owner-response"
                 name="owner-response"
                 placeholder="Your response"
               />
             </label>
     
-            <button id="submit-owner-response">
+            <button id="submit-owner-response-btn">
               Submit
             </button>
           </form>
