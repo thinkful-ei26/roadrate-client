@@ -84,8 +84,8 @@ export const MyPlatesList = () => {
         <Link to="/" className="my-plates-home-link">Dashboard</Link>
       </div>    
       
-      <h2>My Plates</h2>
-      {noPlatesMessage()}
+        <h2>My Plates</h2>
+        {noPlatesMessage()}     
       {/* <img 
         src={icon} 
         alt="icon" 

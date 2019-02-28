@@ -22,6 +22,12 @@ button.plate {
   width: 300px;
 }
 
+.header-wrapper {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  padding: 20px;
+}
+
 .my-plates {
   display: flex;
   flex-direction: column;
@@ -133,6 +139,7 @@ button.plate {
 
 .plate-text {
   font-family: LicensePlate;
+  font-weight: lighter;
 }
 
 .unclaim-div {
