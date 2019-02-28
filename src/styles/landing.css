@@ -8,7 +8,9 @@
   height: 67vh;
   align-items: center;
   display: flex;
-  color: whitesmoke;
+  color: #414141;
+  box-shadow: 0px 2px 6px 1px rgba(0, 0, 0, 0.07);
+  /* background-image: linear-gradient(to right bottom, rgb(86, 148, 156),#57bc90); */
 }
 
 .landing-text {
@@ -20,7 +22,7 @@
 
 .landing-text h1 {
   font-size: 42px;
-  color: whitesmoke;
+  color: #414141;
 }
 
 .landing-text p {
@@ -31,7 +33,7 @@
 #catch-phrase {
   margin-top: 0px;
   font-style: italic;
-  color: darkgreen;
+  color: #414141;
 }
 
 #landing-img {

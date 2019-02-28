@@ -14,7 +14,7 @@
 button.logout {
   background: transparent;
   border: none;
-  color: aliceblue;
+  color: #343434;
   font-size: 16px;
   margin: 4px;
 }
@@ -29,11 +29,19 @@ button.logout {
 }
 
 button.add-review {
-  background: rgb(60, 199, 60);
+  background: whitesmoke;
   padding: 10px 15px;
-  color: aliceblue;
+  color: #343434;
   position: relative;
   margin: 0 auto;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+button.add-review:hover {
+  background:  rgb(30, 170, 144);
+  color: whitesmoke;
 }
 
 /* not sure what this is for? the only child in .dashboard-greeting is the p tag below */
@@ -45,7 +53,7 @@ button.add-review {
 } */
 
 .dashboard-greeting p {
-  color: whitesmoke;
+  color:#343434;
   font-size: 18px;
   font-weight: 600;
   margin: 30px;

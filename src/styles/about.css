@@ -1,8 +1,9 @@
 .about-button {
     background: transparent;
-    color: aliceblue;
+    color: #414141;
     border: none;
     font-size: 17px;
+    padding: 10px;
   }
 
   .overlay {
@@ -60,6 +61,7 @@
 
   .register-link {
     margin: 0;
+    color: #414141;
   }
 
   .register-link h4 {
@@ -78,6 +80,13 @@
 
   .about p {
     text-align: center;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .about h5 {
+    margin: 0 auto;
+    width: 90%;
   }
 
   .about {

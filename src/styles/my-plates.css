@@ -61,11 +61,10 @@ button.plate {
   display: block;
   width: 300px;
   height: 70px;
-  background-color: rgba(255, 255, 0, 0.582);
-  box-shadow: 5px 5px 5px #8888886b;
+  background-color: inherit;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
   border: 3px solid rgba(0, 0, 0, 0.658);
   border-radius: 15px;
-  background: linear-gradient(to bottom,  #aaaaaa 0%,#ffffff 100%); 
 }
 
 button.plate {
