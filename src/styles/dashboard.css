@@ -1,15 +1,15 @@
 .dashboard {
   background: #f4f4f4;
   height: 100vh;
-  /* max-width: 100%; */
+  max-width: 100%;
   width: 100vw;
 }
 
-/* .dashboard :last-child {
+.dashboard :last-child {
   justify-content: center;
   align-items: center;
   text-align:center;
-} */
+}
 
 button.logout {
   background: transparent;
@@ -44,14 +44,6 @@ button.add-review:hover {
   background: whitesmoke;
   color: #343434;
 }
-
-/* not sure what this is for? the only child in .dashboard-greeting is the p tag below */
-/* .dashboard-greeting :last-child {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10vh;
-} */
 
 .dashboard-greeting p {
   color:#343434;

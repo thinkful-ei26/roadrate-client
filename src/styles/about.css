@@ -1,8 +1,8 @@
 .about-button {
     background: transparent;
-    color: #414141;
+    color: whitesmoke;
     border: none;
-    font-size: 17px;
+    font-size: 15px;
     padding: 10px;
   }
 
@@ -87,6 +87,7 @@
   .about h5 {
     margin: 0 auto;
     width: 90%;
+    color: rgb(20, 89, 136)
   }
 
   .about {
@@ -94,8 +95,4 @@
     flex-direction: column;
     width: 400px; */
     justify-content: center  
-  }
-
-  .about h5 {
-    color: rgb(20, 89, 136)
   }

@@ -1,6 +1,6 @@
 .submit-review {
   width: 100%;
-  max-width: 250px;
+  max-width: 350px;
   margin: auto auto;
   padding: 20px 20px;
   justify-content: left;
@@ -15,6 +15,7 @@
   background: white;
   padding: 10px;
   border-radius: 10px;
+  align-items: center;
 }
 
 .submit-review h3 {

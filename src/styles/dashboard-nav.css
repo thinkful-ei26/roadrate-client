@@ -55,7 +55,8 @@ h1 {
 
   .icon {
     width: 30px;
-    margin-top: 5px;
+    margin: 0 auto;
+    padding: 2px;
   }
 
   .logo-wrapper {
