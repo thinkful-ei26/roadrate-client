@@ -4,7 +4,7 @@
   padding: 8px;
   text-decoration: none;
   color: #414141;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .my-plates-back-link:hover {
@@ -92,7 +92,8 @@ button.plate {
   display: flex;
   justify-content: flex-end;
   padding: 8px;
-  text-decoration: none
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .my-plates-home-link:hover {
