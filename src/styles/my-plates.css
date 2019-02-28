@@ -3,8 +3,8 @@
   justify-content: flex-end;
   padding: 8px;
   text-decoration: none;
-  color: whitesmoke;
-  font-size: 16px;
+  color: #414141;
+  font-size: 14px;
 }
 
 .my-plates-back-link:hover {
@@ -28,11 +28,11 @@ button.plate {
   justify-content: center;
 }
 
-.my-plates h1 {
+.my-plates h2 {
   position: relative;
   padding-top: 10px;
   margin: 0 auto;
-  color: rgb(0, 0, 0);
+  color: #414141;
 }
 
 .my-plates p {
@@ -61,19 +61,26 @@ button.plate {
   display: block;
   width: 300px;
   height: 70px;
-  background-color: rgba(255, 255, 0, 0.582);
-  box-shadow: 5px 5px 5px #8888886b;
-  border: 3px solid rgba(0, 0, 0, 0.658);
+  background-color: inherit;
+  /* box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
+  border: 3px solid rgba(0, 0, 0, 0.658); */
   border-radius: 15px;
   background: linear-gradient(to bottom,  #aaaaaa 0%,#ffffff 100%); 
   font-family: LicensePlate;
 }
 
 button.plate {
-  border: 2px solid rgb(9, 9, 128);
+  /* border: 2px solid rgb(9, 9, 128);
   font-size: 23px;
   font-weight: 400;
-  color: rgb(9, 9, 128); 
+  color: rgb(9, 9, 128);  */
+  padding: 10px;
+  /* margin-right: 8px; */
+  border-radius: 5px;
+  background: white;
+  color: rgb(30, 170, 144);
+  box-shadow: 0 1px 1px 0 rgba(19, 18, 18, 0.1);
+  font-size: 24px;
 }
 
 .my-plates-nav {
@@ -87,7 +94,8 @@ button.plate {
   display: flex;
   justify-content: flex-end;
   padding: 8px;
-  text-decoration: none
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .my-plates-home-link:hover {
@@ -101,7 +109,7 @@ button.plate {
   min-width: 124px;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
   font-family: LicensePlate;
-  color: blue;
+  color: rgb(30, 170, 144);;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -123,32 +131,44 @@ button.plate {
   margin: 28px auto;
 }
 
+.plate-text {
+  font-family: LicensePlate;
+}
+
 .unclaim-div {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #414141;
 }
 
 #unregister-plate-btn {
-  background: #039be5;
+  background: none;
+  color: #414141;
+  font-weight: 500;
   border: none;
-  color: aliceblue;
   font-size: 16px;
   margin: 4px;
   margin-bottom: 8px;
+  padding: 10px;
 }
 
-#unclaim-plate-btn {
+/* #unregister-plate-btn:hover {
+  background-color: #414141;
+  color: #f4f4f4;
+} */
+
+/* #unclaim-plate-btn {
   background: none;
   border: none;
   color: aliceblue;
   font-size: 16px;
   margin: 4px;
-}
+} */
 
-.unclaim-options {
+/* .unclaim-options {
   font-size: 14px;
-}
+} */
 
 .buttons-div {
   display: flex;
@@ -156,9 +176,9 @@ button.plate {
 }
 
 .confirm-buttons {
-  background: #039be5;
+  background: #f4f4f4;
   border: none;
-  color: aliceblue;
+  color: inherit;
   font-size: 16px;
   margin: 4px;
 }

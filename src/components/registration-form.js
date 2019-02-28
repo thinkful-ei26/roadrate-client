@@ -76,13 +76,13 @@ export const RegistrationForm = () => {
    
     // if the username alreadu exists in the DB
     if(_username.length > 0 && validUsername !== '') {
-      console.log('username exists', _username)
+      // console.log('username exists', _username)
       localStorage.setItem('validUsername', 'Username taken. Pick another.')
       SetValidUsername(false)
       return _username
     } 
     
-    console.log('new user', _username)
+    // console.log('new user', _username)
     localStorage.setItem('validUsername', 'Valid Username')
     SetValidUsername(true)
     return _username;
@@ -127,7 +127,7 @@ export const RegistrationForm = () => {
         logIn(data)
       })
       .catch(err => {
-        console.log(err)
+        // console.log(err)
         if(err === 'TypeError: Failed to fetch'){
           console.log('duplicate error')
           return Promise.reject(err)
@@ -160,7 +160,8 @@ export const RegistrationForm = () => {
             placeholder="enter name"
             type="text"
             name="name"
-            required
+            required  
+            aria-labelledby="name"      
           />
 
           {usernameValidation}
@@ -173,6 +174,7 @@ export const RegistrationForm = () => {
             name="username"
             id="register-username"
             required
+            aria-labelledby="username"    
           />
           <input
             value={password}
@@ -183,6 +185,7 @@ export const RegistrationForm = () => {
             required
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
             title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            aria-labelledby="password"  
           />
           <input
             value={confirmPassword}
@@ -193,6 +196,7 @@ export const RegistrationForm = () => {
             required
             pattern={password} 
             title={`password: "${password}" & confirmPassword: "${confirmPassword}" must match`}
+            aria-labelledby="confirm Password"  
           />
           <input
             value={email}
@@ -202,6 +206,7 @@ export const RegistrationForm = () => {
             name="email"
             pattern="^([\w\-\.]+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|(([\w\-]+\.)+)([a-zA-Z]{2,4}))$"
             required
+            aria-labelledby="email"  
           />
           <input
             value={confirmEmail}
@@ -212,16 +217,18 @@ export const RegistrationForm = () => {
             pattern={email}
             title={`email: "${email}" & confirmEmail: "${confirmEmail}" must match`}
             required
+            aria-labelledby="confirm email"  
           />
           <button 
             waves="light "
             type="submit" 
+            aria-labelledby="submit button registration form"  
             className="registration-submit"
             disabled={ !username || !password || !validUsername }
           >
             Submit
           </button>
-          <Link to="/" className="registration-link">Go Back</Link>
+          <Link to="/" className="registration-link" aria-labelledby="go back link to landing page"  >Go Back</Link>
         </form>
       </div>
       )}

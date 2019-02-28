@@ -71,7 +71,7 @@ export const Dashboard = (props) => {
       <div className="dashboard-nav"> 
         <DashboardNav />
         <div className="dashboard-greeting">
-          <p>Hi, {username}!</p>
+          <p className="greeting-text">Hi, {username}!</p>
         </div>
         <button 
             className="add-review"
@@ -80,7 +80,7 @@ export const Dashboard = (props) => {
                 setSubmitReview(!submitReview); 
               }
             }>
-            New Review
+            <span className="new-review">New Review</span>
         </button>
       </div>
       

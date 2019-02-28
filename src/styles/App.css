@@ -14,13 +14,19 @@ body {
     "rubik";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #039be5;
+  background: #F4F4F4;
   list-style: none;
   margin: auto auto;
 }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 html {
-  /* display: flex; */
+  text-align: center;
+  box-sizing: border-box;
   max-width: 100%;
   flex-wrap: wrap;
 }
@@ -43,12 +49,12 @@ button {
   border-radius: 5px;
   cursor: pointer;
   transition: 0.1s ease-in;
-  background: aliceblue;
+  background: transparent;;
 }
 
 button:hover {
   background-color: palevioletred;
-  color: white;
+  color: #414141;
 }
 
 img {
@@ -63,17 +69,14 @@ img {
 
 /* on main reviews list */
 .plate-btn {
-  padding: 8px;
-  padding-top: 10px;
-  margin-right: 8px;
-  border-radius: 2px;
+  padding: 10px;
+  /* margin-right: 8px; */
+  border-radius: 5px;
   background: white;
-  font-family: LicensePlate;
-  color: blue;
-  box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
+  color: rgb(30, 170, 144);
+  box-shadow: 0 1px 1px 0 rgba(19, 18, 18, 0.1);
   font-size: 24px;
-  min-width: 114px;
-  display: inline-block;
+  font-family: LicensePlate;
 }
 
 .plate-div-nav {
@@ -84,19 +87,18 @@ img {
 .plate-name {
   padding: 4px;
   padding-top: 9px;
-  background: white;
-  color: blue;
-  box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
-  border-radius: 2px;
-  font-size: 24px;
+  background: whitesmoke;
+  color: rgb(30, 170, 144);
+  box-shadow: 0 1px 1px 0 rgba(19, 18, 18, 0.3);
+  border-radius: 5px;
+  font-size: 32px;
+  font-family: LicensePlate;
   min-width: 100px;
   display: inline-block;
   text-align: center;
   margin: 2px;
   margin-right: 12px;
-  font-family: LicensePlate;
 }
-
 
 .plate-review-list {
   margin: 0;
@@ -127,8 +129,9 @@ th {
 
 .about {
   z-index: 1;
+  line-height: 2;
 }
 
 a {
-  color: #e4e6e8;
+  color: #414141;
 }

@@ -18,7 +18,7 @@
 }
 
 .nav-list a {
-  color: whitesmoke;
+  color: #414141;
 }
 
 .about-links, .nav-items {
@@ -31,9 +31,9 @@
   /* padding: 12px; */
   border-radius: 3px;
   /* background: whitesmoke; */
-  background: #039be5;
-  border: #039be5;
-  color: whitesmoke;
+  background: #f4f4f4;
+  border: #f4f4f4;
+  color: #414141;
   font-size: 20px;
 }
 
@@ -44,9 +44,9 @@
 
 #login-button {
   border-radius: 3px;
-  background: #039be5;
-  border: #039be5;
-  color: whitesmoke;
+  background:transparent;
+  border: none;
+  color: #414141;
   font-size: 16px;
   padding-right: 28px;
 }

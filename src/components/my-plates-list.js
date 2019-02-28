@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
 import { Redirect, Link } from 'react-router-dom';
-import icon from '../assets/thumbs-up.png';
+// import icon from '../assets/thumbs-up.png';
 import '../styles/my-plates.css'
 
 export const MyPlatesList = () => {
@@ -67,7 +67,9 @@ export const MyPlatesList = () => {
               className="plate"
               onClick={ () => myPlateClick(plate) }
             >
-              {plate.plateNumber} - {plate.plateState}
+              <span className="plate-text" >
+                {plate.plateNumber} - {plate.plateState}
+              </span>
             </button>
           </div>
         </li>
@@ -82,13 +84,13 @@ export const MyPlatesList = () => {
         <Link to="/" className="my-plates-home-link">Dashboard</Link>
       </div>    
       
-      <h1>My Plates</h1>
+      <h2>My Plates</h2>
       {noPlatesMessage()}
-      <img 
+      {/* <img 
         src={icon} 
         alt="icon" 
         className="plates-icon"
-      />
+      /> */}
       
       <ul className='plates'>
         {plate}

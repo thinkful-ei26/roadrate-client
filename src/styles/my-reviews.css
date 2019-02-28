@@ -4,6 +4,10 @@
   margin: auto auto;
 }
 
+.my-reviews h2 {
+  color: #414141;
+}
+
 .my-reviews-back-link {
   text-align: left;
   display: flex;
