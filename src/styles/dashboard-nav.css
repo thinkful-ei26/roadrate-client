@@ -12,15 +12,27 @@ h1 {
   .header-logo-combo {
     z-index: 1000;
     background: #f4f4f4;
-    padding: 5px;
+    padding: 0;
   }
   
   .main-sections {
     display: flex;
-    padding: 0;
     margin: 0;
     list-style: none;
     justify-content: center;
+    border: 1px solid #e7e7e7;
+  }
+
+  .main-sections li {
+    width: 100%;
+    padding: 20px 0;
+  }
+  .main-sections li:hover {
+    background-color:  rgba(19, 18, 18, 0.1);
+  }
+
+  .claim-plate, .my-plates {
+    border-right: 1px solid #e7e7e7;
   }
   
   .search {
