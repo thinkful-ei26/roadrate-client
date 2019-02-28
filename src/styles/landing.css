@@ -4,15 +4,20 @@
   width: 100vw;
 }
 
-/* .landing-top {
-  background-image: linear-gradient(to top left, rgb(86, 148, 156),#57bc90);
-} */
+.landing-top {
+  /* background-image: linear-gradient(to top left, rgb(86, 148, 156),#57bc90); */
+  background:  linear-gradient(
+    rgba(40, 41, 41, 0.4), 
+    rgba(92, 138, 138, 0.2)
+  ), url('../assets/dashboard1.jpg');
+  background-size: 100% 100%;
+}
 
 .landing-content {
   height: 67vh;
   align-items: center;
   display: flex;
-  color: #414141;
+  color: #f4f4f4;
   box-shadow: 0px 2px 6px 1px rgb(54, 60, 61, 0.1);
 }
 
@@ -25,7 +30,7 @@
 
 .landing-text h1 {
   font-size: 42px;
-  color: #414141;
+  color: #f4f4f4;
   /* color: rgb(30, 170, 144); */
 }
 
@@ -37,7 +42,7 @@
 #catch-phrase {
   margin-top: 0px;
   font-style: italic;
-  color: #414141;
+  color: #f4f4f4;
 }
 
 #landing-img {

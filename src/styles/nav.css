@@ -18,7 +18,7 @@
 }
 
 .nav-list a {
-  color: #414141;
+  color: #f4f4f4;
 }
 
 .about-links, .nav-items {
@@ -46,7 +46,7 @@
   border-radius: 3px;
   background:transparent;
   border: none;
-  color: #414141;
+  color: #f4f4f4;
   font-size: 16px;
   padding-right: 28px;
 }
