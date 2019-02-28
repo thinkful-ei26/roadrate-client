@@ -4,13 +4,16 @@
   width: 100vw;
 }
 
+/* .landing-top {
+  background-image: linear-gradient(to top left, rgb(86, 148, 156),#57bc90);
+} */
+
 .landing-content {
   height: 67vh;
   align-items: center;
   display: flex;
   color: #414141;
-  box-shadow: 0px 2px 6px 1px rgba(0, 0, 0, 0.07);
-  /* background-image: linear-gradient(to right bottom, rgb(86, 148, 156),#57bc90); */
+  box-shadow: 0px 2px 6px 1px rgb(54, 60, 61, 0.1);
 }
 
 .landing-text {

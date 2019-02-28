@@ -13,15 +13,17 @@ export const LandingPage = (props) => {
     return (
         <div className="home">
             {/* <Header /> */}
-            <Nav />
-            <div className='landing-content'>
-                <div className='landing-text'>
-                    <h1>RoadRate</h1>
-                    <p id="catch-phrase">Choose Rate, not rage.</p>
-                    <img id='landing-img' src={require('../images/road3.jpg')} alt='road'></img>
-                    <p>Responsibly rate drivers.</p>
-                    <p>100% anonymous.</p>
-                </div>        
+            <div className="landing-top">
+                <Nav />
+                <div className='landing-content'>
+                    <div className='landing-text'>
+                        <h1>RoadRate</h1>
+                        <p id="catch-phrase">Choose Rate, not rage.</p>
+                        <img id='landing-img' src={require('../images/road3.jpg')} alt='road'></img>
+                        <p>Responsibly rate drivers.</p>
+                        <p>100% anonymous.</p>
+                    </div>        
+                </div>
             </div>
             <ReviewList />
         </div>
