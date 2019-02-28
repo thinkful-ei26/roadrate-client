@@ -64,8 +64,10 @@ export const ReviewForm = (props) => {
   return (
     <div className='submit-review'>
       <form id='submit-review-form' onSubmit={handleSubmit}>
-        <h3>Submit A RoadRating:</h3>
-        <label htmlFor='plateId' id="review-label">License Plate:
+        <h3>Submit A RoadRating: </h3>
+        <label htmlFor='plateId' id="review-label">
+          License Plate: 
+        </label>
         <input
           type='text' 
           name='plateId' 
@@ -76,18 +78,31 @@ export const ReviewForm = (props) => {
           pattern="^[a-zA-Z0-9]{1,8}$" 
           title="Plate number should be between 1 to 8 characters"
         />
-        </label>
-
-        <label htmlFor='rating' id="review-label">Rating: 
-        <select className='browser-default' value={rating} onChange={(e) => setRating(e.target.value)}>
+        
+        <label htmlFor='rating' id="review-label">Rating:  </label>
+        <select 
+          className='browser-default' 
+          value={rating} 
+          onChange={(e) => setRating(e.target.value)}
+          name='rating'
+        >
           <option value=''>Select </option>
           <option value="true">Good</option>
           <option value="false">Bad</option>
         </select>
-        </label>
 
-        <label htmlFor='plateState' id="review-label">State: 
-        <select className='browser-default' value={plateState} onChange={(e) => setPlateState(e.target.value)}>
+        <label 
+          htmlFor='plateState' 
+          id="review-label"
+        >
+          State:  
+        </label>
+        <select 
+          className='browser-default' 
+          name='plateState'
+          value={plateState} 
+          onChange={(e) => setPlateState(e.target.value)}
+        >
           <option value=''>Select </option>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
@@ -141,9 +156,13 @@ export const ReviewForm = (props) => {
           <option value="WI">Wisconsin</option>
           <option value="WY">Wyoming</option>
         </select>
-        </label>
 
-        <label htmlFor='message'   id="review-label">Message: 
+        <label 
+          htmlFor='message'   
+          id="review-label"
+        >
+          Message: 
+        </label>
         <textarea 
           id='review-message-input'
           type='text' 
@@ -152,15 +171,14 @@ export const ReviewForm = (props) => {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        </label>
         
         <button
         type="submit" 
         className="review-submit"
         disabled={plateNumber === '' || plateState === '' || !rating || message === '' }
         >
-        Submit Review
-      </button>
+          Submit Review
+        </button>
       </form>
       {invalidMessage}
       {successMessage}  
