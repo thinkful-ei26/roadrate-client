@@ -32,23 +32,28 @@
   font-size: 18px;
 }
 
+.search-section {
+  display: flex;
+}
+
 legend {
   color: whitesmoke;
   font-size: 18px;
 }
 
 #review-search {
-  color: black;
-  border: 1px solid whitesmoke;
-  border-radius: 4px;
-  margin-top: 20px;
-  max-width: 100%;
-  text-align: center;
+    border: 1px solid whitesmoke;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.search-label {
+  width: 100%;
 }
 
 #search-form {
-  justify-content: space-between;
-  max-width: 100%;
+  display: flex;
 }
 
 .input-wrapper {
@@ -56,30 +61,40 @@ legend {
 }
 
 #search {
-  background: white;
-  padding: 0px 8px;
-  box-sizing: border-box;
-  max-width: 100%;
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  color: black;
 }
 
-#search-state {
+/* #search-state {
   color: rgb(200, 255, 200);
-}
+} */
 
 #search::placeholder {
   color: grey;
+  font-size: 16px;
 }
 
 #review-time {
   margin: 0px;
 }
 
-.search-review-wrapper {
+/* .search-review-wrapper {
   max-width: 100%;
-}
+} */
 
 #search-state {
-  width: 68px;
+  max-width: 20%;
+  height: 44px;
+  border-radius: 0px;
+  background: white;
+  margin-left: 8px;
+  background: whitesmoke;
+  border: none;
+  color: black;
+  font-size: 15px;
 }
 
 ul {
