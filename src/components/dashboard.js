@@ -69,7 +69,7 @@ export const Dashboard = (props) => {
       <div className="dashboard-nav"> 
         <DashboardNav />
         <div className="dashboard-greeting">
-          <p className="greeting-text">Hi, {username}!</p>
+          <p className="greeting-text">hey there, {username}</p>
         </div>
         <button 
             className="add-review"

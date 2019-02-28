@@ -29,7 +29,7 @@ export const DashboardNav = () => {
                 className="claim-link"
               >
                 <span>
-                  Claim A Plate
+                  Claim Plate
                 </span>
               </Link>
             </li>

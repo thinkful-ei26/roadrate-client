@@ -51,6 +51,9 @@ export const Nav = () => {
         </div>
 
         <div className='right-nav'>
+            <li className="nav-item">
+                <Link to="/register" className="register-link">Register</Link>
+            </li>
                 <li className="nav-item">
                     <button id="login-button" onClick={() => setModalOpen('login')}>Login</button>
                     {modalOpen && (
@@ -62,10 +65,6 @@ export const Nav = () => {
                         />
                     )}
                 </li>
-
-            <li className="nav-item">
-                <Link to="/register" className="register-link">Register</Link>
-            </li>
         </div>
     </ul>
   </div>
