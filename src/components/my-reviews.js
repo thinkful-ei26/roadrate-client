@@ -174,7 +174,6 @@ export const MyReviews = () => {
             <form 
               id="search-form"
               className="search-form"
-              onKeyUp={handleSubmit}
             >
               <div className="input-wrapper">
                 <label 
