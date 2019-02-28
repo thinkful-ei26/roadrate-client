@@ -6,8 +6,6 @@ export const CreatePlateForm = (props) => {
   const [ successMessage, setSuccessMessage ] = useState('');
   const [ hideForm, setHideForm ] = useState(false);
 
-  // const [ plateState, setPlateState ] = useState('');
-
   let formBody;
 
   if (hideForm) {
@@ -17,7 +15,7 @@ export const CreatePlateForm = (props) => {
   const { reviewId } = props;
  
   const handleSubmit = (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
       return fetch(`${API_BASE_URL}/reviews/${reviewId}`, {
           method: 'PUT',

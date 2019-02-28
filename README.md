@@ -77,10 +77,10 @@ For version 2, we want to incorporate a tipping feature to encourage rewards for
   - Check out the [Road Rate Trello Board](https://trello.com/b/Zc46dooe/oh-my-quad)
 
 ## Team
-- **[Jordan Haddadi](https://github.com/jordanhaddadi)** - Design Lead
-- **[Randy Sartor](https://github.com/Rjsartor)** - Product Manager
-- **[RP Boyle](https://github.com/RPBoyle11)** - QA Lead
-- **[Trisha Aguinaldo](https://github.com/kronicle114)** - Project Manager
+- **Jordan Haddadi** - Design Lead <a href="https://github.com/jordanhaddadi" target="_blank"><img src='./src/assets/github-icon.svg' alt='github icon' width='15px'></a>
+- **Randy Sartor** - Product Manager <a href="https://github.com/Rjsartor" target="_blank"><img src='./src/assets/github-icon.svg' alt='github icon' width='15px'></a>
+- **RP Boyle** - QA Lead <a href="https://github.com/RPBoyle11" target="_blank"><img src='./src/assets/github-icon.svg' alt='github icon' width='15px'></a>
+- **Trisha Aguinaldo** - Project Manager <a href="https://github.com/kronicle114" target="_blank"><img src='./src/assets/github-icon.svg' alt='github icon' width='15px'></a>
 
 ## API
 

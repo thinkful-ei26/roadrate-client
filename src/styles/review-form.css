@@ -1,22 +1,29 @@
 .submit-review {
-  width: 100%;
-  max-width: 250px;
+  width: 90%;
+  max-width: 350px;
   margin: auto auto;
   padding: 20px 20px;
   justify-content: left;
 }
 
 #submit-review-form {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   max-width: 550px;
-  /* width: 100%; */
-  margin: auto;
+  margin: 0 auto;
   padding: 10px;
   border-radius: 10px;
   align-items: center;
   background: rgb(250, 250, 250);
   box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+#submit-review-form input {
+  padding: 5px 15px;
+  width: 100px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .submit-review h3 {
@@ -30,19 +37,26 @@ button.review-submit {
 }
 
 #review-label {
-  clip: rect(0 0 0 0);
-  padding: 0;
-  width: 120px;
+  padding: 10px;
+  display: block;
 }
 
 select {
   color: rgb(52, 110, 98);
   width: 100%;
+  border: 1px solid #e4e6e8;
 }
 
 textarea#review-message-input {
-  height: 50px;
-  width: 120px;
+  height: 100px;
+  width: 100%;
+  font-size: 14px;
   resize: none;
   text-align: center;
+  border: 1px solid #e4e6e8;
+  border-radius: 5px;
+}
+
+.review-submit {
+  font-size: 12px;
 }

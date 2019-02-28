@@ -12,7 +12,6 @@ export const LandingPage = (props) => {
 
     return (
         <div className="home">
-            {/* <Header /> */}
             <div className="landing-top">
                 <Nav />
                 <div className='landing-content'>
