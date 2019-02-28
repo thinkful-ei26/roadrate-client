@@ -66,6 +66,7 @@ button.plate {
   border: 3px solid rgba(0, 0, 0, 0.658);
   border-radius: 15px;
   background: linear-gradient(to bottom,  #aaaaaa 0%,#ffffff 100%); 
+  font-family: LicensePlate;
 }
 
 button.plate {
