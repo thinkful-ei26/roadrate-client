@@ -250,7 +250,13 @@ export const ReviewList = () => {
             />
             </label>
 
-            <select id="search-state" className='browser-default' value={searchPlateState} onChange={(e) => setSearchPlateState(e.target.value)}>
+            <select 
+              id="search-state" 
+              className='browser-default' 
+              value={searchPlateState} 
+              onChange={(e) => setSearchPlateState(e.target.value)}
+              aria-label="search-state"
+            >
               <option value=''>State</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>

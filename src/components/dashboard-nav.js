@@ -9,22 +9,21 @@ export const DashboardNav = () => {
       <div className="header-logo-combo">
       <div className="logo-wrapper">
         <ul className="header-logo">
-          <Link to="/">
-                <li className="header"><h1>RoadRate</h1></li>
-          </Link>
-                <li className="icon"><img 
-                src={icon} 
-                alt="RoadRate icon" 
-                className="icon"
-                />
-                </li>
+          <li className="header">
+          <Link to="/"><h1>RoadRate</h1></Link>
+          </li>
+          <li className="icon"><img 
+          src={icon} 
+          alt="RoadRate icon" 
+          className="icon"
+          />
+          </li>
         </ul>
       </div>
 
       <div className="header-middle-area">
         <nav className="main-nav" id="main-nav">
           <ul className="main-sections">
-            
             <li className="claim-plate">
               <Link to="/claim-plate"
                 className="claim-link"
