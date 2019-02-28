@@ -18,10 +18,10 @@ export const LandingPage = (props) => {
                 <div className='landing-content'>
                     <div className='landing-text'>
                         <h1>RoadRate</h1>
-                        <p id="catch-phrase">choose Rate, not rage</p>
+                        <p id="catch-phrase">choose rate, not rage</p>
                         <img id='landing-img' src={require('../images/road3.jpg')} alt='road'></img>
-                        <p id='responsibly'>Responsibly rate drivers.
-                        100% anonymous.</p>
+                        <p id='responsibly'>Responsibly rate drivers.</p>
+                        <p id='anonymous'>100% anonymous.</p>
                     </div>        
                 </div>
             </div>

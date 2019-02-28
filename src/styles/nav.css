@@ -4,16 +4,15 @@
 
 .nav-list {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   list-style: none;
-  padding: 5px;
+  padding: 8px;
   margin-top: 0px;
 }
 
 .nav-list a {
   color: whitesmoke;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .about-links, .nav-items {
@@ -28,7 +27,7 @@
   border: none;
   color: whitesmoke;
   font-size: 14px;
-  padding-left: 28px;
+  padding-left: 25px;
 }
 
 #login-button:hover,

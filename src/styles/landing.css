@@ -16,7 +16,7 @@
 }
 
 .landing-content {
-  height: 63vh;
+  height: 70vh;
   align-items: center;
   display: flex;
   color: #414141;
@@ -38,12 +38,18 @@
 #responsibly {
   color: rgba(255, 255, 255, 0.897);
   margin-top: 50px;
+  margin-bottom: 0;
   width: 100%;
+}
+
+#anonymous {
+  margin-top: 0;
+  color: rgba(255, 255, 255, 0.897);
 }
 
 #catch-phrase {
   margin-top: 0px;
-  font-size: 20px;
+  font-size: 18px;
   font-style: italic;
   letter-spacing: 1px;
   color: #f4f4f4d7;

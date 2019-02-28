@@ -11,7 +11,6 @@ h1 {
 
   .header-logo-combo {
     z-index: 1000;
-    background: #f4f4f4;
     padding: 0;
   }
   
@@ -20,13 +19,15 @@ h1 {
     margin: 0;
     list-style: none;
     justify-content: center;
-    border: 1px solid #e7e7e7;
+    border-top: 1px solid rgba(19, 18, 18, 0.1);
+    border-bottom: 1px solid rgba(19, 18, 18, 0.1);
   }
 
   .main-sections li {
-    width: 100%;
     padding: 20px 0;
+    text-align: center;
   }
+
   .main-sections li:hover {
     background-color:  rgba(19, 18, 18, 0.1);
   }
@@ -78,4 +79,7 @@ h1 {
     color: #414141;
     text-decoration: none;
     margin: auto 12px;
+    font-size: 14px;
+    word-spacing: 4px;
+    letter-spacing: 1px;
   }
