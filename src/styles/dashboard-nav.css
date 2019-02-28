@@ -1,7 +1,7 @@
 h1 {
     margin: 0;
     font-size: 32px;
-    color: #011d2b;
+    color: #414141;
   }
 
   .dashboard-nav {
@@ -62,7 +62,7 @@ h1 {
   }
   
   nav ul a {
-    color: #011d2b;
+    color: #414141;
     text-decoration: none;
     margin: auto 12px;
   }

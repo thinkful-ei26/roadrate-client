@@ -73,8 +73,8 @@ img {
   margin-right: 8px;
   border-radius: 5px;
   background: white;
-  color: rgb(30, 170, 144);;
-  box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
+  color: rgb(30, 170, 144);
+  box-shadow: 0 1px 1px 0 rgba(19, 18, 18, 0.1);
   font-size: 24px;
   font-family: LicensePlate;
 }
@@ -87,10 +87,11 @@ img {
 .plate-name {
   padding: 4px;
   padding-top: 9px;
-  background: white;
-  color: blue;
-  box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
-  border-radius: 2px;
+  background: whitesmoke;
+  color: rgb(30, 170, 144);
+  /* box-shadow: 0 1px 4px 0 rgba(0,0,0,.45); */
+  box-shadow: 0 1px 1px 0 rgba(19, 18, 18, 0.3);
+  border-radius: 5px;
   font-size: 32px;
   font-family: LicensePlate;
   min-width: 100px;

@@ -6,10 +6,15 @@
 }
 
 .claimPlate h2{
-  color: rgb(30, 170, 144);
-  background: white;
+  color: #414141;
+  background: transparent;
   margin: 0 auto;
   padding: 8px 15px;
+}
+
+.claimPlate legend {
+  color: #414141;
+  font-size: smaller;
 }
 
 /* .inline-search {
@@ -96,10 +101,6 @@ select.browser-default {
 }
 
 button.search-btn {
-  padding: 2px 12px;
-  margin: 5px;
-}
-
-legend {
-  font-weight: 600;
+  padding: 7px 10px 7px 10px;
+  margin: 5px auto;
 }

@@ -28,11 +28,11 @@ button.plate {
   justify-content: center;
 }
 
-.my-plates h1 {
+.my-plates h2 {
   position: relative;
   padding-top: 10px;
   margin: 0 auto;
-  color: rgb(0, 0, 0);
+  color: #414141;
 }
 
 .my-plates p {
@@ -62,16 +62,23 @@ button.plate {
   width: 300px;
   height: 70px;
   background-color: inherit;
-  box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
-  border: 3px solid rgba(0, 0, 0, 0.658);
+  /* box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
+  border: 3px solid rgba(0, 0, 0, 0.658); */
   border-radius: 15px;
 }
 
 button.plate {
-  border: 2px solid rgb(9, 9, 128);
+  /* border: 2px solid rgb(9, 9, 128);
   font-size: 23px;
   font-weight: 400;
-  color: rgb(9, 9, 128); 
+  color: rgb(9, 9, 128);  */
+  padding: 10px;
+  margin-right: 8px;
+  border-radius: 5px;
+  background: white;
+  color: rgb(30, 170, 144);
+  box-shadow: 0 1px 1px 0 rgba(19, 18, 18, 0.1);
+  font-size: 24px;
 }
 
 .my-plates-nav {
