@@ -51,6 +51,7 @@
   padding-right: 28px;
 }
 
+#login-button:hover,
 .login-link:hover, .register-link:hover, .landing-link:hover, .about-link:hover {
   color: grey;
 }

@@ -1,11 +1,110 @@
+.claimPlate {
+  display: flex;
+  margin: 10px;
+  /* padding: 5px; */
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.329);
+}
+
+.claimPlate h2{
+  color: rgb(5, 117, 97);
+  border-radius: 6px;
+  margin: 0 auto;
+  padding: 18px 25px;
+}
+
+/* .claim-search {
+  margin: 0 auto;
+} */
+
+#claim-plate-search {
+  padding: 10px;
+  border: 1px solid whitesmoke;
+}
+
+.claim-back-link {
+  margin: 10px;
+}
+
+button.search-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 2px 12px;
+  margin: 5px;
+  color: rgb(30, 170, 144); 
+}
+
 .inline-search {
   display: flex;
 }
 
 #claim-search.claim-search-input {
-  background-color: white;
+  background-color: whitesmoke;
   display: inline-block;
-  width: 200px;
+  width: 100%;
+  padding: 10px;
+}
+
+.plate-table {
+  margin: 0 auto;
+  padding: 5px;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  margin-top: 20px;
+}
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 10;
+  padding: 10px;
+  border: 0;
+  font: inherit;
+  vertical-align: bottom;
+}
+
+tr th {
+  text-align: center;
+}
+
+th {
+  color: rgb(3, 65, 53);
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  /* white-space: nowrap; */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.623);
+}
+
+td {
+  font-size: 14px;
+  
+}
+
+tr th:nth-child(1) {
+  width: 30%;
+}
+
+tr th:nth-child(2) {
+  width: 30%;
+}
+
+tr th:nth-child(3) {
+  width: 30%;
+}
+
+tr th:nth-child(4) {
+  width: 30%;
+}
+
+tr th:nth-child(5) {
+  width: 30%;
+}
+
+th, td {
+  margin: 30px;
 }
 
 select.browser-default {
@@ -13,10 +112,6 @@ select.browser-default {
   text-align-last:center; 
   display: inline-block;
   width: 100px;
-}
-
-.claim-search {
-  margin: 0 auto;
 }
 
 .claim-search-label, .plateState-label {
@@ -30,7 +125,20 @@ select.browser-default {
   display: none;
 }
 
-.search-btn {
-  display: block;
+button.register-plate {
+  color: rgb(30, 170, 144); 
   margin: 0 auto;
+}
+
+legend {
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 479px) {
+  .mobile-hide{ 
+    display: none !important; 
+  }
+  /* th {
+    margin: 0 auto;
+  } */
 }

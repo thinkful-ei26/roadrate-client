@@ -9,6 +9,7 @@ export const ReviewForm = (props) => {
   const [ plateState, setPlateState ] = useState('');
   const [ submitted, setSubmitted ] = useState(false)
   const [ invalidMessage, setInvalidMessage ] = useState('')
+  
 
   const userPlates = props.plates.map(plate => {
     return {
@@ -62,10 +63,9 @@ export const ReviewForm = (props) => {
 
   return (
     <div className='submit-review'>
-      <h4>Submit Review:</h4>
       <form id='submit-review-form' onSubmit={handleSubmit}>
-        <p>{invalidMessage}</p>
-        <label htmlFor='plateId'>License Plate:
+        <h3>Submit A RoadRating:</h3>
+        <label htmlFor='plateId' id="review-label">License Plate:
         <input
           type='text' 
           name='plateId' 
@@ -78,17 +78,17 @@ export const ReviewForm = (props) => {
         />
         </label>
 
-        <label htmlFor='rating'>Rating: 
+        <label htmlFor='rating' id="review-label">Rating: 
         <select className='browser-default' value={rating} onChange={(e) => setRating(e.target.value)}>
-          <option value=''>Select Rating</option>
+          <option value=''>Select </option>
           <option value="true">Good</option>
           <option value="false">Bad</option>
         </select>
         </label>
 
-        <label htmlFor='plateState'>State: 
+        <label htmlFor='plateState' id="review-label">State: 
         <select className='browser-default' value={plateState} onChange={(e) => setPlateState(e.target.value)}>
-          <option value=''>Select State</option>
+          <option value=''>Select </option>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
           <option value="AZ">Arizona</option>
@@ -143,12 +143,12 @@ export const ReviewForm = (props) => {
         </select>
         </label>
 
-        <label htmlFor='message' >Message: 
-        <input 
+        <label htmlFor='message'   id="review-label">Message: 
+        <textarea 
           id='review-message-input'
           type='text' 
           name='message' 
-          placeholder='Type your message here...'
+          placeholder='Briefly explain your RoadRating'
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
@@ -162,6 +162,7 @@ export const ReviewForm = (props) => {
         Submit Review
       </button>
       </form>
+      {invalidMessage}
       {successMessage}  
     </div>
   )
