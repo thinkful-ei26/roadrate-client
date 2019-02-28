@@ -11,6 +11,51 @@
 
 .public-plate-wrapper-positive {
   text-align: center;
+  /* border-top: 1px solid darkgreen;
+  border-bottom: 1px solid darkgreen; */
+  padding: 6px;
+  /* background: darkgreen; */
+  background-image: linear-gradient(to right bottom, rgb(189, 207, 140),#348663);
+  color: white;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
+  width: 100vw;
+  box-sizing: border-box;
+  height: 175px;
+  display: flex;
+}
+
+.public-plate-wrapper-negative {
+  text-align: center;
+  /* border-top: 1px solid darkred;
+  border-bottom: 1px solid darkred; */
+  padding: 6px;
+  /* background: darkred; */
+  background-image: linear-gradient(to right bottom, rgb(207, 159, 140),#863456);
+  color: white;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
+  width: 100vw;
+  box-sizing: border-box;
+  height: 175px;
+  display: flex;
+}
+
+.public-plate-wrapper-neutral {
+  text-align: center;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  padding: 6px;
+  background:grey;
+  color: white;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
+  width: 100vw;
+  box-sizing: border-box;
+  height: 175px;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+/* .public-plate-wrapper-positive {
+  text-align: center;
   border-top: 1px solid darkgreen;
   border-bottom: 1px solid darkgreen;
   padding: 6px;
@@ -50,7 +95,7 @@
   height: 175px;
   display: flex;
   margin-bottom: 20px;
-}
+} */
 
 .plate-info p {
   margin: 2px
