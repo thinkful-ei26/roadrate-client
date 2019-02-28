@@ -19,13 +19,13 @@
 }
 
 .submit-review h3 {
-  color: rgb(30, 170, 144);
+  color: rgb(52, 110, 98);
 }
 
 button.review-submit {
   margin: 10px;
   padding: 8px;
-  color: rgb(30, 170, 144);
+  color: rgb(52, 110, 98);
 }
 
 #review-label {
@@ -35,7 +35,7 @@ button.review-submit {
 }
 
 select {
-  color: rgb(30, 170, 144);
+  color: rgb(52, 110, 98);
   width: 100%;
 }
 

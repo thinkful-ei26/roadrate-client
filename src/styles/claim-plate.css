@@ -7,7 +7,7 @@
 }
 
 .claimPlate h2{
-  color: rgb(5, 117, 97);
+  color: rgb(52, 110, 98);
   border-radius: 6px;
   margin: 0 auto;
   padding: 18px 25px;
@@ -31,7 +31,7 @@ button.search-btn {
   margin: 0 auto;
   padding: 2px 12px;
   margin: 5px;
-  color: rgb(30, 170, 144); 
+  color: rgb(52, 110, 98); 
 }
 
 .inline-search {
@@ -126,12 +126,13 @@ select.browser-default {
 }
 
 button.register-plate {
-  color: rgb(30, 170, 144); 
+  color: rgb(52, 110, 98); 
   margin: 0 auto;
 }
 
-legend {
-  font-weight: 600;
+#review-search legend {
+  color: rgb(52, 110, 98);
+  font-size: 16px;
 }
 
 @media only screen and (max-width: 479px) {

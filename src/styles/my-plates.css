@@ -84,7 +84,7 @@ button.plate {
   /* margin-right: 8px; */
   border-radius: 5px;
   background: white;
-  color: rgb(30, 170, 144);
+  color: rgb(52, 110, 98);
   box-shadow: 0 1px 1px 0 rgba(19, 18, 18, 0.1);
   font-size: 46px;
 }
@@ -115,7 +115,7 @@ button.plate {
   min-width: 124px;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,.45);
   font-family: LicensePlate;
-  color: rgb(30, 170, 144);;
+  color: rgb(52, 110, 98);
   display: flex;
   align-content: center;
   justify-content: center;
@@ -151,7 +151,7 @@ button.plate {
 
 #unregister-plate-btn {
   background: none;
-  color: rgb(30, 170, 144);
+  color: rgb(52, 110, 98);
   font-weight: 500;
   border: none;
   font-size: 16px;
@@ -159,23 +159,6 @@ button.plate {
   margin-bottom: 8px;
   padding: 10px;
 }
-
-/* #unregister-plate-btn:hover {
-  background-color: #414141;
-  color: #f4f4f4;
-} */
-
-/* #unclaim-plate-btn {
-  background: none;
-  border: none;
-  color: aliceblue;
-  font-size: 16px;
-  margin: 4px;
-} */
-
-/* .unclaim-options {
-  font-size: 14px;
-} */
 
 .buttons-div {
   display: flex;

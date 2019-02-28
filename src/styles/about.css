@@ -46,7 +46,7 @@
     padding-top: 10px;
     padding: 2px;
     margin: 0 auto;
-    color: rgb(30, 170, 144);
+    color: rgb(52, 110, 98);
   }
   
   .close {
@@ -65,16 +65,17 @@
   }
 
   .register-link h4 {
-    color: rgb(30, 170, 144)
+    color: rgb(52, 110, 98);
   }
 
   .about-icon {
     height: 40px;
     padding: 5px;
+    display: none;
   }
 
   .about p b {
-    color: rgb(20, 89, 136);
+    color: rgb(52, 110, 98);
     text-align: left;
   }
 
