@@ -18,7 +18,7 @@
 }
 
 .nav-list a {
-  color: #f4f4f4;
+  color: #414141;
 }
 
 .about-links, .nav-items {
@@ -33,7 +33,7 @@
   /* background: whitesmoke; */
   background: #f4f4f4;
   border: #f4f4f4;
-  color: whitesmoke;
+  color: #414141;
   font-size: 20px;
 }
 
@@ -46,7 +46,7 @@
   border-radius: 3px;
   background:transparent;
   border: none;
-  color: #f4f4f4;
+  color: #414141;
   font-size: 16px;
   padding-right: 28px;
 }
