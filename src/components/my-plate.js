@@ -14,7 +14,6 @@ export const MyPlate = () => {
   const [ responseSubmitted, setResponseSubmitted ] = useState(false);
 
   const fetchReviewsByPlateId = async () => {
-    console.log('fetch reviews by ID clicked')
     let url = `${API_BASE_URL}/reviews/my-plates/${localStorage.myPlateId}`;
     const response = await fetch(url);
     const reviews  = await response.json();
@@ -57,12 +56,14 @@ export const MyPlate = () => {
       })
     })
     .then(res => {
-      // console.log('res inside handleLink >>>', res);
       localStorage.setItem('success', 'unclaimed')
       setUnclaimMessage(`You successfully unclaimed this plate.`)
       return res.json();
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      alert("We're sorry. Something went wrong.")
+      console.log(err);
+    });
   }
 
   let rating;
@@ -79,8 +80,6 @@ export const MyPlate = () => {
  
       let responseButton;
 
-      console.log(review.ownerResponse)
-
       if (review.ownerResponse) {
         ownerComment = <p>Your Response: {review.ownerResponse}</p>
       } else {
@@ -93,7 +92,6 @@ export const MyPlate = () => {
 
       let responseForm;
       if (localStorage.submitResponse === review._id) {
-        console.log('here', localStorage.submitResponse, 'review Id', review._id)
         responseForm = <OwnerResponseForm reviewId={review._id} fetchReviews={fetchReviewsByPlateId()}/>
         // responseButton = '';
         responseButton = <button id="owner-response-btn" onClick={() => {
@@ -220,8 +218,6 @@ export const MyPlate = () => {
       )
     })
   };
-
-  console.log(unclaimMessage)
 
   let karmaStyling;
   if (plate.karma > 0) {

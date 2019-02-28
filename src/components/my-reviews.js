@@ -17,7 +17,6 @@ export const MyReviews = () => {
         }
       });
       const reviews  = await response.json();
-      console.log(reviews)
       setReviews(reviews)
       return reviews
     }
@@ -26,16 +25,11 @@ export const MyReviews = () => {
       fetchReviews();
     }, []);
 
-    const handleSubmit = () => {
-      console.log(searchInput)
-    }
-
   let rating;
   let review;
   let ownerComment;
  
     let filteredReviews;
-    console.log(reviews)
 
     if (reviews) {
       filteredReviews = reviews.filter(review => review.plateNumber.includes(searchInput.toUpperCase()));

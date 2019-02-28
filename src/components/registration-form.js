@@ -17,9 +17,6 @@ export const RegistrationForm = () => {
 
   
   const logIn = data => {
-  
-    console.log('user data: ',data);
-
     setUsername(username)
     setLoggedIn(loggedIn)
     localStorage.removeItem("logout")
@@ -38,11 +35,9 @@ export const RegistrationForm = () => {
         })
       })
       .then(res => {
-        console.log('res', res.body)
         return res.json();
       })
       .then( ( auth ) => {  
-        console.log('auth: ',auth)
         if (auth.hasOwnProperty("authToken")){
           localStorage.setItem("user", username);
           localStorage.setItem("loggedIn", loggedIn);
@@ -76,13 +71,11 @@ export const RegistrationForm = () => {
    
     // if the username alreadu exists in the DB
     if(_username.length > 0 && validUsername !== '') {
-      // console.log('username exists', _username)
       localStorage.setItem('validUsername', 'Username taken. Pick another.')
       SetValidUsername(false)
       return _username
     } 
     
-    // console.log('new user', _username)
     localStorage.setItem('validUsername', 'Valid Username')
     SetValidUsername(true)
     return _username;
@@ -95,8 +88,6 @@ export const RegistrationForm = () => {
   const handleSubmit = e => {
     e.preventDefault(e); 
    
-    // console.log(`username: ${username}, password: ${password}, confirmPassword: ${confirmPassword}, email: ${email}, confirmEmail: ${confirmEmail}`)
-
     setUsername(username);
     setPassword(password);
     setConfirmPassword(confirmPassword);
@@ -119,7 +110,6 @@ export const RegistrationForm = () => {
       })
     })
     .then(res => {
-      // console.log('res', res)
       localStorage.setItem("registered", true)
       return res.json();
       })
@@ -127,17 +117,13 @@ export const RegistrationForm = () => {
         logIn(data)
       })
       .catch(err => {
-        // console.log(err)
         if(err === 'TypeError: Failed to fetch'){
-          console.log('duplicate error')
           return Promise.reject(err)
         }
-        console.log(err)
       })
       };
 
   let usernameValidation;
-  console.log('validUsername: ',validUsername)
   if(validUsername === ''){
     usernameValidation = <p></p>
   } else if (!validUsername) {

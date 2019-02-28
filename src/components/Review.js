@@ -27,13 +27,6 @@ export const Review = () => {
       </div>
     )
 
-        //  const handleClick = (e) => {
-        //   localStorage.setItem('currentPlateState', review.plateState)
-        //   localStorage.setItem('currentPlateNumber', review.plateNumber)
-        //   console.log('redirecting')
-        //   setRedirect(true)
-        // }
-
     let rating;
     if (reviews) {
        review = reviews.map((review, index) => { 
@@ -57,7 +50,6 @@ export const Review = () => {
           localStorage.setItem('currentPlateState', review.plateState)
           localStorage.setItem('currentPlateNumber', review.plateNumber)
           localStorage.setItem('plateId', review.plateId)
-          console.log('redirecting')
           setRedirect(true)
         }
 

@@ -13,8 +13,6 @@ export const CreatePlateForm = () => {
       setPlate(plate);
   };
 
-  console.log('plate:', storePlate);
-
   //put request to regular plate endpoint
   //find on the query to match the 
   const handleSubmit = (e) => {
@@ -38,15 +36,17 @@ export const CreatePlateForm = () => {
       })
     })
     .then(res => {
-      // console.log('res inside handleSubmit', res);
       return res.json();
     })
     .then(data => {
-      // console.log('DATA REGISTER PLATE:', data)
+
       setSuccessMessage('Congrats! Your plate was registered.')
       return data
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      alert("We're sorry. Something went wrong.")
+      console.log(err);
+    });
   }
 
   return (
