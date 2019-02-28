@@ -6,16 +6,17 @@
 }
 
 .landing-top {
-  background-image: linear-gradient(to top left, rgb(86, 148, 156),#57bc90);
-  /* background:  linear-gradient(
-    rgba(40, 41, 41, 0.8), 
-    rgba(92, 138, 138, 0.4)
-  ), url('../assets/dashboard1.jpg'); */
+  /* background-image: url('../assets/fog.jpg'); */
+  background:  linear-gradient(
+    rgba(14, 141, 113, 0.411), 
+    rgba(0, 0, 0, 0.486)
+  ), url('../assets/fog.jpg');
   background-size: 100% 100%;
+  background-blend-mode: luminosity;
 }
 
 .landing-content {
-  height: 67vh;
+  height: 70vh;
   align-items: center;
   display: flex;
   color: #414141;
@@ -30,20 +31,29 @@
 }
 
 .landing-text h1 {
-  font-size: 42px;
-  color: #414141;
-  /* color: rgb(30, 170, 144); */
+  font-size: 52px;
+  color: rgb(52, 110, 98);
 }
 
-.landing-text p {
-  margin: 0px;
-  font-size: 14px
+#responsibly {
+  color: rgba(255, 255, 255, 0.897);
+  margin-top: 50px;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+#anonymous {
+  margin-top: 0;
+  color: rgba(255, 255, 255, 0.897);
 }
 
 #catch-phrase {
   margin-top: 0px;
+  font-size: 18px;
   font-style: italic;
-  color: #f4f4f4;
+  letter-spacing: 1px;
+  color: #f4f4f4d7;
+  /* background: rgba(248, 248, 248, 0.308); */
 }
 
 #landing-img {
@@ -55,4 +65,5 @@
   margin: 12px;
   height: 200px;
   width: 200px;
+  display: none;
 }

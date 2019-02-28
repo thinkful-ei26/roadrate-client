@@ -13,23 +13,18 @@ export const PublicPlate = () => {
 
   const fetchPlate = async () => {
     /* ==== extract plateId from url ==== */
-    console.log('address: ',document.location.href);
     const address = document.location.href;
     const plateId = address.substring((address.indexOf('m')+ 11), address.length);
     setPlateId(plateId)
-    console.log('plateId from addressbar: ',plateId)
     
     /* ==== fetch plate info using plateId ==== */
     let plateUrl = `${API_BASE_URL}/plates/${plateId}`;
-    console.log(plateUrl)
     const res = await fetch(plateUrl);
     const plate  = await res.json();
-    // console.log('plate: ',plate);
     setPlate(plate)
 
     /* ==== fetch reviews using plateId ==== */
     let reviewURL = `${API_BASE_URL}/reviews/plate/${plateId}`;
-    // console.log('fetchReviews url: ', reviewURL)
     const response = await fetch(reviewURL);
     const reviews  = await response.json();
     setReviews(reviews)
@@ -39,9 +34,6 @@ export const PublicPlate = () => {
     useEffect(() => {
       fetchPlate()
     }, []);
-
-  // console.log('plate data: ', plate)
-  // console.log('reviews: ', reviews)
 
   let _plate = (
     <div className="spinner" style={{margin: '0 auto'}}>
@@ -65,8 +57,6 @@ export const PublicPlate = () => {
         } else {
           rating = <MaterialIcon icon="thumb_down" />
         }
-
-        // console.log(reviews)
 
         if (review.ownerResponse) {
           driverComment = <p> Driver Response: {review.ownerResponse}</p>
@@ -195,7 +185,6 @@ export const PublicPlate = () => {
       } else if (plate.karma < 0) {
         karmaStyling = 'public-plate-wrapper-negative'
       }
-      // console.log('fetching plate: ', plate)
       _plate = (
         <div className={karmaStyling}>
           <div className='plate-content'>

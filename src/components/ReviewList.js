@@ -28,24 +28,21 @@ export const ReviewList = () => {
 
     const handleSubmit = e => {
       e.preventDefault(); 
-
-      // console.log('sending', searchPlateNumber)
-      // console.log('sending:', searchPlateState);
-      // console.log('search', searchInput)
       return fetch(`${API_BASE_URL}/reviews/?number=${searchPlateNumber}`)
         .then(res => { 
           if (!res.ok) {
             return Promise.reject(res.statusText);
           }
           const searchReviews = res.json();
-          // console.log('search-reviews', searchReviews)
           return searchReviews;
         })
         .then(data => {
-          // console.log('DATA FROM SEARCH-REVIEWS:' ,data)
           setReviews(data)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          alert("We're sorry. Something went wrong.")
+          console.log(err);
+        });
     }
 
     let review = (
@@ -79,20 +76,6 @@ export const ReviewList = () => {
           localStorage.setItem('currentPlateNumber', review.plateNumber)
           // setRedirect(true)
         }
-
-        // let redirectLink = `/plate/id/${localStorage.myPlateId}`;
-        // if(redirect) {
-        //   return <Redirect to={redirectLink} />
-        // }
-
-        // const plateClick = (plate) => {
-        //   console.log('plate inside li',plate)
-        //   localStorage.setItem('currentPlate', plate.plateNumber)
-        //   localStorage.setItem('currentState', plate.plateState)
-        //   localStorage.setItem('currentPlateId', plate.id)
-        //   setRedirect(true)
-        //   return plate
-        // }
 
         const thisDate = new Date();
         

@@ -1,24 +1,18 @@
-/* .navbar {
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.2rem;
-} */
-
 .navbar {
   margin-top: 0px;
 }
 
 .nav-list {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   list-style: none;
-  padding: 14px;
+  padding: 8px;
   margin-top: 0px;
 }
 
 .nav-list a {
-  color: #414141;
+  color: whitesmoke;
+  font-size: 15px;
 }
 
 .about-links, .nav-items {
@@ -27,28 +21,13 @@
   padding: 10px;
 }
 
-#about-btn {
-  /* padding: 12px; */
-  border-radius: 3px;
-  /* background: whitesmoke; */
-  background: #f4f4f4;
-  border: #f4f4f4;
-  color: #414141;
-  font-size: 20px;
-}
-
-#about-btn:hover {
-  color: darkgrey;
-  opacity: .9;
-}
-
 #login-button {
   border-radius: 3px;
   background:transparent;
   border: none;
-  color: #414141;
-  font-size: 16px;
-  padding-right: 28px;
+  color: whitesmoke;
+  font-size: 14px;
+  padding-left: 25px;
 }
 
 #login-button:hover,

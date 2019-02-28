@@ -22,26 +22,18 @@ export const claimPlate = () => {
       }
     })
     .then(res => {
-      // console.log('response: >>>', res)
       return res.json();
       })
     .then(data => {
-      if(data === undefined){
-        console.log('undefined')
-      }
-      // console.log('data on searchPlate',data);
       setPlates(data[0])
     })
     .catch(err => {
-      console.log(err)
-      console.log('There is no match for that ID');
       setPlates('');
       if(err === 'TypeError: Failed to fetch'){
         return Promise.reject(err)
       }
       console.log(err)
-      }
-    )
+      });
   };
 
  /* ========= POST A NEW PLATE ========== */
@@ -66,15 +58,16 @@ export const claimPlate = () => {
       })
     })
     .then(res => {
-      // console.log('res inside handleSubmit', res);
       return res.json();
     })
     .then(data => {
-      // console.log('DATA REGISTER PLATE:', data)
       setSuccessMessage(`Congrats! Your plate ${localStorage.myPlate} - ${localStorage.myState} was registered.`)
       return data
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      alert("We're sorry. Something went wrong.")
+      console.log(err);
+    });
   }
 
   /* ========= UPDATE AN EXISTING PLATE ========== */
@@ -100,14 +93,15 @@ export const claimPlate = () => {
       })
     })
     .then(res => {
-      // console.log('res inside handleLink >>>', res);
       setSuccessMessage(`Congrats! Your plate ${localStorage.myPlate} - ${localStorage.myState} was registered.`)
       return res.json();
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      alert("We're sorry. Something went wrong.")
+      console.log(err);
+    });
   }
 
-  // console.log('plate result from GET', plates)
   /* ========= DYNAMIC SEARCH RESULT TABLE ========== */
   let plateTable;
 

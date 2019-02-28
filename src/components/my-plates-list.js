@@ -10,10 +10,8 @@ export const MyPlatesList = () => {
 
   const fetchPlates = async () => {
     let url = `${API_BASE_URL}/plates/all/${localStorage.userId}`;
-    // console.log('fetching Plates on: ',url)
     const response = await fetch(url);
     const plates = await response.json();
-    // console.log('plateS on fetchPlates', plates)
     setPlates(plates)
     return plates
   }
@@ -25,14 +23,8 @@ export const MyPlatesList = () => {
     localStorage.removeItem('unclaimedPlate')
   }, []);
 
-  // console.log('plates', plates);
-  /* plate is still fetching/loading */
   let plate;
-
-
-
   const myPlateClick = (plate) => {
-    // console.log('plate inside li',plate)
     localStorage.setItem('myPlate', plate.plateNumber)
     localStorage.setItem('myState', plate.plateState)
     localStorage.setItem('myPlateId', plate.id)

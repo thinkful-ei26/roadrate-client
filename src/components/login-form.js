@@ -40,13 +40,10 @@ export const LoginForm = () => {
         })
       })
       .then(res => {
-        // console.log('res', res.body)
         return res.json();
       })
       .then( ( auth ) => {  
         const { message, code, name } = auth;
-        // console.log(auth)
-
         if(code === 401 || message === 'Unauthorized' || name === 'AuthenticationError') {
           setAuthError(true)
           localStorage.setItem("error", name)
@@ -75,7 +72,6 @@ export const LoginForm = () => {
 
   /* ==== RENDER VALIDATION ERROR MESSAGE ==== */
   let errorMessage;
-  // console.log('errorMessage: ',errorMessage)
   if(authError && username.length > 0 ){
     errorMessage = <p>Login Failed. Check your credentials and resubmit.</p>
     setInterval(function(){ localStorage.removeItem('error') }, 2000);
