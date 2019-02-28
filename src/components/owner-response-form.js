@@ -39,7 +39,10 @@ export const CreatePlateForm = (props) => {
           props.fetchReviews()
           return data
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          alert("We're sorry. Something went wrong.")
+          console.log(err);
+        });
       }
 
       
@@ -72,14 +75,6 @@ export const CreatePlateForm = (props) => {
               Submit
             </button>
           </form>
-            {/* <button id="cancel-owner-response-from" onClick={() => {
-              console.log('hi')
-              localStorage.setItem('submitResponse', false);
-              hideTheForm();
-            }
-              }> 
-              Cancel
-            </button> */}
         </fieldset>)
       }
 

@@ -9,7 +9,6 @@ export const SearchReviews = (props) => {
   const handleSubmit = e => {
     e.preventDefault(); 
     if (!searchInput || searchInput === '') return;
-    console.log('clicked search btn', searchInput)
 
     return fetch(`${API_BASE_URL}/reviews/?search=${searchInput}`)
       .then(res => { if (!res.ok) {
@@ -19,8 +18,11 @@ export const SearchReviews = (props) => {
       setSearchReviews(searchReviews)
         return searchReviews;
       })
-      .then(data => console.log('DATA FROM SEARCH-REVIEWS: ',data))
-      .catch(err => console.log(err))
+      // .then(data => console.log('DATA FROM SEARCH-REVIEWS: ',data))
+      .catch(err => {
+        alert("We're sorry. Something went wrong.")
+        console.log(err);
+      });
   }
 
   return (

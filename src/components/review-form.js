@@ -53,7 +53,10 @@ export const ReviewForm = (props) => {
       setPlateState('');
       setRating('');
     })
-    .catch(err => console.log((err)))
+    .catch(err => {
+      alert("We're sorry. Something went wrong.")
+      console.log(err);
+    });
   };
 
   let successMessage;
