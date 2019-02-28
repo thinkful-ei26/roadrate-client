@@ -1,5 +1,7 @@
 .my-reviews-content {
   text-align: center;
+  max-width: 400px;
+  margin: auto auto;
 }
 
 .my-reviews h2 {

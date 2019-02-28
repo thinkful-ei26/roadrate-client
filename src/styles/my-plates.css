@@ -140,8 +140,8 @@ button.plate {
 }
 
 #unregister-plate-btn {
-  background: rgb(30, 170, 144);
-  color: #f4f4f4;
+  background: none;
+  color: #414141;
   font-weight: 500;
   border: none;
   font-size: 16px;
@@ -150,10 +150,10 @@ button.plate {
   padding: 10px;
 }
 
-#unregister-plate-btn:hover {
+/* #unregister-plate-btn:hover {
   background-color: #414141;
   color: #f4f4f4;
-}
+} */
 
 /* #unclaim-plate-btn {
   background: none;

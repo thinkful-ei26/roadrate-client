@@ -33,21 +33,13 @@ export const MyReviews = () => {
   let rating;
   let review;
   let ownerComment;
-  if (reviews) {
-    review = reviews.map((review, index) => { 
-      if (review.isPositive === 'true') {
-        rating = <MaterialIcon icon="thumb_up" />
-      } else {
-        rating = <MaterialIcon icon="thumb_down" />
-      }
+ 
+    let filteredReviews;
+    console.log(reviews)
 
-      console.log(review.ownerResponse)
-
-      if (review.ownerResponse) {
-        ownerComment = <p>Driver Response: {review.ownerResponse}</p>
-      } 
-     
-      // =========Time Stuff===========
+    if (reviews) {
+      filteredReviews = reviews.filter(review => review.plateNumber.includes(searchInput.toUpperCase()));
+      review = filteredReviews.map((review, index) => { 
       const thisDate = new Date();
         
       const date = new Date(review.createdAt)
@@ -142,9 +134,19 @@ export const MyReviews = () => {
       if (timePassed) {
         convert(timePassed)
       }
-     
-      return (
-        <li className='review-item' key={index} id={review._id} tabIndex='0'>
+      
+      if (review.isPositive === 'true') {
+        rating = <MaterialIcon icon="thumb_up" />
+      } else {
+        rating = <MaterialIcon icon="thumb_down" />
+      }
+
+      if (review.comment) {
+        ownerComment = <p> Driver Response: {review.comment}</p>
+      } 
+
+        return (
+          <li className='review-item' key={index} id={review._id} tabIndex='0'>
           <article className='review-header'>
             <article className='review-title'>
               {/* <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img> */}
@@ -160,48 +162,9 @@ export const MyReviews = () => {
           {ownerComment}
           <p id='review-date'>{dateString}</p>
         </li>
-      )
-    })
-  };
-
-    // let rating;
-    // let review;
-    // let driverComment;
-    // let filteredReviews;
-    // console.log(reviews)
-
-    // if (reviews) {
-    //   filteredReviews = reviews.filter(review => review.plateNumber.includes(searchInput.toUpperCase()));
-
-    //   // console.log('FILTERED REVIEWS: ', filteredReviews);
-    //   review = filteredReviews.map((review, index) => { 
-    //     if (review.isPositive === 'true') {
-    //       rating = <MaterialIcon icon="thumb_up" />
-    //     } else {
-    //       rating = <MaterialIcon icon="thumb_down" />
-    //     }
-
-    //     if (review.comment) {
-    //       driverComment = <p> Driver Response: {review.comment}</p>
-    //     } 
-
-    //     return (
-    //       <li className='review-item' key={review._id} tabIndex='0'>
-    //         <article className='review-header'>
-    //           <article className='review-title'>
-    //             <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
-    //               {review.plateNumber} {review.plateState}         
-    //           </article>
-    //           <article className='review-rating'>
-    //             <p className='rating'>{rating}</p>
-    //           </article>
-    //         </article>       
-    //         <p className='message'>Review: {review.message}</p>
-    //         <p>{driverComment}</p>
-    //       </li>
-    //     )
-    //   })
-    // }
+        )
+      })
+    }
 
   return (
     <div className="my-reviews">
@@ -238,7 +201,7 @@ export const MyReviews = () => {
               </div>
             </form>
           </fieldset>
-          </div>
+        </div>
 
         <ul className='review-list'>
           {review}

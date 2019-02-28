@@ -221,8 +221,8 @@ export const PublicPlate = () => {
     */
     <div className="plate-div">
       <div className="plate-div-nav">
-        <Link to="/" className="plates-back-link">
-          Go Back
+        <Link to="/" className="my-plates-back-link">
+          Dashboard
         </Link>
       </div>
      
