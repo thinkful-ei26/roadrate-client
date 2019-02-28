@@ -193,7 +193,7 @@ export const ReviewList = () => {
           <li className='review-item' key={review._id} index-key={index} tabIndex='0'>
             <article className='review-header'>
               <article className='review-title'>
-                <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img>
+                {/* <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img> */}
 
               {/* ---- ROUTE TO A SHARABLE PUBLIC PLATE LINK ---- */}
               <Link to={`/plate/id/${review.plateId}`}>
