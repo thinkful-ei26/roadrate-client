@@ -154,6 +154,11 @@ img {
   border: none;
 }
 
+legend {
+  color: #414141;
+  font-size: 16px;
+}
+
 table {
   width: 100%;
 }

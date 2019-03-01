@@ -210,7 +210,7 @@ export const ReviewList = () => {
       <div className="review-list">
         <div className="search-section">
         <fieldset id="review-search">
-          <legend>Search By License Plate: </legend>
+          <legend>Search By License Plate</legend>
           <form 
             id="search-form"
             className="search-form"

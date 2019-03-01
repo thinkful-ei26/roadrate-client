@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from 'react';
 import {API_BASE_URL} from '../config';
 import { Link } from 'react-router-dom';
 import MaterialIcon, {colorPalette} from 'material-icons-react';
+import PagesNav from './pages-nav';
 import '../styles/my-reviews.css';
 
 export const MyReviews = () => {
@@ -162,15 +163,16 @@ export const MyReviews = () => {
 
   return (
     <div className="my-reviews">
-      <div className="my-plates-nav">
+      <PagesNav />
+      {/* <div className="my-plates-nav">
         <Link to="/" className="my-plates-home-link">Dashboard</Link>
-      </div>  
+      </div>   */}
       <section className='my-reviews-content'>
           <h2>My Reviews</h2>
 
         <div className="search-section">
           <fieldset id="review-search">
-            <legend>Search By License Plate: </legend>
+            <legend>Search By License Plate</legend>
             <form 
               id="search-form"
               className="search-form"

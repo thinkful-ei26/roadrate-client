@@ -36,11 +36,6 @@
   display: flex;
 }
 
-#review-search legend {
-  color: #414141;
-  font-size: 18px;
-}
-
 #review-search {
     border: none;
     margin-top: 20px;
@@ -76,6 +71,11 @@
   color: grey;
   font-size: 16px;
 }
+
+/* #review-search legend {
+  color: #414141;
+  font-size: 16px;
+} */
 
 #review-time {
   margin: 0px;

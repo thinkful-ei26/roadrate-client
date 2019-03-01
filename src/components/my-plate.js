@@ -4,6 +4,8 @@ import {API_BASE_URL} from '../config';
 import { Link } from 'react-router-dom';
 import MaterialIcon, {colorPalette} from 'material-icons-react'; 
 import OwnerResponseForm from './owner-response-form';
+import PagesNav from './pages-nav';
+
 
 export const MyPlate = () => {
   const [ reviews, setReviews] = useState("");
@@ -261,10 +263,11 @@ export const MyPlate = () => {
   return (
     <div className="plate-div">
     
-      <div className="my-plates-nav">
+      <PagesNav />
+      {/* <div className="my-plates-nav">
         <Link to="/" className="my-plates-home-link">Dashboard</Link>
         <Link to="/my-plates" className="my-plates-back-link">Back</Link>
-      </div>    
+      </div>     */}
 
       {/* ===== PLATE DETAILS ===== */} 
         <div className={karmaStyling}>
