@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Nav from './nav';
 import ReviewList from './ReviewList';
+import About from './about.js';
 import '../styles/landing.css';
 
 export const LandingPage = (props) => {
@@ -21,6 +22,9 @@ export const LandingPage = (props) => {
                         <img id='landing-img' src={require('../images/road3.jpg')} alt='road'></img>
                         <p id='responsibly'>Responsibly rate drivers.</p>
                         <p id='anonymous'>100% anonymous.</p>
+                        <div className="about">
+                            <About />
+                        </div>
                     </div>        
                 </div>
             </div>
