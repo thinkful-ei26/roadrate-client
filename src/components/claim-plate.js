@@ -25,7 +25,8 @@ export const claimPlate = () => {
       return res.json();
       })
     .then(data => {
-      setPlates(data[0])
+      console.log('fetch response', data);
+      setPlates(data)
     })
     .catch(err => {
       setPlates('');
@@ -55,6 +56,7 @@ export const claimPlate = () => {
         plateNumber: plateNumber.toUpperCase(),
         plateState,
         userId,
+        isOwned: true
       })
     })
     .then(res => {
@@ -69,6 +71,8 @@ export const claimPlate = () => {
       console.log(err);
     });
   }
+
+
 
   /* ========= UPDATE AN EXISTING PLATE ========== */
   // PUT to link an existing plate to the current user
@@ -89,11 +93,13 @@ export const claimPlate = () => {
       body: JSON.stringify({
         userId,
         plateNumber: plateNumber.toUpperCase(),
-        plateState
+        plateState,
+        isOwned: true
       })
     })
     .then(res => {
       setSuccessMessage(`Congrats! Your plate ${localStorage.myPlate} - ${localStorage.myState} was registered.`)
+      console.log(res)
       return res.json();
     })
     .catch(err => {
@@ -105,48 +111,20 @@ export const claimPlate = () => {
   /* ========= DYNAMIC SEARCH RESULT TABLE ========== */
   let plateTable;
 
-  if (plates && plates !== 'before search' && !plates.userId ) {
-  plateTable = (
-    <table>
-      <tr>
-        <th><span className="mobile-hide">License</span> Plate</th>
-        <th>State</th>
-        <th>Add<span className="mobile-hide"> to Your Account</span></th>
-        <th>Register <span className="mobile-hide">Your Plate</span></th>
-        </tr>
-        <tr>
-          <td>{plates.plateNumber}</td>
-          <td>{plates.plateState}</td>
-          <td>
-            <button 
-              className='add-to-user-button' 
-              onClick={(e) => {handleClaimClick(e)}}
-              disabled={successMessage}
-            >
-              Claim
-            </button>
-          </td>
-        </tr>
-      </table>
-    )
-  } else if (plateNumber === '') {
-    plateTable = (
-      <table>
-      <tr>
-      <th><span className="mobile-hide">License</span> Plate</th>
-        <th>State</th>
-        <th>Register <span className="mobile-hide">Your Plate</span></th>
-      </tr>
-    </table>
-    )
-  } else if (plates === [] || plates === undefined) {
+  console.log(plates)
+  // console.log(plates[0].isOwned)
+  // console.log('plate number', plateNumber)
+  // console.log('plates userId', plates.userId)
+
+  if (plates.length === 0 || plates === undefined) {
     // if the plateNumber is not in DB, then allow user to create a new plate & register it as theirs
     plateTable = (
       <table>
         <tr>
         <th><span className="mobile-hide">License</span> Plate</th>
         <th>State</th>
-        <th>Register <span className="mobile-hide">Your Plate</span></th>
+        <th>Claim <span className="mobile-hide">this plate</span></th>
+
         </tr>
         <tr>
           <td>{plateNumber}</td>
@@ -164,7 +142,18 @@ export const claimPlate = () => {
         </tr>
       </table>
     )
-  } else if (plates.userId) {
+  } else if (plateNumber === '') {
+    plateTable = (
+      <table>
+      <tr>
+      <th><span className="mobile-hide">License</span> Plate</th>
+        <th>State</th>
+        <th>Claim <span className="mobile-hide">this plate</span></th>
+
+      </tr>
+    </table>
+    )
+  } else if (plates[0].isOwned) {
     plateTable = (
     <div className="plateTable">
       <table>
@@ -172,8 +161,8 @@ export const claimPlate = () => {
             <th><span className="mobile-hide">License</span> Plate</th>
             <th>State</th>
             <th><span className="mobile-hide">Karma Score</span></th><th><span className="mobile-hide">Ratings</span></th>
-            <th>Add<span className="mobile-hide"> to Your Account</span></th>
-            <th>Register <span className="mobile-hide">Your Plate</span></th>
+            <th>Claim <span className="mobile-hide">this plate</span></th>
+
         </tr>
           <tr>
             <td>{plates.plateNumber}</td>
@@ -193,6 +182,29 @@ export const claimPlate = () => {
 
       </div>
     )
+  } else if (plates.length && plates !== 'before search') {
+    plateTable = (
+      <table>
+        <tr>
+          <th><span className="mobile-hide">License</span> Plate</th>
+          <th>State</th>
+          <th>Claim <span className="mobile-hide">this plate</span></th>
+          </tr>
+          <tr>
+            <td>{plates[0].plateNumber}</td>
+            <td>{plates[0].plateState}</td>
+            <td>
+              <button 
+                className='add-to-user-button' 
+                onClick={(e) => {handleClaimClick(e)}}
+                disabled={successMessage}
+              >
+                Claim
+              </button>
+            </td>
+          </tr>
+        </table>
+      )
   } else {
     plateTable = (<p>Submit a search</p>)
   }
@@ -317,4 +329,3 @@ export const claimPlate = () => {
 }
 
 export default claimPlate;
-
