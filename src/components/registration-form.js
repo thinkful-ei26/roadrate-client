@@ -156,7 +156,6 @@ export const RegistrationForm = () => {
             placeholder="optional nickname"
             type="text"
             name="name"
-            required  
             aria-labelledby="name"      
           />
 
