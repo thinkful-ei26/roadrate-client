@@ -81,9 +81,18 @@ export const RegistrationForm = () => {
     return _username;
   }
 
+  const validatePassword = (password) => {
+    if(password.length < 10) {
+      return (
+        <p>Password is invalid. Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters</p>
+      )
+    } 
+  }
+
   useEffect(() => {
+    validatePassword(password);
     validateUsername(username);
-  }, [username])
+  }, [username]) 
   
   const handleSubmit = e => {
     e.preventDefault(e); 
@@ -124,6 +133,7 @@ export const RegistrationForm = () => {
       };
 
   let usernameValidation;
+
   if(validUsername === ''){
     usernameValidation = <p></p>
   } else if (!validUsername) {
@@ -143,10 +153,9 @@ export const RegistrationForm = () => {
           <input
             value={name}
             onChange={e => setName(e.target.value)}
-            placeholder="enter name"
+            placeholder="optional nickname"
             type="text"
             name="name"
-            required  
             aria-labelledby="name"      
           />
 
@@ -170,7 +179,7 @@ export const RegistrationForm = () => {
             name="password"
             required
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
-            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters"
             aria-labelledby="password"  
           />
           <input

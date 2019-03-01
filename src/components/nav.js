@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import LoginForm from './login-form';
-import About from './about.js';
 import '../styles/nav.css';
 import '../styles/modal.css';
 
@@ -44,16 +43,13 @@ export const Nav = () => {
 
   <div className="navbar">
     <ul className="nav-list">
-        <div className='left-nav'>
-            <li className="nav-item"> 
-                <About />
+        <div className='left-nav'> 
+            <li className="nav-item">
+                <Link to="/register" className="register-link">Register</Link>
             </li>
         </div>
 
         <div className='right-nav'>
-            <li className="nav-item">
-                <Link to="/register" className="register-link">Register</Link>
-            </li>
                 <li className="nav-item">
                     <button id="login-button" onClick={() => setModalOpen('login')}>Login</button>
                     {modalOpen && (

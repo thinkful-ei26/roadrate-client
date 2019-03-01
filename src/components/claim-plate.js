@@ -172,7 +172,6 @@ export const claimPlate = () => {
         <tr>
             <th><span className="mobile-hide">License</span> Plate</th>
             <th>State</th>
-            <th><span className="mobile-hide">Karma Score</span></th><th><span className="mobile-hide">Ratings</span></th>
             <th>Add<span className="mobile-hide"> to Your Account</span></th>
             <th>Register <span className="mobile-hide">Your Plate</span></th>
         </tr>
