@@ -27,10 +27,10 @@ For version 2, we want to incorporate a tipping feature to encourage rewards for
 - [Server Repo](https://github.com/thinkful-ei26/roadrate-server)
 - [Deployed Client](https://road-rate-client.herokuapp.com/)
 - [Deployed Server](http://road-rate-server.herokuapp.com/) 
-
+- [Presentation Link](https://slides.com/ohmyquad/deck/live#/roadrate)
 
 ## ScreenShot
-
+<img src='./src/assets/screenshot.png' alt='RoadRate Screenshot' width='300px'/>
 
 ## V1 Features
 
