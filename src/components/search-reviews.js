@@ -18,7 +18,7 @@ export const SearchReviews = (props) => {
         return searchReviews;
       })
       .catch(err => {
-        alert("We're sorry. Something went wrong.")
+        // alert("We're sorry. Something went wrong.")
         console.log(err);
       });
   }
