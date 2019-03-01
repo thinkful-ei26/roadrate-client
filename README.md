@@ -121,7 +121,7 @@ For version 2, we want to incorporate a tipping feature to encourage rewards for
 
 ## Twitter/ProductHunt
 - [Twitter](https://twitter.com/RoadRateNow)  <img src="./src/assets/twitter.svg" width="20px" alt="ProductHunt svg icon"/> 
-- [ProductHunt](#) <img src="./src/assets/product-hunt.svg" width="20px" alt="ProductHunt svg icon"/> 
+- [ProductHunt](https://www.producthunt.com/posts/roadrate) <img src="./src/assets/product-hunt.svg" width="20px" alt="ProductHunt svg icon"/> 
 
 ## Wireframes
 
