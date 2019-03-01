@@ -54,7 +54,7 @@ export const ReviewForm = (props) => {
       setRating('');
     })
     .catch(err => {
-      alert("We're sorry. Something went wrong.")
+      // alert("We're sorry. Something went wrong.")
       console.log(err);
     });
   };

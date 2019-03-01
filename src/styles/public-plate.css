@@ -22,6 +22,7 @@
   box-sizing: border-box;
   height: 175px;
   display: flex;
+  margin-top: -10px;
 }
 
 .public-plate-wrapper-negative {
@@ -37,6 +38,7 @@
   box-sizing: border-box;
   height: 175px;
   display: flex;
+  margin-top: -10px;
 }
 
 .public-plate-wrapper-neutral {
@@ -52,6 +54,7 @@
   height: 175px;
   display: flex;
   margin-bottom: 20px;
+  margin-top: -10px;
 }
 
 .plate-info p {

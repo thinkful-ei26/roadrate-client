@@ -7,10 +7,9 @@
 }
 
 .claimPlate h2{
-  color: rgb(52, 110, 98);
-  border-radius: 6px;
+  padding-top: 10px;
   margin: 0 auto;
-  padding: 18px 25px;
+  color: rgb(52, 110, 98);
 }
 
 /* .claim-search {
@@ -20,6 +19,7 @@
 #claim-plate-search {
   padding: 10px;
   border: 1px solid whitesmoke;
+  margin-top: 20px;
 }
 
 .claim-back-link {
@@ -27,11 +27,13 @@
 }
 
 button.search-btn {
-  display: block;
-  margin: 0 auto;
-  padding: 10px;
-  margin: 5px;
-  color: rgb(52, 110, 98); 
+  padding: 8px;
+  font-size: 14px;
+  margin: 8px auto;
+  color: whitesmoke;
+  background: rgb(52, 110, 98);
+  box-shadow: 0 1px 1px 0 rgba(19, 18, 18, 0.3);
+  border: none;
 }
 
 .inline-search {
@@ -128,11 +130,6 @@ select.browser-default {
 button.register-plate {
   color: rgb(52, 110, 98); 
   margin: 0 auto;
-}
-
-#review-search legend {
-  color: rgb(52, 110, 98);
-  font-size: 16px;
 }
 
 @media only screen and (max-width: 479px) {

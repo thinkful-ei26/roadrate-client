@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
+import PagesNav from './pages-nav';
 import '../styles/claim-plate.css';
 
 export const claimPlate = () => {
@@ -201,13 +202,14 @@ export const claimPlate = () => {
   return (
     
     <div className="claimPlate">
-      <div className="my-plates-nav"> 
+      <PagesNav />
+      {/* <div className="my-plates-nav"> 
         <Link to="/" className="my-plates-home-link">
           Dashboard
         </Link> 
-     </div>
+     </div> */}
       
-    <h2>Claim A Plate:</h2>
+    <h2>Claim A Plate</h2>
 
     <div className="claim-search">
      <fieldset id="claim-plate-search">

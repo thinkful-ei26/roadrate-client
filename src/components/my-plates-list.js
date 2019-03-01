@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
 import { Redirect, Link } from 'react-router-dom';
+import PagesNav from './pages-nav';
 // import icon from '../assets/thumbs-up.png';
 import '../styles/my-plates.css'
 
@@ -71,10 +72,12 @@ export const MyPlatesList = () => {
 
   return (
     <div className="my-plates">
-
-      <div className="my-plates-nav">
+     
+      <PagesNav />
+     
+      {/* <div className="my-plates-nav">
         <Link to="/" className="my-plates-home-link">Dashboard</Link>
-      </div>    
+      </div>     */}
       
         <h2>My Plates</h2>
         {noPlatesMessage()}     

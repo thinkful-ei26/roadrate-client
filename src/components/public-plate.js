@@ -4,6 +4,7 @@ import Review from './Review';
 import MaterialIcon, {colorPalette} from 'material-icons-react';
 import { Link } from 'react-router-dom';
 import Spinner from 'react-spinkit';
+import PagesNav from './pages-nav';
 import '../styles/public-plate.css';
 
 export const PublicPlate = () => {
@@ -14,7 +15,9 @@ export const PublicPlate = () => {
   const fetchPlate = async () => {
     /* ==== extract plateId from url ==== */
     const address = document.location.href;
-    const plateId = address.substring((address.indexOf('m')+ 11), address.length);
+    // const plateId = address.substring((address.indexOf('m')+ 11), address.length);
+    const plateId = address.substring((address.indexOf('d')+ 2), address.length);
+
     setPlateId(plateId)
     
     /* ==== fetch plate info using plateId ==== */
@@ -208,12 +211,14 @@ export const PublicPlate = () => {
     - Tested on Chrome, Firefox, & Safari
     - Doesn't rely on localStorage
     */
+    
     <div className="plate-div">
-      <div className="plate-div-nav">
+    <PagesNav />
+      {/* <div className="plate-div-nav">
         <Link to="/" className="my-plates-back-link">
           Dashboard
         </Link>
-      </div>
+      </div> */}
      
       {_plate}
     
