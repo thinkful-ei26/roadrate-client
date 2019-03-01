@@ -110,103 +110,82 @@ export const claimPlate = () => {
 
   /* ========= DYNAMIC SEARCH RESULT TABLE ========== */
   let plateTable;
+  let plate;
 
   console.log(plates)
   // console.log(plates[0].isOwned)
   // console.log('plate number', plateNumber)
   // console.log('plates userId', plates.userId)
+    if (Array.isArray(plates)) {
+      console.log('here')
+      if (plates.length === 0 || plates === undefined) {
+        console.log('here level2')
+          // if the plateNumber is not in DB, then allow user to create a new plate & register it as theirs
+          plate = (
+            <div className='plate-list-item'>
+            
+              <li><span className="mobile-hide">License</span> Plate: {plateNumber}</li>
+              <li>State: {plateState}</li>
+              <li>Register <span className="mobile-hide">Your Plate</span></li>
+                      
+                <button 
+                  className='register-plate' 
+                  onClick={(e) => handleRegisterPlate(e)}
+                  disabled={successMessage}
+                >
+                  Register Plate
+                </button>
+                
+            </div>
+          )
+      } else if (plateNumber === '') {
+          plate = (
+            <div className='plate-list-item'>
+          
+              <li><span className="mobile-hide">License</span> Plate: {plateNumber}</li>
+              <li>State: {plateState}</li>
+              <li>Register <span className="mobile-hide">Your Plate</span></li>
+                      
+          </div>
+          )
+      } else if (plates.length) {
+        console.log('here 2')
+          plate = plates.map(plate => {
+          if (plate.isOwned) {
+            return (
+            <div className="plateTable">
+              <div className='plate-list-item'>
+              <li><span className="mobile-hide">License</span> Plate: {plate.plateNumber}</li>
+                <li>State: {plate.plateState}</li>
+                <li>Register <span className="mobile-hide">Your Plate</span></li>
+                <li>ALREADY CLAIMED</li> 
+                <p>Need to <strong>Unlink</strong> your plate? Go to: </p>
+                <Link to="/my-plates">
+                  <span className="my-plates-link">My Plates</span>
+                </Link>       
+                </div>     
+              </div>
+            )
+          } else {
+            return (
+              <div className='plate-list-item'>
+                <li><span className="mobile-hide">License</span> Plate: {plate.plateNumber}</li>
+                <li>State: {plate.plateState}</li>       
+                <button 
+                  className='add-to-user-button' 
+                  onClick={(e) => {handleClaimClick(e)}}
+                  disabled={successMessage}
+                  >Claim
+                </button>
+              </div>
+            );
+          } 
+        });
+      } else {
+        return plate = (<p>Submit a search</p>)
+      }
+    }
 
-  if (plates.length === 0 || plates === undefined) {
-    // if the plateNumber is not in DB, then allow user to create a new plate & register it as theirs
-    plateTable = (
-      <table>
-        <tr>
-        <th><span className="mobile-hide">License</span> Plate</th>
-        <th>State</th>
-        <th>Register <span className="mobile-hide">Your Plate</span></th>
-        </tr>
-        <tr>
-          <td>{plateNumber}</td>
-          <td>{plateState}</td>
-          {/* need to get reviews.length of all of the reviews that have ever mentioned this license plate */}
-          <td>
-          <button 
-            className='register-plate' 
-            onClick={(e) => handleRegisterPlate(e)}
-            disabled={successMessage}
-          >
-            Register Plate
-          </button>
-          </td>
-        </tr>
-      </table>
-    )
-  } else if (plateNumber === '') {
-    plateTable = (
-      <table>
-      <tr>
-      <th><span className="mobile-hide">License</span> Plate</th>
-        <th>State</th>
-        <th>Register <span className="mobile-hide">Your Plate</span></th>
-      </tr>
-    </table>
-    )
-  } else if (plates[0].isOwned) {
-    plateTable = (
-    <div className="plateTable">
-      <table>
-        <tr>
-            <th><span className="mobile-hide">License</span> Plate</th>
-            <th>State</th>
-            <th><span className="mobile-hide">Karma Score</span></th><th><span className="mobile-hide">Ratings</span></th>
-            <th>Add<span className="mobile-hide"> to Your Account</span></th>
-            <th>Register <span className="mobile-hide">Your Plate</span></th>
-        </tr>
-          <tr>
-            <td>{plates.plateNumber}</td>
-            <td>{plates.plateState}</td>
-            <td>
-              ALREADY CLAIMED
-            </td>
-          </tr>
-        </table>
-
-        <p>
-          Need to <strong>Unlink</strong> your plate? Go to:
-        </p>
-        <Link to="/my-plates">
-          <span className="my-plates-link">My Plates</span>
-        </Link>
-
-      </div>
-    )
-  } else if (plates.length && plates !== 'before search') {
-    plateTable = (
-      <table>
-        <tr>
-          <th><span className="mobile-hide">License</span> Plate</th>
-          <th>State</th>
-          <th>Add<span className="mobile-hide"> to Your Account</span></th>
-          <th>Register <span className="mobile-hide">Your Plate</span></th>
-          </tr>
-          <tr>
-            <td>{plates[0].plateNumber}</td>
-            <td>{plates[0].plateState}</td>
-            <td>
-              <button 
-                className='add-to-user-button' 
-                onClick={(e) => {handleClaimClick(e)}}
-                disabled={successMessage}
-              >
-                Claim
-              </button>
-            </td>
-          </tr>
-        </table>
-      )
-  } else {
-    plateTable = (<p>Submit a search</p>)
-  }
 
   /* ========= RENDER CLAIM PLATE PAGE ========== */
   return (
@@ -320,7 +299,7 @@ export const claimPlate = () => {
     </div>
 
     <div className="plate-table">
-      {plateTable}
+      {plate}
     </div>
     <p>{successMessage}</p>
   </div> 
