@@ -29,7 +29,7 @@
   max-height: 100%;
   width: 625px;
   max-width: 100%;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 .modal-guts {
