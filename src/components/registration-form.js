@@ -13,7 +13,7 @@ export const RegistrationForm = () => {
   const [authToken, setAuthToken] = useState("") 
   const [loggedIn, setLoggedIn] = useState(true)
   const [validUsername, SetValidUsername] = useState('')
-  const [validPassword, SetValidPassword] = useState('')
+  const [validPasswordLength, SetValidPasswordLength] = useState(false)
   const [modalOpen, setModalOpen] = useState(true);
 
   /* ====== LOGIN USER AFTER SUCCESSFUL REGISTRATION ====== */
@@ -85,12 +85,16 @@ export const RegistrationForm = () => {
 
   /* ====== PASSWORD VALIDATION ====== */
   const validatePassword = (password) => {
-    if(password.length) {
-      console.log('password',password);
-      return (
-        <p>Password is invalid. Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters</p>
-      )
-    } 
+    console.log(password);
+    if(password.length && !password.length > 8) {
+     localStorage.setItem("validPasswordLength", false);
+    } else if (password.length && password.length >= 8 && password.length <= 15) {
+      SetValidPasswordLength(true)
+      localStorage.setItem("validPasswordLength", true)
+    } else {
+      SetValidPasswordLength(false)
+      localStorage.setItem("validPasswordLength", false)
+    }
   }
 
   /* ====== USEEFFECT ====== */
@@ -139,6 +143,30 @@ export const RegistrationForm = () => {
       };
 
   /* ====== JSX VALIDATIONS ====== */
+
+  // let passwordMin;
+  // let passwordMax;
+  // let passwordCapital;
+  // let passwordNumber;
+  // let passwordValidation;
+
+  // if(validPassword === ''){
+  //   passwordValidation = <p></p>
+  // } 
+  // if (!localStorage.validPasswordLength) {
+  //   console.log('validPassword false')
+  //   return passwordValidation = (<div className="registration-form-password-feedback min-length">
+  //   <i className="registration-form-password-feedback-icon registration-form-password-feedback-icon-satisfied"></i>
+  //     <span 
+  //       // className={
+  //       //   !localStorage.validPasswordLength ? ("valid-password-length") : ("invalid-password-length")
+  //       // }
+  //     >
+  //       8 characters minimum
+  //     </span>
+  // </div>)
+  // }
+
   let usernameValidation;
 
   if(validUsername === ''){
@@ -146,18 +174,6 @@ export const RegistrationForm = () => {
   } else if (!validUsername) {
     usernameValidation = <p>{localStorage.validUsername}</p>
   }
-
-  let passwordMin;
-  let passwordMax;
-  let passwordCapital;
-  let passwordNumber;
-  // let passwordValidation;
-
-  // if(validPassword === ''){
-  //   passwordValidation = <p></p>
-  // } else if (!passwordValidation) {
-  //   passwordValidation = <p></p>
-  // }
 
   /* ====== RENDER JSX ====== */
   return (
@@ -219,14 +235,18 @@ export const RegistrationForm = () => {
               // title="Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters"
               aria-labelledby="password"  
             />
-            <div className="registration-form-password-feedback min-length">
-              <i className="registration-form-password-feedback-icon registration-form-password-feedback-icon-satisfied"></i>
-                <span className="registration-form-password-feedback-criterion registration-form-password-feedback-criterion-satisfied">
-                  8 characters minimum
-                </span>
-            </div>
+            
+            { validPasswordLength ? (
+              <span className="valid-password-length">
+                8 characters minimum
+              </span>
+            ) : (
+              <span className="invalid-password-length" >
+                8 characters minimum
+              </span>
+            )}
 
-            <div className="registration-form-password-feedback has-digit">
+            {/* <div className="registration-form-password-feedback has-digit">
               <i className="registration-form-password-feedback-icon registration-form-password-feedback-icon-satisfied"></i>
                 <span className="registration-form-password-feedback-criterion registration-form-password-feedback-criterion-satisfied">
                   One number
@@ -238,7 +258,7 @@ export const RegistrationForm = () => {
               <span className="registration-form-password-feedback-criterion registration-form-password-feedback-criterion-satisfied">
                 One capital letter
               </span>
-            </div>
+            </div> */}
             
         </fieldset>
 

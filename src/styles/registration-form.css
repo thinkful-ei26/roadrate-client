@@ -79,3 +79,11 @@
   margin: 0 auto;
   font-size: 12px;
 }
+
+.invalid-password-length {
+  text-decoration: red;
+}
+
+.valid-password-length {
+  text-decoration: line-through;
+}
