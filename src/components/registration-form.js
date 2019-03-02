@@ -16,7 +16,7 @@ export const RegistrationForm = () => {
   const [validPassword, SetValidPassword] = useState('')
   const [modalOpen, setModalOpen] = useState(true);
 
-  
+  /* ====== LOGIN USER AFTER SUCCESSFUL REGISTRATION ====== */
   const logIn = data => {
     setUsername(username)
     setLoggedIn(loggedIn)
@@ -59,6 +59,7 @@ export const RegistrationForm = () => {
       });
   }
 
+   /* ====== USERNAME VALIDATION ====== */
   const validateUsername = async (username) => {
     // send username to server on Change of `username` state
     // server should check if username exists 
@@ -74,7 +75,6 @@ export const RegistrationForm = () => {
     if(_username.length > 0 && validUsername !== '') {
       localStorage.setItem('validUsername', `Username "${_username[0].username}" taken. Pick another.`)
       SetValidUsername(false)
-      console.log(_username)
       return _username
     } 
     
@@ -83,19 +83,23 @@ export const RegistrationForm = () => {
     return _username;
   }
 
+  /* ====== PASSWORD VALIDATION ====== */
   const validatePassword = (password) => {
-    if(password.length < 10) {
+    if(password.length) {
+      console.log('password',password);
       return (
         <p>Password is invalid. Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters</p>
       )
     } 
   }
 
+  /* ====== USEEFFECT ====== */
   useEffect(() => {
     validatePassword(password);
     validateUsername(username);
-  }, [username]) 
+  }, [username, password]) 
   
+   /* ====== HANDLE FORM SUBMIT ====== */
   const handleSubmit = e => {
     e.preventDefault(e); 
    
@@ -134,6 +138,7 @@ export const RegistrationForm = () => {
       })
       };
 
+  /* ====== JSX VALIDATIONS ====== */
   let usernameValidation;
 
   if(validUsername === ''){
@@ -150,6 +155,7 @@ export const RegistrationForm = () => {
     passwordValidation = <p>Username is taken. Choose another.</p>
   }
 
+  /* ====== RENDER JSX ====== */
   return (
     <div className="registration">
     {
@@ -192,6 +198,8 @@ export const RegistrationForm = () => {
             title="Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters"
             aria-labelledby="password"  
           /> */}
+
+          {passwordValidation}
           <fieldset className="registration-form-group">
             <input 
               className="registration-form-group-control" 
@@ -224,7 +232,7 @@ export const RegistrationForm = () => {
             <div className="registration-form-password-feedback has-letter">
               <i className="registration-form-password-feedback-icon registration-form-password-feedback-icon-satisfied"></i>
               <span className="registration-form-password-feedback-criterion registration-form-password-feedback-criterion-satisfied">
-                One letter
+                One capital letter
               </span>
             </div>
             
