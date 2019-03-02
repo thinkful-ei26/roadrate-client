@@ -12,9 +12,10 @@ export const RegistrationForm = () => {
   const [confirmEmail, setConfirmEmail] = useState("")
   const [authToken, setAuthToken] = useState("") 
   const [loggedIn, setLoggedIn] = useState(true)
+  const [modalOpen, setModalOpen] = useState(true);
   const [validUsername, SetValidUsername] = useState('')
   const [validPasswordLength, SetValidPasswordLength] = useState(false)
-  const [modalOpen, setModalOpen] = useState(true);
+  const [validPasswordCapital, SetValidPasswordCapital] = useState(false)
 
   /* ====== LOGIN USER AFTER SUCCESSFUL REGISTRATION ====== */
   const logIn = data => {
@@ -91,7 +92,10 @@ export const RegistrationForm = () => {
     } else if (password.length && password.length >= 8 && password.length <= 15) {
       SetValidPasswordLength(true)
       localStorage.setItem("validPasswordLength", true)
-    } else {
+    } else if (/(?:^|[^A-Z])[A-Z](?![A-Z])[a-z0-9]*{8,20}/.test(password)) {
+      console.log('passed regex')
+    }
+    else {
       SetValidPasswordLength(false)
       localStorage.setItem("validPasswordLength", false)
     }
@@ -143,29 +147,6 @@ export const RegistrationForm = () => {
       };
 
   /* ====== JSX VALIDATIONS ====== */
-
-  // let passwordMin;
-  // let passwordMax;
-  // let passwordCapital;
-  // let passwordNumber;
-  // let passwordValidation;
-
-  // if(validPassword === ''){
-  //   passwordValidation = <p></p>
-  // } 
-  // if (!localStorage.validPasswordLength) {
-  //   console.log('validPassword false')
-  //   return passwordValidation = (<div className="registration-form-password-feedback min-length">
-  //   <i className="registration-form-password-feedback-icon registration-form-password-feedback-icon-satisfied"></i>
-  //     <span 
-  //       // className={
-  //       //   !localStorage.validPasswordLength ? ("valid-password-length") : ("invalid-password-length")
-  //       // }
-  //     >
-  //       8 characters minimum
-  //     </span>
-  // </div>)
-  // }
 
   let usernameValidation;
 
