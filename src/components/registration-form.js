@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'; 
 import { Link, Redirect } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
+import blackCheckmark from '../assets/checkmark-black.svg';
 
 export const RegistrationForm = () => {
   // split state into different declarations
@@ -12,10 +13,10 @@ export const RegistrationForm = () => {
   const [confirmEmail, setConfirmEmail] = useState("")
   const [authToken, setAuthToken] = useState("") 
   const [loggedIn, setLoggedIn] = useState(true)
-  const [modalOpen, setModalOpen] = useState(true);
+  // const [modalOpen, setModalOpen] = useState(true);
   const [validUsername, SetValidUsername] = useState('')
   const [validPasswordLength, SetValidPasswordLength] = useState(false)
-  const [validPasswordCapital, SetValidPasswordCapital] = useState(false)
+  const [validPasswordCharacters, SetValidPasswordCharacters] = useState(false)
 
   /* ====== LOGIN USER AFTER SUCCESSFUL REGISTRATION ====== */
   const logIn = data => {
@@ -84,20 +85,27 @@ export const RegistrationForm = () => {
     return _username;
   }
 
+  // const re = /(?:^|[^A-Z])[A-Z](?![A-Z])[a-z0-9]*{8,20}\x/;
+  const re = /\w*[A-Z]\w*[A-Za-z0-9]\w*/g;
+
   /* ====== PASSWORD VALIDATION ====== */
   const validatePassword = (password) => {
-    console.log(password);
+    // console.log(password);
     if(password.length && !password.length > 8) {
      localStorage.setItem("validPasswordLength", false);
     } else if (password.length && password.length >= 8 && password.length <= 15) {
       SetValidPasswordLength(true)
       localStorage.setItem("validPasswordLength", true)
-    } else if (/(?:^|[^A-Z])[A-Z](?![A-Z])[a-z0-9]*{8,20}/.test(password)) {
-      console.log('passed regex')
+    } else if (re.test(password)) {
+      // console.log('passed regex')
+      SetValidPasswordCharacters(true)
+      localStorage.setItem("validPasswordCharacters", true);
     }
     else {
       SetValidPasswordLength(false)
+      SetValidPasswordCharacters(false)
       localStorage.setItem("validPasswordLength", false)
+      localStorage.setItem("validPasswordCharacters", false);
     }
   }
 
@@ -147,13 +155,60 @@ export const RegistrationForm = () => {
       };
 
   /* ====== JSX VALIDATIONS ====== */
-
   let usernameValidation;
 
   if(validUsername === ''){
     usernameValidation = <p></p>
   } else if (!validUsername) {
     usernameValidation = <p>{localStorage.validUsername}</p>
+  }
+
+  let passwordValidation;
+
+  if(password === '') {
+    passwordValidation = null
+  } else if (validPasswordLength && validPasswordCharacters) {
+    passwordValidation = (
+      <div>
+        <p className="valid-password">
+          <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
+          8 characters minimum
+        </p>
+        <p className="valid-password">
+          <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
+          Atleast 1 Capital Letter
+        </p>
+      </div>
+    )
+  } else if (validPasswordLength) {
+    passwordValidation = (
+      <div>
+        <p className="valid-password">
+          <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
+          8 characters minimum
+        </p>
+      </div>
+    )
+  } else if (validPasswordCharacters) {
+    passwordValidation = (
+      <div>
+        <p className="valid-password">
+          <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
+          Atleast 1 Capital Letter
+        </p>
+      </div>
+    )
+  } else {
+    passwordValidation = (
+      <div>
+        <p className="invalid-password">
+          8 characters minimum
+        </p>
+        <p className="invalid-password">
+          Atleast 1 Capital Letter
+        </p>
+      </div>
+    )
   }
 
   /* ====== RENDER JSX ====== */
@@ -188,22 +243,9 @@ export const RegistrationForm = () => {
             required
             aria-labelledby="username"    
           />
-          {/* <input
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            placeholder="enter password"
-            type="password"
-            name="password"
-            required
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
-            title="Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters"
-            aria-labelledby="password"  
-          /> */}
-
-          {/* {passwordValidation} */}
           <fieldset className="registration-form-group">
             <input 
-              className="registration-form-group-control" 
+              className="registration-password-input" 
               type="password" 
               name="password" 
               autocomplete="new-password" 
@@ -213,34 +255,34 @@ export const RegistrationForm = () => {
               placeholder="enter password"
               required
               // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
-              // title="Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters"
+              // title="Must contain at least one number and one uppercase letter and at least 8 or more characters"
               aria-labelledby="password"  
             />
-            
-            { validPasswordLength ? (
-              <span className="valid-password-length">
+         
+            {passwordValidation}
+            {/* { validPasswordLength ? (
+              <p className="valid-password">
+                <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
                 8 characters minimum
-              </span>
+              </p>
             ) : (
-              <span className="invalid-password-length" >
-                8 characters minimum
-              </span>
-            )}
+              // <p className="invalid-password" >
+              //   8 characters minimum
+              // </p>
+              null
+            )} */}
 
-            {/* <div className="registration-form-password-feedback has-digit">
-              <i className="registration-form-password-feedback-icon registration-form-password-feedback-icon-satisfied"></i>
-                <span className="registration-form-password-feedback-criterion registration-form-password-feedback-criterion-satisfied">
-                  One number
-                </span>
-            </div>
-            
-            <div className="registration-form-password-feedback has-letter">
-              <i className="registration-form-password-feedback-icon registration-form-password-feedback-icon-satisfied"></i>
-              <span className="registration-form-password-feedback-criterion registration-form-password-feedback-criterion-satisfied">
-                One capital letter
-              </span>
-            </div> */}
-            
+            {/* { validPasswordCharacters && password !== '' ? (
+              <p className="valid-password">
+                <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
+                Atleast 1 Capital Letter
+              </p>
+            ) : (
+              // <p className="invalid-password">
+              //   Atleast 1 Capital Letter
+              // </p>
+              null
+            )}   */}
         </fieldset>
 
           <input

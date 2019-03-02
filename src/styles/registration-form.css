@@ -80,10 +80,21 @@
   font-size: 12px;
 }
 
-.invalid-password-length {
+.invalid-password {
   text-decoration: red;
+  font-size: 12px;
 }
 
-.valid-password-length {
+.valid-password {
   text-decoration: line-through;
+  font-size: 12px;
+}
+
+.registration-form-group {
+  border: 0;
+}
+
+.blackCheckmark {
+  width: 20px;
+  display: inline-block;
 }
