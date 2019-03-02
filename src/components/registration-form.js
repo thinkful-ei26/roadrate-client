@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'; 
 import { Link, Redirect } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
-import blackCheckmark from '../assets/checkmark-black.svg';
 
 export const RegistrationForm = () => {
   // split state into different declarations
@@ -85,12 +84,9 @@ export const RegistrationForm = () => {
     return _username;
   }
 
-  // const re = /(?:^|[^A-Z])[A-Z](?![A-Z])[a-z0-9]*{8,20}\x/;
-  const re = /\w*[A-Z]\w*[A-Za-z0-9]\w*/g;
-
   /* ====== PASSWORD VALIDATION ====== */
+  const re = /\w*[A-Z]\w*[A-Za-z0-9]\w*/g;
   const validatePassword = (password) => {
-    // console.log(password);
 
     if(password.length && !password.length > 8) { //length is greater than 8
      localStorage.setItem("validPasswordLength", false);
@@ -154,7 +150,7 @@ export const RegistrationForm = () => {
       })
       };
 
-  /* ====== JSX VALIDATIONS ====== */
+  /* ====== JSX USERNAME VALIDATION ====== */
   let usernameValidation;
 
   if(validUsername === ''){
@@ -163,75 +159,72 @@ export const RegistrationForm = () => {
     usernameValidation = <p>{localStorage.validUsername}</p>
   }
 
-  // let passwordValidation;
-
-  // if(password === '') {
-  //   passwordValidation = null
-  // } else if (validPasswordLength && validPasswordCharacters) {
-  //   passwordValidation = (
-  //     <div>
-  //       <p className="valid-password">
-  //         <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
-  //         8 characters minimum
-  //       </p>
-  //       <p className="valid-password">
-  //         <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
-  //         Atleast 1 Capital Letter
-  //       </p>
-  //     </div>
-  //   )
-  // } else if (!validPasswordLength || validPasswordCharacters) {
-  //   passwordValidation = (
-  //     <div>
-  //       <p className="invalid-password">
-  //       8 characters minimum
-  //       </p>
-  //       <p className="valid-password">
-  //         Atleast 1 Capital Letter
-  //       </p>
-  //     </div>
-  //   )
-  // } else if (validPasswordLength || !validPasswordCharacters) {
-  //   passwordValidation = (
-  //     <div>
-  //       <p className="valid-password">
-  //       8 characters minimum
-  //       </p>
-  //       <p className="invalid-password">
-  //         Atleast 1 Capital Letter
-  //       </p>
-  //     </div>
-  //   )
-  // } else if (validPasswordLength) {
-  //   passwordValidation = (
-  //     <div>
-  //       <p className="valid-password">
-  //         <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
-  //         8 characters minimum
-  //       </p>
-  //     </div>
-  //   )
-  // } else if (validPasswordCharacters) {
-  //   passwordValidation = (
-  //     <div>
-  //       <p className="valid-password">
-  //         <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
-  //         Atleast 1 Capital Letter
-  //       </p>
-  //     </div>
-  //   )
-  // } else {
-  //   passwordValidation = (
-  //     <div>
-  //       <p className="invalid-password">
-  //         8 characters minimum
-  //       </p>
-  //       <p className="invalid-password">
-  //         Atleast 1 Capital Letter
-  //       </p>
-  //     </div>
-  //   )
-  // }
+  /* ====== JSX PASSWORD VALIDATION ====== */
+  let passwordValidation;
+  console.log(password)
+  if(password === '') {
+    passwordValidation = null
+  } else if (validPasswordLength && validPasswordCharacters) {
+    passwordValidation = (
+      <div>
+        <p className="valid-password">
+          <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>8 characters minimum</span>
+        </p>
+        <p className="valid-password test1">
+          <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
+        </p>
+      </div>
+    )
+  } else if (!validPasswordLength && validPasswordCharacters) {
+    passwordValidation = (
+      <div>
+        <p className="invalid-password">
+        8 characters minimum
+        </p>
+        <p className="valid-password test2">
+          <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
+        </p>
+      </div>
+    )
+  } else if (validPasswordLength && !validPasswordCharacters) {
+    passwordValidation = (
+      <div>
+        <p className="valid-password">
+        8 characters minimum
+        </p>
+        <p className="invalid-password test3">
+          Atleast 1 Capital Letter
+        </p>
+      </div>
+    )
+  } else if (validPasswordLength) {
+    passwordValidation = (
+      <div>
+        <p className="valid-password">
+           <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>8 characters minimum</span>
+        </p>
+      </div>
+    )
+  } else if (validPasswordCharacters) {
+    passwordValidation = (
+      <div>
+        <p className="valid-password test4">
+           <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
+        </p>
+      </div>
+    )
+  } else {
+    passwordValidation = (
+      <div>
+        <p className="invalid-password">
+          8 characters minimum
+        </p>
+        <p className="invalid-password">
+          Atleast 1 capital letter
+        </p>
+      </div>
+    )
+  }
 
   /* ====== RENDER JSX ====== */
   return (
@@ -281,10 +274,11 @@ export const RegistrationForm = () => {
               aria-labelledby="password"  
             />
 
-            {/* {passwordValidation} */}
-            { validPasswordCharacters ? (
+            {passwordValidation}
+
+            {/* TERNARY PW VALIDATION, this just chills on page load btws */}
+            {/* { validPasswordCharacters ? (
               <p className="valid-password">
-                {/* <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/> */}
                 <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
                 Starts with a capital letter</span>
               </p>
@@ -296,9 +290,6 @@ export const RegistrationForm = () => {
 
             { validPasswordLength ? (
               <p className="valid-password">
-                {/* <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
-                8 characters minimum */}
-
                 <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
                 8 characters minimum</span>
               </p>
@@ -306,7 +297,7 @@ export const RegistrationForm = () => {
               <p className="invalid-password" >
                 8 characters minimum
               </p>
-            )}
+            )} */}
 
         </fieldset>
 
