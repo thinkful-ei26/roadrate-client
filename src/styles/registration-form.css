@@ -100,3 +100,15 @@
   width: 20px;
   display: inline-block;
 }
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  stroke-width: 2;
+  stroke: green;
+  stroke-miterlimit: 10;
+  stroke-dashoffset: 0;
+  margin-right: 3px;
+}

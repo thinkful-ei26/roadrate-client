@@ -284,19 +284,23 @@ export const RegistrationForm = () => {
             {/* {passwordValidation} */}
             { validPasswordCharacters ? (
               <p className="valid-password">
-                <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
-                Starts with a Capital Letter
+                {/* <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/> */}
+                <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                Starts with a capital letter</span>
               </p>
             ) : (
               <p className="invalid-password">
-                Starts with a Capital Letter
+                Starts with a capital letter
               </p>
             )}  
 
             { validPasswordLength ? (
               <p className="valid-password">
-                <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
-                8 characters minimum
+                {/* <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
+                8 characters minimum */}
+
+                <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                8 characters minimum</span>
               </p>
             ) : (
               <p className="invalid-password" >
