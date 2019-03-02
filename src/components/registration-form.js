@@ -147,13 +147,17 @@ export const RegistrationForm = () => {
     usernameValidation = <p>{localStorage.validUsername}</p>
   }
 
-  let passwordValidation;
+  let passwordMin;
+  let passwordMax;
+  let passwordCapital;
+  let passwordNumber;
+  // let passwordValidation;
 
-  if(validPassword === ''){
-    passwordValidation = <p></p>
-  } else if (!passwordValidation) {
-    passwordValidation = <p>Username is taken. Choose another.</p>
-  }
+  // if(validPassword === ''){
+  //   passwordValidation = <p></p>
+  // } else if (!passwordValidation) {
+  //   passwordValidation = <p></p>
+  // }
 
   /* ====== RENDER JSX ====== */
   return (
@@ -199,7 +203,7 @@ export const RegistrationForm = () => {
             aria-labelledby="password"  
           /> */}
 
-          {passwordValidation}
+          {/* {passwordValidation} */}
           <fieldset className="registration-form-group">
             <input 
               className="registration-form-group-control" 
@@ -211,8 +215,8 @@ export const RegistrationForm = () => {
               onChange={e => setPassword(e.target.value)}
               placeholder="enter password"
               required
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
-              title="Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters"
+              // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
+              // title="Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters"
               aria-labelledby="password"  
             />
             <div className="registration-form-password-feedback min-length">
@@ -236,33 +240,6 @@ export const RegistrationForm = () => {
               </span>
             </div>
             
-            <div className="registration-form-password-feedback has-other">
-              <span>
-                <span 
-                  data-for="tooltip_1" 
-                  data-place="right" 
-                  data-class="" 
-                  data-tip="~!@#$%^&amp;*()-_=+[]{}|;:,\.<>/?" 
-                  currentitem="false" 
-                  // style="display: inline-block;"
-                >
-                  <i className="registration-form-password-feedback-icon"></i>
-                  
-                  <span className="registration-form-password-feedback-criterion">
-                    One special character
-                  </span>
-                </span>
-                
-                <div 
-                className="__react_component_tooltip place-top type-dark " 
-                id="tooltip_1" 
-                data-id="tooltip" 
-                // style="left: 287px; top: 386px;"
-                >
-                  ~!@#$%^&amp;*()-_=+[]{}|;:,\.&lt;&gt;/?
-                </div>
-              </span>
-            </div>
         </fieldset>
 
           <input
