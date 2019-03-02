@@ -91,13 +91,13 @@ export const RegistrationForm = () => {
   /* ====== PASSWORD VALIDATION ====== */
   const validatePassword = (password) => {
     // console.log(password);
-    if(password.length && !password.length > 8) {
+
+    if(password.length && !password.length > 8) { //length is greater than 8
      localStorage.setItem("validPasswordLength", false);
-    } else if (password.length && password.length >= 8 && password.length <= 15) {
+    } else if (password.length && password.length >= 8 && password.length <= 72) {
       SetValidPasswordLength(true)
       localStorage.setItem("validPasswordLength", true)
     } else if (re.test(password)) {
-      // console.log('passed regex')
       SetValidPasswordCharacters(true)
       localStorage.setItem("validPasswordCharacters", true);
     }
@@ -163,53 +163,75 @@ export const RegistrationForm = () => {
     usernameValidation = <p>{localStorage.validUsername}</p>
   }
 
-  let passwordValidation;
+  // let passwordValidation;
 
-  if(password === '') {
-    passwordValidation = null
-  } else if (validPasswordLength && validPasswordCharacters) {
-    passwordValidation = (
-      <div>
-        <p className="valid-password">
-          <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
-          8 characters minimum
-        </p>
-        <p className="valid-password">
-          <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
-          Atleast 1 Capital Letter
-        </p>
-      </div>
-    )
-  } else if (validPasswordLength) {
-    passwordValidation = (
-      <div>
-        <p className="valid-password">
-          <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
-          8 characters minimum
-        </p>
-      </div>
-    )
-  } else if (validPasswordCharacters) {
-    passwordValidation = (
-      <div>
-        <p className="valid-password">
-          <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
-          Atleast 1 Capital Letter
-        </p>
-      </div>
-    )
-  } else {
-    passwordValidation = (
-      <div>
-        <p className="invalid-password">
-          8 characters minimum
-        </p>
-        <p className="invalid-password">
-          Atleast 1 Capital Letter
-        </p>
-      </div>
-    )
-  }
+  // if(password === '') {
+  //   passwordValidation = null
+  // } else if (validPasswordLength && validPasswordCharacters) {
+  //   passwordValidation = (
+  //     <div>
+  //       <p className="valid-password">
+  //         <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
+  //         8 characters minimum
+  //       </p>
+  //       <p className="valid-password">
+  //         <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
+  //         Atleast 1 Capital Letter
+  //       </p>
+  //     </div>
+  //   )
+  // } else if (!validPasswordLength || validPasswordCharacters) {
+  //   passwordValidation = (
+  //     <div>
+  //       <p className="invalid-password">
+  //       8 characters minimum
+  //       </p>
+  //       <p className="valid-password">
+  //         Atleast 1 Capital Letter
+  //       </p>
+  //     </div>
+  //   )
+  // } else if (validPasswordLength || !validPasswordCharacters) {
+  //   passwordValidation = (
+  //     <div>
+  //       <p className="valid-password">
+  //       8 characters minimum
+  //       </p>
+  //       <p className="invalid-password">
+  //         Atleast 1 Capital Letter
+  //       </p>
+  //     </div>
+  //   )
+  // } else if (validPasswordLength) {
+  //   passwordValidation = (
+  //     <div>
+  //       <p className="valid-password">
+  //         <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
+  //         8 characters minimum
+  //       </p>
+  //     </div>
+  //   )
+  // } else if (validPasswordCharacters) {
+  //   passwordValidation = (
+  //     <div>
+  //       <p className="valid-password">
+  //         <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
+  //         Atleast 1 Capital Letter
+  //       </p>
+  //     </div>
+  //   )
+  // } else {
+  //   passwordValidation = (
+  //     <div>
+  //       <p className="invalid-password">
+  //         8 characters minimum
+  //       </p>
+  //       <p className="invalid-password">
+  //         Atleast 1 Capital Letter
+  //       </p>
+  //     </div>
+  //   )
+  // }
 
   /* ====== RENDER JSX ====== */
   return (
@@ -254,35 +276,34 @@ export const RegistrationForm = () => {
               onChange={e => setPassword(e.target.value)}
               placeholder="enter password"
               required
-              // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
-              // title="Must contain at least one number and one uppercase letter and at least 8 or more characters"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
+              title="Must contain at least one number and one uppercase letter and at least 8 or more characters"
               aria-labelledby="password"  
             />
-         
-            {passwordValidation}
-            {/* { validPasswordLength ? (
+
+            {/* {passwordValidation} */}
+            { validPasswordCharacters ? (
+              <p className="valid-password">
+                <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
+                Starts with a Capital Letter
+              </p>
+            ) : (
+              <p className="invalid-password">
+                Starts with a Capital Letter
+              </p>
+            )}  
+
+            { validPasswordLength ? (
               <p className="valid-password">
                 <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
                 8 characters minimum
               </p>
             ) : (
-              // <p className="invalid-password" >
-              //   8 characters minimum
-              // </p>
-              null
-            )} */}
-
-            {/* { validPasswordCharacters && password !== '' ? (
-              <p className="valid-password">
-                <img className="blackCheckmark" src={blackCheckmark} alt="checkmark"/>
-                Atleast 1 Capital Letter
+              <p className="invalid-password" >
+                8 characters minimum
               </p>
-            ) : (
-              // <p className="invalid-password">
-              //   Atleast 1 Capital Letter
-              // </p>
-              null
-            )}   */}
+            )}
+
         </fieldset>
 
           <input

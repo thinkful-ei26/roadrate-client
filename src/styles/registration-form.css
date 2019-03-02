@@ -82,16 +82,18 @@
 
 .invalid-password {
   text-decoration: red;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .valid-password {
   text-decoration: line-through;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .registration-form-group {
   border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .blackCheckmark {
