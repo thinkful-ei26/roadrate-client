@@ -140,15 +140,15 @@ export const RegistrationForm = () => {
       localStorage.setItem("registered", true)
       return res.json();
       })
-      .then(data => {
-        logIn(data)
-      })
-      .catch(err => {
-        if(err === 'TypeError: Failed to fetch'){
-          return Promise.reject(err)
-        }
-      })
-      };
+    .then(data => {
+      logIn(data)
+    })
+    .catch(err => {
+      if(err === 'TypeError: Failed to fetch'){
+        return Promise.reject(err)
+      }
+    })
+  };
 
   /* ====== JSX USERNAME VALIDATION ====== */
   let usernameValidation;
@@ -246,6 +246,7 @@ export const RegistrationForm = () => {
             aria-labelledby="name"      
           />
 
+          {/* ====== USERNAME VALIDATION ====== */}
           {usernameValidation}
 
           <input
@@ -274,30 +275,8 @@ export const RegistrationForm = () => {
               aria-labelledby="password"  
             />
 
+            {/* ====== PASSWORD VALIDATION ====== */}
             {passwordValidation}
-
-            {/* TERNARY PW VALIDATION, this just chills on page load btws */}
-            {/* { validPasswordCharacters ? (
-              <p className="valid-password">
-                <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
-                Starts with a capital letter</span>
-              </p>
-            ) : (
-              <p className="invalid-password">
-                Starts with a capital letter
-              </p>
-            )}  
-
-            { validPasswordLength ? (
-              <p className="valid-password">
-                <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
-                8 characters minimum</span>
-              </p>
-            ) : (
-              <p className="invalid-password" >
-                8 characters minimum
-              </p>
-            )} */}
 
         </fieldset>
 
@@ -342,7 +321,13 @@ export const RegistrationForm = () => {
           >
             Submit
           </button>
-          <Link to="/" className="registration-link" aria-labelledby="go back link to landing page"  >Go Back</Link>
+          <Link 
+            to="/" 
+            className="registration-link" 
+            aria-labelledby="go back link to landing page"
+          >
+            Go Back
+          </Link>
         </form>
       </div>
       )}
