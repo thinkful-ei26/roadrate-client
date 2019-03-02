@@ -13,6 +13,7 @@ export const RegistrationForm = () => {
   const [authToken, setAuthToken] = useState("") 
   const [loggedIn, setLoggedIn] = useState(true)
   const [validUsername, SetValidUsername] = useState('')
+  const [validPassword, SetValidPassword] = useState('')
   const [modalOpen, setModalOpen] = useState(true);
 
   
@@ -69,10 +70,11 @@ export const RegistrationForm = () => {
     // Pull out the data from response
     const _username = await res.json();
    
-    // if the username alreadu exists in the DB
+    // if the username already exists in the DB
     if(_username.length > 0 && validUsername !== '') {
-      localStorage.setItem('validUsername', 'Username taken. Pick another.')
+      localStorage.setItem('validUsername', `Username "${_username[0].username}" taken. Pick another.`)
       SetValidUsername(false)
+      console.log(_username)
       return _username
     } 
     
@@ -137,7 +139,15 @@ export const RegistrationForm = () => {
   if(validUsername === ''){
     usernameValidation = <p></p>
   } else if (!validUsername) {
-    usernameValidation = <p>Username is taken. Choose another.</p>
+    usernameValidation = <p>{localStorage.validUsername}</p>
+  }
+
+  let passwordValidation;
+
+  if(validPassword === ''){
+    passwordValidation = <p></p>
+  } else if (!passwordValidation) {
+    passwordValidation = <p>Username is taken. Choose another.</p>
   }
 
   return (
@@ -171,7 +181,7 @@ export const RegistrationForm = () => {
             required
             aria-labelledby="username"    
           />
-          <input
+          {/* <input
             value={password}
             onChange={e => setPassword(e.target.value)}
             placeholder="enter password"
@@ -181,7 +191,72 @@ export const RegistrationForm = () => {
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
             title="Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters"
             aria-labelledby="password"  
-          />
+          /> */}
+          <fieldset className="registration-form-group">
+            <input 
+              className="registration-form-group-control" 
+              type="password" 
+              name="password" 
+              autocomplete="new-password" 
+              id="password" 
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              placeholder="enter password"
+              required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
+              title="Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters"
+              aria-labelledby="password"  
+            />
+            <div className="registration-form-password-feedback min-length">
+              <i className="registration-form-password-feedback-icon registration-form-password-feedback-icon-satisfied"></i>
+                <span className="registration-form-password-feedback-criterion registration-form-password-feedback-criterion-satisfied">
+                  8 characters minimum
+                </span>
+            </div>
+
+            <div className="registration-form-password-feedback has-digit">
+              <i className="registration-form-password-feedback-icon registration-form-password-feedback-icon-satisfied"></i>
+                <span className="registration-form-password-feedback-criterion registration-form-password-feedback-criterion-satisfied">
+                  One number
+                </span>
+            </div>
+            
+            <div className="registration-form-password-feedback has-letter">
+              <i className="registration-form-password-feedback-icon registration-form-password-feedback-icon-satisfied"></i>
+              <span className="registration-form-password-feedback-criterion registration-form-password-feedback-criterion-satisfied">
+                One letter
+              </span>
+            </div>
+            
+            <div className="registration-form-password-feedback has-other">
+              <span>
+                <span 
+                  data-for="tooltip_1" 
+                  data-place="right" 
+                  data-class="" 
+                  data-tip="~!@#$%^&amp;*()-_=+[]{}|;:,\.<>/?" 
+                  currentitem="false" 
+                  // style="display: inline-block;"
+                >
+                  <i className="registration-form-password-feedback-icon"></i>
+                  
+                  <span className="registration-form-password-feedback-criterion">
+                    One special character
+                  </span>
+                </span>
+                
+                <div 
+                className="__react_component_tooltip place-top type-dark " 
+                id="tooltip_1" 
+                data-id="tooltip" 
+                // style="left: 287px; top: 386px;"
+                >
+                  ~!@#$%^&amp;*()-_=+[]{}|;:,\.&lt;&gt;/?
+                </div>
+              </span>
+            </div>
+        </fieldset>
+
           <input
             value={confirmPassword}
             onChange={e => setConfirmPassword(e.target.value)}
@@ -231,6 +306,5 @@ export const RegistrationForm = () => {
     </div>
   );
 }
-
 
 export default RegistrationForm;
