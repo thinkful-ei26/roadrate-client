@@ -12,10 +12,12 @@ export const RegistrationForm = () => {
   const [confirmEmail, setConfirmEmail] = useState("")
   const [authToken, setAuthToken] = useState("") 
   const [loggedIn, setLoggedIn] = useState(true)
+  // const [modalOpen, setModalOpen] = useState(true);
   const [validUsername, SetValidUsername] = useState('')
-  const [modalOpen, setModalOpen] = useState(true);
+  const [validPasswordLength, SetValidPasswordLength] = useState(false)
+  const [validPasswordCharacters, SetValidPasswordCharacters] = useState(false)
 
-  
+  /* ====== LOGIN USER AFTER SUCCESSFUL REGISTRATION ====== */
   const logIn = data => {
     setUsername(username)
     setLoggedIn(loggedIn)
@@ -58,6 +60,7 @@ export const RegistrationForm = () => {
       });
   }
 
+   /* ====== USERNAME VALIDATION ====== */
   const validateUsername = async (username) => {
     // send username to server on Change of `username` state
     // server should check if username exists 
@@ -69,9 +72,9 @@ export const RegistrationForm = () => {
     // Pull out the data from response
     const _username = await res.json();
    
-    // if the username alreadu exists in the DB
+    // if the username already exists in the DB
     if(_username.length > 0 && validUsername !== '') {
-      localStorage.setItem('validUsername', 'Username taken. Pick another.')
+      localStorage.setItem('validUsername', `Username "${_username[0].username}" taken. Pick another.`)
       SetValidUsername(false)
       return _username
     } 
@@ -81,19 +84,34 @@ export const RegistrationForm = () => {
     return _username;
   }
 
+  /* ====== PASSWORD VALIDATION ====== */
+  const re = /\w*[A-Z]\w*[A-Za-z0-9]\w*/g;
   const validatePassword = (password) => {
-    if(password.length < 10) {
-      return (
-        <p>Password is invalid. Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters</p>
-      )
-    } 
+
+    if(password.length && !password.length > 8) { //length is greater than 8
+     localStorage.setItem("validPasswordLength", false);
+    } else if (password.length && password.length >= 8 && password.length <= 72) {
+      SetValidPasswordLength(true)
+      localStorage.setItem("validPasswordLength", true)
+    } else if (re.test(password)) {
+      SetValidPasswordCharacters(true)
+      localStorage.setItem("validPasswordCharacters", true);
+    }
+    else {
+      SetValidPasswordLength(false)
+      SetValidPasswordCharacters(false)
+      localStorage.setItem("validPasswordLength", false)
+      localStorage.setItem("validPasswordCharacters", false);
+    }
   }
 
+  /* ====== USEEFFECT ====== */
   useEffect(() => {
     validatePassword(password);
     validateUsername(username);
-  }, [username]) 
+  }, [username, password]) 
   
+   /* ====== HANDLE FORM SUBMIT ====== */
   const handleSubmit = e => {
     e.preventDefault(e); 
    
@@ -122,24 +140,93 @@ export const RegistrationForm = () => {
       localStorage.setItem("registered", true)
       return res.json();
       })
-      .then(data => {
-        logIn(data)
-      })
-      .catch(err => {
-        if(err === 'TypeError: Failed to fetch'){
-          return Promise.reject(err)
-        }
-      })
-      };
+    .then(data => {
+      logIn(data)
+    })
+    .catch(err => {
+      if(err === 'TypeError: Failed to fetch'){
+        return Promise.reject(err)
+      }
+    })
+  };
 
+  /* ====== JSX USERNAME VALIDATION ====== */
   let usernameValidation;
 
   if(validUsername === ''){
     usernameValidation = <p></p>
   } else if (!validUsername) {
-    usernameValidation = <p>Username is taken. Choose another.</p>
+    usernameValidation = <p>{localStorage.validUsername}</p>
   }
 
+  /* ====== JSX PASSWORD VALIDATION ====== */
+  let passwordValidation;
+  console.log(password)
+  if(password === '') {
+    passwordValidation = null
+  } else if (validPasswordLength && validPasswordCharacters) {
+    passwordValidation = (
+      <div>
+        <p className="valid-password">
+          <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>8 characters minimum</span>
+        </p>
+        <p className="valid-password test1">
+          <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
+        </p>
+      </div>
+    )
+  } else if (!validPasswordLength && validPasswordCharacters) {
+    passwordValidation = (
+      <div>
+        <p className="invalid-password">
+        8 characters minimum
+        </p>
+        <p className="valid-password test2">
+          <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
+        </p>
+      </div>
+    )
+  } else if (validPasswordLength && !validPasswordCharacters) {
+    passwordValidation = (
+      <div>
+        <p className="valid-password">
+        8 characters minimum
+        </p>
+        <p className="invalid-password test3">
+          Atleast 1 Capital Letter
+        </p>
+      </div>
+    )
+  } else if (validPasswordLength) {
+    passwordValidation = (
+      <div>
+        <p className="valid-password">
+           <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>8 characters minimum</span>
+        </p>
+      </div>
+    )
+  } else if (validPasswordCharacters) {
+    passwordValidation = (
+      <div>
+        <p className="valid-password test4">
+           <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
+        </p>
+      </div>
+    )
+  } else {
+    passwordValidation = (
+      <div>
+        <p className="invalid-password">
+          8 characters minimum
+        </p>
+        <p className="invalid-password">
+          Atleast 1 capital letter
+        </p>
+      </div>
+    )
+  }
+
+  /* ====== RENDER JSX ====== */
   return (
     <div className="registration">
     {
@@ -159,6 +246,7 @@ export const RegistrationForm = () => {
             aria-labelledby="name"      
           />
 
+          {/* ====== USERNAME VALIDATION ====== */}
           {usernameValidation}
 
           <input
@@ -171,17 +259,27 @@ export const RegistrationForm = () => {
             required
             aria-labelledby="username"    
           />
-          <input
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            placeholder="enter password"
-            type="password"
-            name="password"
-            required
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
-            title="Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters"
-            aria-labelledby="password"  
-          />
+          <fieldset className="registration-form-group">
+            <input 
+              className="registration-password-input" 
+              type="password" 
+              name="password" 
+              autocomplete="new-password" 
+              id="password" 
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              placeholder="enter password"
+              required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
+              title="Must contain at least one number and one uppercase letter and at least 8 or more characters"
+              aria-labelledby="password"  
+            />
+
+            {/* ====== PASSWORD VALIDATION ====== */}
+            {passwordValidation}
+
+        </fieldset>
+
           <input
             value={confirmPassword}
             onChange={e => setConfirmPassword(e.target.value)}
@@ -223,7 +321,13 @@ export const RegistrationForm = () => {
           >
             Submit
           </button>
-          <Link to="/" className="registration-link" aria-labelledby="go back link to landing page"  >Go Back</Link>
+          <Link 
+            to="/" 
+            className="registration-link" 
+            aria-labelledby="go back link to landing page"
+          >
+            Go Back
+          </Link>
         </form>
       </div>
       )}
@@ -231,6 +335,5 @@ export const RegistrationForm = () => {
     </div>
   );
 }
-
 
 export default RegistrationForm;
