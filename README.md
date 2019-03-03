@@ -4,7 +4,7 @@
 </div>
 <p align="center">Choose Rate, not Rage</p>
 
-## What is RoadRate?
+## Why RoadRate?
 **Have you ever been perplexed by a neighbor that continuously parks in a way that blocks you from using an otherwise perfectly viable space?**
 
 With RoadRate, you can find their license plate, rate it, and leave an anonymous review.
@@ -48,9 +48,14 @@ For version 2, we want to incorporate a tipping feature to encourage rewards for
 - Registered users can also view all of the reviews or feedback they have written about other license plates in a tab called “My Reviews”
 
 ## V2 Features
-- Registered users can send and receive anonymous tips via a claimed license plate
+- Registered users can send and receive anonymous tips
+- License plate claiming validation
 - Karma Score Gamification
-- Infinite scroll and pagination
+- Community forums
+- Topic tags on the comment (is the review good because of parking, repair, etc?)
+- Pagination
+- Geolocation
+- Uploading photos 
 - Fix the `owned by a user` icon on review cards. The icon should render dynamically if the plate is actually claimed
 
 ## Tech Stack
@@ -81,6 +86,22 @@ For version 2, we want to incorporate a tipping feature to encourage rewards for
 - **Randy Sartor** - Product Manager <a href="https://github.com/Rjsartor" target="_blank"><img src='./src/assets/github-icon.svg' alt='github icon' width='15px'></a>
 - **RP Boyle** - QA Lead <a href="https://github.com/RPBoyle11" target="_blank"><img src='./src/assets/github-icon.svg' alt='github icon' width='15px'></a>
 - **Trisha Aguinaldo** - Project Manager <a href="https://github.com/kronicle114" target="_blank"><img src='./src/assets/github-icon.svg' alt='github icon' width='15px'></a>
+
+## Instructions for Developers
+In development, your local machine should have [Node.JS](https://nodejs.org/en/) and [Mongo](https://www.mongodb.com/) set up
+
+1. Clone both the server and client side of this app:
+* [Server](https://github.com/thinkful-ei26/roadrate-server.git) or `git clone https://github.com/thinkful-ei26/roadrate-server.git`
+* [Client](https://github.com/thinkful-ei26/roadrate-client.git) or `git clone https://github.com/thinkful-ei26/roadrate-client.git`
+2. `npm install` the requirements on each of the repos
+3. Run `mongod` in a separate terminal shell. 
+4. Open a new terminal shell and then `cd` into the server side and run `node server.js`
+5. Finally, `cd` into the client side and run `npm start` in a new terminal shell. A new browser window should open containing the app. 
+
+**When deploying**
+- On the `client` > `scr` >`config.js` use line 7 as the `API_BASE_URL` instead of line 9
+- Use line 18 on `client` > `src` > `components` > `public-plate.js` instead of line 20
+
 
 ## API
 
