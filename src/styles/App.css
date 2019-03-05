@@ -115,6 +115,11 @@ img {
   max-width: 100%;
 }
 
+.owner-comment {
+  color: darkslategrey;
+  text-align: left;
+}
+
 #owner-response-btn {
   padding: 8px;
   font-size: 14px;

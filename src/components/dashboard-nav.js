@@ -6,8 +6,8 @@ import '../styles/dashboard-nav.css';
 export const DashboardNav = () => {
 
   return(
-      <div className="header-logo-combo">
-      <div className="logo-wrapper">
+    <main className="dashboard-nav">
+      <section className="logo-wrapper">
         <ul className="header-logo">
           <li className="header">
           <Link to="/"><h1>RoadRate</h1></Link>
@@ -19,9 +19,8 @@ export const DashboardNav = () => {
           />
           </li>
         </ul>
-      </div>
-
-      <div className="header-middle-area">
+      </section>
+      <section className="header-middle-area">
         <nav className="main-nav" id="main-nav">
           <ul className="main-sections">
             <li className="claim-plate">
@@ -33,7 +32,6 @@ export const DashboardNav = () => {
                 </span>
               </Link>
             </li>
-
             <li className="my-plates">
               <Link to="/my-plates" 
                 className="my-plates-link"
@@ -42,8 +40,7 @@ export const DashboardNav = () => {
                   My Plates
                 </span>
               </Link>
-            </li>
-            
+            </li>          
             <li className="my-reviews">
               <Link to='/my-reviews' 
                 className="my-reviews-link"
@@ -53,11 +50,10 @@ export const DashboardNav = () => {
                 </span>
               </Link>
             </li>
-          
           </ul>
         </nav>
-      </div> 
-    </div>
+      </section> 
+    </main>
   );
 }
 

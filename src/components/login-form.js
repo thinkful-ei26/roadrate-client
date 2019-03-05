@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [authToken, setAuthToken] = useState("")
   const [loggedIn, setLoggedIn] = useState(true)
   const [authError, setAuthError] = useState(false)
@@ -83,13 +84,13 @@ export const LoginForm = () => {
   }
 
   return(
-    <div className="login-container">
+    <section className="login-container">
       {errorMessage}
       {
         localStorage.loggedIn ? (
           <Redirect to="/dashboard" />
         ) : (
-          <div className="login-modal">
+          <article className="login-modal">
             <form className="login-form"
               onSubmit={handleSubmit}
             >
@@ -122,10 +123,10 @@ export const LoginForm = () => {
               </button>
               <Button />
             </form>
-        </div>
+        </article>
         )
-        }
-    </div>
+      }
+    </section>
     )};
 
 export default LoginForm;

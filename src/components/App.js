@@ -5,7 +5,6 @@ import LandingPage from './landing-page';
 import Dashboard from './dashboard';
 import LoginForm from './login-form';
 import ClaimPlate from './claim-plate';
-import CreatePlatePage from './create-plate-page';
 import PublicPlate from './public-plate';
 import MyPlatesList from './my-plates-list';
 import MyPlate from './my-plate';

@@ -137,7 +137,10 @@ export const MyReviews = () => {
       }
 
       if (review.comment) {
-        ownerComment = <p> Driver Response: {review.comment}</p>
+        ownerComment = 
+        <article className="ownerComment">
+          <p><em>Driver Response:</em> {review.comment}</p>
+        </article>    
       } 
 
         return (
@@ -153,7 +156,7 @@ export const MyReviews = () => {
               <p className='rating'>{rating}</p>
             </article>
           </article>        
-          <p className='message'>Review: {review.message}</p>
+          <p className='message'>{review.message}</p>
           {ownerComment}
           <p id='review-date'>{dateString}</p>
         </li>

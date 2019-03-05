@@ -235,8 +235,13 @@ export const claimPlate = () => {
                   placeholder="Search plate numbers"
                   pattern="^[a-zA-Z0-9]{1,8}$" 
                   title="Plate number should be between 1 to 8 characters without special characters."
+                  aria-labelledby="plate-number"
               />
-              <label className='plate-state-label' htmlFor='plate-state'></label>
+              <label 
+                className='plate-state-label' 
+                htmlFor='plate-state'
+                aria-label="plate-state">
+              </label>
               <select 
                 className='browser-default' 
                 value={plateState} 

@@ -38,7 +38,10 @@ export const Review = () => {
         }
 
         if (review.ownerResponse) {
-          driverComment = <p> Driver Response: {review.ownerResponse}</p>
+          driverComment = 
+            <article className="ownerComment">
+              <p> Driver Response: {review.ownerResponse}</p>
+            </article>
         } 
 
         let redirectLink = `/plate`;
@@ -162,7 +165,7 @@ export const Review = () => {
                 <p className='rating'>{rating}</p>
               </article>
             </article>       
-            <p className='message'>Review: {review.message}</p>
+            <p className='message'>{review.message}</p>
             {driverComment}
             <p id='review-date'>{dateString}</p>
           </li>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../config';
 import Spinner from 'react-spinkit';
-import {/*  Redirect, */ Link } from 'react-router-dom';
-import MaterialIcon, {colorPalette} from 'material-icons-react';
-// import Review from './Review';
+import { Link } from 'react-router-dom';
+import MaterialIcon from 'material-icons-react';
+
 import '../styles/review-list.css';
 import '../styles/reviews.css'
 
@@ -64,7 +64,7 @@ export const ReviewList = () => {
 
         if (review.ownerResponse) {
           driverComment = <p> Driver Response: {review.ownerResponse}</p>
-        } 
+        }
 
         // let redirectLink = `/plate`;
         // if(redirect) {
@@ -198,8 +198,10 @@ export const ReviewList = () => {
                 <p className='rating'>{rating}</p>
               </article>
             </article>       
-            <p className='message'>Review: {review.message}</p>
-            {driverComment}
+            <p className='message'>{review.message}</p>
+            <article className="owner-comment">
+              {driverComment}
+            </article>
             <p id='review-date'>{dateString}</p>
           </li>
         )

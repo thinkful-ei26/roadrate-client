@@ -3,7 +3,7 @@ import {API_BASE_URL} from '../config';
 import { Redirect, Link } from 'react-router-dom';
 import PagesNav from './pages-nav';
 // import icon from '../assets/thumbs-up.png';
-import '../styles/my-plates.css'
+import '../styles/plates/my-plates-list.css'
 
 export const MyPlatesList = () => {
   const [ plates, setPlates ] = useState([]);
@@ -54,44 +54,30 @@ export const MyPlatesList = () => {
    if (plates) {
     plate = plates.map((plate, index) => { 
       return (
-        <li className='plate-item' key={index} tabIndex='0'>
-          <div className='plate-wrapper'>
-            <button 
-              className="plate"
-              onClick={ () => myPlateClick(plate) }
-            >
-              <span className="plate-text" >
-                {plate.plateNumber} - {plate.plateState}
-              </span>
-            </button>
-          </div>
+        <li className='plate-list-item' key={index} tabIndex='0'>
+          <button 
+            className="my-plate-btn"
+            onClick={ () => myPlateClick(plate) }
+          >
+            {plate.plateNumber} - {plate.plateState}
+          </button>
         </li>
       )
     })
   };
 
   return (
-    <div className="my-plates">
+    <main className="my-plates">
      
       <PagesNav />
-     
-      {/* <div className="my-plates-nav">
-        <Link to="/" className="my-plates-home-link">Dashboard</Link>
-      </div>     */}
-      
         <h2>My Plates</h2>
         {noPlatesMessage()}     
-      {/* <img 
-        src={icon} 
-        alt="icon" 
-        className="plates-icon"
-      /> */}
       
-      <ul className='plates'>
+      <ul className='my-plates-list'>
         {plate}
       </ul>
 
-    </div>
+    </main>
 
   );
 };
