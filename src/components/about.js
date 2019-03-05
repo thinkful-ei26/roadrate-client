@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import icon from '../assets/thumbs-up.png';
-import '../styles/about.css';
+import '../styles/pages/about.css';
 
 // ReactModal.setAppElement('#root')
 

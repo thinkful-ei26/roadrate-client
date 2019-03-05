@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {API_BASE_URL} from '../config';
 import Spinner from 'react-spinkit';
-import '../styles/reviews.css'
-import MaterialIcon, {colorPalette} from 'material-icons-react';
+import MaterialIcon from 'material-icons-react';
 import { Redirect } from 'react-router-dom';
 
 export const Review = () => {

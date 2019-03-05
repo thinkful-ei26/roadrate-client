@@ -1,8 +1,7 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import PagesNav from './pages-nav';
-// import icon from '../assets/thumbs-up.png';
 import '../styles/plates/my-plates-list.css'
 
 export const MyPlatesList = () => {
@@ -58,7 +57,7 @@ export const MyPlatesList = () => {
           <button 
             className="my-plate-btn"
             onClick={ () => myPlateClick(plate) }
-          >
+            >
             {plate.plateNumber} - {plate.plateState}
           </button>
         </li>
@@ -67,18 +66,14 @@ export const MyPlatesList = () => {
   };
 
   return (
-    <main className="my-plates">
-     
+    <main className="my-plates">  
       <PagesNav />
-        <h2>My Plates</h2>
-        {noPlatesMessage()}     
-      
+      <h2>My Plates</h2>
+      {noPlatesMessage()}         
       <ul className='my-plates-list'>
         {plate}
       </ul>
-
     </main>
-
   );
 };
 

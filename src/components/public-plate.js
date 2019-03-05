@@ -1,14 +1,13 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
-import Review from './Review';
-import MaterialIcon, {colorPalette} from 'material-icons-react';
-import { Link } from 'react-router-dom';
+import MaterialIcon from 'material-icons-react';
 import Spinner from 'react-spinkit';
 import PagesNav from './pages-nav';
-import '../styles/public-plate.css';
+import '../styles/plates/public-plate.css';
 
 export const PublicPlate = () => {
   const [plate, setPlate] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [plateId, setPlateId] = useState('');
   const [ reviews, setReviews] = useState('');
 
@@ -39,16 +38,16 @@ export const PublicPlate = () => {
     }, []);
 
   let _plate = (
-    <div className="spinner" style={{margin: '0 auto'}}>
+    <article className="spinner" style={{margin: '0 auto'}}>
       <Spinner name="line-spin-fade-loader" color="green"/>
-    </div>
+    </article>
   )
 
     let rating;
     let review = (
-      <div className="spinner" style={{margin: '0 auto'}}>
+      <article className="spinner" style={{margin: '0 auto'}}>
         <Spinner name="line-spin-fade-loader" color="green"/>
-      </div>
+      </article>
     )
 
     let driverComment;
@@ -216,15 +215,8 @@ export const PublicPlate = () => {
     */
     
     <div className="plate-div">
-    <PagesNav />
-      {/* <div className="plate-div-nav">
-        <Link to="/" className="my-plates-back-link">
-          Dashboard
-        </Link>
-      </div> */}
-     
+      <PagesNav />
       {_plate}
-    
       <ul className='review-list'>
         {review}
       </ul>

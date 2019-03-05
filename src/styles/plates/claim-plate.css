@@ -42,6 +42,7 @@
   background: rgb(52, 110, 98);
   box-shadow: 0 1px 1px 0 rgba(19, 18, 18, 0.3);
   border: none;
+  border-radius: 3px;
 }
 
 .plate-table {

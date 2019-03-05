@@ -3,7 +3,7 @@ import { API_BASE_URL } from '../config';
 import { Link } from 'react-router-dom';
 import ReviewList from './ReviewList';
 import DashboardNav from './dashboard-nav';
-import '../styles/dashboard.css';
+import '../styles/pages/dashboard.css';
 import ReviewForm from './review-form';
 
 export const Dashboard = (props) => {

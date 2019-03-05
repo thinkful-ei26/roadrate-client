@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Nav from './nav';
 import ReviewList from './ReviewList';
 import About from './about.js';
-import '../styles/landing.css';
+import '../styles/pages/landing.css';
 
 export const LandingPage = (props) => {
     // If we are logged in redirect straight to the user's dashboard
