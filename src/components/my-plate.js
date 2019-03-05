@@ -63,7 +63,7 @@ export const MyPlate = () => {
       return res.json();
     })
     .catch(err => {
-      alert("We're sorry. Something went wrong.")
+      // alert("We're sorry. Something went wrong.")
       console.log(err);
     });
   }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { API_BASE_URL } from '../config';
 
-export const CreatePlateForm = (props) => {
+export const OwnerResponseForm = (props) => {
   const [ ownerResponse, setOwnerResponse ] = useState('');
   const [ successMessage, setSuccessMessage ] = useState('');
   const [ hideForm, setHideForm ] = useState(false);
@@ -84,4 +84,4 @@ export const CreatePlateForm = (props) => {
   )
 }
 
-export default CreatePlateForm;
+export default OwnerResponseForm;

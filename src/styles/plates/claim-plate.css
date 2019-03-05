@@ -1,7 +1,5 @@
-.claimPlate {
+.claim-plate {
   display: flex;
-  /* margin: 10px; */
-  /* padding: 5px; */
   flex-direction: column;
   background: inherit;
 }
@@ -12,21 +10,31 @@
   color: rgb(52, 110, 98);
 }
 
-/* .claim-search {
-  margin: 0 auto;
-} */
+.claim-plate-search {
+  width: 275px;
+  margin: auto auto;
+}
 
+/* Fieldset ID */
 #claim-plate-search {
   padding: 10px;
   border: 1px solid whitesmoke;
   margin-top: 20px;
 }
 
-.claim-back-link {
-  margin: 10px;
+.claim-plate-search-inputs {
+  display: flex
 }
 
-button.search-btn {
+/* plate number search input */
+#claim-search {
+  background-color: whitesmoke;
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+}
+
+.search-btn {
   padding: 8px;
   font-size: 14px;
   margin: 8px auto;
@@ -36,20 +44,20 @@ button.search-btn {
   border: none;
 }
 
-.inline-search {
-  display: flex;
-}
-
-#claim-search.claim-search-input {
-  background-color: whitesmoke;
-  display: inline-block;
-  width: 100%;
-  padding: 10px;
-}
-
 .plate-table {
   margin: 0 auto;
   padding: 5px;
+}
+
+select.browser-default {
+  font-size: 12px;
+  text-align-last:center; 
+  width: 100px;
+}
+
+button.register-plate {
+  color: rgb(52, 110, 98); 
+  margin: 0 auto;
 }
 
 table {
@@ -107,29 +115,6 @@ tr th:nth-child(5) {
 
 th, td {
   margin: 30px;
-}
-
-select.browser-default {
-  font-size: 12px;
-  text-align-last:center; 
-  display: inline-block;
-  width: 100px;
-}
-
-.claim-search-label, .plateState-label {
-  flex: 1;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 0%;
-}
-
-.plateState-label{
-  display: none;
-}
-
-button.register-plate {
-  color: rgb(52, 110, 98); 
-  margin: 0 auto;
 }
 
 @media only screen and (max-width: 479px) {
