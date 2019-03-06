@@ -162,7 +162,6 @@ export const RegistrationForm = () => {
 
   /* ====== JSX PASSWORD VALIDATION ====== */
   let passwordValidation;
-  console.log(password)
   if(password === '') {
     passwordValidation = null
   } else if (validPasswordLength && validPasswordCharacters) {
