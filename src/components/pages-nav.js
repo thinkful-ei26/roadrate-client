@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import icon from '../assets/thumbs-up.png';
-import '../styles/dashboard-nav.css';
+import '../styles/navbars/dashboard-nav.css';
 
 export const PagesNav = () => {
 

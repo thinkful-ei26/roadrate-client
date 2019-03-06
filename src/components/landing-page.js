@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import Nav from './nav';
-import ReviewList from './ReviewList';
+import LandingNav from './landing-nav';
+import ReviewList from './review-list';
 import About from './about.js';
 import '../styles/pages/landing.css';
 
@@ -14,7 +14,7 @@ export const LandingPage = (props) => {
     return (
       <main className="home">
         <section className="landing-top">
-          <Nav />
+          <LandingNav />
           <article className='landing-content'>
             <article className='landing-text'>
               <h1>RoadRate</h1>

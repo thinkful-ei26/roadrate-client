@@ -10,9 +10,11 @@ export const RegistrationForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("")
   const [confirmEmail, setConfirmEmail] = useState("")
+  // eslint-disable-next-line no-unused-vars
   const [authToken, setAuthToken] = useState("") 
   const [loggedIn, setLoggedIn] = useState(true)
   const [validUsername, SetValidUsername] = useState('')
+    // eslint-disable-next-line no-unused-vars
   const [modalOpen, setModalOpen] = useState(true);
 
   
@@ -141,12 +143,12 @@ export const RegistrationForm = () => {
   }
 
   return (
-    <div className="registration">
+    <section className="registration">
     {
       localStorage.loggedIn ? (
         <Redirect to="/dashboard" />
       ) : (
-      <div className="registration-form">
+      <article className="registration-form">
         <form className="registration-form"
           onSubmit={handleSubmit}
         >
@@ -225,10 +227,9 @@ export const RegistrationForm = () => {
           </button>
           <Link to="/" className="registration-link" aria-labelledby="go back link to landing page"  >Go Back</Link>
         </form>
-      </div>
-      )}
-      
-    </div>
+      </article>
+      )}   
+    </section>
   );
 }
 

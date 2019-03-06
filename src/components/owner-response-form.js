@@ -4,6 +4,7 @@ import { API_BASE_URL } from '../config';
 export const OwnerResponseForm = (props) => {
   const [ ownerResponse, setOwnerResponse ] = useState('');
   const [ successMessage, setSuccessMessage ] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [ hideForm, setHideForm ] = useState(false);
 
   let formBody;
@@ -48,39 +49,35 @@ export const OwnerResponseForm = (props) => {
         formBody = <p>Thanks. Your response was saved.</p>
         // return <Redirect to='/my-plate' />
       } else {
-        formBody = (<fieldset id='owner-submit-form'>
-        <legend>Leave a Response</legend>
-          <form 
-            id="owner-response-form"
-            onSubmit={handleSubmit}
+        formBody = (
+        <form id="owner-response-form" onSubmit={handleSubmit}>    
+          <fieldset id='owner-submit-form'></fieldset>
+          <legend>Leave a Response</legend>
+          <label 
+            htmlFor="submit-response"
+            className="owner-response-label"
+            aria-label="owner-response-form"
           >
-            <label 
-              htmlFor="submit-response"
-              className="owner-response-label"
-              aria-label="owner-response-form"
-            >
-              <textarea
-                value={ownerResponse}
-                onChange={e => setOwnerResponse(e.target.value)}
-                type="textbox"
-                id="owner-response"
-                name="owner-response"
-                placeholder="Your response"
-              />
-            </label>
-    
-            <button id="submit-owner-response-btn">
-              Submit
-            </button>
-          </form>
-        </fieldset>)
+            <textarea
+              value={ownerResponse}
+              onChange={e => setOwnerResponse(e.target.value)}
+              type="textbox"
+              id="owner-response"
+              name="owner-response"
+              placeholder="Your response"
+            />
+          </label>
+  
+          <button id="submit-owner-response-btn">
+            Submit
+          </button>
+        </form>)
       }
 
-
   return (
-      <div className="submit-response">
-        {formBody}
-      </div>  
+    <section className="submit-response">
+      {formBody}
+    </section>  
   )
 }
 

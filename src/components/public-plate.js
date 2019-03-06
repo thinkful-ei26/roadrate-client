@@ -183,7 +183,7 @@ export const PublicPlate = () => {
       })
     };
   
-    if(plate){
+    if (plate){
       let karmaStyling;
       if (plate.karma > 0) {
         karmaStyling = 'public-plate-wrapper-positive'
@@ -191,18 +191,18 @@ export const PublicPlate = () => {
         karmaStyling = 'public-plate-wrapper-negative'
       }
       _plate = (
-        <div className={karmaStyling}>
-          <div className='plate-content'>
-            <div className="plate-title">
+        <article className={karmaStyling}>
+          <article className='plate-content'>
+            <article className="plate-title">
               <h2 id={plate.plateId}>{plate.plateNumber}</h2>     
-            </div>
+            </article>
 
-            <div className="plate-info">
+            <article className="plate-info">
               <p>State: {plate.plateState}</p>
               <p>Karma: {plate.karma}</p>       
-            </div>
-          </div>
-        </div>
+            </article>
+          </article>
+        </article>
       )
     }
 
@@ -214,13 +214,13 @@ export const PublicPlate = () => {
     - Doesn't rely on localStorage
     */
     
-    <div className="plate-div">
+    <section className="plate-div">
       <PagesNav />
       {_plate}
       <ul className='review-list'>
         {review}
       </ul>
-    </div>
+    </section>
 
   );
 };

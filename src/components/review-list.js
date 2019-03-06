@@ -60,18 +60,16 @@ export const ReviewList = () => {
           rating = <MaterialIcon icon="thumb_down" />
         }
 
-
         if (review.ownerResponse) {
           driverComment = <p> Driver Response: {review.ownerResponse}</p>
         }
 
-        const handleClick = () => {
-          localStorage.setItem('currentPlateState', review.plateState)
-          localStorage.setItem('currentPlateNumber', review.plateNumber)
-        }
+        // const handleClick = () => {
+        //   localStorage.setItem('currentPlateState', review.plateState)
+        //   localStorage.setItem('currentPlateNumber', review.plateNumber)
+        // }
 
         const thisDate = new Date();
-        
         const date = new Date(review.createdAt)
         const year = date.getFullYear();
         let month = (date.getMonth() + 1).toString();

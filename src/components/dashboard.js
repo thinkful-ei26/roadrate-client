@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../config';
 import { Link } from 'react-router-dom';
-import ReviewList from './ReviewList';
+import ReviewList from './review-list';
 import DashboardNav from './dashboard-nav';
 import '../styles/pages/dashboard.css';
 import ReviewForm from './review-form';

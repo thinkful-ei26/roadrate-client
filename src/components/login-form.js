@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; 
 import { API_BASE_URL } from '../config';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
