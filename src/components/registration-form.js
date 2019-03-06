@@ -10,6 +10,7 @@ export const RegistrationForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("")
   const [confirmEmail, setConfirmEmail] = useState("")
+  // eslint-disable-next-line no-unused-vars
   const [authToken, setAuthToken] = useState("") 
   const [loggedIn, setLoggedIn] = useState(true)
   // const [modalOpen, setModalOpen] = useState(true);
@@ -228,12 +229,12 @@ export const RegistrationForm = () => {
 
   /* ====== RENDER JSX ====== */
   return (
-    <div className="registration">
+    <section className="registration">
     {
       localStorage.loggedIn ? (
         <Redirect to="/dashboard" />
       ) : (
-      <div className="registration-form">
+      <article className="registration-form">
         <form className="registration-form"
           onSubmit={handleSubmit}
         >
@@ -264,7 +265,7 @@ export const RegistrationForm = () => {
               className="registration-password-input" 
               type="password" 
               name="password" 
-              autocomplete="new-password" 
+              autoComplete="new-password" 
               id="password" 
               value={password}
               onChange={e => setPassword(e.target.value)}
@@ -329,10 +330,9 @@ export const RegistrationForm = () => {
             Go Back
           </Link>
         </form>
-      </div>
-      )}
-      
-    </div>
+      </article>
+      )}   
+    </section>
   );
 }
 

@@ -1,0 +1,40 @@
+.my-plates {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.my-plates-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.my-plates h2 {
+  position: relative;
+  padding-top: 10px;
+  margin: 0 auto;
+  color: rgb(52, 110, 98);
+}
+
+.plate-list-item {
+  padding: 10px;
+}
+
+.my-plate-btn {
+  position: relative;
+  padding-top: 10px;
+  margin: 0 auto;
+  justify-content: space-between;
+  display: block;
+  width: 300px;
+  height: 70px;
+  background: white;
+  border-radius: 5px;
+  /* background: linear-gradient(to bottom,  #aaaaaa 0%,#ffffff 100%);  */
+  font-family: LicensePlate;
+  font-size: 46px;
+  color: rgb(52, 110, 98);
+  box-shadow: 0 1px 1px 0 rgba(19, 18, 18, 0.1);
+  font-weight: lighter;
+}

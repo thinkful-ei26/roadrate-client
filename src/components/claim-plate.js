@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
 import PagesNav from './pages-nav';
-import '../styles/claim-plate.css';
+import '../styles/plates/claim-plate.css';
 
 export const claimPlate = () => {
   const [ plateNumber, setPlateNumber ] = useState('');
@@ -56,6 +56,7 @@ export const claimPlate = () => {
         plateNumber: plateNumber.toUpperCase(),
         plateState,
         userId,
+        isOwned: true,
       })
     })
     .then(res => {
@@ -66,8 +67,10 @@ export const claimPlate = () => {
       return data
     })
     .catch(err => {
-      // alert("We're sorry. Something went wrong.")
-      console.log(err);
+      if (err) {
+        alert("We're sorry. Something went wrong.")
+        console.log(err);
+      }
     });
   }
 
@@ -105,10 +108,11 @@ export const claimPlate = () => {
 
   /* ========= DYNAMIC SEARCH RESULT TABLE ========== */
   let plateTable;
-
-  if (plates && plates !== 'before search' && !plates.userId ) {
+  console.log(plates)
+  if (plates && plates !== 'before search' && !plates.isOwned ) {
   plateTable = (
     <table>
+      <tbody>
       <tr>
         <th><span className="mobile-hide">License</span> Plate</th>
         <th>State</th>
@@ -128,22 +132,26 @@ export const claimPlate = () => {
             </button>
           </td>
         </tr>
+        </tbody>
       </table>
     )
   } else if (plateNumber === '') {
     plateTable = (
       <table>
-      <tr>
-      <th><span className="mobile-hide">License</span> Plate</th>
-        <th>State</th>
-        <th>Register <span className="mobile-hide">Your Plate</span></th>
-      </tr>
+        <tbody>
+          <tr>
+            <th><span className="mobile-hide">License</span> Plate</th>
+            <th>State</th>
+            <th>Register <span className="mobile-hide">Your Plate</span></th>
+          </tr>
+        </tbody>
     </table>
     )
   } else if (plates === [] || plates === undefined) {
     // if the plateNumber is not in DB, then allow user to create a new plate & register it as theirs
     plateTable = (
       <table>
+        <tbody>
         <tr>
         <th><span className="mobile-hide">License</span> Plate</th>
         <th>State</th>
@@ -163,13 +171,16 @@ export const claimPlate = () => {
           </button>
           </td>
         </tr>
+        </tbody>
       </table>
     )
-  } else if (plates.userId) {
+  } else if (plates.isOwned) {
+    console.log('owned')
     plateTable = (
-    <div className="plateTable">
+    <section className="plateTable">
       <table>
-        <tr>
+        <tbody>
+          <tr>
             <th><span className="mobile-hide">License</span> Plate</th>
             <th>State</th>
             <th>Add<span className="mobile-hide"> to Your Account</span></th>
@@ -182,16 +193,15 @@ export const claimPlate = () => {
               ALREADY CLAIMED
             </td>
           </tr>
-        </table>
-
+        </tbody>
+      </table>
         <p>
           Need to <strong>Unlink</strong> your plate? Go to:
         </p>
         <Link to="/my-plates">
           <span className="my-plates-link">My Plates</span>
         </Link>
-
-      </div>
+      </section>
     )
   } else {
     plateTable = (<p>Submit a search</p>)
@@ -199,121 +209,114 @@ export const claimPlate = () => {
 
   /* ========= RENDER CLAIM PLATE PAGE ========== */
   return (
-    
-    <div className="claimPlate">
-      <PagesNav />
-      {/* <div className="my-plates-nav"> 
-        <Link to="/" className="my-plates-home-link">
-          Dashboard
-        </Link> 
-     </div> */}
-      
-    <h2>Claim A Plate</h2>
-
-    <div className="claim-search">
-     <fieldset id="claim-plate-search">
-      <legend>Search a Valid Plate by State</legend>
+    <main className="claim-plate">
+      <PagesNav />   
+      <h2>Claim A Plate</h2>
+      <section className="claim-plate-search">
         <form 
-          id="claim-search-form"
-          className="claim-search-form"
-          onSubmit={handleSubmit}
-        >
-        <div className="inline-search">
-          <label 
-            htmlFor="claim-search"
-            className="claim-search-label"
-            aria-label="claim-search-form"
+            id="claim-search-form"
+            onSubmit={handleSubmit}
           >
-            <input
-              value={plateNumber}
-              onChange={e => setPlateNumber(e.target.value.toUpperCase())}
-              type="search"
-              id="claim-search"
-              name="claim-search"
-              className="claim-search-input"
-              placeholder="Search plate numbers"
-              pattern="^[a-zA-Z0-9]{1,8}$" 
-              title="Plate number should be between 1 to 8 characters without special characters."
-            />
-          </label>
-
-          <label className='plateState-label' htmlFor='plateState'>State: </label>
-            <select 
-              className='browser-default' 
-              value={plateState} 
-              onChange={(e) => setPlateState(e.target.value)}
+          <fieldset id="claim-plate-search">
+            <legend>Search a Valid Plate by State</legend>     
+            <article className="claim-plate-search-inputs">          
+              <label 
+                htmlFor="claim-search"
+                className="claim-search-label"
+                aria-label="claim-search-form">
+              </label>
+              <input
+                value={plateNumber}
+                  onChange={e => setPlateNumber(e.target.value.toUpperCase())}
+                  type="search"
+                  id="claim-search"
+                  name="claim-search"
+                  className="claim-search-input"
+                  placeholder="Search plate numbers"
+                  pattern="^[a-zA-Z0-9]{1,8}$" 
+                  title="Plate number should be between 1 to 8 characters without special characters."
+                  aria-labelledby="plate-number"
+              />
+              <label 
+                className='plate-state-label' 
+                htmlFor='plate-state'
+                aria-label="plate-state">
+              </label>
+              <select 
+                className='browser-default' 
+                value={plateState} 
+                onChange={(e) => setPlateState(e.target.value)}
+              >
+                <option value=''>Select State</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District Of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+              </select>              
+            </article>
+            <button
+              className="search-btn" 
+              aria-label="search-btn"
+              onClick={() => {setSuccessMessage('')}}
+              disabled={!plateNumber || !plateState}
             >
-              <option value=''>Select State</option>
-              <option value="AL">Alabama</option>
-              <option value="AK">Alaska</option>
-              <option value="AZ">Arizona</option>
-              <option value="AR">Arkansas</option>
-              <option value="CA">California</option>
-              <option value="CO">Colorado</option>
-              <option value="CT">Connecticut</option>
-              <option value="DE">Delaware</option>
-              <option value="DC">District Of Columbia</option>
-              <option value="FL">Florida</option>
-              <option value="GA">Georgia</option>
-              <option value="HI">Hawaii</option>
-              <option value="ID">Idaho</option>
-              <option value="IL">Illinois</option>
-              <option value="IN">Indiana</option>
-              <option value="IA">Iowa</option>
-              <option value="KS">Kansas</option>
-              <option value="KY">Kentucky</option>
-              <option value="LA">Louisiana</option>
-              <option value="ME">Maine</option>
-              <option value="MD">Maryland</option>
-              <option value="MA">Massachusetts</option>
-              <option value="MI">Michigan</option>
-              <option value="MN">Minnesota</option>
-              <option value="MS">Mississippi</option>
-              <option value="MO">Missouri</option>
-              <option value="MT">Montana</option>
-              <option value="NE">Nebraska</option>
-              <option value="NV">Nevada</option>
-              <option value="NH">New Hampshire</option>
-              <option value="NJ">New Jersey</option>
-              <option value="NM">New Mexico</option>
-              <option value="NY">New York</option>
-              <option value="NC">North Carolina</option>
-              <option value="ND">North Dakota</option>
-              <option value="OH">Ohio</option>
-              <option value="OK">Oklahoma</option>
-              <option value="OR">Oregon</option>
-              <option value="PA">Pennsylvania</option>
-              <option value="RI">Rhode Island</option>
-              <option value="SC">South Carolina</option>
-              <option value="SD">South Dakota</option>
-              <option value="TN">Tennessee</option>
-              <option value="TX">Texas</option>
-              <option value="UT">Utah</option>
-              <option value="VT">Vermont</option>
-              <option value="VA">Virginia</option>
-              <option value="WA">Washington</option>
-              <option value="WV">West Virginia</option>
-              <option value="WI">Wisconsin</option>
-              <option value="WY">Wyoming</option>
-            </select>
-        </div>
-          <button
-            className="search-btn" 
-            aria-label="search-btn"
-            onClick={() => {setSuccessMessage('')}}
-            disabled={!plateNumber || !plateState}
-          >
-            search
-          </button>
+              search
+            </button>      
+          </fieldset>
         </form>
-      </fieldset>
-    </div>
-
-    <div className="plate-table">
-      {plateTable}
-    </div>
-    <p>{successMessage}</p>
-  </div> 
+      </section>
+      <section className="plate-table">
+        {plateTable}
+      </section>
+      <p>{successMessage}</p>
+    </main> 
   )
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import RegistrationForm from './registration-form';
 import icon from '../assets/thumbs-up.png';
-import '../styles/registration-form.css';
+import '../styles/forms/registration-form.css';
 
 export function RegistrationPage() {
     return (

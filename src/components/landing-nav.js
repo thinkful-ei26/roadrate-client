@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import LoginForm from './login-form';
-import '../styles/nav.css';
+import '../styles/navbars/landing-nav.css';
 import '../styles/modal.css';
 
-export const Nav = () => {
+export const LandingNav = () => {
 
     const [modalOpen, setModalOpen] = useState(false);
     const onClose = () => setModalOpen(false);
@@ -67,4 +67,4 @@ export const Nav = () => {
   )
 }
 
-export default Nav;
+export default LandingNav;

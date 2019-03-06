@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {API_BASE_URL} from '../config';
-import '../styles/review-form.css';
+import '../styles/forms/review-form.css';
 
 export const ReviewForm = (props) => {
   const [ plateNumber, setPlateNumber ] = useState('');
@@ -65,7 +65,7 @@ export const ReviewForm = (props) => {
   }
 
   return (
-    <div className='submit-review'>
+    <section className='submit-review'>
       <form id='submit-review-form' onSubmit={handleSubmit}>
         <h3>Submit A RoadRating: </h3>
         <label htmlFor='plateId' id="review-label">
@@ -185,7 +185,7 @@ export const ReviewForm = (props) => {
       </form>
       {invalidMessage}
       {successMessage}  
-    </div>
+    </section>
   )
 }
 

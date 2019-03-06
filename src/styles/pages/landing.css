@@ -2,15 +2,13 @@
   text-align: center;
   background: #f4f4f4;
   width: 100vw;
-  /* background-image: linear-gradient(to top left, rgb(86, 148, 156),#57bc90);  */
 }
 
 .landing-top {
-  /* background-image: url('../assets/fog.jpg'); */
   background:  linear-gradient(
-    rgba(14, 141, 113, 0.411), 
-    rgba(0, 0, 0, 0.486)
-  ), url('../assets/fog.jpg');
+    rgba(14, 141, 113, 0.5), 
+    rgba(0, 0, 0, 0.6)
+  ), url('../../assets/fog.jpg');
   background-size: 100% 100%;
   background-blend-mode: luminosity;
 }
@@ -53,21 +51,4 @@
   font-style: italic;
   letter-spacing: 1px;
   color: #f4f4f4d7;
-  /* background: rgba(248, 248, 248, 0.308); */
-}
-
-/* .about {
-  margin-top: 10px;
-} */
-
-#landing-img {
-  border-style: none;
-  /* max-width: 100%; */
-  border-radius: 50%;
-  /* height: 62%; */
-  /* width: 50%; */
-  margin: 12px;
-  height: 200px;
-  width: 200px;
-  display: none;
 }

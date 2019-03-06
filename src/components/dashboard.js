@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../config';
 import { Link } from 'react-router-dom';
-import ReviewList from './ReviewList';
+import ReviewList from './review-list';
 import DashboardNav from './dashboard-nav';
-import '../styles/dashboard.css';
+import '../styles/pages/dashboard.css';
 import ReviewForm from './review-form';
 
 export const Dashboard = (props) => {
@@ -54,8 +54,8 @@ export const Dashboard = (props) => {
   }
  
   return (
-    <div className="dashboard">
-      <div className="logout-div">
+    <main className="dashboard">
+      <section className="logout-div">
         <Link to="/" id='logout-link'>
             <button className="logout" onClick={() => {
               props.logout()
@@ -64,29 +64,23 @@ export const Dashboard = (props) => {
               Logout
             </button>
         </Link >
-      </div>
-
-      <div className="dashboard-nav"> 
-        <DashboardNav />
-        <div className="dashboard-greeting">
-          <p className="greeting-text">hey there, {username}</p>
-        </div>
-        <button 
-            className="add-review"
-            onClick={ e => {
-                e.preventDefault(); 
-                setSubmitReview(!submitReview); 
-              }
-            }>
-            <span className="new-review">New Review</span>
-        </button>
-      </div>
-      
-
+      </section>
+      <DashboardNav />
+      <section className="dashboard-greeting">
+        <p className="greeting-text">hey there, {username}</p>
+      </section>
+      <button 
+          className="add-review"
+          onClick={ e => {
+              e.preventDefault(); 
+              setSubmitReview(!submitReview); 
+            }
+          }>
+          <span className="new-review">New Review</span>
+      </button>
       {reviewForm}
-      <ReviewList />
-    
-    </div> 
+      <ReviewList /> 
+    </main> 
   )
 }
 

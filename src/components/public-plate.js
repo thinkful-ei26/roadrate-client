@@ -1,14 +1,13 @@
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
-import Review from './Review';
-import MaterialIcon, {colorPalette} from 'material-icons-react';
-import { Link } from 'react-router-dom';
+import MaterialIcon from 'material-icons-react';
 import Spinner from 'react-spinkit';
 import PagesNav from './pages-nav';
-import '../styles/public-plate.css';
+import '../styles/plates/public-plate.css';
 
 export const PublicPlate = () => {
   const [plate, setPlate] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [plateId, setPlateId] = useState('');
   const [ reviews, setReviews] = useState('');
 
@@ -16,7 +15,7 @@ export const PublicPlate = () => {
     /* ==== extract plateId from url ==== */
     const address = document.location.href;
     const plateId = address.substring((address.indexOf('m')+ 11), address.length);
-    //when running locally use line 20
+    //when running locally use next line
     // const plateId = address.substring((address.indexOf('d')+ 2), address.length);
     setPlateId(plateId)
     
@@ -39,16 +38,16 @@ export const PublicPlate = () => {
     }, []);
 
   let _plate = (
-    <div className="spinner" style={{margin: '0 auto'}}>
+    <article className="spinner" style={{margin: '0 auto'}}>
       <Spinner name="line-spin-fade-loader" color="green"/>
-    </div>
+    </article>
   )
 
     let rating;
     let review = (
-      <div className="spinner" style={{margin: '0 auto'}}>
+      <article className="spinner" style={{margin: '0 auto'}}>
         <Spinner name="line-spin-fade-loader" color="green"/>
-      </div>
+      </article>
     )
 
     let driverComment;
@@ -62,7 +61,7 @@ export const PublicPlate = () => {
         }
 
         if (review.ownerResponse) {
-          driverComment = <p> Driver Response: {review.ownerResponse}</p>
+          driverComment =   <p> Driver Response: {review.ownerResponse}</p>
         } 
 
         const thisDate = new Date();
@@ -173,15 +172,18 @@ export const PublicPlate = () => {
                 <p className='rating'>{rating}</p>
               </article>
             </article>        
-            <p className='message'>Review: {review.message}</p>
-            {driverComment}
+            <p className='message'>{review.message}</p>
+            <article className="owner-comment">
+              {driverComment}
+            </article>
+            
             <p id='review-date'>{dateString}</p>
           </li>
         )
       })
     };
   
-    if(plate){
+    if (plate){
       let karmaStyling;
       if (plate.karma > 0) {
         karmaStyling = 'public-plate-wrapper-positive'
@@ -189,18 +191,18 @@ export const PublicPlate = () => {
         karmaStyling = 'public-plate-wrapper-negative'
       }
       _plate = (
-        <div className={karmaStyling}>
-          <div className='plate-content'>
-            <div className="plate-title">
+        <article className={karmaStyling}>
+          <article className='plate-content'>
+            <article className="plate-title">
               <h2 id={plate.plateId}>{plate.plateNumber}</h2>     
-            </div>
+            </article>
 
-            <div className="plate-info">
+            <article className="plate-info">
               <p>State: {plate.plateState}</p>
               <p>Karma: {plate.karma}</p>       
-            </div>
-          </div>
-        </div>
+            </article>
+          </article>
+        </article>
       )
     }
 
@@ -212,20 +214,13 @@ export const PublicPlate = () => {
     - Doesn't rely on localStorage
     */
     
-    <div className="plate-div">
-    <PagesNav />
-      {/* <div className="plate-div-nav">
-        <Link to="/" className="my-plates-back-link">
-          Dashboard
-        </Link>
-      </div> */}
-     
+    <section className="plate-div">
+      <PagesNav />
       {_plate}
-    
       <ul className='review-list'>
         {review}
       </ul>
-    </div>
+    </section>
 
   );
 };

@@ -1,19 +1,19 @@
 
 import React, { useState, useEffect }  from 'react'; 
 import {API_BASE_URL} from '../config';
-import { Link } from 'react-router-dom';
-import MaterialIcon, {colorPalette} from 'material-icons-react'; 
+import MaterialIcon from 'material-icons-react'; 
 import OwnerResponseForm from './owner-response-form';
 import PagesNav from './pages-nav';
+import '../styles/plates/single-plate.css';
 
 
 export const MyPlate = () => {
   const [ reviews, setReviews] = useState("");
   const [ plate, setPlate ] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [ submitResponse, setSubmitResponse] = useState('');
   const [ unclaimMessage, setUnclaimMessage ] = useState('');
   const [ unclaimWarning, setUnclaimWarning ] = useState('');
-  const [ responseSubmitted, setResponseSubmitted ] = useState(false);
 
   const fetchReviewsByPlateId = async () => {
     let url = `${API_BASE_URL}/reviews/my-plates/${localStorage.myPlateId}`;
@@ -63,7 +63,7 @@ export const MyPlate = () => {
       return res.json();
     })
     .catch(err => {
-      alert("We're sorry. Something went wrong.")
+      // alert("We're sorry. Something went wrong.")
       console.log(err);
     });
   }
@@ -95,7 +95,6 @@ export const MyPlate = () => {
       let responseForm;
       if (localStorage.submitResponse === review._id) {
         responseForm = <OwnerResponseForm reviewId={review._id} fetchReviews={fetchReviewsByPlateId()}/>
-        // responseButton = '';
         responseButton = <button id="owner-response-btn" onClick={() => {
           localStorage.removeItem('submitResponse')
           setSubmitResponse('')}
@@ -211,8 +210,10 @@ export const MyPlate = () => {
               <p className='rating'>{rating}</p>
             </article>
           </article>        
-          <p className='message'>Review: {review.message}</p>
-          {ownerComment}
+          <p className='message'>{review.message}</p>
+          <article className="owner-comment">
+              {ownerComment}
+            </article>
           {responseButton}
           {responseForm}
           <p id='review-date'>{dateString}</p>
@@ -238,10 +239,10 @@ export const MyPlate = () => {
   if (unclaimWarning) {
     confirmButton = (
       <button
-      className='confirm-buttons'
-      id="unclaim-plate-btn-confirm"
-      onClick={e => unClaimPlateClick(e)}
-      disabled={localStorage.success === 'unclaimed'}
+        className='confirm-buttons'
+        id="unclaim-plate-btn-confirm"
+        onClick={e => unClaimPlateClick(e)}
+        disabled={localStorage.success === 'unclaimed'}
       >Yes</button>)
     noButton = (
       <button
@@ -250,8 +251,9 @@ export const MyPlate = () => {
         onClick={() => setUnclaimWarning(!unclaimWarning)}
       >
         No
-      </button>)
-      areYouSureMessage = <p>Are you sure?</p>
+      </button>
+    )
+    areYouSureMessage = <p>Are you sure?</p>
   }
 
   if (unclaimMessage) {
@@ -261,52 +263,38 @@ export const MyPlate = () => {
     areYouSureMessage = '';
   }
   return (
-    <div className="plate-div">
-    
+    <main className="plate-div"> 
       <PagesNav />
-      {/* <div className="my-plates-nav">
-        <Link to="/" className="my-plates-home-link">Dashboard</Link>
-        <Link to="/my-plates" className="my-plates-back-link">Back</Link>
-      </div>     */}
-
       {/* ===== PLATE DETAILS ===== */} 
-        <div className={karmaStyling}>
-          <div className='plate-content'>
-            <div className="plate-title">
+        <section className={karmaStyling}>
+          <article className='plate-content'>
+            <article className="plate-title">
               <h2 id={plate.plateId}>{plate.plateNumber}</h2>     
-            </div>
+            </article>
 
-            <div className="plate-info">
+            <article className="plate-info">
               <p>State: {plate.plateState}</p>
               <p>Karma: {plate.karma}</p>       
-            </div>
-          </div>
-        </div>
-
-
+            </article>
+          </article>
+        </section>
       {/* ===== PLATE REVIEW LIST ===== */} 
       <ul className='review-list'>
         {review}
       </ul> 
-
       {/* ===== UNCLAIM A PLATE ===== */} 
-      <div className="unclaim-div">
+      <section className="unclaim-div">
         {unClaimButton}
-
-            <div className="unclaim-options">
-              {areYouSureMessage}
-
-              <div className="buttons-div">
-                {confirmButton} 
-                {noButton}                   
-              </div>
-              {
-                unclaimMessage ? (<p>{unclaimMessage}</p>) : (<p></p>)
-              }
-                      
-            </div>
-          </div>
-    </div>
+        <article className="unclaim-options">
+          {areYouSureMessage}
+          <article className="buttons-div">
+            {confirmButton} 
+            {noButton}                   
+          </article>
+          {unclaimMessage ? (<p>{unclaimMessage}</p>) : (<p></p>)}        
+        </article>
+      </section>
+    </main>
   );
 };
 
