@@ -8,8 +8,6 @@ import '../styles/reviews/review-list.css';
 
 export const ReviewList = () => {
   const [ reviews, setReviews] = useState("");
-  // const [ redirect, setRedirect ] = useState(false)
-  // const [searchInput, setSearchInput] = useState("");
   const [ searchPlateState, setSearchPlateState ] = useState("");
   const [ searchPlateNumber, setSearchPlateNumber] = useState("");
 
@@ -63,11 +61,6 @@ export const ReviewList = () => {
         if (review.ownerResponse) {
           driverComment = <p> Driver Response: {review.ownerResponse}</p>
         }
-
-        // const handleClick = () => {
-        //   localStorage.setItem('currentPlateState', review.plateState)
-        //   localStorage.setItem('currentPlateNumber', review.plateNumber)
-        // }
 
         const thisDate = new Date();
         const date = new Date(review.createdAt)
@@ -176,7 +169,7 @@ export const ReviewList = () => {
                   {review.plateNumber} {review.plateState}
                 </button>    
               </Link> 
-              <p id="elapsed-time">{elapsedTime}</p>
+              <p className="elapsed-time">{elapsedTime}</p>
               </article>
               <article className='review-rating'>
                 <p className='rating'>{rating}</p>
@@ -186,7 +179,7 @@ export const ReviewList = () => {
             <article className="owner-comment">
               {driverComment}
             </article>
-            <p id='review-date'>{dateString}</p>
+            <p className='review-date'>{dateString}</p>
           </li>
         )
       });

@@ -10,7 +10,6 @@ export const ReviewForm = (props) => {
   const [ submitted, setSubmitted ] = useState(false)
   const [ invalidMessage, setInvalidMessage ] = useState('')
   
-
   const userPlates = props.plates.map(plate => {
     return {
       userPlateNumber: plate.plateNumber, 
@@ -68,7 +67,7 @@ export const ReviewForm = (props) => {
     <section className='submit-review'>
       <form id='submit-review-form' onSubmit={handleSubmit}>
         <h3>Submit A RoadRating: </h3>
-        <label htmlFor='plateId' id="review-label">
+        <label htmlFor='plateId' className="review-label">
           License Plate: 
         </label>
         <input
@@ -84,6 +83,7 @@ export const ReviewForm = (props) => {
         
         <label htmlFor='rating' id="review-label">Rating:  </label>
         <select 
+          id='rating'
           className='browser-default' 
           value={rating} 
           onChange={(e) => setRating(e.target.value)}
@@ -96,13 +96,13 @@ export const ReviewForm = (props) => {
 
         <label 
           htmlFor='plateState' 
-          id="review-label"
+          className="review-label"
         >
           State:  
         </label>
         <select 
           className='browser-default' 
-          name='plateState'
+          id='plateState'
           value={plateState} 
           onChange={(e) => setPlateState(e.target.value)}
         >
@@ -161,8 +161,8 @@ export const ReviewForm = (props) => {
         </select>
 
         <label 
-          htmlFor='message'   
-          id="review-label"
+          htmlFor='review-message-input'   
+          className="review-label"
         >
           Message: 
         </label>

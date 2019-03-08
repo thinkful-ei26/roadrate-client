@@ -17,7 +17,7 @@ export const PublicPlate = () => {
     const plateId = address.substring((address.indexOf('m')+ 11), address.length);
     //when running locally use next line
     // const plateId = address.substring((address.indexOf('d')+ 2), address.length);
-    setPlateId(plateId)
+    // setPlateId(plateId)
     
     /* ==== fetch plate info using plateId ==== */
     let plateUrl = `${API_BASE_URL}/plates/${plateId}`;
@@ -165,7 +165,7 @@ export const PublicPlate = () => {
               <article className='review-title'>
                 {/* <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img> */}
                 <p className='plate-name'>{review.plateNumber}</p>       
-                <p id="elapsed-time">{elapsedTime}</p>
+                <p className="elapsed-time">{elapsedTime}</p>
               </article>
               
               <article className='review-rating'>
@@ -177,7 +177,7 @@ export const PublicPlate = () => {
               {driverComment}
             </article>
             
-            <p id='review-date'>{dateString}</p>
+            <p className='review-date'>{dateString}</p>
           </li>
         )
       })

@@ -36,7 +36,7 @@ button.review-submit {
   color: rgb(52, 110, 98);
 }
 
-#review-label {
+.review-label {
   padding: 10px;
   display: block;
 }

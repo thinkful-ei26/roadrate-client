@@ -175,7 +175,6 @@ export const claimPlate = () => {
       </table>
     )
   } else if (plates.isOwned) {
-    console.log('owned')
     plateTable = (
     <section className="plateTable">
       <table>
@@ -235,17 +234,19 @@ export const claimPlate = () => {
                   placeholder="Search plate numbers"
                   pattern="^[a-zA-Z0-9]{1,8}$" 
                   title="Plate number should be between 1 to 8 characters without special characters."
-                  aria-labelledby="plate-number"
+                  aria-label="plate-number"
               />
               <label 
                 className='plate-state-label' 
                 htmlFor='plate-state'
-                aria-label="plate-state">
+              >
               </label>
               <select 
-                className='browser-default' 
+                className='browser-default'
+                name='plate-state' 
                 value={plateState} 
                 onChange={(e) => setPlateState(e.target.value)}
+                aria-label='plate-state'
               >
                 <option value=''>Select State</option>
                 <option value="AL">Alabama</option>

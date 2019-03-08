@@ -168,10 +168,10 @@ export const RegistrationForm = () => {
     passwordValidation = (
       <div>
         <p className="valid-password">
-          <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>8 characters minimum</span>
+          <span><svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>8 characters minimum</span>
         </p>
         <p className="valid-password test1">
-          <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
+          <span><svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
         </p>
       </div>
     )
@@ -182,7 +182,7 @@ export const RegistrationForm = () => {
         8 characters minimum
         </p>
         <p className="valid-password test2">
-          <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
+          <span><svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
         </p>
       </div>
     )
@@ -201,7 +201,7 @@ export const RegistrationForm = () => {
     passwordValidation = (
       <div>
         <p className="valid-password">
-           <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>8 characters minimum</span>
+           <span><svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>8 characters minimum</span>
         </p>
       </div>
     )
@@ -209,7 +209,7 @@ export const RegistrationForm = () => {
     passwordValidation = (
       <div>
         <p className="valid-password test4">
-           <span><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
+           <span><svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
         </p>
       </div>
     )
@@ -243,12 +243,13 @@ export const RegistrationForm = () => {
             placeholder="optional nickname"
             type="text"
             name="name"
-            aria-labelledby="name"      
+            aria-label="name"      
           />
 
           {/* ====== USERNAME VALIDATION ====== */}
           {usernameValidation}
 
+          <label htmlFor="register-username"/>
           <input
             value={username}
             onChange={e => setUsername(e.target.value)}
@@ -257,8 +258,12 @@ export const RegistrationForm = () => {
             name="username"
             id="register-username"
             required
-            aria-labelledby="username"    
+            aria-label="username"    
           />
+
+          {/* ====== PASSWORD VALIDATION ====== */}
+          {passwordValidation}
+
           <fieldset className="registration-form-group">
             <input 
               className="registration-password-input" 
@@ -272,11 +277,8 @@ export const RegistrationForm = () => {
               required
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
               title="Must contain at least one number and one uppercase letter and at least 8 or more characters"
-              aria-labelledby="password"  
+              aria-label="password"  
             />
-
-            {/* ====== PASSWORD VALIDATION ====== */}
-            {passwordValidation}
 
         </fieldset>
 
@@ -289,7 +291,7 @@ export const RegistrationForm = () => {
             required
             pattern={password} 
             title={`password: "${password}" & confirmPassword: "${confirmPassword}" must match`}
-            aria-labelledby="confirm Password"  
+            aria-label="confirm Password"  
           />
           <input
             value={email}
@@ -299,7 +301,7 @@ export const RegistrationForm = () => {
             name="email"
             pattern="^([\w\-\.]+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|(([\w\-]+\.)+)([a-zA-Z]{2,4}))$"
             required
-            aria-labelledby="email"  
+            aria-label="email"  
           />
           <input
             value={confirmEmail}
@@ -310,12 +312,12 @@ export const RegistrationForm = () => {
             pattern={email}
             title={`email: "${email}" & confirmEmail: "${confirmEmail}" must match`}
             required
-            aria-labelledby="confirm email"  
+            aria-label="confirm email"  
           />
           <button 
             waves="light "
             type="submit" 
-            aria-labelledby="submit button registration form"  
+            aria-label="submit button registration form"  
             className="registration-submit"
             disabled={ !username || !password || !validUsername }
           >
@@ -324,7 +326,7 @@ export const RegistrationForm = () => {
           <Link 
             to="/" 
             className="registration-link" 
-            aria-labelledby="go back link to landing page"
+            aria-label="go back link to landing page"
           >
             Go Back
           </Link>
