@@ -202,7 +202,7 @@ export const MyPlate = () => {
             <article className='review-title'>
               {/* <img className='isClaimed-icon' src='https://cdn4.iconfinder.com/data/icons/flatastic-11-1/256/user-green-512.png' alt='green user icon'></img> */}
               <p className='plate-name'>{review.plateNumber}</p>       
-              <p id="elapsed-time">{elapsedTime}</p>
+              <p className="elapsed-time">{elapsedTime}</p>
             </article>
             
             <article className='review-rating'>
@@ -215,7 +215,7 @@ export const MyPlate = () => {
             </article>
           {responseButton}
           {responseForm}
-          <p id='review-date'>{dateString}</p>
+          <p className='review-date'>{dateString}</p>
         </li>
       )
     })

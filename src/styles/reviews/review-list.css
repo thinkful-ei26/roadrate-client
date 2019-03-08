@@ -167,13 +167,13 @@
   margin: 0 auto;
 }
 
-#review-date {
-  color: grey;
+.review-date {
+  color: black;
   font-size: 12px;
   text-align: center;
 }
 
-#elapsed-time {
+.elapsed-time {
   font-size: 12px;
   font-style: italic;
 }
