@@ -175,7 +175,6 @@ export const claimPlate = () => {
       </table>
     )
   } else if (plates.isOwned) {
-    console.log('owned')
     plateTable = (
     <section className="plateTable">
       <table>

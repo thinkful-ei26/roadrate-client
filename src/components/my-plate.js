@@ -6,7 +6,6 @@ import OwnerResponseForm from './owner-response-form';
 import PagesNav from './pages-nav';
 import '../styles/plates/single-plate.css';
 
-
 export const MyPlate = () => {
   const [ reviews, setReviews] = useState("");
   const [ plate, setPlate ] = useState("");
@@ -37,7 +36,7 @@ export const MyPlate = () => {
   }, []);
 
    /* ========= UPDATE AN EXISTING PLATE ========== */
-  // PUT to link an existing plate to the current user
+  // PUT call linking an existing plate to the current user
   const unClaimPlateClick = e => {
     e.preventDefault(e);
     const userId = localStorage.userId;

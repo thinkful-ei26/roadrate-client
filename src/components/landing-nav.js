@@ -43,25 +43,21 @@ export const LandingNav = () => {
 
   <div className="navbar">
     <ul className="nav-list">
-        <div className='left-nav'> 
-            <li className="nav-item">
-                <Link to="/register" className="register-link">Register</Link>
-            </li>
-        </div>
+        <li className="nav-item">
+            <Link to="/register" className="register-link">Register</Link>
+        </li>
 
-        <div className='right-nav'>
-                <li className="nav-item">
-                    <button id="login-button" onClick={() => setModalOpen('login')}>Login</button>
-                    {modalOpen && (
-                        <LoginModal
-                            show={modalOpen === 'login'}
-                            toggleModal={setModalOpen}
-                            title="Login to your RoadRate account"
-                            onClose={onClose}
-                        />
-                    )}
-                </li>
-        </div>
+        <li className="nav-item">
+            <button id="login-button" onClick={() => setModalOpen('login')}>Login</button>
+            {modalOpen && (
+                <LoginModal
+                    show={modalOpen === 'login'}
+                    toggleModal={setModalOpen}
+                    title="Login to your RoadRate account"
+                    onClose={onClose}
+                />
+            )}
+        </li>
     </ul>
   </div>
   )

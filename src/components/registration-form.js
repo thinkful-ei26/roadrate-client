@@ -259,6 +259,10 @@ export const RegistrationForm = () => {
             required
             aria-labelledby="username"    
           />
+
+          {/* ====== PASSWORD VALIDATION ====== */}
+          {passwordValidation}
+
           <fieldset className="registration-form-group">
             <input 
               className="registration-password-input" 
@@ -274,9 +278,6 @@ export const RegistrationForm = () => {
               title="Must contain at least one number and one uppercase letter and at least 8 or more characters"
               aria-labelledby="password"  
             />
-
-            {/* ====== PASSWORD VALIDATION ====== */}
-            {passwordValidation}
 
         </fieldset>
 

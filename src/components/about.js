@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import icon from '../assets/thumbs-up.png';
 import '../styles/pages/about.css';
 
-// ReactModal.setAppElement('#root')
-
 export const About = () => {
     const [modalOpen, setModalOpen] = useState(false);
 

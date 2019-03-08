@@ -8,8 +8,6 @@ import '../styles/reviews/review-list.css';
 
 export const ReviewList = () => {
   const [ reviews, setReviews] = useState("");
-  // const [ redirect, setRedirect ] = useState(false)
-  // const [searchInput, setSearchInput] = useState("");
   const [ searchPlateState, setSearchPlateState ] = useState("");
   const [ searchPlateNumber, setSearchPlateNumber] = useState("");
 
@@ -63,11 +61,6 @@ export const ReviewList = () => {
         if (review.ownerResponse) {
           driverComment = <p> Driver Response: {review.ownerResponse}</p>
         }
-
-        // const handleClick = () => {
-        //   localStorage.setItem('currentPlateState', review.plateState)
-        //   localStorage.setItem('currentPlateNumber', review.plateNumber)
-        // }
 
         const thisDate = new Date();
         const date = new Date(review.createdAt)

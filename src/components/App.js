@@ -36,7 +36,6 @@ export const App = () => {
           <Route exact path="/register" component={RegistrationPage} />
         )}
 			<Route exact path="/" component={LandingPage} />
-      {/* <Route exact path="/create-plate" component={CreatePlatePage} /> */}
       <Route path="/plate" component={PublicPlate} />
 			<Route exact path="/login" component={LoginForm} storeUser={storeUser} />
 			<Route exact path="/about" component={About} storeUser={storeUser} />

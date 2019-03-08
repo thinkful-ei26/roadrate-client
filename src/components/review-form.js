@@ -10,7 +10,6 @@ export const ReviewForm = (props) => {
   const [ submitted, setSubmitted ] = useState(false)
   const [ invalidMessage, setInvalidMessage ] = useState('')
   
-
   const userPlates = props.plates.map(plate => {
     return {
       userPlateNumber: plate.plateNumber, 
