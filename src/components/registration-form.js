@@ -87,27 +87,23 @@ export const RegistrationForm = () => {
 
   /* ====== PASSWORD VALIDATION ====== */
   // const re = /\w*[A-Z]\w*[A-Za-z0-9]\w*/g;
-  const re = /(.*[A-Z].*)/;
+  const re = /(.*[A-Z].*)/; //positive look ahead for atleast 1 capital char
   const validateChar = (password) => {
-    console.log('validateChar fired')
     if (re.test(password)) {
       console.log(re)
       console.log('validChar: ',password)
       SetValidPasswordCharacters(true)
-      // localStorage.setItem("validPasswordCharacters", true);
     } else {
       SetValidPasswordCharacters(false)
-      // localStorage.setItem("validPasswordCharacters", false);
     }
   }
 
   const validatePasswordLength = (password) => {
+    console.log(password)
     if (password.length && password.length >= 8 && password.length <= 72) {
       SetValidPasswordLength(true)
-      // localStorage.setItem("validPasswordLength", true)
     } else {
       SetValidPasswordLength(false)
-      // localStorage.setItem("validPasswordLength", false)
     }
   }
 
@@ -171,7 +167,6 @@ export const RegistrationForm = () => {
   if(password === '') {
     passwordValidation = null
   } else if (validPasswordLength && validPasswordCharacters) {
-    console.log('test1')
     passwordValidation = (
       <div>
         <p className="valid-password">
@@ -183,9 +178,6 @@ export const RegistrationForm = () => {
       </div>
     )
   } else if (validPasswordLength && !validPasswordCharacters) {
-    console.log('test3')
-    // console.log(validPasswordLength)
-    // console.log(!validPasswordCharacters)
     passwordValidation = (
       <div>
         <p className="valid-password">
@@ -197,7 +189,6 @@ export const RegistrationForm = () => {
       </div>
     )
   } else if (validPasswordLength) {
-    console.log('test4')
     passwordValidation = (
       <div>
         <p className="valid-password">
@@ -206,7 +197,6 @@ export const RegistrationForm = () => {
       </div>
     )
   } else if (validPasswordCharacters) {
-    console.log('test5')
     passwordValidation = (
       <div>
         <p className="valid-password test4">
@@ -215,7 +205,6 @@ export const RegistrationForm = () => {
       </div>
     )
   } else {
-    console.log('test6')
     passwordValidation = (
       <div>
         <p className="invalid-password">
@@ -277,8 +266,6 @@ export const RegistrationForm = () => {
               onChange={e => setPassword(e.target.value)}
               placeholder="enter password"
               required
-              // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
-              // title="Must contain at least one number and one uppercase letter and at least 8 or more characters"
               aria-label="password"  
             />
 
