@@ -86,29 +86,36 @@ export const RegistrationForm = () => {
   }
 
   /* ====== PASSWORD VALIDATION ====== */
-  const re = /\w*[A-Z]\w*[A-Za-z0-9]\w*/g;
-  const validatePassword = (password) => {
-
-    if(password.length && !password.length > 8) { //length is greater than 8
-     localStorage.setItem("validPasswordLength", false);
-    } else if (password.length && password.length >= 8 && password.length <= 72) {
-      SetValidPasswordLength(true)
-      localStorage.setItem("validPasswordLength", true)
-    } else if (re.test(password)) {
+  // const re = /\w*[A-Z]\w*[A-Za-z0-9]\w*/g;
+  const re = /(.*[A-Z].*)/;
+  const validChar = (password) => {
+    if (re.test(password)) {
       console.log(re)
-      console.log(password)
+      console.log('validChar: ',password)
       SetValidPasswordCharacters(true)
       localStorage.setItem("validPasswordCharacters", true);
     } else {
-      SetValidPasswordLength(false)
       SetValidPasswordCharacters(false)
-      localStorage.setItem("validPasswordLength", false)
       localStorage.setItem("validPasswordCharacters", false);
+    }
+  }
+
+  const validatePassword = (password) => {
+    // console.log('password',password)
+    if (password.length && password.length >= 8 && password.length <= 72) {
+      console.log('optimal length')
+      SetValidPasswordLength(true)
+      localStorage.setItem("validPasswordLength", true)
+    } else {
+      console.log('else')
+      SetValidPasswordLength(false)
+      localStorage.setItem("validPasswordLength", false)
     }
   }
 
   /* ====== USEEFFECT ====== */
   useEffect(() => {
+    validChar(password);
     validatePassword(password);
     validateUsername(username);
   }, [username, password]) 
@@ -166,6 +173,7 @@ export const RegistrationForm = () => {
   if(password === '') {
     passwordValidation = null
   } else if (validPasswordLength && validPasswordCharacters) {
+    console.log('test1')
     passwordValidation = (
       <div>
         <p className="valid-password">
@@ -176,18 +184,10 @@ export const RegistrationForm = () => {
         </p>
       </div>
     )
-  } else if (!validPasswordLength && validPasswordCharacters) {
-    passwordValidation = (
-      <div>
-        <p className="invalid-password">
-        8 characters minimum
-        </p>
-        <p className="valid-password test2">
-          <span><svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
-        </p>
-      </div>
-    )
   } else if (validPasswordLength && !validPasswordCharacters) {
+    console.log('test3')
+    console.log(validPasswordLength)
+    console.log(!validPasswordCharacters)
     passwordValidation = (
       <div>
         <p className="valid-password">
@@ -199,6 +199,7 @@ export const RegistrationForm = () => {
       </div>
     )
   } else if (validPasswordLength) {
+    console.log('test4')
     passwordValidation = (
       <div>
         <p className="valid-password">
@@ -207,6 +208,7 @@ export const RegistrationForm = () => {
       </div>
     )
   } else if (validPasswordCharacters) {
+    console.log('test5')
     passwordValidation = (
       <div>
         <p className="valid-password test4">
@@ -215,6 +217,7 @@ export const RegistrationForm = () => {
       </div>
     )
   } else {
+    console.log('test6')
     passwordValidation = (
       <div>
         <p className="invalid-password">
@@ -276,8 +279,8 @@ export const RegistrationForm = () => {
               onChange={e => setPassword(e.target.value)}
               placeholder="enter password"
               required
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
-              title="Must contain at least one number and one uppercase letter and at least 8 or more characters"
+              // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
+              // title="Must contain at least one number and one uppercase letter and at least 8 or more characters"
               aria-label="password"  
             />
 
