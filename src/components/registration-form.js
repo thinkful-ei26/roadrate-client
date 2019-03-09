@@ -85,12 +85,9 @@ export const RegistrationForm = () => {
   }
 
   /* ====== PASSWORD VALIDATION ====== */
-  // const re = /\w*[A-Z]\w*[A-Za-z0-9]\w*/g;
   const re = /(.*[A-Z].*)/; //positive look ahead for atleast 1 capital char
   const validateChar = (password) => {
     if (re.test(password)) {
-      console.log(re)
-      console.log('validChar: ',password)
       SetValidPasswordCharacters(true)
     } else {
       SetValidPasswordCharacters(false)
@@ -98,7 +95,6 @@ export const RegistrationForm = () => {
   }
 
   const validatePasswordLength = (password) => {
-    console.log(password)
     if (password.length && password.length >= 8 && password.length <= 72) {
       SetValidPasswordLength(true)
     } else {
@@ -166,7 +162,6 @@ export const RegistrationForm = () => {
   if(password === '') {
     passwordValidation = null
   } else if (validPasswordLength && validPasswordCharacters) {
-    console.log('test1')
     passwordValidation = (
       <div>
         <p className="valid-password">
@@ -178,7 +173,6 @@ export const RegistrationForm = () => {
       </div>
     )
   } else if (validPasswordLength && !validPasswordCharacters) {
-    console.log('test2')
     passwordValidation = (
       <div>
         <p className="valid-password">
@@ -190,7 +184,6 @@ export const RegistrationForm = () => {
       </div>
     )
   } else if (validPasswordLength) {
-    console.log('test3')
     passwordValidation = (
       <div>
         <p className="valid-password">
@@ -202,7 +195,6 @@ export const RegistrationForm = () => {
       </div>
     )
   } else if (validPasswordCharacters) {
-    console.log('test4')
     passwordValidation = (
       <div>
         <p className="invalid-password">
@@ -214,7 +206,6 @@ export const RegistrationForm = () => {
       </div>
     )
   } else {
-    console.log('test5')
     passwordValidation = (
       <div>
         <p className="invalid-password">
