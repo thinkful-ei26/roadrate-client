@@ -88,35 +88,33 @@ export const RegistrationForm = () => {
   /* ====== PASSWORD VALIDATION ====== */
   // const re = /\w*[A-Z]\w*[A-Za-z0-9]\w*/g;
   const re = /(.*[A-Z].*)/;
-  const validChar = (password) => {
+  const validateChar = (password) => {
+    console.log('validateChar fired')
     if (re.test(password)) {
       console.log(re)
       console.log('validChar: ',password)
       SetValidPasswordCharacters(true)
-      localStorage.setItem("validPasswordCharacters", true);
+      // localStorage.setItem("validPasswordCharacters", true);
     } else {
       SetValidPasswordCharacters(false)
-      localStorage.setItem("validPasswordCharacters", false);
+      // localStorage.setItem("validPasswordCharacters", false);
     }
   }
 
-  const validatePassword = (password) => {
-    // console.log('password',password)
+  const validatePasswordLength = (password) => {
     if (password.length && password.length >= 8 && password.length <= 72) {
-      console.log('optimal length')
       SetValidPasswordLength(true)
-      localStorage.setItem("validPasswordLength", true)
+      // localStorage.setItem("validPasswordLength", true)
     } else {
-      console.log('else')
       SetValidPasswordLength(false)
-      localStorage.setItem("validPasswordLength", false)
+      // localStorage.setItem("validPasswordLength", false)
     }
   }
 
   /* ====== USEEFFECT ====== */
   useEffect(() => {
-    validChar(password);
-    validatePassword(password);
+    validateChar(password);
+    validatePasswordLength(password);
     validateUsername(username);
   }, [username, password]) 
   
@@ -186,8 +184,8 @@ export const RegistrationForm = () => {
     )
   } else if (validPasswordLength && !validPasswordCharacters) {
     console.log('test3')
-    console.log(validPasswordLength)
-    console.log(!validPasswordCharacters)
+    // console.log(validPasswordLength)
+    // console.log(!validPasswordCharacters)
     passwordValidation = (
       <div>
         <p className="valid-password">
