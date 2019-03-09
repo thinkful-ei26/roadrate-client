@@ -13,7 +13,6 @@ export const RegistrationForm = () => {
   // eslint-disable-next-line no-unused-vars
   const [authToken, setAuthToken] = useState("") 
   const [loggedIn, setLoggedIn] = useState(true)
-  // const [modalOpen, setModalOpen] = useState(true);
   const [validUsername, SetValidUsername] = useState('')
   const [validPasswordLength, SetValidPasswordLength] = useState(false)
   const [validPasswordCharacters, SetValidPasswordCharacters] = useState(false)
@@ -73,7 +72,7 @@ export const RegistrationForm = () => {
     // Pull out the data from response
     const _username = await res.json();
    
-    // if the username already exists in the DB
+    // if the username exists in the DB
     if(_username.length > 0 && validUsername !== '') {
       localStorage.setItem('validUsername', `Username "${_username[0].username}" taken. Pick another.`)
       SetValidUsername(false)
@@ -167,6 +166,7 @@ export const RegistrationForm = () => {
   if(password === '') {
     passwordValidation = null
   } else if (validPasswordLength && validPasswordCharacters) {
+    console.log('test1')
     passwordValidation = (
       <div>
         <p className="valid-password">
@@ -178,10 +178,11 @@ export const RegistrationForm = () => {
       </div>
     )
   } else if (validPasswordLength && !validPasswordCharacters) {
+    console.log('test2')
     passwordValidation = (
       <div>
         <p className="valid-password">
-          8 characters minimum
+          <span><svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>8 characters minimum</span>
         </p>
         <p className="invalid-password test3">
           Atleast 1 Capital Letter
@@ -189,22 +190,31 @@ export const RegistrationForm = () => {
       </div>
     )
   } else if (validPasswordLength) {
+    console.log('test3')
     passwordValidation = (
       <div>
         <p className="valid-password">
            <span><svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>8 characters minimum</span>
         </p>
+        <p className="invalid-password">
+          Atleast 1 capital letter
+        </p>
       </div>
     )
   } else if (validPasswordCharacters) {
+    console.log('test4')
     passwordValidation = (
       <div>
+        <p className="invalid-password">
+          8 characters minimum
+        </p>
         <p className="valid-password test4">
            <span><svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
         </p>
       </div>
     )
   } else {
+    console.log('test5')
     passwordValidation = (
       <div>
         <p className="invalid-password">
