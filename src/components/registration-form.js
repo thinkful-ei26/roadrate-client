@@ -266,6 +266,8 @@ export const RegistrationForm = () => {
               onChange={e => setPassword(e.target.value)}
               placeholder="enter password"
               required
+              pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
+              title="Must contain at least one number and one uppercase letter and at least 8 or more characters"
               aria-label="password"  
             />
 
