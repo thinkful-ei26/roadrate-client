@@ -81,7 +81,7 @@ export const ReviewForm = (props) => {
           title="Plate number should be between 1 to 8 characters"
         />
         
-        <label htmlFor='rating' id="review-label">Rating:  </label>
+        <label htmlFor='rating' className="review-label">Rating:  </label>
         <select 
           id='rating'
           className='browser-default' 
@@ -170,7 +170,7 @@ export const ReviewForm = (props) => {
           id='review-message-input'
           type='text' 
           name='message' 
-          placeholder='Explain your RoadRating'
+          placeholder='Be honest and objective!'
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />

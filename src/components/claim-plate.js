@@ -231,7 +231,7 @@ export const claimPlate = () => {
                   id="claim-search"
                   name="claim-search"
                   className="claim-search-input"
-                  placeholder="Search plate numbers"
+                  placeholder="Search Plate Numbers"
                   pattern="^[a-zA-Z0-9]{1,8}$" 
                   title="Plate number should be between 1 to 8 characters without special characters."
                   aria-label="plate-number"
@@ -248,7 +248,7 @@ export const claimPlate = () => {
                 onChange={(e) => setPlateState(e.target.value)}
                 aria-label='plate-state'
               >
-                <option value=''>Select State</option>
+                <option value=''>State</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -308,7 +308,7 @@ export const claimPlate = () => {
               onClick={() => {setSuccessMessage('')}}
               disabled={!plateNumber || !plateState}
             >
-              search
+              Search
             </button>      
           </fieldset>
         </form>

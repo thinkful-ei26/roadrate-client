@@ -95,10 +95,11 @@ export const RegistrationForm = () => {
       SetValidPasswordLength(true)
       localStorage.setItem("validPasswordLength", true)
     } else if (re.test(password)) {
+      console.log(re)
+      console.log(password)
       SetValidPasswordCharacters(true)
       localStorage.setItem("validPasswordCharacters", true);
-    }
-    else {
+    } else {
       SetValidPasswordLength(false)
       SetValidPasswordCharacters(false)
       localStorage.setItem("validPasswordLength", false)
@@ -190,7 +191,7 @@ export const RegistrationForm = () => {
     passwordValidation = (
       <div>
         <p className="valid-password">
-        8 characters minimum
+          8 characters minimum
         </p>
         <p className="invalid-password test3">
           Atleast 1 Capital Letter

@@ -11,7 +11,7 @@ export function RegistrationPage() {
                 alt="icon" 
                 className="registration-icon"
             />
-            <h1>Register to RoadRate</h1>
+            <h1>Register for RoadRate</h1>
             <div className='reg-h5'>
                 <h5 id="reg-h5">Information is confidential and 100% anonymous</h5>
             </div>

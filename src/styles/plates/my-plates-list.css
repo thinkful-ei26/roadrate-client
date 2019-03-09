@@ -17,6 +17,11 @@
   color: rgb(52, 110, 98);
 }
 
+.my-plates p {
+  color: #414141;
+  font-size: 16px;
+}
+
 .plate-list-item {
   padding: 10px;
 }
