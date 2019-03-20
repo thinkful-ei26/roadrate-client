@@ -22,6 +22,10 @@ RoadRate is a social platform for reviewing your fellow drivers and seeing how w
 
 For version 2, we want to incorporate a tipping feature to encourage rewards for good driving.
 
+## Demo User
+- **username:** simba
+- **password:** Simba123
+
 ## Quick Links
 - [Client Repo](https://github.com/thinkful-ei26/roadrate-client)
 - [Server Repo](https://github.com/thinkful-ei26/roadrate-server)
