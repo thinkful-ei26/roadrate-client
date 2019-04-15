@@ -16,7 +16,7 @@ export const LoginForm = () => {
     localStorage.setItem("modalOpen", modalOpen)
 
     return (
-      <button className="close" onClick={() => setModalOpen(false)}>x</button>
+      <button className="close-login" onClick={() => setModalOpen(false)}>X</button>
     )
   }
  
