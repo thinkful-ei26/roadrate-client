@@ -13,7 +13,6 @@ export const RegistrationForm = () => {
   // eslint-disable-next-line no-unused-vars
   const [authToken, setAuthToken] = useState("") 
   const [loggedIn, setLoggedIn] = useState(true)
-  // const [modalOpen, setModalOpen] = useState(true);
   const [validUsername, SetValidUsername] = useState('')
   const [validPasswordLength, SetValidPasswordLength] = useState(false)
   const [validPasswordCharacters, SetValidPasswordCharacters] = useState(false)
@@ -73,7 +72,7 @@ export const RegistrationForm = () => {
     // Pull out the data from response
     const _username = await res.json();
    
-    // if the username already exists in the DB
+    // if the username exists in the DB
     if(_username.length > 0 && validUsername !== '') {
       localStorage.setItem('validUsername', `Username "${_username[0].username}" taken. Pick another.`)
       SetValidUsername(false)
@@ -86,30 +85,27 @@ export const RegistrationForm = () => {
   }
 
   /* ====== PASSWORD VALIDATION ====== */
-  const re = /\w*[A-Z]\w*[A-Za-z0-9]\w*/g;
-  const validatePassword = (password) => {
-
-    if(password.length && !password.length > 8) { //length is greater than 8
-     localStorage.setItem("validPasswordLength", false);
-    } else if (password.length && password.length >= 8 && password.length <= 72) {
-      SetValidPasswordLength(true)
-      localStorage.setItem("validPasswordLength", true)
-    } else if (re.test(password)) {
-      console.log(re)
-      console.log(password)
+  const re = /(.*[A-Z].*)/; //positive look ahead for atleast 1 capital char
+  const validateChar = (password) => {
+    if (re.test(password)) {
       SetValidPasswordCharacters(true)
-      localStorage.setItem("validPasswordCharacters", true);
+    } else {
+      SetValidPasswordCharacters(false)
+    }
+  }
+
+  const validatePasswordLength = (password) => {
+    if (password.length && password.length >= 8 && password.length <= 72) {
+      SetValidPasswordLength(true)
     } else {
       SetValidPasswordLength(false)
-      SetValidPasswordCharacters(false)
-      localStorage.setItem("validPasswordLength", false)
-      localStorage.setItem("validPasswordCharacters", false);
     }
   }
 
   /* ====== USEEFFECT ====== */
   useEffect(() => {
-    validatePassword(password);
+    validateChar(password);
+    validatePasswordLength(password);
     validateUsername(username);
   }, [username, password]) 
   
@@ -176,22 +172,11 @@ export const RegistrationForm = () => {
         </p>
       </div>
     )
-  } else if (!validPasswordLength && validPasswordCharacters) {
-    passwordValidation = (
-      <div>
-        <p className="invalid-password">
-        8 characters minimum
-        </p>
-        <p className="valid-password test2">
-          <span><svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
-        </p>
-      </div>
-    )
   } else if (validPasswordLength && !validPasswordCharacters) {
     passwordValidation = (
       <div>
         <p className="valid-password">
-          8 characters minimum
+          <span><svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>8 characters minimum</span>
         </p>
         <p className="invalid-password test3">
           Atleast 1 Capital Letter
@@ -204,11 +189,17 @@ export const RegistrationForm = () => {
         <p className="valid-password">
            <span><svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>8 characters minimum</span>
         </p>
+        <p className="invalid-password">
+          Atleast 1 capital letter
+        </p>
       </div>
     )
   } else if (validPasswordCharacters) {
     passwordValidation = (
       <div>
+        <p className="invalid-password">
+          8 characters minimum
+        </p>
         <p className="valid-password test4">
            <span><svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>Atleast 1 capital letter</span>
         </p>
@@ -276,8 +267,8 @@ export const RegistrationForm = () => {
               onChange={e => setPassword(e.target.value)}
               placeholder="enter password"
               required
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" 
-              title="Must contain at least one number and one uppercase letter and at least 8 or more characters"
+              pattern="(?=.*[A-Z]).{8,}$" 
+              title="Must contain at least one uppercase letter and at least 8 or more characters"
               aria-label="password"  
             />
 

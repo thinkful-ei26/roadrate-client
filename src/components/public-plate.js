@@ -17,7 +17,7 @@ export const PublicPlate = () => {
     const plateId = address.substring((address.indexOf('m')+ 11), address.length);
     //when running locally use next line
     // const plateId = address.substring((address.indexOf('d')+ 2), address.length);
-    // setPlateId(plateId)
+    setPlateId(plateId)
     
     /* ==== fetch plate info using plateId ==== */
     let plateUrl = `${API_BASE_URL}/plates/${plateId}`;

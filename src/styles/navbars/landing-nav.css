@@ -27,7 +27,7 @@
   border: none;
   color: whitesmoke;
   font-size: 14px;
-  padding: 0px;
+  padding-right: 15px;
 }
 
 #login-button:hover,
