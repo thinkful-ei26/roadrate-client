@@ -23,7 +23,7 @@ export const About = () => {
 
     const Button = () => {    
         return (
-          <button className="close" onClick={() => setModalOpen(false)}>x</button>
+          <button className="close" onClick={() => setModalOpen(false)}>X</button>
         )
       }
 
@@ -54,6 +54,9 @@ export const About = () => {
                     alt="icon" 
                     className="about-icon"
                 />
+                <section className="about-demo">
+                  <p>***To view all of RoadRate's features, login with a demo account: Demo, Password123.***</p>
+                </section>
                 <p id='question-0'><b>RoadRate was designed for the over 220 million drivers currently licensed in America.</b><br />RoadRate is a social platform for reviewing fellow drivers and keeping track of your own RoadRating. Register license plates, browse/search/post reviews, and build up a karma score to let other's know you're a great driver. RoadRate was founded to safely, confidentially and anonymously encourage quality road etiquette.</p>
                 <p id='question-3'><b>Did you know that road crashes cost the US $230.6 billion per year? That's an average of $820 for every person.</b><br/> RoadRate aims to increase awareness and accountability on the road.</p>
                 <p id='question-1'><b>Witnessed something on the road that should have been reported?</b><br/> Use RoadRate to search license plates, rate them, leave reviews and browse other users reviews.</p> 
@@ -61,10 +64,10 @@ export const About = () => {
                 <p id='question-4'>RoadRate encourages positive reviews for great driving skills and random acts of kindness, and as such, recommend leaving honest, negative reviews when there is room for improvement.</p>
                 <h5 id='about-footer'>Please not use RoadRate while operating a motor vehicle.</h5>
                 <div className="register-link">
-                    <Link to="/register" className="register-link">
-                        <h4>Start your journey with RoadRate today!</h4>
-                    </Link>
-                    </div>
+                  <Link to="/register" className="register-link">
+                      <h4>Start your journey with RoadRate today!</h4>
+                  </Link>
+                </div>
                 <Button />
             </div>
        )

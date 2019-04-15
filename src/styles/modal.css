@@ -12,34 +12,45 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
     top: 50vh;
     border-radius: 3px;
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
     z-index: 2;
     height: 250px;
     max-height: 100%;
-    min-width: 95%;
-    max-width: 100%;
     text-align: center;
     overflow: auto;
+    max-width: 500px;
+    width: 90%;
   }
 
   .modal h2 {
     position: relative;
-    padding-top: 20px;
+    padding: 28px;
+    padding-bottom: 4px;
     margin: 0 auto;
     color: rgb(52, 110, 98);
   }
   
-  .close {
+  .close-login {
     text-decoration: none;
-    color: palevioletred;
+    color: #346e62;
     font-family: sans-serif;
+    height: 20px;
+    width: 20px;
     font-size: 10px;
+    font-weight: bold;
     position: absolute;
-    top: 5px;
-    right: 10px;
+    top: 6px;
+    right: 6px;
+    display: flex;
+    justify-content: center;
+    background: whitesmoke;
+    border-radius: 4px;
+    margin-left: 4px;
+    margin-bottom: 20px;
   }
 
   .login-submit {
