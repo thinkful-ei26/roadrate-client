@@ -111,7 +111,7 @@ export const RegistrationForm = () => {
   
    /* ====== HANDLE FORM SUBMIT ====== */
   const handleSubmit = e => {
-    e.preventDefault(e); 
+    e.preventDefault(); 
    
     setUsername(username);
     setPassword(password);

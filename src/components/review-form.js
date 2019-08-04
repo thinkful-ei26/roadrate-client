@@ -25,10 +25,20 @@ export const ReviewForm = (props) => {
     })
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
+
+    if(e) {
+      e.preventDefault()
+    }
     const username = localStorage.user
     const reviewerId = localStorage.userId
     
+
+    setPlateNumber(plateNumber.toUpperCase())
+    setMessage(message)
+    setPlateState(plateState)
+    setRating(rating)
+
     return fetch(`${API_BASE_URL}/reviews`, {
       method: 'POST',
       headers: {
@@ -42,8 +52,15 @@ export const ReviewForm = (props) => {
         message,
         username,
         reviewerId,
-        plateState,
+        plateState
       })
+    })
+    .then(res => {
+      return res.json()
+    })
+    .then(data => {
+      console.log('review data', data)
+      return data
     })
     .then(() => setSubmitted(true))
     .then(() => {
@@ -54,7 +71,7 @@ export const ReviewForm = (props) => {
     })
     .catch(err => {
       // alert("We're sorry. Something went wrong.")
-      console.log(err);
+      console.error(err);
     });
   };
 

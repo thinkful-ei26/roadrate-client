@@ -11,8 +11,11 @@ export const claimPlate = () => {
   const [ plates, setPlates ] = useState('before search');
 
   /* ========= SEARCH LICENSE PLATE TO CLAIM ========== */
-  const handleSubmit = e => {
-    e.preventDefault(e); 
+  const handleSubmit = (e) => {
+    
+    if(e){
+      e.preventDefault(); 
+    }
 
     return fetch(`${API_BASE_URL}/plates/?state=${plateState}&search=${plateNumber}`, {
       method: 'GET',
@@ -27,24 +30,27 @@ export const claimPlate = () => {
       })
     .then(data => {
       setPlates(data[0])
+      return data
     })
     .catch(err => {
       setPlates('');
       if(err === 'TypeError: Failed to fetch'){
         return Promise.reject(err)
       }
-      console.log(err)
+      console.error(err)
       });
   };
 
  /* ========= POST A NEW PLATE ========== */
   const handleRegisterPlate = (e) => {
-    e.preventDefault();
+    if(e){
+      e.preventDefault(); 
+    }
     const userId = localStorage.userId;
 
     localStorage.setItem('myPlate', plateNumber.toUpperCase())
     localStorage.setItem('myState', plateState)
-
+    
     return fetch(`${API_BASE_URL}/plates`, {
       method: 'POST',
       headers: {
@@ -68,7 +74,7 @@ export const claimPlate = () => {
     })
     .catch(err => {
       if (err) {
-        alert("We're sorry. Something went wrong.")
+        // alert("We're sorry. Something went wrong.")
         console.log(err);
       }
     });
@@ -76,8 +82,10 @@ export const claimPlate = () => {
 
   /* ========= UPDATE AN EXISTING PLATE ========== */
   // PUT to link an existing plate to the current user
-  const handleClaimClick = e => {
-    e.preventDefault();
+  const handleClaimClick = (e) => {
+    if(e){
+      e.preventDefault(); 
+    }
     const userId = localStorage.userId;
 
     localStorage.setItem('myPlate', plateNumber)
@@ -97,18 +105,20 @@ export const claimPlate = () => {
       })
     })
     .then(res => {
-      setSuccessMessage(`Congrats! Your plate ${localStorage.myPlate} - ${localStorage.myState} was registered.`)
       return res.json();
+    })
+    .then(data => {
+      setSuccessMessage(`Congrats! Your plate ${localStorage.myPlate} - ${localStorage.myState} was registered.`)
+      return data
     })
     .catch(err => {
       // alert("We're sorry. Something went wrong.")
-      console.log(err);
+      console.error(err);
     });
   }
 
   /* ========= DYNAMIC SEARCH RESULT TABLE ========== */
   let plateTable;
-  console.log(plates)
   if (plates && plates !== 'before search' && !plates.isOwned ) {
   plateTable = (
     <table>
